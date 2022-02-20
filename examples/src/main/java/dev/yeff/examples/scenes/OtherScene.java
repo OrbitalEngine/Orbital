@@ -12,7 +12,7 @@ public class OtherScene implements Scene {
     private static Logger LOGGER = LoggerFactory.getLogger(OtherScene.class);
 
     @Override
-    public void init() {
+    public void init(Window window) {
         LOGGER.info("loaded other scene.");
     }
 

@@ -15,7 +15,7 @@ public class MainScene implements Scene {
     private boolean fadeToBlack;
 
     @Override
-    public void init() {
+    public void init(Window window) {
         LOGGER.info("initialized");
         this.r = 0;
         this.g = 0;
@@ -41,7 +41,6 @@ public class MainScene implements Scene {
             a = Math.max(a - delta, 0);
 
             window.setBackground(r, g, b, a);
-
         }
 
         LOGGER.info("FPS: {}", 1 / delta);

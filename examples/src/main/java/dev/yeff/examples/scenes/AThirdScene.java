@@ -12,8 +12,8 @@ public class AThirdScene implements Scene {
     private static Logger LOGGER = LoggerFactory.getLogger(AThirdScene.class);
 
     @Override
-    public void init() {
-        LOGGER.info("initalized the third scene");
+    public void init(Window window) {
+        LOGGER.info("initialized the third scene");
     }
 
     @Override

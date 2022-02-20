@@ -83,7 +83,7 @@ public class Window {
         GL.createCapabilities();
 
         // Run the provided scene
-        currentScene.init();
+        currentScene.init(this);
     }
 
     private void update() {
@@ -120,7 +120,7 @@ public class Window {
     public void useScene(int sceneIndex) {
         if (sceneIndex <= scenes.size()) {
             currentScene = scenes.get(sceneIndex);
-            currentScene.init();
+            currentScene.init(this);
         }
         else {
             throw new IndexOutOfBoundsException("No scene found at that index.");
