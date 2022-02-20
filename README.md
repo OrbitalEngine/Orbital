@@ -1,3 +1,5 @@
+![Orbital Logo](/media/orbital.svg)
+
 # Orbital
 Orbital is a under-development 2D game engine.
 
