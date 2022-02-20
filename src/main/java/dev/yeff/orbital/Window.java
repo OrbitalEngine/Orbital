@@ -7,6 +7,8 @@ import org.lwjgl.opengl.GL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
@@ -14,7 +16,6 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Window {
     private String title;
-    private Scene scene;
     private int width, height;
 
     // GLFW window pointer
@@ -22,11 +23,14 @@ public class Window {
 
     private static Logger LOGGER = LoggerFactory.getLogger(Window.class);
 
-    public Window(String title, int width, int height, Scene scene) {
+    private ArrayList<Scene> scenes;
+    private Scene currentScene;
+
+    public Window(String title, int width, int height, ArrayList<Scene> scenes) {
         this.title = title;
         this.width = width;
         this.height = height;
-        this.scene = scene;
+        this.scenes = scenes;
     }
 
     public void run() {
@@ -79,12 +83,13 @@ public class Window {
         GL.createCapabilities();
 
         // Run the provided scene
-        scene.init();
+        currentScene.init();
     }
 
     private void update() {
         float beginTime = Time.getTime();
         float endTime;
+        float dt = 0;
 
         setBackground(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -92,20 +97,33 @@ public class Window {
             glfwPollEvents();
 
             glClear(GL_COLOR_BUFFER_BIT);
+
+            if (dt >= 0)
+                currentScene.update(this, dt);
+
             glfwSwapBuffers(glfwWindow);
 
             // Record the current time
             endTime = Time.getTime();
 
             // Subtract the current time by the begin time, to get the time it took to run the game loop
-            float dt = endTime - beginTime;
+            dt = endTime - beginTime;
             beginTime = endTime;
 
-            scene.update(this, dt);
         }
     }
 
     public void setBackground(float r, float g, float b, float a) {
         glClearColor(r, g, b, a);
+    }
+
+    public void useScene(int sceneIndex) {
+        if (sceneIndex <= scenes.size()) {
+            currentScene = scenes.get(sceneIndex);
+            currentScene.init();
+        }
+        else {
+            throw new IndexOutOfBoundsException("No scene found at that index.");
+        }
     }
 }

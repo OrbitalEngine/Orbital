@@ -30,6 +30,8 @@ public class MainScene implements Scene {
 
         if (KeyListener.isKeyDown(GLFW_KEY_W)) {
             fadeToBlack = true;
+        } else if (KeyListener.isKeyDown(GLFW_KEY_S)) {
+            window.useScene(1);
         }
 
         if (fadeToBlack) {
