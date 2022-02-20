@@ -12,7 +12,7 @@ public class MainScene implements Scene {
     private static Logger LOGGER = LoggerFactory.getLogger(MainScene.class);
 
     private float r, g, b, a;
-    private boolean fadeToBlack, fadeToRed;
+    private boolean fadeToBlack;
 
     @Override
     public void init() {
@@ -30,30 +30,18 @@ public class MainScene implements Scene {
 
         if (KeyListener.isKeyDown(GLFW_KEY_W)) {
             fadeToBlack = true;
-        } else if (KeyListener.isKeyDown(GLFW_KEY_S)) {
-            fadeToRed = true;
         }
 
         if (fadeToBlack) {
-            r = Math.max(r - 0.01f, 0);
-            g = Math.max(g - 0.01f, 0);
-            b = Math.max(b - 0.01f, 0);
-            a = Math.max(a - 0.01f, 0);
+            r = Math.max(r - delta, 0);
+            g = Math.max(g - delta, 0);
+            b = Math.max(b - delta, 0);
+            a = Math.max(a - delta, 0);
 
             window.setBackground(r, g, b, a);
 
-            LOGGER.info("Color({}, {}, {}, {})", r, g, b, a);
-        } else if (fadeToRed) {
-            r = Math.max(r - 0.01f, 1);
-            g = Math.max(g - 0.01f, 0);
-            b = Math.max(b - 0.01f, 0);
-            a = Math.max(a - 0.01f, 0);
-
-            window.setBackground(r, g, b, a);
-
-            LOGGER.info("Color({}, {}, {}, {})", r, g, b, a);
         }
 
-        //LOGGER.info("FPS: {}", 1 / delta);
+        LOGGER.info("FPS: {}", 1 / delta);
     }
 }
