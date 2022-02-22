@@ -31,6 +31,8 @@ public class Window {
         this.width = width;
         this.height = height;
         this.scenes = scenes;
+
+        this.currentScene = scenes.get(0);
     }
 
     public void run() {
@@ -117,13 +119,13 @@ public class Window {
         glClearColor(r, g, b, a);
     }
 
-    public void useScene(int sceneIndex) {
-        if (sceneIndex <= scenes.size()) {
-            currentScene = scenes.get(sceneIndex);
-            currentScene.init(this);
-        }
-        else {
-            throw new IndexOutOfBoundsException("No scene found at that index.");
-        }
-    }
+//    public void useScene(int sceneIndex) {
+//        if (sceneIndex <= scenes.size()) {
+//            currentScene = scenes.get(sceneIndex);
+//            currentScene.init(this);
+//        }
+//        else {
+//            throw new IndexOutOfBoundsException("No scene found at that index.");
+//        }
+//    }
 }
