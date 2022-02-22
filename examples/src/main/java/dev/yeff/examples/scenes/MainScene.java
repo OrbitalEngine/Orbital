@@ -3,11 +3,14 @@ package dev.yeff.examples.scenes;
 import dev.yeff.orbital.Scene;
 import dev.yeff.orbital.Window;
 import dev.yeff.orbital.io.KeyListener;
+import dev.yeff.orbital.renderer.Shader;
 import org.lwjgl.BufferUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.nio.Buffer;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
@@ -38,6 +41,8 @@ public class MainScene implements Scene {
     private int vertexId, fragmentId, program;
     private int vaoId, vboId, eboId;
 
+    private Shader material;
+
     private float[] vertexArray = {
             // vertices                // colors
             0.5f, -0.5f,  0.0f,        1.0f, 0.0f, 0.0f, 1.0f, // bottom right
@@ -58,48 +63,15 @@ public class MainScene implements Scene {
     public void init(Window window) {
         LOGGER.info("initialized");
 
-        // Compile the vertex shader
-        vertexId = glCreateShader(GL_VERTEX_SHADER);
-        glShaderSource(vertexId, vertexShaderSrc);
-        glCompileShader(vertexId);
+        // Load the shader from the files
+        // TODO: Implement way to easily load shaders and other assets
+        File vertexShader = new File("examples/src/assets/shaders/vertex.glsl");
+        File fragmentshader = new File("examples/src/assets/shaders/fragment.glsl");
 
-        int success = glGetShaderi(vertexId, GL_COMPILE_STATUS);
-        if (success == GL_FALSE) {
-            int len = glGetShaderi(vertexId, GL_INFO_LOG_LENGTH);
 
-            LOGGER.error("default.glsl vertex shader compilation failed");
-            LOGGER.error(glGetShaderInfoLog(vertexId, len));
-            return;
-        }
-
-        // Compile the fragment shader
-        fragmentId = glCreateShader(GL_FRAGMENT_SHADER);
-        glShaderSource(fragmentId, fragmentShaderSrc);
-        glCompileShader(fragmentId);
-
-        success = glGetShaderi(fragmentId, GL_COMPILE_STATUS);
-        if (success == GL_FALSE) {
-            int len = glGetShaderi(fragmentId, GL_INFO_LOG_LENGTH);
-
-            LOGGER.error("default.glsl fragment shader compilation failed");
-            LOGGER.error(glGetShaderInfoLog(fragmentId, len));
-            return;
-        }
-
-        // Link shaders and check for errors
-        program = glCreateProgram();
-        glAttachShader(program, vertexId);
-        glAttachShader(program, fragmentId);
-        glLinkProgram(program);
-
-        success = glGetProgrami(program, GL_LINK_STATUS);
-        if (success == GL_FALSE) {
-            int len = glGetProgrami(program, GL_INFO_LOG_LENGTH);
-
-            LOGGER.error("default.glsl shader linking failed");
-            LOGGER.error(glGetProgramInfoLog(program, len));
-            return;
-        }
+        // Create and link the shader
+        material = new Shader(vertexShaderSrc, fragmentShaderSrc);
+        material.link();
 
         vaoId = glGenVertexArrays();
         glBindVertexArray(vaoId);
@@ -139,7 +111,7 @@ public class MainScene implements Scene {
             System.exit(0);
 
         // Bind shader program
-        glUseProgram(program);
+        material.bind();
         // Bind the VAO that we're using
         glBindVertexArray(vaoId);
 
@@ -153,9 +125,8 @@ public class MainScene implements Scene {
         glDisableVertexAttribArray(0);
         glDisableVertexAttribArray(1);
         glBindVertexArray(0);
-        glUseProgram(0);
 
-
+        material.unbind();
         //LOGGER.info("FPS: {}", 1 / delta);
     }
 }
