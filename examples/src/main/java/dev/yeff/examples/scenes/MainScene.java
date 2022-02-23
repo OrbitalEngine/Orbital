@@ -22,26 +22,9 @@ import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 public class MainScene implements Scene {
     private static Logger LOGGER = LoggerFactory.getLogger(MainScene.class);
 
-    private String vertexShaderSrc = "#version 330 core\n" +
-            "layout (location = 0) in vec3 aPos;\n" +
-            "\n" +
-            "void main()\n" +
-            "{\n" +
-            "    gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n" +
-            "}";
-
-    private String fragmentShaderSrc = "#version 330 core\n" +
-            "out vec4 FragColor;\n" +
-            "\n" +
-            "void main()\n" +
-            "{\n" +
-            "    FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n" +
-            "}";
-
-    private int vertexId, fragmentId, program;
     private int vaoId, vboId, eboId;
 
-    private Shader material;
+    private Shader shader;
 
     private float[] vertexArray = {
             // vertices                // colors
@@ -63,15 +46,9 @@ public class MainScene implements Scene {
     public void init(Window window) {
         LOGGER.info("initialized");
 
-        // Load the shader from the files
-        // TODO: Implement way to easily load shaders and other assets
-        File vertexShader = new File("examples/src/assets/shaders/vertex.glsl");
-        File fragmentshader = new File("examples/src/assets/shaders/fragment.glsl");
-
-
-        // Create and link the shader
-        material = new Shader(vertexShaderSrc, fragmentShaderSrc);
-        material.link();
+        // Create and compile the shader
+        shader = new Shader("examples/src/assets/shaders/default.glsl");
+        shader.compile();
 
         vaoId = glGenVertexArrays();
         glBindVertexArray(vaoId);
@@ -111,7 +88,7 @@ public class MainScene implements Scene {
             System.exit(0);
 
         // Bind shader program
-        material.bind();
+        shader.use();
         // Bind the VAO that we're using
         glBindVertexArray(vaoId);
 
@@ -126,7 +103,7 @@ public class MainScene implements Scene {
         glDisableVertexAttribArray(1);
         glBindVertexArray(0);
 
-        material.unbind();
+        shader.detach();
         //LOGGER.info("FPS: {}", 1 / delta);
     }
 }
