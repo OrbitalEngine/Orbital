@@ -90,9 +90,8 @@ public class Shader {
         success = glGetProgrami(shaderProgramID, GL_LINK_STATUS);
         if (success == GL_FALSE) {
             int len = glGetProgrami(shaderProgramID, GL_INFO_LOG_LENGTH);
-            System.out.println("ERROR: '" + filepath + "'\n\tLinking of shaders failed.");
-            System.out.println(glGetProgramInfoLog(shaderProgramID, len));
-
+            LOGGER.error("'{}' shader linking failed.", filepath);
+            LOGGER.error(glGetShaderInfoLog(shaderProgramID, len));
         }
     }
 
