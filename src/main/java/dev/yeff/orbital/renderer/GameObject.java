@@ -12,6 +12,12 @@ import static org.lwjgl.opengl.GL20.glDisableVertexAttribArray;
 import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
+/**
+ * A class to simplify the creation VAO, VBO and EBOs, and using them.
+ *
+ * @author YeffyCodeGit
+ * @version 0.0.1
+ */
 public class GameObject {
     private float[] vertexArray;
     private int[] elementArray;
@@ -23,10 +29,21 @@ public class GameObject {
         this.elementArray = elementArray;
     }
 
+    /**
+     * Helper function to get the size of all the VAO attributes as bytes.
+     *
+     * @param posSize The size of the position attribute.
+     * @param colorSize The size of the color attribute.
+     *
+     * @return The full size, in bytes.
+     */
     private int getVertexSizeInBytes(int posSize, int colorSize) {
         return (posSize + colorSize) * Float.BYTES;
     }
 
+    /**
+     * Create the VAO, VBO and EBOs, and set the attribute pointers.
+     */
     public void create() {
         vaoID = glGenVertexArrays();
         glBindVertexArray(vaoID);
@@ -60,6 +77,9 @@ public class GameObject {
         glEnableVertexAttribArray(1);
     }
 
+    /**
+     * Makes OpenGL use the created VAO and enable the attribute pointers.
+     */
     public void use() {
         // Bind the VAO that we're using
         glBindVertexArray(vaoID);
@@ -69,6 +89,9 @@ public class GameObject {
         glEnableVertexAttribArray(1);
     }
 
+    /**
+     * Makes OpenGL not use the created VAO and disable the attribute pointers.
+     */
     public void dispose() {
         // Unbind everything
         glDisableVertexAttribArray(0);
