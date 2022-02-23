@@ -28,37 +28,6 @@ public class GameObject {
     }
 
     public void create() {
-//        vaoId = glGenVertexArrays();
-//        glBindVertexArray(vaoId);
-//
-        // Create a float buffer of verticies
-//        FloatBuffer vertexBuffer = BufferUtils.createFloatBuffer(vertexArray.length);
-//        vertexBuffer.put(vertexArray).flip();
-//
-//        // Create Vertex Buffer Object and upload the vertex buffer
-//        vboId = glGenBuffers();
-//        glBindBuffer(GL_ARRAY_BUFFER, vboId);
-//        glBufferData(GL_ARRAY_BUFFER, vertexBuffer, GL_STATIC_DRAW);
-
-        // Create the indicies and upload
-//        IntBuffer elementBuffer = BufferUtils.createIntBuffer(elementArray.length);
-//        elementBuffer.put(elementArray).flip();
-//
-//        eboId = glGenBuffers();
-//        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, eboId);
-//        glBufferData(GL_ELEMENT_ARRAY_BUFFER, elementBuffer, GL_STATIC_DRAW);
-//
-        // Add the vertex attrib pointers
-//        int positionSize = 3;
-//        int colorSize = 4;
-//        int vertexSizeInBytes = (positionSize + colorSize) * Float.BYTES;
-//
-//        glVertexAttribPointer(0, positionSize, GL_FLOAT, false, vertexSizeInBytes, 0);
-//        glEnableVertexAttribArray(0);
-//
-//        glVertexAttribPointer(1, colorSize, GL_FLOAT, false, vertexSizeInBytes, positionSize * Float.BYTES);
-//        glEnableVertexAttribArray(1);
-
         vaoID = glGenVertexArrays();
         glBindVertexArray(vaoID);
 
