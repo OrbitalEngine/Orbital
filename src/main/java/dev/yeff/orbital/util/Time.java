@@ -1,5 +1,11 @@
 package dev.yeff.orbital.util;
 
+/**
+ * Utility class to get useful time-based data.
+ *
+ * @author YeffyCodeGit
+ * @version 0.0.1
+ */
 public class Time {
     public static float startTime = System.nanoTime();
 

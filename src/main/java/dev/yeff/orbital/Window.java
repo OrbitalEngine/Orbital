@@ -14,6 +14,12 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
+/**
+ * The main class used to create a game using the Orbital Game Engine.
+ *
+ * @author YeffyCodeGit
+ * @version 0.0.1
+ */
 public class Window {
     private String title;
     private int width, height;
@@ -35,6 +41,9 @@ public class Window {
         this.currentScene = scenes.get(0);
     }
 
+    /**
+     * Creates the window, starts the game loop and runs the current scene being used.
+     */
     public void run() {
         init();
         update();
@@ -47,6 +56,9 @@ public class Window {
         glfwTerminate();
     }
 
+    /**
+     * Initializes OpenGL, GLFW, registers the input callbacks and initializes the current scene being used.
+     */
     private void init() {
         // Initialize GLFW
         if (!glfwInit())
@@ -88,6 +100,9 @@ public class Window {
         currentScene.init(this);
     }
 
+    /**
+     * Runs the game loop and updates the current scene being used.
+     */
     private void update() {
         float beginTime = Time.getTime();
         float endTime;
@@ -115,6 +130,14 @@ public class Window {
         }
     }
 
+    /**
+     * Sets the background color of the window.
+     *
+     * @param r The red value.
+     * @param g The green value.
+     * @param b The blue value.
+     * @param a The alpha value.
+     */
     public void setBackground(float r, float g, float b, float a) {
         glClearColor(r, g, b, a);
     }

@@ -11,6 +11,12 @@ import static org.lwjgl.opengl.GL11.GL_FALSE;
 import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL20.glGetShaderInfoLog;
 
+/**
+ * Wrapper class over a shader. Simplifies the process of creating a shader from a file.
+ *
+ * @author YeffyCodeGit
+ * @version 0.0.1
+ */
 public class Shader {
     private static final Logger LOGGER = LoggerFactory.getLogger(Shader.class);
     private int shaderProgramID, vertexID, fragmentID;
@@ -53,6 +59,9 @@ public class Shader {
         }
     }
 
+    /**
+     * Loads and compiles the vertex and fragment shaders, and link it and build the shader program.
+     */
     public void compile() {
         // Load and compile the vertex shader
         vertexID = glCreateShader(GL_VERTEX_SHADER);
@@ -95,11 +104,17 @@ public class Shader {
         }
     }
 
+    /**
+     * Makes OpenGL use the built shader program. The {@code compile} function must be called before {@code use} is called.
+     */
     public void use() {
         // Bind shader program
         glUseProgram(shaderProgramID);
     }
 
+    /**
+     * Makes OpenGl stop using the built shader program.
+     */
     public void detach() {
         glUseProgram(0);
     }
