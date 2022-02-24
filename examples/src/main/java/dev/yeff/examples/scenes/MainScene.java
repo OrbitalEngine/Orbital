@@ -4,6 +4,7 @@ import dev.yeff.orbital.Scene;
 import dev.yeff.orbital.Window;
 import dev.yeff.orbital.io.KeyListener;
 import dev.yeff.orbital.renderer.GameObject;
+import dev.yeff.orbital.renderer.Renderer;
 import dev.yeff.orbital.renderer.Shader;
 import org.lwjgl.BufferUtils;
 import org.slf4j.Logger;
@@ -25,6 +26,7 @@ public class MainScene implements Scene {
 
     private Shader shader;
     private GameObject object;
+    private Renderer renderer;
 
     private float[] vertexArray = {
             // vertices                // colors
@@ -46,12 +48,15 @@ public class MainScene implements Scene {
     public void init(Window window) {
         LOGGER.info("initialized");
 
+        // Get renderer from the window
+        renderer = window.getRenderer();
+
         // Create and compile the shader
         shader = new Shader("examples/src/assets/shaders/default.glsl");
         shader.compile();
 
         // Create the object
-        object = new GameObject(vertexArray, elementArray);
+        object = new GameObject(vertexArray, elementArray, shader);
         object.create();
     }
 
@@ -60,14 +65,12 @@ public class MainScene implements Scene {
         if (KeyListener.isKeyDown(GLFW_KEY_ESCAPE))
             System.exit(0);
 
-        // Bind shader program and
-        shader.use();
-        object.use();
+        renderer.renderGameObject(object);
+    }
 
-        glDrawElements(GL_TRIANGLES, elementArray.length, GL_UNSIGNED_INT, 0);
-
-        // Delete the shader and the object
-        shader.detach();
+    @Override
+    public void dispose(Window window) {
         object.dispose();
+        shader.detach();
     }
 }

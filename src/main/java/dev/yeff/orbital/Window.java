@@ -2,6 +2,7 @@ package dev.yeff.orbital;
 
 import dev.yeff.orbital.io.KeyListener;
 import dev.yeff.orbital.io.MouseListener;
+import dev.yeff.orbital.renderer.Renderer;
 import dev.yeff.orbital.util.Time;
 import org.lwjgl.opengl.GL;
 import org.slf4j.Logger;
@@ -31,6 +32,7 @@ public class Window {
 
     private ArrayList<Scene> scenes;
     private Scene currentScene;
+    private Renderer renderer;
 
     public Window(String title, int width, int height, ArrayList<Scene> scenes) {
         this.title = title;
@@ -54,6 +56,8 @@ public class Window {
 
         // Terminate GLFW and free the error callback
         glfwTerminate();
+
+        currentScene.dispose(this);
     }
 
     /**
@@ -95,6 +99,8 @@ public class Window {
         // creates the GLCapabilities instance and makes the OpenGL
         // bindings available for use.
         GL.createCapabilities();
+
+        renderer = new Renderer();
 
         // Run the provided scene
         currentScene.init(this);
@@ -141,6 +147,13 @@ public class Window {
     public void setBackground(float r, float g, float b, float a) {
         glClearColor(r, g, b, a);
     }
+
+    /**
+     * Returns the renderer on the window.
+     *
+     * @return The renderer.
+     */
+    public Renderer getRenderer() { return renderer; }
 
 //    public void useScene(int sceneIndex) {
 //        if (sceneIndex <= scenes.size()) {

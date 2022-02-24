@@ -16,4 +16,6 @@ public interface Scene {
      * Updates the scene. This function gets called every frame, as long as the scene is being used.
      */
     void update(Window window, float delta);
+
+    void dispose(Window window);
 }

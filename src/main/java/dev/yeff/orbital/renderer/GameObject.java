@@ -21,12 +21,14 @@ import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 public class GameObject {
     private float[] vertexArray;
     private int[] elementArray;
+    private Shader shader;
 
     private int vaoID, vboID, eboID;
 
-    public GameObject(float[] vertexArray, int[] elementArray) {
+    public GameObject(float[] vertexArray, int[] elementArray, Shader shader) {
         this.vertexArray = vertexArray;
         this.elementArray = elementArray;
+        this.shader = shader;
     }
 
     /**
@@ -45,6 +47,8 @@ public class GameObject {
      * Create the VAO, VBO and EBOs, and set the attribute pointers.
      */
     public void create() {
+        shader.compile();
+
         vaoID = glGenVertexArrays();
         glBindVertexArray(vaoID);
 
@@ -81,6 +85,9 @@ public class GameObject {
      * Makes OpenGL use the created VAO and enable the attribute pointers.
      */
     public void use() {
+        // Bind shader
+        shader.use();
+
         // Bind the VAO that we're using
         glBindVertexArray(vaoID);
 
@@ -97,5 +104,10 @@ public class GameObject {
         glDisableVertexAttribArray(0);
         glDisableVertexAttribArray(1);
         glBindVertexArray(0);
+
+        shader.detach();
     }
+
+    public int[] getElementArray() { return elementArray; }
+    public float[] getVertexArray() { return vertexArray; }
 }
