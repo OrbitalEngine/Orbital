@@ -2,6 +2,7 @@ package dev.yeff.orbital;
 
 import dev.yeff.orbital.io.KeyListener;
 import dev.yeff.orbital.io.MouseListener;
+import dev.yeff.orbital.renderer.Renderer;
 import dev.yeff.orbital.util.Time;
 import org.lwjgl.opengl.GL;
 import org.slf4j.Logger;
@@ -14,6 +15,12 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
+/**
+ * The main class used to create a game using the Orbital Game Engine.
+ *
+ * @author YeffyCodeGit
+ * @version 0.0.1
+ */
 public class Window {
     private String title;
     private int width, height;
@@ -25,16 +32,21 @@ public class Window {
 
     private ArrayList<Scene> scenes;
     private Scene currentScene;
+    private Renderer renderer;
 
     public Window(String title, int width, int height, ArrayList<Scene> scenes) {
         this.title = title;
         this.width = width;
         this.height = height;
         this.scenes = scenes;
+
+        init();
     }
 
+    /**
+     * Creates the window, starts the game loop and runs the current scene being used.
+     */
     public void run() {
-        init();
         update();
 
         // Free the window callbacks and destroy the window
@@ -43,8 +55,13 @@ public class Window {
 
         // Terminate GLFW and free the error callback
         glfwTerminate();
+
+        currentScene.dispose(this);
     }
 
+    /**
+     * Initializes OpenGL, GLFW, registers the input callbacks and initializes the current scene being used.
+     */
     private void init() {
         // Initialize GLFW
         if (!glfwInit())
@@ -82,10 +99,12 @@ public class Window {
         // bindings available for use.
         GL.createCapabilities();
 
-        // Run the provided scene
-        currentScene.init(this);
+        renderer = new Renderer();
     }
 
+    /**
+     * Runs the game loop and updates the current scene being used.
+     */
     private void update() {
         float beginTime = Time.getTime();
         float endTime;
@@ -113,9 +132,24 @@ public class Window {
         }
     }
 
+    /**
+     * Sets the background color of the window.
+     *
+     * @param r The red value.
+     * @param g The green value.
+     * @param b The blue value.
+     * @param a The alpha value.
+     */
     public void setBackground(float r, float g, float b, float a) {
         glClearColor(r, g, b, a);
     }
+
+    /**
+     * Returns the renderer on the window.
+     *
+     * @return The renderer.
+     */
+    public Renderer getRenderer() { return renderer; }
 
     public void useScene(int sceneIndex) {
         if (sceneIndex <= scenes.size()) {
