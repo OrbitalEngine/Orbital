@@ -40,14 +40,13 @@ public class Window {
         this.height = height;
         this.scenes = scenes;
 
-        this.currentScene = scenes.get(0);
+        init();
     }
 
     /**
      * Creates the window, starts the game loop and runs the current scene being used.
      */
     public void run() {
-        init();
         update();
 
         // Free the window callbacks and destroy the window
@@ -101,9 +100,6 @@ public class Window {
         GL.createCapabilities();
 
         renderer = new Renderer();
-
-        // Run the provided scene
-        currentScene.init(this);
     }
 
     /**
@@ -155,13 +151,13 @@ public class Window {
      */
     public Renderer getRenderer() { return renderer; }
 
-//    public void useScene(int sceneIndex) {
-//        if (sceneIndex <= scenes.size()) {
-//            currentScene = scenes.get(sceneIndex);
-//            currentScene.init(this);
-//        }
-//        else {
-//            throw new IndexOutOfBoundsException("No scene found at that index.");
-//        }
-//    }
+    public void useScene(int sceneIndex) {
+        if (sceneIndex <= scenes.size()) {
+            currentScene = scenes.get(sceneIndex);
+            currentScene.init(this);
+        }
+        else {
+            throw new IndexOutOfBoundsException("No scene found at that index.");
+        }
+    }
 }
