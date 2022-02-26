@@ -1,5 +1,6 @@
 package dev.yeff.examples.scenes;
 
+import dev.yeff.orbital.ResourceManager;
 import dev.yeff.orbital.Scene;
 import dev.yeff.orbital.Window;
 import dev.yeff.orbital.io.KeyListener;
@@ -51,9 +52,8 @@ public class MainScene implements Scene {
         // Get renderer from the window
         renderer = window.getRenderer();
 
-        // Create and compile the shader
-        shader = new Shader("examples/src/assets/shaders/default.glsl");
-        shader.compile();
+        // Get the shader resource
+        shader = ResourceManager.getShader("examples/src/assets/shaders/default.glsl");
 
         // Create the object
         object = new GameObject(vertexArray, elementArray, shader);

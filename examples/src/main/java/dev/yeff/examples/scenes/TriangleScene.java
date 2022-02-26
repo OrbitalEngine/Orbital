@@ -1,5 +1,6 @@
 package dev.yeff.examples.scenes;
 
+import dev.yeff.orbital.ResourceManager;
 import dev.yeff.orbital.Scene;
 import dev.yeff.orbital.Window;
 import dev.yeff.orbital.io.KeyListener;
@@ -35,8 +36,8 @@ public class TriangleScene implements Scene {
     public void init(Window window) {
         renderer = window.getRenderer();
 
-        shader = new Shader("examples/src/assets/shaders/default.glsl");
-        shader.compile();
+        // Get the shader resource
+        shader = ResourceManager.getShader("examples/src/assets/shaders/default.glsl");
 
         object = new GameObject(vertexArray, elementArray, shader);
         object.create();

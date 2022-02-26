@@ -57,6 +57,8 @@ public class Shader {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        LOGGER.info("created new shader");
     }
 
     /**
