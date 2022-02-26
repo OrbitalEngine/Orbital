@@ -12,6 +12,10 @@ public class ResourceManager {
     public static Shader getShader(String resourceName) {
         File file = new File(resourceName);
 
+        if (!file.exists()) {
+            throw new IllegalStateException("The shader file does not exist at " + resourceName);
+        }
+
         if (shaders.containsKey(file.getAbsolutePath())) {
             return ResourceManager.shaders.get(file.getAbsolutePath());
         } else {
