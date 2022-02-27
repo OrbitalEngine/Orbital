@@ -1,5 +1,6 @@
 package dev.yeff.orbital.renderer;
 
+import dev.yeff.orbital.util.Time;
 import org.lwjgl.BufferUtils;
 
 import java.nio.FloatBuffer;
@@ -39,8 +40,8 @@ public class GameObject {
      *
      * @return The full size, in bytes.
      */
-    private int getVertexSizeInBytes(int posSize, int colorSize) {
-        return (posSize + colorSize) * Float.BYTES;
+    private int getVertexSizeInBytes(int posSize, int colorSize, int uvSize) {
+        return (posSize + colorSize + uvSize) * Float.BYTES;
     }
 
     /**
@@ -72,13 +73,17 @@ public class GameObject {
         // Add the vertex attrib pointers
         int positionSize = 3;
         int colorSize = 4;
-        int vertexSizeInBytes = getVertexSizeInBytes(positionSize, colorSize);
+        int uvSize = 2;
+        int vertexSizeInBytes = getVertexSizeInBytes(positionSize, colorSize, uvSize);
 
         glVertexAttribPointer(0, positionSize, GL_FLOAT, false, vertexSizeInBytes, 0);
         glEnableVertexAttribArray(0);
 
         glVertexAttribPointer(1, colorSize, GL_FLOAT, false, vertexSizeInBytes, positionSize * Float.BYTES);
         glEnableVertexAttribArray(1);
+
+        glVertexAttribPointer(2, uvSize, GL_FLOAT, false, vertexSizeInBytes, (positionSize + colorSize) * Float.BYTES);
+        glEnableVertexAttribArray(2);
     }
 
     /**
@@ -87,6 +92,7 @@ public class GameObject {
     public void use() {
         // Bind shader
         shader.use();
+        shader.uploadFloat("uTime", Time.getTime());
 
         // Bind the VAO that we're using
         glBindVertexArray(vaoID);

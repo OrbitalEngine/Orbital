@@ -7,19 +7,10 @@ import dev.yeff.orbital.io.KeyListener;
 import dev.yeff.orbital.renderer.GameObject;
 import dev.yeff.orbital.renderer.Renderer;
 import dev.yeff.orbital.renderer.Shader;
-import org.lwjgl.BufferUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.nio.FloatBuffer;
-import java.nio.IntBuffer;
-
 import static org.lwjgl.glfw.GLFW.*;
-import static org.lwjgl.opengl.GL20.*;
-import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
 public class MainScene implements Scene {
@@ -30,11 +21,11 @@ public class MainScene implements Scene {
     private Renderer renderer;
 
     private float[] vertexArray = {
-            // vertices                // colors
-            0.5f, -0.5f,  0.0f,        1.0f, 0.0f, 0.0f, 1.0f, // bottom right
-            -0.5f, 0.5f,  0.0f,        0.0f, 1.0f, 0.0f, 1.0f, // top left
-            0.5f,  0.5f,  0.0f,        0.0f, 0.0f, 1.0f, 1.0f, // top right
-            -0.5f, -0.5f, 0.0f,        1.0f, 1.0f, 1.0f, 1.0f, // top left
+            // vertices                // colors                    // UV Coordinates
+            0.5f, -0.5f,  0.0f,        1.0f, 0.0f, 0.0f, 1.0f,      0, 1, // bottom right
+            -0.5f, 0.5f,  0.0f,        0.0f, 1.0f, 0.0f, 1.0f,      0, 1, // top left
+            0.5f,  0.5f,  0.0f,        0.0f, 0.0f, 1.0f, 1.0f,      0, 1, // top right
+            -0.5f, -0.5f, 0.0f,        1.0f, 1.0f, 1.0f, 1.0f,      0, 1, // top left
     };
 
 
