@@ -7,6 +7,7 @@ import dev.yeff.orbital.io.KeyListener;
 import dev.yeff.orbital.renderer.GameObject;
 import dev.yeff.orbital.renderer.Renderer;
 import dev.yeff.orbital.renderer.Shader;
+import dev.yeff.orbital.util.Time;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,8 +46,6 @@ public class MainScene implements Scene {
 
         // Get the shader resource
         shader = ResourceManager.getShader("examples/src/assets/shaders/default.glsl");
-
-
         // Create the object
         object = new GameObject(vertexArray, elementArray, shader);
         object.create();

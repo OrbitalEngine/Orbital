@@ -47,6 +47,8 @@ public class TriangleScene implements Scene {
     public void update(Window window, float delta) {
         renderer.renderGameObject(object);
 
+//        shader.uploadFloat("uTime");
+
         if (KeyListener.isKeyDown(GLFW_KEY_W))
             window.useScene(0);
     }

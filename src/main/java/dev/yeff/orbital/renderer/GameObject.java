@@ -93,7 +93,10 @@ public class GameObject {
     public void use() {
         // Bind shader
         shader.use();
+
         shader.uploadFloat("uTime", Time.getTime());
+        shader.uploadFloat("uMouseX", MouseListener.getX());
+        shader.uploadFloat("uMouseY", MouseListener.getY());
 
         // Bind the VAO that we're using
         glBindVertexArray(vaoID);
