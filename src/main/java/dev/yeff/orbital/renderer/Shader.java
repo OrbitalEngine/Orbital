@@ -129,6 +129,12 @@ public class Shader {
         beingUsed = false;
     }
 
+    /**
+     * Upload a 4x4 matrix to the shader.
+     *
+     * @param varName The name of the uniform.
+     * @param mat4 The 4x4 matrix.
+     */
     public void uploadMat4f(String varName, Matrix4f mat4) {
         int varLocation = glGetUniformLocation(shaderProgramID, varName);
         use();
@@ -137,6 +143,12 @@ public class Shader {
         glUniformMatrix4fv(varLocation, false, matBuffer);
     }
 
+    /**
+     * Upload a 3x3 matrix to the shader.
+     *
+     * @param varName The name of the uniform.
+     * @param mat3 The 4x4 matrix.
+     */
     public void uploadMat3f(String varName, Matrix3f mat3) {
         int varLocation = glGetUniformLocation(shaderProgramID, varName);
         use();
@@ -145,42 +157,84 @@ public class Shader {
         glUniformMatrix3fv(varLocation, false, matBuffer);
     }
 
+    /**
+     * Upload a 4 component vector to the shader.
+     *
+     * @param varName The name of the uniform.
+     * @param vec The 4 component vector.
+     */
     public void uploadVec4f(String varName, Vector4f vec) {
         int varLocation = glGetUniformLocation(shaderProgramID, varName);
         use();
         glUniform4f(varLocation, vec.x, vec.y, vec.z, vec.w);
     }
 
+    /**
+     * Upload a 3 component vector to the shader.
+     *
+     * @param varName The name of the uniform.
+     * @param vec The 3 component vector.
+     */
     public void uploadVec3f(String varName, Vector3f vec) {
         int varLocation = glGetUniformLocation(shaderProgramID, varName);
         use();
         glUniform3f(varLocation, vec.x, vec.y, vec.z);
     }
 
+    /**
+     * Upload a 2 component vector to the shader.
+     *
+     * @param varName The name of the uniform.
+     * @param vec The 2 component vector.
+     */
     public void uploadVec2f(String varName, Vector2f vec) {
         int varLocation = glGetUniformLocation(shaderProgramID, varName);
         use();
         glUniform2f(varLocation, vec.x, vec.y);
     }
 
+    /**
+     * Upload a float to the shader.
+     *
+     * @param varName The name of the uniform.
+     * @param val The float value.
+     */
     public void uploadFloat(String varName, float val) {
         int varLocation = glGetUniformLocation(shaderProgramID, varName);
         use();
         glUniform1f(varLocation, val);
     }
 
+    /**
+     * Upload an integer to the shader.
+     *
+     * @param varName The name of the uniform.
+     * @param val The integer value.
+     */
     public void uploadInt(String varName, int val) {
         int varLocation = glGetUniformLocation(shaderProgramID, varName);
         use();
         glUniform1i(varLocation, val);
     }
 
+    /**
+     * Upload a texture object to the shader.
+     *
+     * @param varName The name of the uniform.
+     * @param slot The texture slot.
+     */
     public void uploadTexture(String varName, int slot) {
         int varLocation = glGetUniformLocation(shaderProgramID, varName);
         use();
         glUniform1i(varLocation, slot);
     }
 
+    /**
+     * Upload an array of integers to the shader.
+     *
+     * @param varName The name of the uniform.
+     * @param array The array of integers value.
+     */
     public void uploadIntArray(String varName, int[] array) {
         int varLocation = glGetUniformLocation(shaderProgramID, varName);
         use();
