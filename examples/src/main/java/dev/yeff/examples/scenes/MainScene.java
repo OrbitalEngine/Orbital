@@ -46,6 +46,7 @@ public class MainScene implements Scene {
         // Get the shader resource
         shader = ResourceManager.getShader("examples/src/assets/shaders/default.glsl");
 
+
         // Create the object
         object = new GameObject(vertexArray, elementArray, shader);
         object.create();
