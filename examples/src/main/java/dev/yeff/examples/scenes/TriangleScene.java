@@ -1,12 +1,12 @@
 package dev.yeff.examples.scenes;
 
-import dev.yeff.orbital.ResourceManager;
 import dev.yeff.orbital.Scene;
 import dev.yeff.orbital.Window;
 import dev.yeff.orbital.io.KeyListener;
 import dev.yeff.orbital.renderer.GameObject;
 import dev.yeff.orbital.renderer.Renderer;
-import dev.yeff.orbital.renderer.Shader;
+import dev.yeff.orbital.resources.ResourceManager;
+import dev.yeff.orbital.resources.Shader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

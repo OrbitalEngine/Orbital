@@ -1,6 +1,7 @@
 package dev.yeff.orbital.renderer;
 
 import dev.yeff.orbital.io.MouseListener;
+import dev.yeff.orbital.resources.Shader;
 import dev.yeff.orbital.util.Time;
 import org.lwjgl.BufferUtils;
 
