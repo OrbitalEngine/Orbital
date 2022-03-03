@@ -3,7 +3,6 @@
     <h1>Orbital</h1>
 </div>
 
-# Orbital
 Orbital is a under-development 2D game engine.
 
 ## Contributing
