@@ -16,14 +16,14 @@ public class Game {
 
         while (true) {
             float current = Time.getTime();
-            float elapsed = lastTime - current;
+            float elapsed = current - lastTime;
             lastTime = current;
             lag += elapsed;
 
             while (lag >= UPDATE_CAP) {
                 lag -= UPDATE_CAP;
 
-                System.out.println(1 / elapsed);
+                System.out.println(UPDATE_CAP / lag);
             }
         }
     }
