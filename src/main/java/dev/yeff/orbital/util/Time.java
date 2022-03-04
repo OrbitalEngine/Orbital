@@ -1,4 +1,4 @@
-package dev.yeff.orbital;
+package dev.yeff.orbital.util;
 
 public class Time {
     public static float startTime = System.nanoTime();
