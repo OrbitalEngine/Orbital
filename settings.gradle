@@ -1,2 +1,3 @@
 rootProject.name = 'Orbital'
+include 'examples'
 
