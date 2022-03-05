@@ -2,13 +2,15 @@ package dev.yeff.orbital;
 
 import dev.yeff.orbital.graphics.Window;
 import dev.yeff.orbital.io.Input;
-import dev.yeff.orbital.io.KeyboardInput;
-import dev.yeff.orbital.io.MouseInput;
+import dev.yeff.orbital.scenes.Scene;
+import dev.yeff.orbital.scenes.SceneManager;
 import dev.yeff.orbital.util.Time;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Game {
     private boolean isRunning;
@@ -18,19 +20,25 @@ public class Game {
 
     private Input input;
     private Window window;
+    private Scene currentScene;
 
-    public Game(float updateCap, float width, float height, String title) {
+    public Game(float updateCap, float width, float height, String title, Map<String, Scene> scenes) {
         UPDATE_CAP = 1.0f / updateCap;
         this.width = width;
         this.height = height;
         this.title = title;
+
+        scenes.forEach((name, scene) -> SceneManager.addScene(name, scene));
     }
 
-    public void start() {
+    public void start(String sceneName) {
         window = new Window(width, height, title);
 
         window.getCanvas().addKeyListener(input.getKeyboard());
         window.getCanvas().addMouseListener(input.getMouse());
+
+        currentScene = SceneManager.getScene(sceneName);
+        currentScene.init(this);
 
         isRunning = true;
         run();
@@ -46,24 +54,18 @@ public class Game {
             lastTime = current;
             lag += elapsed;
 
-//            if (input.getMouse().isButtonDown(MouseEvent.BUTTON1)) {
-//                System.out.println("left clicked");
-//            } else if (input.getKeyboard().isKeyDown(KeyEvent.VK_A)) {
-//                System.out.println("a was pressed");
-//            }
-
-            if (input.getMouse().isButtonDown(MouseEvent.BUTTON2)) {
-                System.out.println("mouse button 2 was pressed");
-            } else if (input.getKeyboard().isKeyDown(KeyEvent.VK_W)) {
-                System.out.println("w key was pressed");
-            }
-
             while (lag >= UPDATE_CAP) {
                 lag -= UPDATE_CAP;
 
+                currentScene.update(this, elapsed);
                 window.update();
             }
         }
+    }
+
+    public void loadScene(String sceneName) {
+        currentScene = SceneManager.getScene(sceneName);
+        currentScene.init(this);
     }
 
     public Canvas getFrame() {
@@ -72,5 +74,9 @@ public class Game {
 
     public Input getInput() {
         return input;
+    }
+
+    public float getUpdateCap() {
+        return UPDATE_CAP;
     }
 }
