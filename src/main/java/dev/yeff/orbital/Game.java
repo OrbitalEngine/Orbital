@@ -1,11 +1,12 @@
 package dev.yeff.orbital;
 
 import dev.yeff.orbital.graphics.Window;
-import dev.yeff.orbital.io.KeyListener;
+import dev.yeff.orbital.io.KeyboardInput;
+import dev.yeff.orbital.io.MouseInput;
 import dev.yeff.orbital.util.Time;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 
 public class Game {
     private boolean isRunning;
@@ -13,7 +14,8 @@ public class Game {
     private float width, height;
     private String title;
 
-    private KeyListener listener;
+    private KeyboardInput keyListener;
+    private MouseInput mouseListener;
     private Window window;
 
     public Game(float updateCap, float width, float height, String title) {
@@ -25,8 +27,11 @@ public class Game {
 
     public void start() {
         window = new Window(width, height, title);
-        listener = new KeyListener();
-        window.getCanvas().addKeyListener(listener);
+        keyListener = new KeyboardInput();
+        mouseListener = new MouseInput();
+
+        window.getCanvas().addKeyListener(keyListener);
+        window.getCanvas().addMouseListener(mouseListener);
 
         isRunning = true;
         run();
@@ -42,10 +47,12 @@ public class Game {
             lastTime = current;
             lag += elapsed;
 
-            if (listener.isKeyDown(KeyEvent.VK_W) == true) {
-                System.out.println("up");
-            } else if (listener.isKeyDown(KeyEvent.VK_S)) {
-                System.out.println("down");
+            if (mouseListener.isButtonDown(MouseEvent.BUTTON1)) {
+                System.out.println("left clicked");
+            } else if (mouseListener.isButtonDown(MouseEvent.BUTTON3)) {
+                System.out.println("right clicked");
+            } else if (mouseListener.isButtonDown(MouseEvent.BUTTON2)) {
+                System.out.println("middle clicked");
             }
 
             while (lag >= UPDATE_CAP) {
