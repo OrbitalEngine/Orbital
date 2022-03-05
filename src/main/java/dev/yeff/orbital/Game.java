@@ -1,9 +1,9 @@
 package dev.yeff.orbital;
 
 import dev.yeff.orbital.graphics.Window;
+import dev.yeff.orbital.io.KeyListener;
 import dev.yeff.orbital.util.Time;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 

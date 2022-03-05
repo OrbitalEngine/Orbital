@@ -1,9 +1,7 @@
-package dev.yeff.orbital;
+package dev.yeff.orbital.io;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.HashMap;
-import java.util.Map;
 
 public class KeyListener extends KeyAdapter {
     private boolean[] keys = new boolean[350];
