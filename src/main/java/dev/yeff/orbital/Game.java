@@ -1,11 +1,13 @@
 package dev.yeff.orbital;
 
 import dev.yeff.orbital.graphics.Window;
+import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.KeyboardInput;
 import dev.yeff.orbital.io.MouseInput;
 import dev.yeff.orbital.util.Time;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 public class Game {
@@ -14,8 +16,7 @@ public class Game {
     private float width, height;
     private String title;
 
-    private KeyboardInput keyListener;
-    private MouseInput mouseListener;
+    private Input input;
     private Window window;
 
     public Game(float updateCap, float width, float height, String title) {
@@ -27,11 +28,9 @@ public class Game {
 
     public void start() {
         window = new Window(width, height, title);
-        keyListener = new KeyboardInput();
-        mouseListener = new MouseInput();
 
-        window.getCanvas().addKeyListener(keyListener);
-        window.getCanvas().addMouseListener(mouseListener);
+        window.getCanvas().addKeyListener(input.getKeyboard());
+        window.getCanvas().addMouseListener(input.getMouse());
 
         isRunning = true;
         run();
@@ -47,12 +46,16 @@ public class Game {
             lastTime = current;
             lag += elapsed;
 
-            if (mouseListener.isButtonDown(MouseEvent.BUTTON1)) {
-                System.out.println("left clicked");
-            } else if (mouseListener.isButtonDown(MouseEvent.BUTTON3)) {
-                System.out.println("right clicked");
-            } else if (mouseListener.isButtonDown(MouseEvent.BUTTON2)) {
-                System.out.println("middle clicked");
+//            if (input.getMouse().isButtonDown(MouseEvent.BUTTON1)) {
+//                System.out.println("left clicked");
+//            } else if (input.getKeyboard().isKeyDown(KeyEvent.VK_A)) {
+//                System.out.println("a was pressed");
+//            }
+
+            if (input.getMouse().isButtonDown(MouseEvent.BUTTON2)) {
+                System.out.println("mouse button 2 was pressed");
+            } else if (input.getKeyboard().isKeyDown(KeyEvent.VK_W)) {
+                System.out.println("w key was pressed");
             }
 
             while (lag >= UPDATE_CAP) {
@@ -65,5 +68,9 @@ public class Game {
 
     public Canvas getFrame() {
         return window.getCanvas();
+    }
+
+    public Input getInput() {
+        return input;
     }
 }

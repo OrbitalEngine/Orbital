@@ -16,7 +16,7 @@ public class MouseInput extends MouseAdapter {
     public void mouseReleased(MouseEvent e) {
         buttons[e.getButton()] = false;
     }
-    
+
     public boolean isButtonDown(int buttonCode) {
         return buttons[buttonCode];
     }
