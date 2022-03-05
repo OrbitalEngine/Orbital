@@ -49,5 +49,5 @@ public class Window {
         bs.show();
     }
 
-    public JFrame getFrame() { return frame; }
+    public Canvas getCanvas() { return canvas; }
 }
