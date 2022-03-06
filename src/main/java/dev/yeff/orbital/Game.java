@@ -1,5 +1,6 @@
 package dev.yeff.orbital;
 
+import dev.yeff.orbital.graphics.Renderer;
 import dev.yeff.orbital.graphics.Window;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.scenes.Scene;
@@ -21,6 +22,7 @@ public class Game {
     private Input input;
     private Window window;
     private Scene currentScene;
+    private Renderer renderer;
 
     public Game(float updateCap, float width, float height, String title, Map<String, Scene> scenes) {
         UPDATE_CAP = 1.0f / updateCap;
@@ -33,6 +35,7 @@ public class Game {
 
     public void start(String sceneName) {
         window = new Window(width, height, title);
+        renderer = new Renderer(this);
 
         window.getCanvas().addKeyListener(input.getKeyboard());
         window.getCanvas().addMouseListener(input.getMouse());
@@ -57,6 +60,7 @@ public class Game {
             while (lag >= UPDATE_CAP) {
                 lag -= UPDATE_CAP;
 
+                renderer.clear();
                 currentScene.update(this, elapsed);
                 window.update();
             }
@@ -68,8 +72,8 @@ public class Game {
         currentScene.init(this);
     }
 
-    public Canvas getFrame() {
-        return window.getCanvas();
+    public Window getFrame() {
+        return window;
     }
 
     public Input getInput() {
@@ -79,4 +83,8 @@ public class Game {
     public float getUpdateCap() {
         return UPDATE_CAP;
     }
+
+    public int getWidth() { return (int) width; }
+
+    public int getHeight() { return (int) height; }
 }

@@ -50,4 +50,6 @@ public class Window {
     }
 
     public Canvas getCanvas() { return canvas; }
+
+    public BufferedImage getImage() { return image; }
 }
