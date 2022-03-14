@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+group 'dev.yeff'
+
+repositories {
+    mavenCentral()
+
+    maven {
+        url "https://dl.cloudsmith.io/public/electron-studio/jaylib/maven/"
+    }
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    testCompileOnly 'org.projectlombok:lombok:1.18.22'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+    implementation 'uk.co.electronstudio.jaylib:jaylib:4.0.+'
+    implementation 'uk.co.electronstudio.jaylib:jaylib-natives-windows-x86_64:4.0.+'
+    implementation 'uk.co.electronstudio.jaylib:jaylib-natives-macosx-x86_64:4.0.+'
+    implementation 'uk.co.electronstudio.jaylib:jaylib-natives-linux-x86_64:4.0.+'
+}
+
+test {
+    useJUnitPlatform()
+}
