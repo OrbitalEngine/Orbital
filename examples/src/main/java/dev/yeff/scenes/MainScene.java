@@ -1,9 +1,17 @@
 package dev.yeff.scenes;
 
 import dev.yeff.orbital.Game;
+import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.scenes.Scene;
+import com.raylib.Raylib.Texture;
+
+import static com.raylib.Jaylib.RED;
+import static com.raylib.Raylib.DrawTexture;
+import static com.raylib.Raylib.LoadTexture;
+
 
 public class MainScene implements Scene {
+
     @Override
     public void init(Game game) {
         System.out.println("main scene initialized");
@@ -11,6 +19,6 @@ public class MainScene implements Scene {
 
     @Override
     public void update(Game game, float fps) {
-        System.out.println(fps);
+        System.out.println(Input.getMouse().getScroll());
     }
 }

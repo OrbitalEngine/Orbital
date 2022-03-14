@@ -1,4 +1,4 @@
-package dev.yeff.orbital.io;
+package dev.yeff.orbital.graphics;
 
 import dev.yeff.orbital.Game;
 
@@ -19,6 +19,7 @@ public class Window {
     }
 
     public void start() {
+        SetConfigFlags(FLAG_WINDOW_RESIZABLE);
         InitWindow(width, height, title);
         SetTargetFPS(60);
 

@@ -12,7 +12,7 @@ public class Main {
             put("Main", new MainScene());
         }};
         
-        Game game = new Game(700, 500, "Hello", scenes);
+        Game game = new Game(975, 900, "Hello", scenes);
         game.start("Main");
     }
 }
