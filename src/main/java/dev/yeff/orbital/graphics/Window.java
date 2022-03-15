@@ -40,6 +40,7 @@ public class Window {
             EndDrawing();
         }
 
+        game.getCurrentScene().dispose(game);
         CloseWindow();
     }
 }

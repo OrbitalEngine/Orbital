@@ -21,4 +21,21 @@ public class ResourceManager {
             throw new IllegalStateException("Sprite does not exist at location '" + file.getAbsolutePath() + "'");
         }
     }
+
+    public static void disposeSprite(String path) {
+        File file = new File(path);
+
+        if (file.exists()) {
+            if (sprites.containsKey(file.getAbsolutePath())) {
+                Sprite s = sprites.get(path);
+                sprites.remove(path);
+
+                s.dispose();
+            } else {
+                throw new IllegalStateException("Sprite is not loaded in resource manager, cannot dispose.");
+            }
+        } else {
+            throw new IllegalStateException("Sprite does not exist at location '" + file.getAbsolutePath() + "', cannot dispose.");
+        }
+    }
 }
