@@ -9,6 +9,7 @@ public class Window {
     private int height, width;
     private String title;
     private Game game;
+    private Renderer renderer;
 
 
     public Window(Game game) {
@@ -16,6 +17,7 @@ public class Window {
         this.width = game.getWidth();
         this.height = game.getHeight();
         this.title = game.getTitle();
+        this.renderer = game.getRenderer();
     }
 
     public void start() {

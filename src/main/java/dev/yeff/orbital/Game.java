@@ -1,5 +1,6 @@
 package dev.yeff.orbital;
 
+import dev.yeff.orbital.graphics.Renderer;
 import dev.yeff.orbital.graphics.Window;
 import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.orbital.scenes.SceneManager;
@@ -23,6 +24,9 @@ public class Game {
     @Getter
     private Camera2D cam;
 
+    @Getter
+    private Renderer renderer;
+
     private Window window;
 
     public Game(int width, int height, String title, Map<String, Scene> scenes) {
@@ -30,6 +34,7 @@ public class Game {
         this.height = height;
         this.title = title;
         this.cam = new Camera2D();
+        this.renderer = new Renderer();
 
         scenes.forEach((n, s) -> SceneManager.addScene(n, s));
         this.window = new Window(this);
