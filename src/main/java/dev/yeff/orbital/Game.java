@@ -1,6 +1,5 @@
 package dev.yeff.orbital;
 
-import com.raylib.Raylib;
 import dev.yeff.orbital.graphics.Window;
 import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.orbital.scenes.SceneManager;
