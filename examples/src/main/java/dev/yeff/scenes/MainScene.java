@@ -1,13 +1,10 @@
 package dev.yeff.scenes;
 
-import com.raylib.Raylib;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.scenes.Scene;
 import com.raylib.Raylib.Texture;
 
-import static com.raylib.Jaylib.RAYWHITE;
-import static com.raylib.Jaylib.RED;
 import static com.raylib.Raylib.*;
 
 
@@ -18,6 +15,7 @@ public class MainScene implements Scene {
     public void init(Game game) {
         System.out.println("main scene initialized");
 
+        // forgive me, gods of programming
         tex = LoadTexture("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\fastj_icon.png");
     }
 
