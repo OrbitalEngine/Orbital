@@ -19,6 +19,6 @@ public class MainScene implements Scene {
 
     @Override
     public void update(Game game, float fps) {
-        System.out.println(Input.getMouse().getScroll());
+        System.out.println(String.format("X: %s, Y: %s", Input.getMouse().getMousePos().x(), Input.getMouse().getMousePos().y()));
     }
 }
