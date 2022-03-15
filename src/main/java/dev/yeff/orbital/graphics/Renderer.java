@@ -1,14 +1,14 @@
 package dev.yeff.orbital.graphics;
 
-import com.raylib.Raylib.Texture;
 import com.raylib.Raylib.Vector2;
+import dev.yeff.orbital.resources.Sprite;
 
 import static com.raylib.Jaylib.RAYWHITE;
 import static com.raylib.Raylib.*;
 
 public class Renderer {
-    public void drawTexture(Texture texture, Vector2 pos) {
-        DrawTextureV(texture, pos, RAYWHITE);
+    public void drawTexture(Sprite sprite, Vector2 pos) {
+        DrawTextureV(sprite.getRawTex(), pos, RAYWHITE);
     }
 
     public void drawCircle(Color color, Vector2 pos, float size) {
