@@ -34,7 +34,7 @@ public class Window {
         while (!WindowShouldClose()) {
             BeginDrawing();
 
-            ClearBackground(RAYWHITE);
+            renderer.fillBackground(RAYWHITE);
             game.getCurrentScene().update(game, GetFPS());
 
             EndDrawing();

@@ -1,7 +1,6 @@
 package dev.yeff.scenes;
 
 import dev.yeff.orbital.Game;
-import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.resources.ResourceManager;
 import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.scenes.Scene;

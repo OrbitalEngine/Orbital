@@ -26,4 +26,6 @@ public class Renderer {
     public void drawLine(Vector2 start, Vector2 end, Color color) {
         DrawLineV(start, end, color);
     }
+
+    public void fillBackground(Color color) { ClearBackground(color); }
 }
