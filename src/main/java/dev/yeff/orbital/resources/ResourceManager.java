@@ -34,4 +34,13 @@ public class ResourceManager {
             throw new IllegalStateException("Sprite is not loaded in resource manager, cannot dispose.");
         }
     }
+
+    public static boolean spriteExists(String path) {
+        File file = new File(path);
+
+        if (sprites.containsKey(file.getAbsolutePath()))
+            return true;
+        else
+            return false;
+    }
 }

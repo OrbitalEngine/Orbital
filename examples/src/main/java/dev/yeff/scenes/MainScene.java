@@ -29,5 +29,6 @@ public class MainScene implements Scene {
     @Override
     public void dispose(Game game) {
         ResourceManager.disposeSprite("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\fastj_icon.png");
+        System.out.println(ResourceManager.spriteExists("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\fastj_icon.png"));
     }
 }
