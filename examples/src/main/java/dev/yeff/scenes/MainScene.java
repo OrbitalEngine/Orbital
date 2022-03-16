@@ -10,6 +10,7 @@ import static com.raylib.Raylib.*;
 
 public class MainScene implements Scene {
     private Sprite fastj;
+    private Vector2 pos;
 
     @Override
     public void init(Game game) {
@@ -17,11 +18,12 @@ public class MainScene implements Scene {
 
         // forgive me, gods of programming
         fastj = ResourceManager.getSprite("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\fastj_icon.png");
+        pos = new Vector2().x(GetScreenWidth() / 3).y(GetScreenHeight() / 4);
     }
 
     @Override
     public void update(Game game, float fps) {
-        game.getRenderer().drawTexture(fastj, new Vector2().x(GetScreenWidth() / 3).y(GetScreenHeight() / 4));
+        game.getRenderer().drawTexture(fastj, pos);
     }
 
     @Override
