@@ -3,8 +3,7 @@ package dev.yeff.orbital.resources;
 import com.raylib.Raylib.Texture;
 import lombok.Getter;
 
-import static com.raylib.Raylib.LoadTexture;
-import static com.raylib.Raylib.UnloadTexture;
+import static com.raylib.Raylib.*;
 
 public class Sprite {
     @Getter

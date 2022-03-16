@@ -8,6 +8,8 @@ import dev.yeff.orbital.scenes.SceneManager;
 import com.raylib.Raylib.Camera2D;
 
 import lombok.Getter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 

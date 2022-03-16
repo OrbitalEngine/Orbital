@@ -28,4 +28,5 @@ public class Renderer {
     }
 
     public void fillBackground(Color color) { ClearBackground(color); }
+
 }
