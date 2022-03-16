@@ -22,6 +22,12 @@ public class Window {
 
     public void start() {
         SetConfigFlags(FLAG_WINDOW_RESIZABLE);
+
+        // Disables the logs from raylib so i can implement my own logging system
+        // TODO: Implement logging system
+        SetTraceLogLevel(LOG_NONE);
+
+        SetExitKey(KEY_ESCAPE);
         InitWindow(width, height, title);
         SetTargetFPS(60);
 

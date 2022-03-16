@@ -38,6 +38,7 @@ public class Game {
 
         scenes.forEach((n, s) -> SceneManager.addScene(n, s));
         this.window = new Window(this);
+
     }
 
     public void start(String scene) {
