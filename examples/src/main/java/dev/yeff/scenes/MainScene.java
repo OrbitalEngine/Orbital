@@ -1,6 +1,8 @@
 package dev.yeff.scenes;
 
 import dev.yeff.orbital.Game;
+import dev.yeff.orbital.io.Input;
+import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.resources.ResourceManager;
 import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.scenes.Scene;
@@ -23,6 +25,9 @@ public class MainScene implements Scene {
 
     @Override
     public void update(Game game, float fps) {
+        if (Input.getKeyboard().isKeyDown(Keys.SUPER))
+            System.out.println("w");
+
         game.getRenderer().drawTexture(fastj, pos);
     }
 
