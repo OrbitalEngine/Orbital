@@ -34,6 +34,6 @@ public class MainScene implements Scene {
 
     @Override
     public void dispose(Game game) {
-        
+
     }
 }
