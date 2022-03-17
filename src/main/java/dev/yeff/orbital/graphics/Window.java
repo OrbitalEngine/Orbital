@@ -40,7 +40,7 @@ public class Window {
         while (!WindowShouldClose()) {
             BeginDrawing();
 
-            renderer.fillBackground(RAYWHITE);
+            renderer.fillBackground(Colors.WHITE);
             game.getCurrentScene().update(game, GetFPS());
 
             EndDrawing();
