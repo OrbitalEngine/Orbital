@@ -14,11 +14,11 @@ public class Mouse {
         return GetMousePosition();
     }
 
-    public boolean isMouseDown(int button) {
-        return IsMouseButtonDown(button);
+    public boolean isMouseDown(Keys button) {
+        return IsMouseButtonDown(button.getKeycode());
     }
 
-    public boolean isMouseUp(int button) {
-        return IsMouseButtonUp(button);
+    public boolean isMouseUp(Keys button) {
+        return IsMouseButtonUp(button.getKeycode());
     }
 }
