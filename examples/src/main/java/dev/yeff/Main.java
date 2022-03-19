@@ -5,12 +5,13 @@ import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.scenes.MainScene;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        var scenes = new HashMap<String, Scene>() {{
-            put("Main", new MainScene());
-        }};
+        Map<String, Scene> scenes = Map.of(
+                "Main", new MainScene()
+        );
         
         Game game = new Game(975, 900, "Hello", scenes);
         game.start("Main");
