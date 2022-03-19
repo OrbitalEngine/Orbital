@@ -13,6 +13,7 @@ import static com.raylib.Raylib.*;
 
 public class MainScene implements Scene {
     private Vector2 pos;
+    private Sprite sprite;
 
     @Override
     public void init(Game game) {
@@ -20,18 +21,13 @@ public class MainScene implements Scene {
 
         // forgive me, gods of programming
         pos = new Vector2().x(GetScreenWidth() / 3).y(GetScreenHeight() / 4);
+        sprite = ResourceManager.getSprite("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\fastj_icon.png");
     }
 
     @Override
     public void update(Game game, float fps) {
-//        if (Input.getKeyboard().isKeyDown(Keys.W)) pos.y(pos.y() - 5);
-//        if (Input.getKeyboard().isKeyDown(Keys.S)) pos.y(pos.y() + 5);
-//        if (Input.getKeyboard().isKeyDown(Keys.A)) pos.x(pos.x() - 5);
-//        if (Input.getKeyboard().isKeyDown(Keys.D)) pos.x(pos.x() + 5);
-//
-//        game.getRenderer().drawCircle(Colors.LIME_GREEN, pos, 50.0f);
-
-        Input.getKeyboard().onKeyPressed(Keys.W, (key) -> System.out.println(key));
+        sprite.resize(new Vector2().x(450).y(300));
+        game.getRenderer().drawTexture(sprite, pos);
     }
 
     @Override
