@@ -51,6 +51,9 @@ public class Game {
     }
 
     public void loadScene(String scene) {
+        // dispose current scene before loading new one
+        currentScene.dispose(this);
+
         currentScene = SceneManager.getScene(scene);
         currentScene.init(this);
         Log.info(Game.class, "Loaded scene " + scene);
