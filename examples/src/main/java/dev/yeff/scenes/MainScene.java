@@ -7,6 +7,7 @@ import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.resources.ResourceManager;
 import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.scenes.Scene;
+import dev.yeff.orbital.util.Log;
 
 import static com.raylib.Jaylib.RED;
 import static com.raylib.Raylib.*;
@@ -17,7 +18,7 @@ public class MainScene implements Scene {
 
     @Override
     public void init(Game game) {
-        System.out.println("main scene initialized");
+        Log.info(MainScene.class, "main scene initialized");
 
         // forgive me, gods of programming
         pos = new Vector2().x(GetScreenWidth() / 3).y(GetScreenHeight() / 4);
@@ -26,12 +27,15 @@ public class MainScene implements Scene {
 
     @Override
     public void update(Game game, float fps) {
+        if (Input.getKeyboard().isKeyDown(Keys.W))
+            game.loadScene("Other");
+
         sprite.resize(new Vector2().x(450).y(300));
         game.getRenderer().drawTexture(sprite, pos);
     }
 
     @Override
     public void dispose(Game game) {
-
+        Log.info(MainScene.class, "disposed main scene");
     }
 }

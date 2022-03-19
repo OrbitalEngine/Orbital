@@ -2,12 +2,15 @@ package dev.yeff.orbital;
 
 import dev.yeff.orbital.graphics.Renderer;
 import dev.yeff.orbital.graphics.Window;
+import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.orbital.scenes.SceneManager;
 
 import com.raylib.Raylib.Camera2D;
 
+import dev.yeff.orbital.util.Log;
 import lombok.Getter;
+import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,7 +43,6 @@ public class Game {
 
         scenes.forEach((n, s) -> SceneManager.addScene(n, s));
         this.window = new Window(this);
-
     }
 
     public void start(String scene) {
@@ -51,5 +53,6 @@ public class Game {
     public void loadScene(String scene) {
         currentScene = SceneManager.getScene(scene);
         currentScene.init(this);
+        Log.info(Game.class, "Loaded scene " + scene);
     }
 }
