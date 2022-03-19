@@ -9,7 +9,7 @@ public class Mouse {
     public Vector2 getMousePos() {
         return GetMousePosition();
     }
-    
+
     public Vector2 getMouseDelta() { return GetMouseDelta(); }
 
     public boolean isMouseDown(Keys button) {
