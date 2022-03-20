@@ -20,21 +20,26 @@ public class MainScene implements Scene {
     public void init(Game game) {
         Log.info(MainScene.class, "main scene initialized");
 
+        sprite = ResourceManager.getSprite("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\character_0000.png");
+        sprite.resize(new Vector2f(105, 101));
         pos = new Vector2f(game.getWidth() / 2, game.getHeight() / 2);
     }
 
     @Override
     public void update(Game game, float fps) {
+        game.getRenderer().fillBackground(Colors.BROWN);
+
         if (Input.getKeyboard().isKeyDown(Keys.W)) pos.y -= 5;
         if (Input.getKeyboard().isKeyDown(Keys.S)) pos.y += 5;
         if (Input.getKeyboard().isKeyDown(Keys.A)) pos.x -= 5;
         if (Input.getKeyboard().isKeyDown(Keys.D)) pos.x += 5;
 
-        game.getRenderer().drawCircle(Colors.RED, pos, 60.0f);
+        game.getRenderer().drawTexture(sprite, pos);
     }
 
     @Override
     public void dispose(Game game) {
+        ResourceManager.disposeSprite("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\character_0000.png");
         Log.info(MainScene.class, "disposed main scene");
     }
 }
