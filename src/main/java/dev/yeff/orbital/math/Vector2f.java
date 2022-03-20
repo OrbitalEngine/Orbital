@@ -1,12 +1,12 @@
 package dev.yeff.orbital.math;
 
 public class Vector2f {
-    private float x;
-    private float y;
+    public float x;
+    public float y;
 
     public Vector2f(Vector2f vec2) {
-        this.x = vec2.getX();
-        this.y = vec2.getY();
+        this.x = vec2.x;
+        this.y = vec2.y;
     }
 
     public Vector2f(float x, float y) {
@@ -20,8 +20,8 @@ public class Vector2f {
     }
 
     public void add(Vector2f other) {
-        x = x + other.getX();
-        y = y + other.getY();
+        x = x + other.x;
+        y = y + other.y;
     }
 
     public void add(float x, float y) {
@@ -30,8 +30,8 @@ public class Vector2f {
     }
 
     public void subtract(Vector2f other) {
-        x = x - other.getX();
-        y = y - other.getY();
+        x = x - other.x;
+        y = y - other.y;
     }
 
     public void subtract(float x, float y) {
@@ -40,8 +40,8 @@ public class Vector2f {
     }
 
     public void multiply(Vector2f other) {
-        x = this.x * other.getX();
-        y = this.y * other.getY();
+        x = this.x * other.x;
+        y = this.y * other.y;
     }
 
     public void multiply(float x, float y) {
@@ -50,8 +50,8 @@ public class Vector2f {
     }
 
     public void divide(Vector2f other) {
-        x = x / other.getX();
-        y = y / other.getY();
+        x = x / other.x;
+        y = y / other.y;
     }
 
     public void divide(float x, float y) {
@@ -62,13 +62,5 @@ public class Vector2f {
     public void zero() {
         x = 0.0f;
         y = 0.0f;
-    }
-
-    public float getX() {
-        return x;
-    }
-
-    public float getY() {
-        return y;
     }
 }
