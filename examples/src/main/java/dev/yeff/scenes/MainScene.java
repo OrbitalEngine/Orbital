@@ -9,19 +9,22 @@ import dev.yeff.orbital.resources.ResourceManager;
 import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.orbital.util.Log;
+import dev.yeff.orbital.math.Math;
 
 import static com.raylib.Raylib.*;
 
 public class MainScene implements Scene {
     private Vector2f pos;
-    private Sprite sprite;
+    private Vector2f test;
 
     @Override
     public void init(Game game) {
         Log.info(MainScene.class, "main scene initialized");
 
-        sprite = ResourceManager.getSprite("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\character_0000.png");
-        sprite.resize(new Vector2f(105, 101));
+        test = new Vector2f(2, 2);
+        Math.dot(test, new Vector2f(2, 2));
+
+
         pos = new Vector2f(game.getWidth() / 2, game.getHeight() / 2);
     }
 
@@ -34,12 +37,11 @@ public class MainScene implements Scene {
         if (Input.getKeyboard().isKeyDown(Keys.A)) pos.x -= 5;
         if (Input.getKeyboard().isKeyDown(Keys.D)) pos.x += 5;
 
-        game.getRenderer().drawTexture(sprite, pos);
+        game.getRenderer().drawRect(Colors.RED, pos, 50.0f);
     }
 
     @Override
     public void dispose(Game game) {
-        ResourceManager.disposeSprite("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\character_0000.png");
         Log.info(MainScene.class, "disposed main scene");
     }
 }

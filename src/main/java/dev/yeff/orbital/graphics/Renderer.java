@@ -11,16 +11,16 @@ public class Renderer {
         DrawTexture(sprite.getRawTex(), (int) pos.x, (int) pos.y, RAYWHITE);
     }
 
-    public void drawCircle(Colors color, Vector2f pos, float size) {
-        DrawCircle((int) pos.x, (int) pos.y, size, color.getColor());
+    public void drawCircle(Colors color, Vector2f pos, float radius) {
+        DrawCircle((int) pos.x, (int) pos.y, radius, color.getColor());
     }
 
     public void drawRect(Colors color, Vector2f pos, Vector2f size) {
         DrawRectangle((int) pos.x, (int) pos.y, (int) size.x, (int) size.y, color.getColor());
     }
 
-    public void drawRect(Colors color, Vector2f pos, int size) {
-        DrawRectangle((int) pos.x, (int) pos.y, size, size, color.getColor());
+    public void drawRect(Colors color, Vector2f pos, float size) {
+        DrawRectangle((int) pos.x, (int) pos.y, (int) size, (int) size, color.getColor());
     }
 
     public void drawLine(Vector2f start, Vector2f end, Colors color) {
