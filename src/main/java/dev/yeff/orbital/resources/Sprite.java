@@ -61,6 +61,12 @@ public class Sprite {
         reloadTexture();
     }
 
+    public void greyscale() {
+        ImageColorGrayscale(img);
+
+        reloadTexture();
+    }
+
     private void reloadTexture() {
         this.rawTex = LoadTextureFromImage(this.img);
     }

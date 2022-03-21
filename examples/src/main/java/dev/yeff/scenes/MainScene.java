@@ -23,6 +23,7 @@ public class MainScene implements Scene {
 
         sprite = ResourceManager.getSprite("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\character_0000.png");
         sprite.resize(new Vector2f(200, 200));
+        sprite.greyscale();
         pos = new Vector2f(game.getWidth() / 2, game.getHeight() / 2);
     }
 
