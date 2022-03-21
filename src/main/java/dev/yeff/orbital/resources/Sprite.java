@@ -28,16 +28,40 @@ public class Sprite {
         // https://en.wikipedia.org/wiki/Nearest-neighbor_interpolation
         ImageResizeNN(this.img, (int) newSize.x, (int) newSize.y);
 
-        // reload the texture after resizing
-        this.rawTex = LoadTextureFromImage(this.img);
+        reloadTexture();
     }
 
     public void resizeBicubic(Vector2f newSize) {
         // Raylib uses the bicubic resizing algorithm by default
         // https://en.wikipedia.org/wiki/Bicubic_interpolation
         ImageResize(this.img, (int) newSize.x, (int) newSize.y);
+    }
 
-        // reload the texture after resizing
+    public void flipX() {
+        ImageFlipHorizontal(img);
+
+        reloadTexture();
+    }
+
+    public void flipY() {
+        ImageFlipVertical(img);
+
+        reloadTexture();
+    }
+
+    public void rotateClockwise() {
+        ImageRotateCW(img);
+
+        reloadTexture();
+    }
+
+    public void rotateCounterClockwise() {
+        ImageRotateCCW(img);
+
+        reloadTexture();
+    }
+
+    private void reloadTexture() {
         this.rawTex = LoadTextureFromImage(this.img);
     }
 

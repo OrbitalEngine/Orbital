@@ -15,16 +15,14 @@ import static com.raylib.Raylib.*;
 
 public class MainScene implements Scene {
     private Vector2f pos;
-    private Vector2f test;
+    private Sprite sprite;
 
     @Override
     public void init(Game game) {
         Log.info(MainScene.class, "main scene initialized");
 
-        test = new Vector2f(2, 2);
-        Math.dot(test, new Vector2f(2, 2));
-
-
+        sprite = ResourceManager.getSprite("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\character_0000.png");
+        sprite.resize(new Vector2f(200, 200));
         pos = new Vector2f(game.getWidth() / 2, game.getHeight() / 2);
     }
 
@@ -36,8 +34,10 @@ public class MainScene implements Scene {
         if (Input.getKeyboard().isKeyDown(Keys.S)) pos.y += 5;
         if (Input.getKeyboard().isKeyDown(Keys.A)) pos.x -= 5;
         if (Input.getKeyboard().isKeyDown(Keys.D)) pos.x += 5;
+        if (Input.getKeyboard().isKeyDown(Keys.R)) sprite.rotateClockwise();
+        if (Input.getKeyboard().isKeyDown(Keys.F)) sprite.rotateCounterClockwise();
 
-        game.getRenderer().drawRect(Colors.RED, pos, 50.0f);
+        game.getRenderer().drawTexture(sprite, pos);
     }
 
     @Override
