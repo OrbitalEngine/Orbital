@@ -7,6 +7,10 @@ public class Math {
         return (first.x * other.x) + (first.y * other.y);
     }
 
+    public static float cross(Vector2f first, Vector2f other) {
+        return (first.x * other.x) - (first.y * other.y);
+    }
+
     public static Vector2f generateRandomVec(int min, int max) {
         return new Vector2f(GetRandomValue(min, max), GetRandomValue(min, max));
     }
