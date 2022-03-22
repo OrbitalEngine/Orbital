@@ -53,8 +53,6 @@ public class MainScene implements Scene {
 
             pos.x += SPRITE_SPEED;
         }
-        if (Input.getKeyboard().isKeyDown(Keys.R)) sprite.rotateClockwise();
-        if (Input.getKeyboard().isKeyDown(Keys.F)) sprite.rotateCounterClockwise();
 
         game.getRenderer().drawTexture(sprite, pos);
     }

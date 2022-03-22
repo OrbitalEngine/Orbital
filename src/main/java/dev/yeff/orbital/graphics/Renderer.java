@@ -15,6 +15,10 @@ public class Renderer {
         DrawCircle((int) pos.x, (int) pos.y, radius, color.getColor());
     }
 
+    public void drawCircleOutline(Colors color, Vector2f pos, float radius) {
+        DrawCircleLines((int) pos.x, (int) pos.y, radius, color.getColor());
+    }
+
     public void drawRect(Colors color, Vector2f pos, Vector2f size) {
         DrawRectangle((int) pos.x, (int) pos.y, (int) size.x, (int) size.y, color.getColor());
     }
@@ -23,16 +27,16 @@ public class Renderer {
         DrawRectangle((int) pos.x, (int) pos.y, (int) size, (int) size, color.getColor());
     }
 
-    public void drawLine(Vector2f start, Vector2f end, Colors color) {
-        DrawLine((int) start.x, (int) start.y, (int) end.x, (int) end.y, color.getColor());
-    }
-
     public void drawRectOutline(Vector2f pos, Vector2f size, Colors color) {
         DrawRectangleLines((int) pos.x, (int) pos.y, (int) size.x, (int) size.y, color.getColor());
     }
 
     public void drawRectOutline(Vector2f pos, float size, Colors color) {
         DrawRectangleLines((int) pos.x, (int) pos.y, (int) size, (int) size, color.getColor());
+    }
+
+    public void drawLine(Vector2f start, Vector2f end, Colors color) {
+        DrawLine((int) start.x, (int) start.y, (int) end.x, (int) end.y, color.getColor());
     }
 
     public void fillBackground(Colors color) { ClearBackground(color.getColor()); }
