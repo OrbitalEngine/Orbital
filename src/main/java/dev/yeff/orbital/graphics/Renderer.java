@@ -27,5 +27,13 @@ public class Renderer {
         DrawLine((int) start.x, (int) start.y, (int) end.x, (int) end.y, color.getColor());
     }
 
+    public void drawRectOutline(Vector2f pos, Vector2f size, Colors color) {
+        DrawRectangleLines((int) pos.x, (int) pos.y, (int) size.x, (int) size.y, color.getColor());
+    }
+
+    public void drawRectOutline(Vector2f pos, float size, Colors color) {
+        DrawRectangleLines((int) pos.x, (int) pos.y, (int) size, (int) size, color.getColor());
+    }
+
     public void fillBackground(Colors color) { ClearBackground(color.getColor()); }
 }
