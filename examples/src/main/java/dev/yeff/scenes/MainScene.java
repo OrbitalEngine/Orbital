@@ -55,6 +55,8 @@ public class MainScene implements Scene {
         }
 
         game.getRenderer().drawTexture(sprite, pos);
+
+        Log.info(MainScene.class, pos);
     }
 
     @Override

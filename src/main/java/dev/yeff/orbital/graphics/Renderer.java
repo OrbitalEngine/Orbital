@@ -39,5 +39,9 @@ public class Renderer {
         DrawLine((int) start.x, (int) start.y, (int) end.x, (int) end.y, color.getColor());
     }
 
+    public void drawLine(Vector2f start, Vector2f end, Colors color, float thickness) {
+        DrawLineEx(start.asRaylibVector(), end.asRaylibVector(), thickness, color.getColor());
+    }
+
     public void fillBackground(Colors color) { ClearBackground(color.getColor()); }
 }

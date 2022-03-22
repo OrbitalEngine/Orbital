@@ -69,4 +69,9 @@ public class Vector2f {
     public Raylib.Vector2 asRaylibVector() {
         return new Raylib.Vector2().x(x).y(y);
     }
+
+    @Override
+    public String toString() {
+        return String.format("Vector2f(x = %f, y = %f)", x, y);
+    }
 }
