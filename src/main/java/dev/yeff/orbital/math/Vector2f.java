@@ -1,5 +1,7 @@
 package dev.yeff.orbital.math;
 
+import com.raylib.Raylib;
+
 public class Vector2f {
     public float x;
     public float y;
@@ -62,5 +64,9 @@ public class Vector2f {
     public void zero() {
         x = 0.0f;
         y = 0.0f;
+    }
+
+    public Raylib.Vector2 asRaylibVector() {
+        return new Raylib.Vector2().x(x).y(y);
     }
 }
