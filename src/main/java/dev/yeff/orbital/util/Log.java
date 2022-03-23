@@ -3,6 +3,9 @@ package dev.yeff.orbital.util;
 import org.slf4j.LoggerFactory;
 
 public class Log {
+    // Disable constructor
+    private Log() { }
+
     public static <T> void info(Class<T> klass, Object message) {
         LoggerFactory.getLogger(klass).info(message.toString());
     }

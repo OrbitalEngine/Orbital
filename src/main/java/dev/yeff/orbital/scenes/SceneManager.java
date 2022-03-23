@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SceneManager {
+    // Disable constructor
+    private SceneManager() { }
+
     private static Map<String, Scene> scenes = new HashMap<>();
 
     public static void addScene(String name, Scene scene) {

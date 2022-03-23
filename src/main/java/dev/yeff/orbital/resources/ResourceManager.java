@@ -9,6 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ResourceManager {
+    // Disable constructor
+    private ResourceManager() { }
+
     private static Map<String, Sprite> sprites = new HashMap<>();
 
     public static Sprite getSprite(String path) {

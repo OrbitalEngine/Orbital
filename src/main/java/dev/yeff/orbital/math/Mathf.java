@@ -3,6 +3,9 @@ package dev.yeff.orbital.math;
 import static com.raylib.Raylib.GetRandomValue;
 
 public class Mathf {
+    // Disable constructor
+    private Mathf() { }
+
     public static float dot(Vector2f first, Vector2f other) {
         return (first.x * other.x) + (first.y * other.y);
     }
@@ -14,6 +17,9 @@ public class Mathf {
     public static Vector2f normalize(Vector2f source) {
         // vector length is sqrt(x^2 + y^2)
         float length = (float) Math.sqrt((source.x * source.x) + (source.y * source.y));
+
+        if (length <= 0)
+            throw new IllegalStateException("Length is less than 0, cannot normalize");
 
         return new Vector2f(source.x / length, source.y / length);
     }
