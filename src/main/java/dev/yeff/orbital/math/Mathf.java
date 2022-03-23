@@ -13,7 +13,7 @@ public class Mathf {
 
     public static Vector2f normalize(Vector2f source) {
         // vector length is sqrt(x^2 + y^2)
-        float length = (float) Math.sqrt(Math.pow(source.x, 2.0f) + Math.pow(source.y, 2.0f));
+        float length = (float) Math.sqrt((source.x * source.x) + (source.y * source.y));
 
         return new Vector2f(source.x / length, source.y / length);
     }
