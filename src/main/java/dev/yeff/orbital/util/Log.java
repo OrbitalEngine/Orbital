@@ -2,6 +2,13 @@ package dev.yeff.orbital.util;
 
 import org.slf4j.LoggerFactory;
 
+
+/**
+ * Utility class to create logging messages, meant to be used by both game and engine.
+ *
+ * @author YeffyCodeGit
+ * @version 0.0.1
+ */
 public class Log {
     // Disable constructor
     private Log() { }

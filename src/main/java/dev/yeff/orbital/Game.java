@@ -2,7 +2,6 @@ package dev.yeff.orbital;
 
 import dev.yeff.orbital.graphics.Renderer;
 import dev.yeff.orbital.graphics.Window;
-import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.orbital.scenes.SceneManager;
 
@@ -10,12 +9,16 @@ import com.raylib.Raylib.Camera2D;
 
 import dev.yeff.orbital.util.Log;
 import lombok.Getter;
-import lombok.Setter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
+
+/**
+ * The main class that is used to create a game using the Orbital Game Engine.
+ *
+ * @author YeffyCodeGit
+ * @version 0.0.1
+ */
 public class Game {
     @Getter
     private int width, height;
@@ -45,11 +48,21 @@ public class Game {
         this.window = new Window(this);
     }
 
+    /**
+     * Starts the game using the name of the scene provided.
+     *
+     * @param scene The scene to start the game with.
+     */
     public void start(String scene) {
         currentScene = SceneManager.getScene(scene);
         window.start();
     }
 
+    /**
+     * Loads and starts a new scene and disposes the old one.
+     *
+     * @param scene The scene to load.
+     */
     public void loadScene(String scene) {
         // dispose current scene before loading new one
         currentScene.dispose(this);

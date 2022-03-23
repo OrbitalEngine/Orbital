@@ -1,7 +1,6 @@
 package dev.yeff.orbital.resources;
 
 import com.raylib.Raylib.Texture;
-import dev.yeff.orbital.graphics.Colors;
 import dev.yeff.orbital.math.Vector2f;
 import lombok.Getter;
 
