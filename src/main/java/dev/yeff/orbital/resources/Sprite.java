@@ -81,4 +81,9 @@ public class Sprite {
         UnloadImage(img);
         UnloadTexture(rawTex);
     }
+
+    @Override
+    public String toString() {
+        return String.format("Sprite(path = %s)", path);
+    }
 }
