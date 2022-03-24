@@ -1,13 +1,16 @@
 package dev.yeff.orbital.resources;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Stores all types of resources during runtime, and lets users add and dispose resources.
+ *
+ * @author YeffyCodeGit
+ * @version 0.0.1
+ */
 public class ResourceManager {
     // Disable constructor
     private ResourceManager() { }

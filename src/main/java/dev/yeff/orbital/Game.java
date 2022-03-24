@@ -2,6 +2,7 @@ package dev.yeff.orbital;
 
 import dev.yeff.orbital.graphics.Renderer;
 import dev.yeff.orbital.graphics.Window;
+import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.orbital.scenes.SceneManager;
 
@@ -70,5 +71,9 @@ public class Game {
         currentScene = SceneManager.getScene(scene);
         currentScene.init(this);
         Log.info(Game.class, "Loaded scene " + scene);
+    }
+
+    public Vector2f getScreenCenter() {
+        return new Vector2f(width / 2, height / 2);
     }
 }
