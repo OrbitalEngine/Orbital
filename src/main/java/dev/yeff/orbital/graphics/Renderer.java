@@ -2,6 +2,9 @@ package dev.yeff.orbital.graphics;
 
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.Sprite;
+import dev.yeff.orbital.resources.TextFont;
+
+import java.time.format.TextStyle;
 
 import static com.raylib.Jaylib.RAYWHITE;
 import static com.raylib.Raylib.*;
