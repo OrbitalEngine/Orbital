@@ -1,6 +1,7 @@
 package dev.yeff.orbital.io;
 
 import com.raylib.Raylib.Vector2;
+import dev.yeff.orbital.math.Vector2f;
 
 import static com.raylib.Raylib.*;
 
@@ -11,11 +12,11 @@ import static com.raylib.Raylib.*;
  * @version 0.0.1
  */
 public class Mouse {
-    public Vector2 getMousePos() {
-        return GetMousePosition();
+    public Vector2f getMousePos() {
+        return new Vector2f(GetMousePosition().x(), GetMousePosition().y());
     }
 
-    public Vector2 getMouseDelta() { return GetMouseDelta(); }
+    public Vector2f getMouseDelta() { return new Vector2f(GetMouseDelta().x(), GetMouseDelta().y()); }
 
     public boolean isMouseDown(Keys button) {
         return IsMouseButtonDown(button.getKeycode());
