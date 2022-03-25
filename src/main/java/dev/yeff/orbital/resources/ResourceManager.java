@@ -20,6 +20,14 @@ public class ResourceManager {
     private static Map<String, TextFont> fonts = new HashMap<>();
 
     // SPRITES
+
+
+    /**
+     * Gets a sprite if stored in the resource manager, otherwise adds it to the resource manager and returns it.
+     *
+     * @param path The path of the sprite.
+     * @return The sprite resource.
+     */
     public static Sprite getSprite(String path) {
         File file = new File(path);
 
@@ -34,6 +42,11 @@ public class ResourceManager {
         }
     }
 
+    /**
+     * Removes the sprite from the resource manager.
+     *
+     * @param path The path of the sprite.
+     */
     public static void disposeSprite(String path) {
         File file = new File(path);
 
@@ -47,6 +60,12 @@ public class ResourceManager {
         }
     }
 
+    /**
+     * Checks if a sprite exists in the resource manager.
+     *
+     * @param path The path of the sprite.
+     * @return If the sprite exists in the resource manager.
+     */
     public static boolean spriteExists(String path) {
         File file = new File(path);
 
@@ -58,6 +77,14 @@ public class ResourceManager {
 
 
     // FONTS
+
+
+    /**
+     * Gets a font if stored in the resource manager, otherwise adds it to the resource manager and returns it.
+     *
+     * @param path The path of the font file.
+     * @return The font resource.
+     */
     public static TextFont getFont(String path) {
         File file = new File(path);
 
@@ -72,6 +99,11 @@ public class ResourceManager {
         }
     }
 
+    /**
+     * Removes the font from the resource manager.
+     *
+     * @param path The path of the font file.
+     */
     public static void disposeFont(String path) {
         File file = new File(path);
 
@@ -85,6 +117,12 @@ public class ResourceManager {
         }
     }
 
+    /**
+     * Checks if a font exists in the resource manager.
+     *
+     * @param path The path of the font file.
+     * @return If the font exists in the resource manager.
+     */
     public static boolean fontExists(String path) {
         File file = new File(path);
 
