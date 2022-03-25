@@ -7,6 +7,7 @@ import lombok.Getter;
 import static com.raylib.Jaylib.*;
 
 public enum Colors {
+    BLACK(Jaylib.BLACK),
     WHITE(Jaylib.WHITE),
     GRAY(Jaylib.GRAY),
     LIGHT_GRAY(LIGHTGRAY),

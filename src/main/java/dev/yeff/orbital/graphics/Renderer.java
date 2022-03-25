@@ -43,5 +43,9 @@ public class Renderer {
         DrawLineEx(start.asRaylibVector(), end.asRaylibVector(), thickness, color.getColor());
     }
 
+    public void drawString(String text, float fontSize, Vector2f pos) {
+        DrawText(text, (int) pos.x, (int) pos.y, (int) fontSize, Colors.BLACK.getColor());
+    }
+
     public void fillBackground(Colors color) { ClearBackground(color.getColor()); }
 }
