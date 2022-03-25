@@ -1,5 +1,11 @@
 package dev.yeff.orbital.io;
 
+/**
+ * Stores all types of input classes.
+ *
+ * @author YeffyCodeGit
+ * @version 0.0.1
+ */
 public class Input {
     // Disable constructor
     private Input() { }
