@@ -1,6 +1,7 @@
 package dev.yeff.orbital.resources;
 
 
+import java.awt.*;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +17,9 @@ public class ResourceManager {
     private ResourceManager() { }
 
     private static Map<String, Sprite> sprites = new HashMap<>();
+    private static Map<String, TextFont> fonts = new HashMap<>();
 
+    // SPRITES
     public static Sprite getSprite(String path) {
         File file = new File(path);
 
@@ -48,6 +51,44 @@ public class ResourceManager {
         File file = new File(path);
 
         if (sprites.containsKey(file.getAbsolutePath()))
+            return true;
+        else
+            return false;
+    }
+
+
+    // FONTS
+    public static TextFont getFont(String path) {
+        File file = new File(path);
+
+        if (file.exists()) {
+            if (!fonts.containsKey(file.getAbsolutePath())) {
+                fonts.put(file.getAbsolutePath(), new TextFont(file.getAbsolutePath()));
+            }
+
+            return fonts.get(file.getAbsolutePath());
+        } else {
+            throw new IllegalStateException("Sprite does not exist at location '" + file.getAbsolutePath() + "'");
+        }
+    }
+
+    public static void disposeFont(String path) {
+        File file = new File(path);
+
+        if (fonts.containsKey(file.getAbsolutePath())) {
+            TextFont font = fonts.get(file.getAbsolutePath());
+            fonts.remove(path);
+
+            font.dispose();
+        } else {
+            throw new IllegalStateException("Sprite is not loaded in resource manager, cannot dispose.");
+        }
+    }
+
+    public static boolean fontExists(String path) {
+        File file = new File(path);
+
+        if (fonts.containsKey(file.getAbsolutePath()))
             return true;
         else
             return false;
