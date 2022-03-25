@@ -50,5 +50,9 @@ public class Renderer {
         DrawText(text, (int) pos.x, (int) pos.y, (int) fontSize, Colors.BLACK.getColor());
     }
 
+    public void drawString(String text, float fontSize, Vector2f pos, TextFont font) {
+        DrawTextEx(font.getRaylibFont(), text, pos.asRaylibVector(), fontSize, 2, Colors.BLACK.getColor());
+    }
+
     public void fillBackground(Colors color) { ClearBackground(color.getColor()); }
 }

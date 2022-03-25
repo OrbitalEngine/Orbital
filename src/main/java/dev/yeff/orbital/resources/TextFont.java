@@ -12,7 +12,11 @@ public class TextFont {
         font = LoadFont(path);
     }
 
-    public Raylib.Font getRaylibFont() {
+    public int getBaseSize() {
+        return font.baseSize();
+    }
+
+    public Raylib.Font asRaylibFont() {
         return font;
     }
 
