@@ -22,7 +22,7 @@ import java.util.Map;
  */
 public class Game {
     @Getter
-    private int width, height;
+    private Vector2f size;
 
     @Getter
     private String title;
@@ -38,9 +38,8 @@ public class Game {
 
     private Window window;
 
-    public Game(int width, int height, String title, Map<String, Scene> scenes) {
-        this.width = width;
-        this.height = height;
+    public Game(Vector2f size, String title, Map<String, Scene> scenes) {
+        this.size = size;
         this.title = title;
         this.cam = new Camera2D();
         this.renderer = new Renderer();
@@ -74,6 +73,6 @@ public class Game {
     }
 
     public Vector2f getScreenCenter() {
-        return new Vector2f(width / 2, height / 2);
+        return new Vector2f(size.x / 2, size.y / 2);
     }
 }

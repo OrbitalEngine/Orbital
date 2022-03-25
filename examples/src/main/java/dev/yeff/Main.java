@@ -1,6 +1,7 @@
 package dev.yeff;
 
 import dev.yeff.orbital.Game;
+import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.scenes.MainScene;
 import dev.yeff.scenes.MenuScene;
@@ -14,7 +15,7 @@ public class Main {
                 "Menu", new MenuScene()
         );
 
-        Game game = new Game(975, 900, "Hello", scenes);
+        Game game = new Game(new Vector2f(975, 900), "Hello", scenes);
         game.start("Menu");
     }
 }

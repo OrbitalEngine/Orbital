@@ -1,6 +1,7 @@
 package dev.yeff.orbital.graphics;
 
 import dev.yeff.orbital.Game;
+import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.util.Log;
 
 import static com.raylib.Raylib.*;
@@ -12,7 +13,7 @@ import static com.raylib.Raylib.*;
  * @version 0.0.1
  */
 public class Window {
-    private int height, width;
+    private Vector2f size;
     private String title;
     private Game game;
     private Renderer renderer;
@@ -20,12 +21,11 @@ public class Window {
 
     public Window(Game game) {
         this.game = game;
-        this.width = game.getWidth();
-        this.height = game.getHeight();
+        this.size = game.getSize();
         this.title = game.getTitle();
         this.renderer = game.getRenderer();
 
-        Log.info(Window.class, "Created window with width " + width + ", height " + height);
+        Log.info(Window.class, "Created window with width " + size.x + ", height " + size.y);
     }
 
     /**
@@ -38,7 +38,7 @@ public class Window {
         SetTraceLogLevel(LOG_NONE);
 
         SetExitKey(KEY_ESCAPE);
-        InitWindow(width, height, title);
+        InitWindow((int) size.x, (int) size.y, title);
         SetTargetFPS(60);
 
         game.getCurrentScene().init(game);
