@@ -11,8 +11,6 @@ import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.orbital.util.Log;
 
-import static com.raylib.Raylib.*;
-
 public class MainScene implements Scene {
     private Vector2f pos;
     private Sprite sprite;
