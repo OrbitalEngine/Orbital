@@ -32,9 +32,9 @@ public class MainScene implements Scene {
 
     @Override
     public void update(Game game, float fps) {
-        if (audioClip.isClipPlaying() == false)
+        if (audioClip.isPlaying() == false)
             game.getAudioManager().playAudioClip(audioClip);
-        
+
         if (Input.getKeyboard().isKeyDown(Keys.W)) {
             pos.y -= SPRITE_SPEED;
         }

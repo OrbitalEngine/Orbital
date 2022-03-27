@@ -38,7 +38,7 @@ public class AudioManager {
      * @param audio The clip to pause.
      */
     public void pauseAudioClip(AudioClip audio) {
-        if (audio.isClipPlaying())
+        if (audio.isPlaying())
             PauseSound(audio.asRaylibSound());
         else
             throw new IllegalStateException("Audio clip is not playing, cannot pause.");
@@ -68,7 +68,7 @@ public class AudioManager {
      * @param music The music to pause.
      */
     public void pauseMusic(Music music) {
-        if (music.isMusicPlaying())
+        if (music.isPlaying())
             PauseMusicStream(music.asRaylibMusic());
         else
             throw new IllegalStateException("Audio clip is not playing, cannot pause.");

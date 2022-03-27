@@ -22,7 +22,7 @@ public class AudioClip {
      *
      * @return If the audio clip is playing or not.
      */
-    public boolean isClipPlaying() {
+    public boolean isPlaying() {
         return IsSoundPlaying(sound);
     }
 

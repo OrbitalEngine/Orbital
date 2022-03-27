@@ -5,7 +5,7 @@ import com.raylib.Raylib;
 import static com.raylib.Raylib.*;
 
 /**
- * Represents a large streamed audio file, to be used by the audio manager.
+ * Represents a large streamed audio file, to be used by the audio manager. This class should be used for longer audio files.
  *
  * @author YeffyCodeGit
  * @version 0.0.1
@@ -22,7 +22,7 @@ public class Music {
      *
      * @return If the music is playing or not.
      */
-    public boolean isMusicPlaying() {
+    public boolean isPlaying() {
         return IsMusicStreamPlaying(rawMusic);
     }
 
@@ -34,6 +34,14 @@ public class Music {
     public Raylib.Music asRaylibMusic() {
         return rawMusic;
     }
+
+    /**
+     * Makes the music loop infinitely.
+     */
+    public void loopMusic() {
+        rawMusic.looping(true);
+    }
+
 
     /**
      * Unloads the music stream from memory.
