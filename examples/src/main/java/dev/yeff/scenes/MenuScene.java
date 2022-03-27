@@ -12,19 +12,17 @@ import dev.yeff.orbital.scenes.Scene;
 
 public class MenuScene implements Scene {
     private Font font;
-    private AudioClip audioClip;
 
     @Override
     public void init(Game game) {
         font = ResourceManager.getFont("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\Roboto-Regular.ttf");
-        audioClip = ResourceManager.getAudioClip("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\bensound-epic.mp3");
+
 
         System.out.println("menu scene initialized");
     }
 
     @Override
     public void update(Game game, float fps) {
-
         if (Input.getKeyboard().isKeyDown(Keys.SPACE))
             game.loadScene("Main");
 
@@ -39,7 +37,6 @@ public class MenuScene implements Scene {
     @Override
     public void dispose(Game game) {
         ResourceManager.disposeFont("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\Roboto-Regular.ttf");
-        ResourceManager.disposeAudioClip("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\bensound-epic.mp3");
         System.out.println("menu scene disposed");
     }
 }

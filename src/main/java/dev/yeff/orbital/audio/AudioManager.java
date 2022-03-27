@@ -12,12 +12,14 @@ import static com.raylib.Raylib.*;
  * @version 0.0.1
  */
 public class AudioManager {
+    public AudioManager() { }
+
     /**
      * Sets the master volume to play the audio at.
      *
      * @param volume The new volume.
      */
-    public static void setVolume(float volume) {
+    public void setVolume(float volume) {
         SetMasterVolume(volume);
     }
 
@@ -26,7 +28,7 @@ public class AudioManager {
      *
      * @param audio The clip to play.
      */
-    public static void playAudioClip(AudioClip audio) {
+    public void playAudioClip(AudioClip audio) {
         PlaySound(audio.asRaylibSound());
     }
 
@@ -35,7 +37,7 @@ public class AudioManager {
      *
      * @param audio The clip to pause.
      */
-    public static void pauseAudioClip(AudioClip audio) {
+    public void pauseAudioClip(AudioClip audio) {
         if (audio.isClipPlaying())
             PauseSound(audio.asRaylibSound());
         else
@@ -47,7 +49,7 @@ public class AudioManager {
      *
      * @param audio The audio clip to resume.
      */
-    public static void resumeAudioClip(AudioClip audio) {
+    public void resumeAudioClip(AudioClip audio) {
         ResumeSound(audio.asRaylibSound());
     }
 
@@ -56,7 +58,7 @@ public class AudioManager {
      *
      * @param music The music to play.
      */
-    public static void playMusic(Music music) {
+    public void playMusic(Music music) {
         PlayMusicStream(music.asRaylibMusic());
     }
 
@@ -65,7 +67,7 @@ public class AudioManager {
      *
      * @param music The music to pause.
      */
-    public static void pauseMusic(Music music) {
+    public void pauseMusic(Music music) {
         if (music.isMusicPlaying())
             PauseMusicStream(music.asRaylibMusic());
         else
@@ -77,7 +79,7 @@ public class AudioManager {
      *
      * @param music The music to resume.
      */
-    public static void resumeMusic(Music music) {
+    public void resumeMusic(Music music) {
         ResumeMusicStream(music.asRaylibMusic());
     }
 }

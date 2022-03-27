@@ -1,8 +1,10 @@
 package dev.yeff.orbital.graphics;
 
 import dev.yeff.orbital.Game;
+import dev.yeff.orbital.audio.AudioManager;
 import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.math.Vector2f;
+import dev.yeff.orbital.resources.AudioClip;
 import dev.yeff.orbital.util.Log;
 import lombok.Setter;
 
@@ -21,9 +23,7 @@ public class Window {
     private String title;
     private Game game;
     private Renderer renderer;
-
-    @Setter
-    private Optional<Keys> exitKey;
+    private AudioManager audioManager;
 
 
     public Window(Game game) {

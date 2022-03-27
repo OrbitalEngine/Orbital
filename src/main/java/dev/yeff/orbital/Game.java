@@ -1,5 +1,6 @@
 package dev.yeff.orbital;
 
+import dev.yeff.orbital.audio.AudioManager;
 import dev.yeff.orbital.graphics.Renderer;
 import dev.yeff.orbital.graphics.Window;
 import dev.yeff.orbital.io.Keys;
@@ -38,6 +39,9 @@ public class Game {
     @Getter
     private Renderer renderer;
 
+    @Getter
+    private AudioManager audioManager;
+
     private Window window;
 
     public Game(Vector2f size, String title, Map<String, Scene> scenes) {
@@ -45,6 +49,7 @@ public class Game {
         this.title = title;
         this.cam = new Camera2D();
         this.renderer = new Renderer();
+        this.audioManager = new AudioManager();
 
         scenes.forEach((n, s) -> SceneManager.addScene(n, s));
         this.window = new Window(this);
