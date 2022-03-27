@@ -11,10 +11,10 @@ import static com.raylib.Raylib.UnloadFont;
  * @author YeffyCodeGit
  * @version 0.0.1
  */
-public class TextFont {
+public class Font {
     private Raylib.Font font;
 
-    public TextFont(String path) {
+    public Font(String path) {
         font = LoadFont(path);
     }
 

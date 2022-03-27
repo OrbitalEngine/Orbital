@@ -1,25 +1,31 @@
 package dev.yeff.scenes;
 
 import dev.yeff.orbital.Game;
+import dev.yeff.orbital.audio.AudioManager;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.math.Vector2f;
+import dev.yeff.orbital.resources.AudioClip;
 import dev.yeff.orbital.resources.ResourceManager;
-import dev.yeff.orbital.resources.TextFont;
+import dev.yeff.orbital.resources.Font;
 import dev.yeff.orbital.scenes.Scene;
 
 public class MenuScene implements Scene {
-    private TextFont font;
+    private Font font;
+    private AudioClip audioClip;
 
     @Override
     public void init(Game game) {
         font = ResourceManager.getFont("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\Roboto-Regular.ttf");
+        audioClip = new AudioClip("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\examples_audio_resources_sound.wav");
 
         System.out.println("menu scene initialized");
     }
 
     @Override
     public void update(Game game, float fps) {
+        AudioManager.playAudioClip(audioClip);
+
         if (Input.getKeyboard().isKeyDown(Keys.SPACE))
             game.loadScene("Main");
 
@@ -33,6 +39,7 @@ public class MenuScene implements Scene {
 
     @Override
     public void dispose(Game game) {
+        ResourceManager.disposeFont("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\Roboto-Regular.ttf");
         System.out.println("menu scene disposed");
     }
 }

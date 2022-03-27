@@ -1,8 +1,12 @@
 package dev.yeff.orbital.graphics;
 
 import dev.yeff.orbital.Game;
+import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.util.Log;
+import lombok.Setter;
+
+import java.util.Optional;
 
 import static com.raylib.Raylib.*;
 
@@ -18,6 +22,9 @@ public class Window {
     private Game game;
     private Renderer renderer;
 
+    @Setter
+    private Optional<Keys> exitKey;
+
 
     public Window(Game game) {
         this.game = game;
@@ -32,11 +39,11 @@ public class Window {
      *  Starts window, configures it, and initializes the scene.
      */
     public void start() {
+        InitAudioDevice();
         SetConfigFlags(FLAG_WINDOW_RESIZABLE);
 
         // Disables the logs from raylib, so I can implement my own logging system
         SetTraceLogLevel(LOG_NONE);
-
         SetExitKey(KEY_ESCAPE);
         InitWindow((int) size.x, (int) size.y, title);
         SetTargetFPS(60);
@@ -60,7 +67,9 @@ public class Window {
         }
 
         game.getCurrentScene().dispose(game);
-        CloseWindow();
         Log.info(Window.class, "Closing window..");
+
+        CloseWindow();
+        CloseAudioDevice();
     }
 }

@@ -2,7 +2,7 @@ package dev.yeff.orbital.graphics;
 
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.Sprite;
-import dev.yeff.orbital.resources.TextFont;
+import dev.yeff.orbital.resources.Font;
 
 import static com.raylib.Jaylib.RAYWHITE;
 import static com.raylib.Raylib.*;
@@ -132,7 +132,7 @@ public class Renderer {
      * @param pos The position to draw the text at.
      * @param font The font to draw the text with.
      */
-    public void drawString(String text, float fontSize, Vector2f pos, TextFont font) {
+    public void drawString(String text, float fontSize, Vector2f pos, Font font) {
         DrawTextEx(font.asRaylibFont(), text, pos.asRaylibVector(), fontSize, 2, Colors.BLACK.getColor());
     }
 
