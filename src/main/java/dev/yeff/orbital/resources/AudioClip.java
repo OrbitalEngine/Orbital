@@ -3,6 +3,7 @@ package dev.yeff.orbital.resources;
 import com.raylib.Raylib;
 
 import static com.raylib.Raylib.LoadSound;
+import static com.raylib.Raylib.UnloadSound;
 
 /**
  * Represents any audio clip, to be used by the audio manager.
@@ -24,5 +25,12 @@ public class AudioClip {
      */
     public Raylib.Sound asRaylibSound() {
         return sound;
+    }
+
+    /**
+     * Unloads the audio clip from memory.
+     */
+    public void dispose() {
+        UnloadSound(sound);
     }
 }

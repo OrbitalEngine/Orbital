@@ -1,6 +1,8 @@
 package dev.yeff.orbital.resources;
 
 
+import dev.yeff.orbital.audio.AudioManager;
+
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +19,7 @@ public class ResourceManager {
 
     private static Map<String, Sprite> sprites = new HashMap<>();
     private static Map<String, Font> fonts = new HashMap<>();
+    private static Map<String, AudioClip> audioClips = new HashMap<>();
 
     // SPRITES
 
@@ -94,7 +97,7 @@ public class ResourceManager {
 
             return fonts.get(file.getAbsolutePath());
         } else {
-            throw new IllegalStateException("Sprite does not exist at location '" + file.getAbsolutePath() + "'");
+            throw new IllegalStateException("Font does not exist at location '" + file.getAbsolutePath() + "'");
         }
     }
 
@@ -112,7 +115,7 @@ public class ResourceManager {
 
             font.dispose();
         } else {
-            throw new IllegalStateException("Sprite is not loaded in resource manager, cannot dispose.");
+            throw new IllegalStateException("Font is not loaded in resource manager, cannot dispose.");
         }
     }
 
@@ -126,6 +129,63 @@ public class ResourceManager {
         File file = new File(path);
 
         if (fonts.containsKey(file.getAbsolutePath()))
+            return true;
+        else
+            return false;
+    }
+
+
+    // AUDIO CLIPS
+
+
+    /**
+     * Gets an audio clip if stored in the resource manager, otherwise adds it to the resource manager and returns it.
+     *
+     * @param path The path of the audio file.
+     * @return The audio clip.
+     */
+    public static AudioClip getAudioClip(String path) {
+        File file = new File(path);
+
+        if (file.exists()) {
+            if (!audioClips.containsKey(file.getAbsolutePath())) {
+                audioClips.put(file.getAbsolutePath(), new AudioClip(file.getAbsolutePath()));
+            }
+
+            return audioClips.get(file.getAbsolutePath());
+        } else {
+            throw new IllegalStateException("Audio clip does not exist at location '" + file.getAbsolutePath() + "'");
+        }
+    }
+
+    /**
+     * Removes the audio clip from the resource manager.
+     *
+     * @param path The path of the font file.
+     */
+    public static void disposeAudioClip(String path) {
+        File file = new File(path);
+
+        if (audioClips.containsKey(file.getAbsolutePath())) {
+            AudioClip clip = audioClips.get(file.getAbsolutePath());
+            fonts.remove(path);
+
+            clip.dispose();
+        } else {
+            throw new IllegalStateException("Audio clip is not loaded in resource manager, cannot dispose.");
+        }
+    }
+
+    /**
+     * Checks if an audio clip exists in the resource manager.
+     *
+     * @param path The path of the audio file.
+     * @return If the audio clip exists in the resource manager.
+     */
+    public static boolean audioClipExists(String path) {
+        File file = new File(path);
+
+        if (audioClips.containsKey(file.getAbsolutePath()))
             return true;
         else
             return false;

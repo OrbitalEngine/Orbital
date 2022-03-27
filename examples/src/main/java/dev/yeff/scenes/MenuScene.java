@@ -17,14 +17,14 @@ public class MenuScene implements Scene {
     @Override
     public void init(Game game) {
         font = ResourceManager.getFont("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\Roboto-Regular.ttf");
-        audioClip = new AudioClip("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\examples_audio_resources_sound.wav");
+        audioClip = ResourceManager.getAudioClip("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\examples_audio_resources_sound.wav");
+        AudioManager.playAudioClip(audioClip);
 
         System.out.println("menu scene initialized");
     }
 
     @Override
     public void update(Game game, float fps) {
-        AudioManager.playAudioClip(audioClip);
 
         if (Input.getKeyboard().isKeyDown(Keys.SPACE))
             game.loadScene("Main");
@@ -40,6 +40,7 @@ public class MenuScene implements Scene {
     @Override
     public void dispose(Game game) {
         ResourceManager.disposeFont("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\Roboto-Regular.ttf");
+        ResourceManager.disposeAudioClip("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\examples_audio_resources_sound.wav");
         System.out.println("menu scene disposed");
     }
 }
