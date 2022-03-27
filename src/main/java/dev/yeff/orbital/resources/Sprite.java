@@ -1,6 +1,7 @@
 package dev.yeff.orbital.resources;
 
 import com.raylib.Raylib.Texture;
+import dev.yeff.orbital.interfaces.Disposable;
 import dev.yeff.orbital.math.Vector2f;
 import lombok.Getter;
 
@@ -13,7 +14,7 @@ import static com.raylib.Raylib.*;
  * @author YeffyCodeGit
  * @version 0.0.1
  */
-public class Sprite {
+public class Sprite implements Disposable {
     @Getter
     private String path;
 
@@ -108,6 +109,7 @@ public class Sprite {
     /**
      * Unloads the texture and image from memory.
      */
+    @Override
     public void dispose() {
         UnloadImage(img);
         UnloadTexture(rawTex);

@@ -1,6 +1,7 @@
 package dev.yeff.orbital.resources;
 
 import com.raylib.Raylib;
+import dev.yeff.orbital.interfaces.Disposable;
 
 import static com.raylib.Raylib.LoadFont;
 import static com.raylib.Raylib.UnloadFont;
@@ -11,7 +12,7 @@ import static com.raylib.Raylib.UnloadFont;
  * @author YeffyCodeGit
  * @version 0.0.1
  */
-public class Font {
+public class Font implements Disposable {
     private Raylib.Font font;
 
     public Font(String path) {
@@ -30,6 +31,7 @@ public class Font {
     /**
      * Unloads the font from memory.
      */
+    @Override
     public void dispose() {
         UnloadFont(font);
     }

@@ -1,6 +1,7 @@
 package dev.yeff.orbital.resources;
 
 import com.raylib.Raylib;
+import dev.yeff.orbital.interfaces.Disposable;
 
 import static com.raylib.Raylib.*;
 
@@ -10,7 +11,7 @@ import static com.raylib.Raylib.*;
  * @author YeffyCodeGit
  * @version 0.0.1
  */
-public class Music {
+public class Music implements Disposable {
     private Raylib.Music rawMusic;
 
     public Music(String path) {
@@ -46,6 +47,7 @@ public class Music {
     /**
      * Unloads the music stream from memory.
      */
+    @Override
     public void dispose() {
         UnloadMusicStream(rawMusic);
     }

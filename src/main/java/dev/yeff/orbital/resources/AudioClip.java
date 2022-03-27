@@ -1,6 +1,7 @@
 package dev.yeff.orbital.resources;
 
 import com.raylib.Raylib;
+import dev.yeff.orbital.interfaces.Disposable;
 
 import static com.raylib.Raylib.*;
 
@@ -10,7 +11,7 @@ import static com.raylib.Raylib.*;
  * @author YeffyCodeGit
  * @version 0.0.1
  */
-public class AudioClip {
+public class AudioClip implements Disposable {
     private Raylib.Sound sound;
 
     public AudioClip(String path) {
@@ -38,6 +39,7 @@ public class AudioClip {
     /**
      * Unloads the audio clip from memory.
      */
+    @Override
     public void dispose() {
         UnloadSound(sound);
     }
