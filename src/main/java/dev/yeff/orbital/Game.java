@@ -72,6 +72,11 @@ public class Game {
         Log.info(Game.class, "Loaded scene " + scene);
     }
 
+    /**
+     * Returns the center position of the screen.
+     *
+     * @return The screen center position.
+     */
     public Vector2f getScreenCenter() {
         return new Vector2f(size.x / 2, size.y / 2);
     }
