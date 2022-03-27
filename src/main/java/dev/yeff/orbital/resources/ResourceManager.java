@@ -17,9 +17,10 @@ public class ResourceManager {
     // Disable constructor
     private ResourceManager() { }
 
-    private static Map<String, Sprite> sprites = new HashMap<>();
-    private static Map<String, Font> fonts = new HashMap<>();
-    private static Map<String, AudioClip> audioClips = new HashMap<>();
+    private static Map<String, Sprite> sprites = Map.of();
+    private static Map<String, Font> fonts = Map.of();
+    private static Map<String, AudioClip> audioClips = Map.of();
+    private static Map<String, Music> musicStreams = Map.of();
 
     // SPRITES
 
@@ -161,7 +162,7 @@ public class ResourceManager {
     /**
      * Removes the audio clip from the resource manager.
      *
-     * @param path The path of the font file.
+     * @param path The path of the audio clip.
      */
     public static void disposeAudioClip(String path) {
         File file = new File(path);
@@ -186,6 +187,63 @@ public class ResourceManager {
         File file = new File(path);
 
         if (audioClips.containsKey(file.getAbsolutePath()))
+            return true;
+        else
+            return false;
+    }
+
+
+    // MUSIC
+    
+
+    /**
+     * Gets a music resource if stored in the resource manager, otherwise adds it to the resource manager and returns it.
+     *
+     * @param path The path of the music file.
+     * @return The music object.
+     */
+    public static Music getMusicStream(String path) {
+        File file = new File(path);
+
+        if (file.exists()) {
+            if (!musicStreams.containsKey(file.getAbsolutePath())) {
+                musicStreams.put(file.getAbsolutePath(), new Music(file.getAbsolutePath()));
+            }
+
+            return musicStreams.get(file.getAbsolutePath());
+        } else {
+            throw new IllegalStateException("Music file does not exist at location '" + file.getAbsolutePath() + "'");
+        }
+    }
+
+    /**
+     * Removes the music resource from the resource manager.
+     *
+     * @param path The path of the music file.
+     */
+    public static void disposeMusicStream(String path) {
+        File file = new File(path);
+
+        if (musicStreams.containsKey(file.getAbsolutePath())) {
+            Music music = musicStreams.get(file.getAbsolutePath());
+            fonts.remove(path);
+
+            music.dispose();
+        } else {
+            throw new IllegalStateException("Audio clip is not loaded in resource manager, cannot dispose.");
+        }
+    }
+
+    /**
+     * Checks if a music resource exists in the resource manager.
+     *
+     * @param path The path of the music file.
+     * @return If the music resource exists in the resource manager.
+     */
+    public static boolean musicStreamExists(String path) {
+        File file = new File(path);
+
+        if (musicStreams.containsKey(file.getAbsolutePath()))
             return true;
         else
             return false;
