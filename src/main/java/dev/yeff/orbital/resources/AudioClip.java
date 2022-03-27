@@ -2,8 +2,7 @@ package dev.yeff.orbital.resources;
 
 import com.raylib.Raylib;
 
-import static com.raylib.Raylib.LoadSound;
-import static com.raylib.Raylib.UnloadSound;
+import static com.raylib.Raylib.*;
 
 /**
  * Represents any audio clip, to be used by the audio manager.
@@ -16,6 +15,15 @@ public class AudioClip {
 
     public AudioClip(String path) {
         sound = LoadSound(path);
+    }
+
+    /**
+     * Returns a boolean if the audio clip is playing or not.
+     *
+     * @return If the audio clip is playing or not.
+     */
+    public boolean isClipPlaying() {
+        return IsSoundPlaying(sound);
     }
 
     /**

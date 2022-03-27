@@ -17,8 +17,7 @@ public class MenuScene implements Scene {
     @Override
     public void init(Game game) {
         font = ResourceManager.getFont("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\Roboto-Regular.ttf");
-        audioClip = ResourceManager.getAudioClip("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\examples_audio_resources_sound.wav");
-        AudioManager.playAudioClip(audioClip);
+        audioClip = ResourceManager.getAudioClip("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\bensound-epic.mp3");
 
         System.out.println("menu scene initialized");
     }
@@ -40,7 +39,7 @@ public class MenuScene implements Scene {
     @Override
     public void dispose(Game game) {
         ResourceManager.disposeFont("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\Roboto-Regular.ttf");
-        ResourceManager.disposeAudioClip("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\examples_audio_resources_sound.wav");
+        ResourceManager.disposeAudioClip("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\bensound-epic.mp3");
         System.out.println("menu scene disposed");
     }
 }

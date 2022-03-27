@@ -17,10 +17,10 @@ public class ResourceManager {
     // Disable constructor
     private ResourceManager() { }
 
-    private static Map<String, Sprite> sprites = Map.of();
-    private static Map<String, Font> fonts = Map.of();
-    private static Map<String, AudioClip> audioClips = Map.of();
-    private static Map<String, Music> musicStreams = Map.of();
+    private static Map<String, Sprite> sprites = new HashMap<>();
+    private static Map<String, Font> fonts = new HashMap<>();
+    private static Map<String, AudioClip> audioClips = new HashMap<>();
+    private static Map<String, Music> musicStreams = new HashMap<>();
 
     // SPRITES
 
@@ -194,7 +194,7 @@ public class ResourceManager {
 
 
     // MUSIC
-    
+
 
     /**
      * Gets a music resource if stored in the resource manager, otherwise adds it to the resource manager and returns it.

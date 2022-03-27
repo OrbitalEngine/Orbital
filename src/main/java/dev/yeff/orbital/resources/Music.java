@@ -2,8 +2,7 @@ package dev.yeff.orbital.resources;
 
 import com.raylib.Raylib;
 
-import static com.raylib.Raylib.LoadMusicStream;
-import static com.raylib.Raylib.UnloadMusicStream;
+import static com.raylib.Raylib.*;
 
 /**
  * Represents a large streamed audio file, to be used by the audio manager.
@@ -16,6 +15,15 @@ public class Music {
 
     public Music(String path) {
         rawMusic = LoadMusicStream(path);
+    }
+
+    /**
+     * Returns a boolean if the music is playing or not.
+     *
+     * @return If the music is playing or not.
+     */
+    public boolean isMusicPlaying() {
+        return IsMusicStreamPlaying(rawMusic);
     }
 
     /**
