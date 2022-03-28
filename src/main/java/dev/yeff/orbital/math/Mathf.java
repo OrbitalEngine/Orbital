@@ -3,7 +3,7 @@ package dev.yeff.orbital.math;
 import static com.raylib.Raylib.GetRandomValue;
 
 /**
- *  Provides mathematical functions to work with vectors and more.
+ * Provides mathematical functions to work with vectors and more.
  *
  * @author YeffyCodeGit
  * @version 0.0.1
@@ -71,5 +71,29 @@ public class Mathf {
      */
     public static Vector2f generateRandomVec(Vector2f min, Vector2f max) {
         return new Vector2f(GetRandomValue((int) min.x, (int) max.x), GetRandomValue((int) min.y, (int) max.y));
+    }
+
+    /**
+     * Linearly interpolates between {@code a} and {@code b} by interpolation point t.
+     *
+     * @param a The starting value, this will be returned if t = 0.
+     * @param b The ending value, this will be returned if t = 1.
+     * @param t The value used to interpolate between {@code a} and {@code b}
+     * @return The interpolated value.
+     */
+    public static float lerp(float a, float b, float t) {
+        return a * (1.0f - t) + t * b;
+    }
+
+    /**
+     * Calculates the linear interpolation value based on the range of {@code a} and {@code b}, and {@code v}.
+     *
+     * @param a The starting value.
+     * @param b The ending value.
+     * @param v The result of the linear interpolation between {@code a} and {@code b}.
+     * @return The value, which when used to calculate linear interpolation with the same {@code a} and {@code b} values, results in {@code v}.
+     */
+    public static float inverseLerp(float a, float b, float v) {
+        return (v - a) / (b - v);
     }
 }
