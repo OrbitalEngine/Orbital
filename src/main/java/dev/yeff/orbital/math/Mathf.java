@@ -32,7 +32,7 @@ public class Mathf {
      * @return The cross product of the two vectors.
      */
     public static float cross(Vector2f first, Vector2f other) {
-        return (first.x * other.x) - (first.y * other.y);
+        return (first.x * other.y) - (first.y * other.x);
     }
 
     /**

@@ -105,4 +105,26 @@ public class Vector2fTests implements WithAssertions {
         assertThat(normalized.x).isEqualTo(1.0f);
         assertThat(normalized.y).isEqualTo(0.0f);
     }
+
+    @DisplayName("dot product of a vector")
+    @Test
+    public void testVectorMath_dotProduct() {
+        Vector2f first = new Vector2f(25.0f, 25.0f);
+        Vector2f other = new Vector2f(5.0f, 5.0f);
+
+        float result = Mathf.dot(first, other);
+
+        assertThat(result).isEqualTo(250.0f);
+    }
+
+    @DisplayName("cross product of a vector")
+    @Test
+    public void testVectorMath_crossProduct() {
+        Vector2f first = new Vector2f(25.5f, 5.25f);
+        Vector2f other = new Vector2f(13.37f, 37.13f);
+
+        float result = Mathf.cross(first, other);
+
+        assertThat(result).isEqualTo(876.6225f);
+    }
 }
