@@ -103,6 +103,6 @@ public class Mathf {
      * @return The value, which when used to calculate linear interpolation with the same {@code a} and {@code b} values, results in {@code v}.
      */
     public static float inverseLerp(float a, float b, float v) {
-        return (v - a) / (b - v);
+        return (v - a) / (b - a);
     }
 }
