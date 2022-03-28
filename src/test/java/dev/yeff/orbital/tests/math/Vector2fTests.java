@@ -76,7 +76,7 @@ public class Vector2fTests implements WithAssertions {
 
     @DisplayName("generating random vectors with int min and max")
     @Test
-    public void testVectorMath_genRandomVector_withIntMinMax() {
+    public void testVectorMath_genRandomVector_withIntMinMaxValueRange() {
         Mathf.setRandomSeed(10);
 
         Vector2f randomVector = Mathf.generateRandomVec(1, 10);
@@ -87,12 +87,22 @@ public class Vector2fTests implements WithAssertions {
 
     @DisplayName("generating random vectors with vector min and max")
     @Test
-    public void testVectorMath_genRandomVector_withVectorMinMax() {
+    public void testVectorMath_genRandomVector_withVectorMinMaxValueRange() {
         Mathf.setRandomSeed(10);
 
         Vector2f randomVector = Mathf.generateRandomVec(new Vector2f(5, 5), new Vector2f(10, 10));
 
         assertThat(randomVector.x).isEqualTo(10.0f);
         assertThat(randomVector.y).isEqualTo(8.0f);
+    }
+
+    @DisplayName("normalizing a vector")
+    @Test
+    public void testVectorMath_normalizeVector() {
+        Vector2f vector2f = new Vector2f(50, 0);
+        Vector2f normalized = Mathf.normalize(vector2f);
+
+        assertThat(normalized.x).isEqualTo(1.0f);
+        assertThat(normalized.y).isEqualTo(0.0f);
     }
 }
