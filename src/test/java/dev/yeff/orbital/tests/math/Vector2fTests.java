@@ -77,20 +77,22 @@ public class Vector2fTests implements WithAssertions {
     @DisplayName("generating random vectors with int min and max")
     @Test
     public void testVectorMath_genRandomVector_withIntMinMax() {
+        Mathf.setRandomSeed(10);
+
         Vector2f randomVector = Mathf.generateRandomVec(1, 10);
 
-        assertThat(randomVector).matches(v -> v.x < 10 && v.x > 1);
-        assertThat(randomVector).matches(v -> v.y < 10 && v.y > 1);
+        assertThat(randomVector.x).isEqualTo(2.0f);
+        assertThat(randomVector.y).isEqualTo(10.0f);
     }
 
     @DisplayName("generating random vectors with vector min and max")
     @Test
     public void testVectorMath_genRandomVector_withVectorMinMax() {
-        Vector2f randomVector = Mathf.generateRandomVec(new Vector2f(1, 1), new Vector2f(10, 10));
+        Mathf.setRandomSeed(10);
 
-//        assertThat(randomVector).matches(v -> v.x < 10 && v.x > 1);
-//        assertThat(randomVector).matches(v -> v.y < 10 && v.y > 1);
-        
-        fail("have to figure out why this one doesnt work");
+        Vector2f randomVector = Mathf.generateRandomVec(new Vector2f(5, 5), new Vector2f(10, 10));
+
+        assertThat(randomVector.x).isEqualTo(10.0f);
+        assertThat(randomVector.y).isEqualTo(8.0f);
     }
 }

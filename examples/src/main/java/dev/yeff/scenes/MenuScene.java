@@ -10,6 +10,7 @@ import dev.yeff.orbital.resources.AudioClip;
 import dev.yeff.orbital.resources.ResourceManager;
 import dev.yeff.orbital.resources.Font;
 import dev.yeff.orbital.scenes.Scene;
+import dev.yeff.orbital.util.Log;
 
 public class MenuScene implements Scene {
     private Font font;
@@ -17,6 +18,8 @@ public class MenuScene implements Scene {
     @Override
     public void init(Game game) {
         font = ResourceManager.getFont("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\Roboto-Regular.ttf");
+
+        Mathf.setRandomSeed(10);
 
         System.out.println("menu scene initialized");
     }
