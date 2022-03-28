@@ -1,6 +1,7 @@
 package dev.yeff.orbital.math;
 
 import static com.raylib.Raylib.GetRandomValue;
+import static com.raylib.Raylib.SetRandomSeed;
 
 /**
  * Provides mathematical functions to work with vectors and more.
@@ -34,6 +35,14 @@ public class Mathf {
         return (first.x * other.x) - (first.y * other.y);
     }
 
+    /**
+     * Sets the seed to be used by the random number generator.
+     *
+     * @param seed The random seed.
+     */
+    public static void setRandomSeed(int seed) {
+        SetRandomSeed(seed);
+    }
 
     /**
      * Returns a vector with the same direction as the specified vector, but with a length of one.
