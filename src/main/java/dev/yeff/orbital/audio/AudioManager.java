@@ -82,4 +82,8 @@ public class AudioManager {
     public void resumeMusic(Music music) {
         ResumeMusicStream(music.asRaylibMusic());
     }
+
+    public void updateMusic(Music music) {
+        UpdateMusicStream(music.asRaylibMusic());
+    }
 }

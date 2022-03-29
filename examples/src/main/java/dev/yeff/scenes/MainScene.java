@@ -6,15 +6,18 @@ import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.AudioClip;
+import dev.yeff.orbital.resources.Music;
 import dev.yeff.orbital.resources.ResourceManager;
 import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.orbital.util.Log;
 
+import static com.raylib.Raylib.UpdateMusicStream;
+
 public class MainScene implements Scene {
     private Vector2f pos;
     private Sprite sprite;
-    private AudioClip audioClip;
+    private Music music;
     private boolean spriteFlipped;
 
     private static final float SPRITE_SPEED = 12.0f;
@@ -24,7 +27,7 @@ public class MainScene implements Scene {
         Log.info(MainScene.class, "main scene initialized");
 
         sprite = ResourceManager.getSprite("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\character_0000.png");
-        audioClip = ResourceManager.getAudioClip("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\bensound-epic.mp3");
+        music = ResourceManager.getMusicStream("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\bensound-epic.mp3");
 
         sprite.resize(new Vector2f(120, 120));
         pos = game.getScreenCenter();
@@ -32,8 +35,10 @@ public class MainScene implements Scene {
 
     @Override
     public void update(Game game, float fps) {
-        if (audioClip.isPlaying() == false)
-            game.getAudioManager().playAudioClip(audioClip);
+        if (music.isPlaying() == false)
+            game.getAudioManager().playMusic(music);
+
+        game.getAudioManager().updateMusic(music);
 
         if (Input.getKeyboard().isKeyDown(Keys.W)) {
             pos.y -= SPRITE_SPEED;
