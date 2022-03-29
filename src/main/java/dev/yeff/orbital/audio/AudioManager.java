@@ -83,6 +83,11 @@ public class AudioManager {
         ResumeMusicStream(music.asRaylibMusic());
     }
 
+    /**
+     * Updates the music stream; should be called every frame.
+     *
+     * @param music The music stream to update.
+     */
     public void updateMusic(Music music) {
         UpdateMusicStream(music.asRaylibMusic());
     }
