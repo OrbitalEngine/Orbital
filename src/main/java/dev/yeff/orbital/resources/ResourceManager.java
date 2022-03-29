@@ -203,14 +203,18 @@ public class ResourceManager {
      * @param path The path of the music file.
      * @return The music object.
      */
-    public static Music getMusicStream(String path) {
+    public static Music getMusicStream(String path, AudioManager manager) {
         File file = new File(path);
 
         if (file.exists()) {
             if (!musicStreams.containsKey(file.getAbsolutePath())) {
-                musicStreams.put(file.getAbsolutePath(), new Music(file.getAbsolutePath()));
+                Music m = new Music(file.getAbsolutePath());
+
+                musicStreams.put(file.getAbsolutePath(), m);
+                manager.addMusicStream(m);
             }
 
+            manager.addMusicStream(musicStreams.get(file.getAbsolutePath()));
             return musicStreams.get(file.getAbsolutePath());
         } else {
             throw new IllegalStateException("Music file does not exist at location '" + file.getAbsolutePath() + "'");

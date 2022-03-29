@@ -2,6 +2,10 @@ package dev.yeff.orbital.audio;
 
 import dev.yeff.orbital.resources.AudioClip;
 import dev.yeff.orbital.resources.Music;
+import lombok.Getter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.raylib.Raylib.*;
 
@@ -12,7 +16,12 @@ import static com.raylib.Raylib.*;
  * @version 0.0.1
  */
 public class AudioManager {
-    public AudioManager() { }
+    @Getter
+    private List<Music> musicStreams;
+
+    public AudioManager() {
+        musicStreams = new ArrayList<>();
+    }
 
     /**
      * Sets the master volume to play the audio at.
@@ -90,5 +99,23 @@ public class AudioManager {
      */
     public void updateMusic(Music music) {
         UpdateMusicStream(music.asRaylibMusic());
+    }
+
+    /**
+     * Adds a music stream to the audio manager to update later.
+     *
+     * @param music The music stream to add.
+     */
+    public void addMusicStream(Music music) {
+        musicStreams.add(music);
+    }
+
+    /**
+     * Updates all the stored music streams.
+     */
+    public void updateMusicStreams() {
+        for (Music m : musicStreams) {
+            updateMusic(m);
+        }
     }
 }

@@ -27,7 +27,7 @@ public class MainScene implements Scene {
         Log.info(MainScene.class, "main scene initialized");
 
         sprite = ResourceManager.getSprite("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\character_0000.png");
-        music = ResourceManager.getMusicStream("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\bensound-epic.mp3");
+        music = ResourceManager.getMusicStream("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\bensound-epic.mp3", game.getAudioManager());
 
         music.loop(true);
         game.getAudioManager().playMusic(music);
@@ -38,8 +38,6 @@ public class MainScene implements Scene {
 
     @Override
     public void update(Game game, float fps) {
-        game.getAudioManager().updateMusic(music);
-
         if (Input.getKeyboard().isKeyDown(Keys.W)) {
             pos.y -= SPRITE_SPEED;
         }
