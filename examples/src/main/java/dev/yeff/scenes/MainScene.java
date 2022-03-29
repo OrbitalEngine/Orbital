@@ -29,15 +29,15 @@ public class MainScene implements Scene {
         sprite = ResourceManager.getSprite("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\character_0000.png");
         music = ResourceManager.getMusicStream("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\bensound-epic.mp3");
 
+        music.loop(true);
+        game.getAudioManager().playMusic(music);
+
         sprite.resize(new Vector2f(120, 120));
         pos = game.getScreenCenter();
     }
 
     @Override
     public void update(Game game, float fps) {
-        if (music.isPlaying() == false)
-            game.getAudioManager().playMusic(music);
-
         game.getAudioManager().updateMusic(music);
 
         if (Input.getKeyboard().isKeyDown(Keys.W)) {

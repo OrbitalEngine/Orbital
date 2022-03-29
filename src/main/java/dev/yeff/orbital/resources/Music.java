@@ -19,6 +19,15 @@ public class Music implements Disposable {
     }
 
     /**
+     * Sets if music should loop or not.
+     *
+     * @param shouldLoop If it should loop or not.
+     */
+    public void loop(boolean shouldLoop) {
+        rawMusic.looping(shouldLoop);
+    }
+
+    /**
      * Returns a boolean if the music is playing or not.
      *
      * @return If the music is playing or not.
