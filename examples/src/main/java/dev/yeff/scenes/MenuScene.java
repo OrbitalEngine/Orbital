@@ -19,8 +19,6 @@ public class MenuScene implements Scene {
     public void init(Game game) {
         font = ResourceManager.getFont("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\Roboto-Regular.ttf");
 
-        Mathf.setRandomSeed(10);
-
         System.out.println("menu scene initialized");
     }
 
@@ -39,7 +37,7 @@ public class MenuScene implements Scene {
 
     @Override
     public void dispose(Game game) {
-        ResourceManager.disposeFont("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\Roboto-Regular.ttf");
+        ResourceManager.disposeFont(font);
         System.out.println("menu scene disposed");
     }
 }

@@ -49,16 +49,15 @@ public class ResourceManager {
     /**
      * Removes the sprite from the resource manager.
      *
-     * @param path The path of the sprite.
+     * @param sprite The sprite.
      */
-    public static void disposeSprite(String path) {
-        File file = new File(path);
+    public static void disposeSprite(Sprite sprite) {
+        File file = new File(sprite.getPath());
 
         if (sprites.containsKey(file.getAbsolutePath())) {
-            Sprite s = sprites.get(path);
-            sprites.remove(path);
+            sprites.remove(sprite);
 
-            s.dispose();
+            sprite.dispose();
         } else {
             throw new IllegalStateException("Sprite is not loaded in resource manager, cannot dispose.");
         }
@@ -67,11 +66,11 @@ public class ResourceManager {
     /**
      * Checks if a sprite exists in the resource manager.
      *
-     * @param path The path of the sprite.
+     * @param sprite The sprite.
      * @return If the sprite exists in the resource manager.
      */
-    public static boolean spriteExists(String path) {
-        File file = new File(path);
+    public static boolean spriteExists(Sprite sprite) {
+        File file = new File(sprite.getPath());
 
         if (sprites.containsKey(file.getAbsolutePath()))
             return true;
@@ -106,14 +105,13 @@ public class ResourceManager {
     /**
      * Removes the font from the resource manager.
      *
-     * @param path The path of the font file.
+     * @param font The font.
      */
-    public static void disposeFont(String path) {
-        File file = new File(path);
+    public static void disposeFont(Font font) {
+        File file = new File(font.getPath());
 
         if (fonts.containsKey(file.getAbsolutePath())) {
-            Font font = fonts.get(file.getAbsolutePath());
-            fonts.remove(path);
+            fonts.remove(font);
 
             font.dispose();
         } else {
@@ -124,11 +122,11 @@ public class ResourceManager {
     /**
      * Checks if a font exists in the resource manager.
      *
-     * @param path The path of the font file.
+     * @param font The font.
      * @return If the font exists in the resource manager.
      */
-    public static boolean fontExists(String path) {
-        File file = new File(path);
+    public static boolean fontExists(Font font) {
+        File file = new File(font.getPath());
 
         if (fonts.containsKey(file.getAbsolutePath()))
             return true;
@@ -163,14 +161,13 @@ public class ResourceManager {
     /**
      * Removes the audio clip from the resource manager.
      *
-     * @param path The path of the audio clip.
+     * @param clip The audio clip.
      */
-    public static void disposeAudioClip(String path) {
-        File file = new File(path);
+    public static void disposeAudioClip(AudioClip clip) {
+        File file = new File(clip.getPath());
 
         if (audioClips.containsKey(file.getAbsolutePath())) {
-            AudioClip clip = audioClips.get(file.getAbsolutePath());
-            fonts.remove(path);
+            audioClips.remove(clip);
 
             clip.dispose();
         } else {
@@ -181,11 +178,11 @@ public class ResourceManager {
     /**
      * Checks if an audio clip exists in the resource manager.
      *
-     * @param path The path of the audio file.
+     * @param clip The audio clip.
      * @return If the audio clip exists in the resource manager.
      */
-    public static boolean audioClipExists(String path) {
-        File file = new File(path);
+    public static boolean audioClipExists(AudioClip clip) {
+        File file = new File(clip.getPath());
 
         if (audioClips.containsKey(file.getAbsolutePath()))
             return true;
@@ -224,14 +221,13 @@ public class ResourceManager {
     /**
      * Removes the music resource from the resource manager.
      *
-     * @param path The path of the music file.
+     * @param music The music stream.
      */
-    public static void disposeMusicStream(String path) {
-        File file = new File(path);
+    public static void disposeMusicStream(Music music) {
+        File file = new File(music.getPath());
 
         if (musicStreams.containsKey(file.getAbsolutePath())) {
-            Music music = musicStreams.get(file.getAbsolutePath());
-            fonts.remove(path);
+            musicStreams.remove(music);
 
             music.dispose();
         } else {
@@ -242,11 +238,11 @@ public class ResourceManager {
     /**
      * Checks if a music resource exists in the resource manager.
      *
-     * @param path The path of the music file.
+     * @param music The music stream.
      * @return If the music resource exists in the resource manager.
      */
-    public static boolean musicStreamExists(String path) {
-        File file = new File(path);
+    public static boolean musicStreamExists(Music music) {
+        File file = new File(music.getPath());
 
         if (musicStreams.containsKey(file.getAbsolutePath()))
             return true;

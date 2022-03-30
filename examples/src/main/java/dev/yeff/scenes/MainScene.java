@@ -64,7 +64,8 @@ public class MainScene implements Scene {
 
     @Override
     public void dispose(Game game) {
-        ResourceManager.disposeSprite("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\character_0000.png");
+        ResourceManager.disposeSprite(sprite);
+        ResourceManager.disposeMusicStream(music);
         Log.info(MainScene.class, "disposed main scene");
     }
 }
