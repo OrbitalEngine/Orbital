@@ -2,6 +2,7 @@ package dev.yeff.orbital.audio;
 
 import dev.yeff.orbital.resources.AudioClip;
 import dev.yeff.orbital.resources.Music;
+import dev.yeff.orbital.util.Log;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -108,6 +109,20 @@ public class AudioManager {
      */
     public void addMusicStream(Music music) {
         musicStreams.add(music);
+    }
+
+    /**
+     * Removes a music stream from the audio manager.
+     *
+     * @param music The music stream to remove.
+     */
+    public void removeMusicStream(Music music) {
+        for (int i = 0; i < musicStreams.size(); i++) {
+            if (musicStreams.get(i).getPath() == music.getPath()) {
+                musicStreams.remove(i);
+                return;
+            }
+        }
     }
 
     /**

@@ -65,7 +65,7 @@ public class MainScene implements Scene {
     @Override
     public void dispose(Game game) {
         ResourceManager.disposeSprite(sprite);
-        ResourceManager.disposeMusicStream(music);
+        ResourceManager.disposeMusicStream(music, game.getAudioManager());
         Log.info(MainScene.class, "disposed main scene");
     }
 }

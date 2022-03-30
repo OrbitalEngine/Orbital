@@ -223,12 +223,13 @@ public class ResourceManager {
      *
      * @param music The music stream.
      */
-    public static void disposeMusicStream(Music music) {
+    public static void disposeMusicStream(Music music, AudioManager manager) {
         File file = new File(music.getPath());
 
         if (musicStreams.containsKey(file.getAbsolutePath())) {
             musicStreams.remove(music);
 
+            manager.removeMusicStream(music);
             music.dispose();
         } else {
             throw new IllegalStateException("Audio clip is not loaded in resource manager, cannot dispose.");
