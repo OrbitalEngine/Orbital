@@ -1,18 +1,14 @@
 package dev.yeff.scenes;
 
 import dev.yeff.orbital.Game;
-import dev.yeff.orbital.graphics.Colors;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.math.Vector2f;
-import dev.yeff.orbital.resources.AudioClip;
 import dev.yeff.orbital.resources.Music;
 import dev.yeff.orbital.resources.ResourceManager;
 import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.orbital.util.Log;
-
-import static com.raylib.Raylib.UpdateMusicStream;
 
 public class MainScene implements Scene {
     private Vector2f pos;

@@ -2,6 +2,7 @@ package dev.yeff.orbital.resources;
 
 import com.raylib.Raylib;
 import dev.yeff.orbital.interfaces.Disposable;
+import lombok.Getter;
 
 import static com.raylib.Raylib.*;
 
@@ -14,7 +15,11 @@ import static com.raylib.Raylib.*;
 public class Music implements Disposable {
     private Raylib.Music rawMusic;
 
+    @Getter
+    private String path;
+
     public Music(String path) {
+        this.path = path;
         rawMusic = LoadMusicStream(path);
     }
 

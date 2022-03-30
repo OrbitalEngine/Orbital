@@ -2,6 +2,7 @@ package dev.yeff.orbital.resources;
 
 import com.raylib.Raylib;
 import dev.yeff.orbital.interfaces.Disposable;
+import lombok.Getter;
 
 import static com.raylib.Raylib.LoadFont;
 import static com.raylib.Raylib.UnloadFont;
@@ -15,7 +16,11 @@ import static com.raylib.Raylib.UnloadFont;
 public class Font implements Disposable {
     private Raylib.Font font;
 
+    @Getter
+    private String path;
+
     public Font(String path) {
+        this.path = path;
         font = LoadFont(path);
     }
 
