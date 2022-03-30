@@ -55,6 +55,7 @@ public class ResourceManager {
         File file = new File(sprite.getPath());
 
         if (sprites.containsKey(file.getAbsolutePath())) {
+            //noinspection SuspiciousMethodCalls
             sprites.remove(sprite);
 
             sprite.dispose();
