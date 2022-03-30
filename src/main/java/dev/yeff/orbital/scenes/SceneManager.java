@@ -13,7 +13,7 @@ public class SceneManager {
     // Disable constructor
     private SceneManager() { }
 
-    private static Map<String, Scene> scenes = new HashMap<>();
+    private static final Map<String, Scene> scenes = new HashMap<>();
 
     /**
      * Adds a new scene to the scene manager.

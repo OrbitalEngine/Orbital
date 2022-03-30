@@ -51,7 +51,7 @@ public class Game {
         this.renderer = new Renderer();
         this.audioManager = new AudioManager();
 
-        scenes.forEach((n, s) -> SceneManager.addScene(n, s));
+        scenes.forEach(SceneManager::addScene);
         this.window = new Window(this);
     }
 
