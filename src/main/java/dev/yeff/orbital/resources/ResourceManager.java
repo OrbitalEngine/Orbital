@@ -72,10 +72,7 @@ public class ResourceManager {
     public static boolean spriteExists(Sprite sprite) {
         File file = new File(sprite.getPath());
 
-        if (sprites.containsKey(file.getAbsolutePath()))
-            return true;
-        else
-            return false;
+        return sprites.containsKey(file.getAbsolutePath());
     }
 
 
@@ -111,6 +108,7 @@ public class ResourceManager {
         File file = new File(font.getPath());
 
         if (fonts.containsKey(file.getAbsolutePath())) {
+            //noinspection SuspiciousMethodCalls
             fonts.remove(font);
 
             font.dispose();
@@ -128,10 +126,7 @@ public class ResourceManager {
     public static boolean fontExists(Font font) {
         File file = new File(font.getPath());
 
-        if (fonts.containsKey(file.getAbsolutePath()))
-            return true;
-        else
-            return false;
+        return fonts.containsKey(file.getAbsolutePath());
     }
 
 
@@ -167,6 +162,7 @@ public class ResourceManager {
         File file = new File(clip.getPath());
 
         if (audioClips.containsKey(file.getAbsolutePath())) {
+            //noinspection SuspiciousMethodCalls
             audioClips.remove(clip);
 
             clip.dispose();
@@ -184,10 +180,7 @@ public class ResourceManager {
     public static boolean audioClipExists(AudioClip clip) {
         File file = new File(clip.getPath());
 
-        if (audioClips.containsKey(file.getAbsolutePath()))
-            return true;
-        else
-            return false;
+        return audioClips.containsKey(file.getAbsolutePath());
     }
 
 
@@ -227,6 +220,7 @@ public class ResourceManager {
         File file = new File(music.getPath());
 
         if (musicStreams.containsKey(file.getAbsolutePath())) {
+            //noinspection SuspiciousMethodCalls
             musicStreams.remove(music);
 
             manager.removeMusicStream(music);
@@ -245,9 +239,6 @@ public class ResourceManager {
     public static boolean musicStreamExists(Music music) {
         File file = new File(music.getPath());
 
-        if (musicStreams.containsKey(file.getAbsolutePath()))
-            return true;
-        else
-            return false;
+        return musicStreams.containsKey(file.getAbsolutePath());
     }
 }
