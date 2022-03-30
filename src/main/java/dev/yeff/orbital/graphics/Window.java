@@ -23,7 +23,6 @@ public class Window {
     private String title;
     private Game game;
     private Renderer renderer;
-    private AudioManager audioManager;
 
 
     public Window(Game game) {
@@ -31,7 +30,6 @@ public class Window {
         this.size = game.getSize();
         this.title = game.getTitle();
         this.renderer = game.getRenderer();
-        this.audioManager = game.getAudioManager();
 
         Log.info(Window.class, "Created window with width " + size.x + ", height " + size.y);
     }
@@ -63,7 +61,7 @@ public class Window {
 
             renderer.fillBackground(Colors.WHITE);
             game.getCurrentScene().update(game, GetFPS());
-            audioManager.updateMusicStreams();
+            AudioManager.updateMusicStreams();
 
             EndDrawing();
         }

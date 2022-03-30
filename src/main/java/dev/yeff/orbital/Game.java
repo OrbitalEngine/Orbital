@@ -39,9 +39,6 @@ public class Game {
     @Getter
     private Renderer renderer;
 
-    @Getter
-    private AudioManager audioManager;
-
     private Window window;
 
     public Game(Vector2f size, String title, Map<String, Scene> scenes) {
@@ -49,7 +46,6 @@ public class Game {
         this.title = title;
         this.cam = new Camera2D();
         this.renderer = new Renderer();
-        this.audioManager = new AudioManager();
 
         scenes.forEach(SceneManager::addScene);
         this.window = new Window(this);

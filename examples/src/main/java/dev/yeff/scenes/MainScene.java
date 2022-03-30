@@ -1,6 +1,7 @@
 package dev.yeff.scenes;
 
 import dev.yeff.orbital.Game;
+import dev.yeff.orbital.audio.AudioManager;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.math.Vector2f;
@@ -23,10 +24,10 @@ public class MainScene implements Scene {
         Log.info(MainScene.class, "main scene initialized");
 
         sprite = ResourceManager.getSprite("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\character_0000.png");
-        music = ResourceManager.getMusicStream("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\bensound-epic.mp3", game.getAudioManager());
+        music = ResourceManager.getMusicStream("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\bensound-epic.mp3");
 
         music.loop(true);
-        game.getAudioManager().playMusic(music);
+        AudioManager.playMusic(music);
 
         sprite.resize(new Vector2f(120, 120));
         pos = game.getScreenCenter();
@@ -65,7 +66,7 @@ public class MainScene implements Scene {
     @Override
     public void dispose(Game game) {
         ResourceManager.disposeSprite(sprite);
-        ResourceManager.disposeMusicStream(music, game.getAudioManager());
+        ResourceManager.disposeMusicStream(music);
         Log.info(MainScene.class, "disposed main scene");
     }
 }

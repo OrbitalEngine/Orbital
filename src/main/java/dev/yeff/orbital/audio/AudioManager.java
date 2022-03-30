@@ -7,6 +7,7 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static com.raylib.Raylib.*;
 
@@ -18,18 +19,17 @@ import static com.raylib.Raylib.*;
  */
 public class AudioManager {
     @Getter
-    private List<Music> musicStreams;
+    private static List<Music> musicStreams = new ArrayList<>();
 
-    public AudioManager() {
-        musicStreams = new ArrayList<>();
-    }
+    // Disable constructor
+    private AudioManager() { }
 
     /**
      * Sets the master volume to play the audio at.
      *
      * @param volume The new volume.
      */
-    public void setVolume(float volume) {
+    public static void setVolume(float volume) {
         SetMasterVolume(volume);
     }
 
@@ -38,7 +38,7 @@ public class AudioManager {
      *
      * @param audio The clip to play.
      */
-    public void playAudioClip(AudioClip audio) {
+    public static void playAudioClip(AudioClip audio) {
         PlaySound(audio.asRaylibSound());
     }
 
@@ -47,7 +47,7 @@ public class AudioManager {
      *
      * @param audio The clip to pause.
      */
-    public void pauseAudioClip(AudioClip audio) {
+    public static void pauseAudioClip(AudioClip audio) {
         if (audio.isPlaying())
             PauseSound(audio.asRaylibSound());
         else
@@ -59,7 +59,7 @@ public class AudioManager {
      *
      * @param audio The audio clip to resume.
      */
-    public void resumeAudioClip(AudioClip audio) {
+    public static void resumeAudioClip(AudioClip audio) {
         ResumeSound(audio.asRaylibSound());
     }
 
@@ -68,7 +68,7 @@ public class AudioManager {
      *
      * @param music The music to play.
      */
-    public void playMusic(Music music) {
+    public static void playMusic(Music music) {
         PlayMusicStream(music.asRaylibMusic());
     }
 
@@ -77,7 +77,7 @@ public class AudioManager {
      *
      * @param music The music to pause.
      */
-    public void pauseMusic(Music music) {
+    public static void pauseMusic(Music music) {
         if (music.isPlaying())
             PauseMusicStream(music.asRaylibMusic());
         else
@@ -89,7 +89,7 @@ public class AudioManager {
      *
      * @param music The music to resume.
      */
-    public void resumeMusic(Music music) {
+    public static void resumeMusic(Music music) {
         ResumeMusicStream(music.asRaylibMusic());
     }
 
@@ -98,7 +98,7 @@ public class AudioManager {
      *
      * @param music The music stream to update.
      */
-    public void updateMusic(Music music) {
+    public static void updateMusic(Music music) {
         UpdateMusicStream(music.asRaylibMusic());
     }
 
@@ -107,7 +107,7 @@ public class AudioManager {
      *
      * @param music The music stream to add.
      */
-    public void addMusicStream(Music music) {
+    public  static void addMusicStream(Music music) {
         musicStreams.add(music);
     }
 
@@ -116,21 +116,17 @@ public class AudioManager {
      *
      * @param music The music stream to remove.
      */
-    public void removeMusicStream(Music music) {
-        for (int i = 0; i < musicStreams.size(); i++) {
-            if (musicStreams.get(i).getPath() == music.getPath()) {
-                musicStreams.remove(i);
-                return;
-            }
-        }
+    public static void removeMusicStream(Music music) {
+        IntStream.range(0, musicStreams.size())
+                .filter(i -> musicStreams.get(i).getPath() == music.getPath())
+                .findFirst()
+                .ifPresent(i -> musicStreams.remove(i));
     }
 
     /**
      * Updates all the stored music streams.
      */
-    public void updateMusicStreams() {
-        for (Music m : musicStreams) {
-            updateMusic(m);
-        }
+    public static void updateMusicStreams() {
+        musicStreams.forEach(AudioManager::updateMusic);
     }
 }

@@ -194,7 +194,7 @@ public class ResourceManager {
      * @param path The path of the music file.
      * @return The music object.
      */
-    public static Music getMusicStream(String path, AudioManager manager) {
+    public static Music getMusicStream(String path) {
         File file = new File(path);
 
         if (file.exists()) {
@@ -202,10 +202,10 @@ public class ResourceManager {
                 Music m = new Music(file.getAbsolutePath());
 
                 musicStreams.put(file.getAbsolutePath(), m);
-                manager.addMusicStream(m);
+                AudioManager.addMusicStream(m);
             }
 
-            manager.addMusicStream(musicStreams.get(file.getAbsolutePath()));
+            AudioManager.addMusicStream(musicStreams.get(file.getAbsolutePath()));
             return musicStreams.get(file.getAbsolutePath());
         } else {
             throw new IllegalStateException("Music file does not exist at location '" + file.getAbsolutePath() + "'");
@@ -217,14 +217,14 @@ public class ResourceManager {
      *
      * @param music The music stream.
      */
-    public static void disposeMusicStream(Music music, AudioManager manager) {
+    public static void disposeMusicStream(Music music) {
         File file = new File(music.getPath());
 
         if (musicStreams.containsKey(file.getAbsolutePath())) {
             //noinspection SuspiciousMethodCalls
             musicStreams.remove(music);
 
-            manager.removeMusicStream(music);
+            AudioManager.removeMusicStream(music);
             music.dispose();
         } else {
             throw new IllegalStateException("Audio clip is not loaded in resource manager, cannot dispose.");
