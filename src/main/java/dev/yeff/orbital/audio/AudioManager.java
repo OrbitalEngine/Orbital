@@ -7,6 +7,7 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static com.raylib.Raylib.*;
 
@@ -117,20 +118,16 @@ public class AudioManager {
      * @param music The music stream to remove.
      */
     public void removeMusicStream(Music music) {
-        for (int i = 0; i < musicStreams.size(); i++) {
-            if (musicStreams.get(i).getPath() == music.getPath()) {
-                musicStreams.remove(i);
-                return;
-            }
-        }
+        IntStream.range(0, musicStreams.size())
+                .filter(i -> musicStreams.get(i).getPath() == music.getPath())
+                .findFirst()
+                .ifPresent(i -> musicStreams.remove(i));
     }
 
     /**
      * Updates all the stored music streams.
      */
     public void updateMusicStreams() {
-        for (Music m : musicStreams) {
-            updateMusic(m);
-        }
+        musicStreams.forEach(this::updateMusic);
     }
 }
