@@ -41,7 +41,7 @@ public class MainScene implements Scene {
             pos.y += SPRITE_SPEED;
         }
         if (Input.getKeyboard().isKeyDown(Keys.A)) {
-            if (spriteFlipped == true) {
+            if (spriteFlipped) {
                 spriteFlipped = false;
                 sprite.flipX();
             }
@@ -49,7 +49,7 @@ public class MainScene implements Scene {
             pos.x -= SPRITE_SPEED;
         }
         if (Input.getKeyboard().isKeyDown(Keys.D)) {
-            if (spriteFlipped == false) {
+            if (!spriteFlipped) {
                 spriteFlipped = true;
                 sprite.flipX();
             }
