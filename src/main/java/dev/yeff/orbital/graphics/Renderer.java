@@ -14,13 +14,16 @@ import static com.raylib.Raylib.*;
  * @version 0.0.1
  */
 public class Renderer {
+    // Disable constructor
+    private Renderer() { }
+
     /**
      * Draws a {@code Sprite} to the screen at a given position.
      *
      * @param sprite The sprite to draw.
      * @param pos The position to draw it at.
      */
-    public void drawTexture(Sprite sprite, Vector2f pos) {
+    public static void drawTexture(Sprite sprite, Vector2f pos) {
         DrawTexture(sprite.getRawTex(), (int) pos.x, (int) pos.y, RAYWHITE);
     }
 
@@ -31,7 +34,7 @@ public class Renderer {
      * @param pos The position to draw the circle at.
      * @param radius The radius of the circle.
      */
-    public void drawCircle(Colors color, Vector2f pos, float radius) {
+    public static void drawCircle(Colors color, Vector2f pos, float radius) {
         DrawCircle((int) pos.x, (int) pos.y, radius, color.getColor());
     }
 
@@ -42,7 +45,7 @@ public class Renderer {
      * @param pos The position to draw the circle outline at.
      * @param radius The radius of the circle.
      */
-    public void drawCircleOutline(Colors color, Vector2f pos, float radius) {
+    public static void drawCircleOutline(Colors color, Vector2f pos, float radius) {
         DrawCircleLines((int) pos.x, (int) pos.y, radius, color.getColor());
     }
 
@@ -53,7 +56,7 @@ public class Renderer {
      * @param pos The position to draw the rectangle at.
      * @param size The width and height of the rectangle.
      */
-    public void drawRect(Colors color, Vector2f pos, Vector2f size) {
+    public static void drawRect(Colors color, Vector2f pos, Vector2f size) {
         DrawRectangle((int) pos.x, (int) pos.y, (int) size.x, (int) size.y, color.getColor());
     }
 
@@ -64,7 +67,7 @@ public class Renderer {
      * @param pos The position to draw the rectangle at.
      * @param size The size of the rectangle.
      */
-    public void drawRect(Colors color, Vector2f pos, float size) {
+    public static void drawRect(Colors color, Vector2f pos, float size) {
         DrawRectangle((int) pos.x, (int) pos.y, (int) size, (int) size, color.getColor());
     }
 
@@ -75,7 +78,7 @@ public class Renderer {
      * @param size The width and height of the rectangle.
      * @param color The color of the outline.
      */
-    public void drawRectOutline(Vector2f pos, Vector2f size, Colors color) {
+    public static void drawRectOutline(Vector2f pos, Vector2f size, Colors color) {
         DrawRectangleLines((int) pos.x, (int) pos.y, (int) size.x, (int) size.y, color.getColor());
     }
 
@@ -86,7 +89,7 @@ public class Renderer {
      * @param size The size of the rectangle.
      * @param color The color of the outline.
      */
-    public void drawRectOutline(Vector2f pos, float size, Colors color) {
+    public static void drawRectOutline(Vector2f pos, float size, Colors color) {
         DrawRectangleLines((int) pos.x, (int) pos.y, (int) size, (int) size, color.getColor());
     }
 
@@ -97,7 +100,7 @@ public class Renderer {
      * @param end The ending point of the line.
      * @param color The color of the line.
      */
-    public void drawLine(Vector2f start, Vector2f end, Colors color) {
+    public static void drawLine(Vector2f start, Vector2f end, Colors color) {
         DrawLine((int) start.x, (int) start.y, (int) end.x, (int) end.y, color.getColor());
     }
 
@@ -109,7 +112,7 @@ public class Renderer {
      * @param color The color of the line.
      * @param thickness The thickness of the line.
      */
-    public void drawLine(Vector2f start, Vector2f end, Colors color, float thickness) {
+    public static void drawLine(Vector2f start, Vector2f end, Colors color, float thickness) {
         DrawLineEx(start.asRaylibVector(), end.asRaylibVector(), thickness, color.getColor());
     }
 
@@ -120,7 +123,7 @@ public class Renderer {
      * @param fontSize The font size of the text.
      * @param pos The position to draw the text at.
      */
-    public void drawString(String text, float fontSize, Vector2f pos) {
+    public static void drawString(String text, float fontSize, Vector2f pos) {
         DrawText(text, (int) pos.x, (int) pos.y, (int) fontSize, Colors.BLACK.getColor());
     }
 
@@ -132,7 +135,7 @@ public class Renderer {
      * @param pos The position to draw the text at.
      * @param font The font to draw the text with.
      */
-    public void drawString(String text, float fontSize, Vector2f pos, Font font) {
+    public static void drawString(String text, float fontSize, Vector2f pos, Font font) {
         DrawTextEx(font.asRaylibFont(), text, pos.asRaylibVector(), fontSize, 2, Colors.BLACK.getColor());
     }
 
@@ -141,5 +144,5 @@ public class Renderer {
      *
      * @param color The color to fill with.
      */
-    public void fillBackground(Colors color) { ClearBackground(color.getColor()); }
+    public static void fillBackground(Colors color) { ClearBackground(color.getColor()); }
 }

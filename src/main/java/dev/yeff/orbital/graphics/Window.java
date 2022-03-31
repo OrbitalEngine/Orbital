@@ -22,14 +22,12 @@ public class Window {
     private Vector2f size;
     private String title;
     private Game game;
-    private Renderer renderer;
 
 
     public Window(Game game) {
         this.game = game;
         this.size = game.getSize();
         this.title = game.getTitle();
-        this.renderer = game.getRenderer();
 
         Log.info(Window.class, "Created window with width " + size.x + ", height " + size.y);
     }
@@ -59,7 +57,7 @@ public class Window {
         while (!WindowShouldClose()) {
             BeginDrawing();
 
-            renderer.fillBackground(Colors.WHITE);
+            Renderer.fillBackground(Colors.WHITE);
             game.getCurrentScene().update(game, GetFPS());
             AudioManager.updateMusicStreams();
 

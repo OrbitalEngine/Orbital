@@ -2,6 +2,7 @@ package dev.yeff.scenes;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.audio.AudioManager;
+import dev.yeff.orbital.graphics.Renderer;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.math.Mathf;
@@ -27,7 +28,7 @@ public class MenuScene implements Scene {
         if (Input.getKeyboard().isKeyDown(Keys.SPACE))
             game.loadScene("Main");
 
-        game.getRenderer().drawString(
+        Renderer.drawString(
                 "This is a Orbital demo, \npress Spacebar to go to the actual 'game'.",
                 60.0f,
                 new Vector2f(game.getSize().x / 4, game.getSize().y / 3),

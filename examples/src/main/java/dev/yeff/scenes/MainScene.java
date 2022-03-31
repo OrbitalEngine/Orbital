@@ -2,6 +2,7 @@ package dev.yeff.scenes;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.audio.AudioManager;
+import dev.yeff.orbital.graphics.Renderer;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.math.Vector2f;
@@ -58,7 +59,7 @@ public class MainScene implements Scene {
             pos.x += SPRITE_SPEED;
         }
 
-        game.getRenderer().drawTexture(sprite, pos);
+        Renderer.drawTexture(sprite, pos);
 
         Log.info(MainScene.class, pos);
     }
