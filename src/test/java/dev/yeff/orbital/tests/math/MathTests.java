@@ -19,10 +19,16 @@ public class MathTests implements WithAssertions {
                 Mathf.lerp(0.0f, 10.0f, 1.0f)
         );
 
-        assertThat(lerpedValues.get(0)).isEqualTo(25.0f);
-        assertThat(lerpedValues.get(1)).isEqualTo(50.0f);
-        assertThat(lerpedValues.get(2)).isEqualTo(10.0f);
-        assertThat(lerpedValues.get(3)).isEqualTo(10.0f);
+        List<Float> lerpedAnswers = List.of(
+          25.0f,
+          50.0f,
+          10.0f,
+          10.0f
+        );
+
+        for (int i = 0; i < lerpedValues.size(); i++) {
+            assertThat(lerpedValues.get(i)).isEqualTo(lerpedAnswers.get(i));
+        }
     }
 
     @DisplayName("calculate linear interpolation point from linear interpolation result")
@@ -35,9 +41,15 @@ public class MathTests implements WithAssertions {
                 Mathf.inverseLerp(10.0f, 20.0f, 20f)
         );
 
-        assertThat(invLerpedValues.get(0)).isEqualTo(0.0f);
-        assertThat(invLerpedValues.get(1)).isEqualTo(-0.5f);
-        assertThat(invLerpedValues.get(2)).isEqualTo(3.0f);
-        assertThat(invLerpedValues.get(3)).isEqualTo(1.0f);
+        List<Float> invLerpedAnswers = List.of(
+          0.0f,
+          -0.5f,
+          3.0f,
+          1.0f
+        );
+
+        for (int i = 0; i < invLerpedValues.size(); i++) {
+            assertThat(invLerpedValues.get(i)).isEqualTo(invLerpedAnswers.get(i));
+        }
     }
 }
