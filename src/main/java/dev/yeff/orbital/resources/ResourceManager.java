@@ -4,6 +4,7 @@ package dev.yeff.orbital.resources;
 import dev.yeff.orbital.audio.AudioManager;
 
 import java.io.File;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,8 +33,14 @@ public class ResourceManager {
      * @param path The path of the sprite.
      * @return The sprite resource.
      */
-    public static Sprite getSprite(String path) {
-        File file = new File(path);
+    public static <T> Sprite getSprite(Class<T> klass, String path) {
+        File file;
+
+        try {
+            file = new File(klass.getClassLoader().getResource(path).toURI());
+        } catch (URISyntaxException e) {
+            throw new IllegalStateException(e.toString());
+        }
 
         if (file.exists()) {
             if (!sprites.containsKey(file.getAbsolutePath())) {
@@ -86,8 +93,14 @@ public class ResourceManager {
      * @param path The path of the font file.
      * @return The font resource.
      */
-    public static Font getFont(String path) {
-        File file = new File(path);
+    public static <T> Font getFont(Class<T> klass, String path) {
+        File file;
+
+        try {
+            file = new File(klass.getClassLoader().getResource(path).toURI());
+        } catch (URISyntaxException e) {
+            throw new IllegalStateException(e.toString());
+        }
 
         if (file.exists()) {
             if (!fonts.containsKey(file.getAbsolutePath())) {
@@ -140,8 +153,14 @@ public class ResourceManager {
      * @param path The path of the audio file.
      * @return The audio clip.
      */
-    public static AudioClip getAudioClip(String path) {
-        File file = new File(path);
+    public static <T> AudioClip getAudioClip(Class<T> klass, String path) {
+        File file;
+
+        try {
+            file = new File(klass.getClassLoader().getResource(path).toURI());
+        } catch (URISyntaxException e) {
+            throw new IllegalStateException(e.toString());
+        }
 
         if (file.exists()) {
             if (!audioClips.containsKey(file.getAbsolutePath())) {
@@ -194,8 +213,14 @@ public class ResourceManager {
      * @param path The path of the music file.
      * @return The music object.
      */
-    public static Music getMusicStream(String path) {
-        File file = new File(path);
+    public static <T> Music getMusicStream(Class<T> klass, String path) {
+        File file;
+
+        try {
+            file = new File(klass.getClassLoader().getResource(path).toURI());
+        } catch (URISyntaxException e) {
+            throw new IllegalStateException(e.toString());
+        }
 
         if (file.exists()) {
             if (!musicStreams.containsKey(file.getAbsolutePath())) {

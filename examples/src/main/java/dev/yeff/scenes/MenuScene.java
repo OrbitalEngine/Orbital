@@ -18,7 +18,7 @@ public class MenuScene implements Scene {
 
     @Override
     public void init(Game game) {
-        font = ResourceManager.getFont("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\Roboto-Regular.ttf");
+        font = ResourceManager.getFont(getClass(), "fonts/Roboto-Regular.ttf");
 
         System.out.println("menu scene initialized");
     }

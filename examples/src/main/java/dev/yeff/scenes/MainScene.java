@@ -23,9 +23,10 @@ public class MainScene implements Scene {
     @Override
     public void init(Game game) {
         Log.info(MainScene.class, "main scene initialized");
+        Log.info(MainScene.class, String.valueOf(getClass().getClassLoader().getResource("assets/character_0000.png")));
 
-        sprite = ResourceManager.getSprite("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\character_0000.png");
-        music = ResourceManager.getMusicStream("C:\\Users\\aditc\\dev\\Orbital\\examples\\src\\main\\resources\\bensound-epic.mp3");
+        sprite = ResourceManager.getSprite(getClass(), "assets/character_0000.png");
+        music = ResourceManager.getMusicStream(getClass(), "audio/bensound-epic.mp3");
 
         music.loop(true);
         AudioManager.playMusic(music);
