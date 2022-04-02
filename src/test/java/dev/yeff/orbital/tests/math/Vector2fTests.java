@@ -26,6 +26,16 @@ public class Vector2fTests implements WithAssertions {
         assertThat(vector2f.y).isEqualTo(7.0f);
     }
 
+    @DisplayName("creating a vector with another vector")
+    @Test
+    public void testCreateVector_withOtherVector() {
+        Vector2f vec2f = new Vector2f(5.0f, 7.0f);
+        Vector2f vector2f = new Vector2f(vec2f);
+
+        assertThat(vector2f.x).isEqualTo(5.0f);
+        assertThat(vector2f.y).isEqualTo(7.0f);
+    }
+
     @DisplayName("adding two vectors together")
     @Test
     public void testVectorMath_addVectors() {
