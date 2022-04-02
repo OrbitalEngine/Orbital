@@ -10,8 +10,8 @@ public class Input {
     // Disable constructor
     private Input() { }
 
-    private static Keyboard keyboard = new Keyboard();
-    private static Mouse mouse = new Mouse();
+    private static final Keyboard keyboard = new Keyboard();
+    private static final Mouse mouse = new Mouse();
 
     /**
      * Gets the stored keyboard instance.
