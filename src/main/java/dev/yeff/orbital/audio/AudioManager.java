@@ -19,7 +19,7 @@ import static com.raylib.Raylib.*;
  */
 public class AudioManager {
     @Getter
-    private static List<Music> musicStreams = new ArrayList<>();
+    private static final List<Music> musicStreams = new ArrayList<>();
 
     // Disable constructor
     private AudioManager() { }
@@ -117,10 +117,11 @@ public class AudioManager {
      * @param music The music stream to remove.
      */
     public static void removeMusicStream(Music music) {
+        //noinspection StringEquality
         IntStream.range(0, musicStreams.size())
                 .filter(i -> musicStreams.get(i).getPath() == music.getPath())
                 .findFirst()
-                .ifPresent(i -> musicStreams.remove(i));
+                .ifPresent(musicStreams::remove);
     }
 
     /**
