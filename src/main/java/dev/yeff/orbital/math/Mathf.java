@@ -51,8 +51,7 @@ public class Mathf {
      * @return The normalized vector.
      */
     public static Vector2f normalize(Vector2f source) {
-        // vector length is sqrt(x^2 + y^2)
-        float length = (float) Math.sqrt((source.x * source.x) + (source.y * source.y));
+        float length = source.getMagnitude();
 
         if (length <= 0)
             throw new IllegalStateException("Length is less than 0, cannot normalize");

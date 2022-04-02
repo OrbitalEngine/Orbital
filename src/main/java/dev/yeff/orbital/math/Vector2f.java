@@ -111,6 +111,14 @@ public class Vector2f {
         this.y = this.y / y;
     }
 
+    /**
+     * Returns the length of the vector.
+     *
+     * @return The length of the vector.
+     */
+    public float getMagnitude() {
+        return (float) Math.sqrt((x * x) + (y * y));
+    }
 
     /**
      * Sets the x and y components of the current instance to zero.
