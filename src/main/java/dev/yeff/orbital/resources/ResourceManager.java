@@ -14,14 +14,15 @@ import java.util.Map;
  * @author YeffyCodeGit
  * @version 0.0.1
  */
+@SuppressWarnings("ConstantConditions")
 public class ResourceManager {
     // Disable constructor
     private ResourceManager() { }
 
-    private static Map<String, Sprite> sprites = new HashMap<>();
-    private static Map<String, Font> fonts = new HashMap<>();
-    private static Map<String, AudioClip> audioClips = new HashMap<>();
-    private static Map<String, Music> musicStreams = new HashMap<>();
+    private static final Map<String, Sprite> sprites = new HashMap<>();
+    private static final Map<String, Font> fonts = new HashMap<>();
+    private static final Map<String, AudioClip> audioClips = new HashMap<>();
+    private static final Map<String, Music> musicStreams = new HashMap<>();
 
 
     // SPRITES

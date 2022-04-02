@@ -22,7 +22,7 @@ public class MainScene implements Scene {
 
     @Override
     public void init(Game game) {
-        Log.info(MainScene.class, "main scene initialized");
+        Log.info(getClass(), "main scene initialized");
 
         sprite = ResourceManager.getSprite(getClass(), "assets/character_0000.png");
         music = ResourceManager.getMusicStream(getClass(), "audio/bensound-epic.mp3");
@@ -68,6 +68,6 @@ public class MainScene implements Scene {
     public void dispose(Game game) {
         ResourceManager.disposeSprite(sprite);
         ResourceManager.disposeMusicStream(music);
-        Log.info(MainScene.class, "disposed main scene");
+        Log.info(getClass(), "disposed main scene");
     }
 }
