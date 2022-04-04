@@ -45,6 +45,7 @@ public class Window {
         InitWindow((int) size.x, (int) size.y, title);
         SetTargetFPS(60);
 
+        game.getCurrentScene().initInternal();
         game.getCurrentScene().init(game);
 
         update();

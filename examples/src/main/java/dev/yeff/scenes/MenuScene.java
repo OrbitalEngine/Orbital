@@ -1,7 +1,9 @@
 package dev.yeff.scenes;
 
+import dev.yeff.components.TestComponent;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.audio.AudioManager;
+import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.graphics.Renderer;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;
@@ -15,11 +17,20 @@ import dev.yeff.orbital.util.Log;
 
 public class MenuScene extends Scene {
     private Font font;
+    private GameObject obj;
 
     @Override
     public void init(Game game) {
         font = ResourceManager.getFont(getClass(), "fonts/Roboto-Regular.ttf");
         Log.info(getClass(), "Loaded menu scene");
+
+        obj = new GameObject();
+        obj.addComponent(new TestComponent());
+
+        addGameObject(obj);
+
+        TestComponent component = obj.getComponent(TestComponent.class);
+        System.out.println(component.e);
     }
 
     @Override

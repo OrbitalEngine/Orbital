@@ -1,9 +1,14 @@
 package dev.yeff.orbital.ecs;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameObject {
     private List<Component> components;
+
+    public GameObject() {
+        components = new ArrayList<>();
+    }
 
     public <T extends Component> T getComponent(Class<T> component) {
         for (Component c : components) {
