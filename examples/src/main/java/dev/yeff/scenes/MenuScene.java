@@ -13,7 +13,7 @@ import dev.yeff.orbital.resources.Font;
 import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.orbital.util.Log;
 
-public class MenuScene implements Scene {
+public class MenuScene extends Scene {
     private Font font;
 
     @Override

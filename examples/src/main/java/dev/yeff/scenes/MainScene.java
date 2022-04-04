@@ -12,7 +12,7 @@ import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.orbital.util.Log;
 
-public class MainScene implements Scene {
+public class MainScene extends Scene {
     private Vector2f pos;
     private Sprite sprite;
     private Music music;
