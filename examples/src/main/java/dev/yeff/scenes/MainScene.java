@@ -36,7 +36,9 @@ public class MainScene extends Scene {
 
     @Override
     public void update(Game game, float fps) {
+        PlayerComponent playerComponent = player.getComponent(PlayerComponent.class);
 
+        Log.info(getClass(), playerComponent.pos);
     }
 
     @Override
