@@ -17,6 +17,8 @@ public class Renderer {
     // Disable constructor
     private Renderer() { }
 
+    // TODO: Make renderer store all GameObjects to render and render automatically
+
     /**
      * Draws a {@code Sprite} to the screen at a given position.
      *

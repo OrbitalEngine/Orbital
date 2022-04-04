@@ -79,4 +79,8 @@ public class Game {
     public Vector2f getScreenCenter() {
         return new Vector2f(size.x / 2, size.y / 2);
     }
+
+
+    // TODO: Add function to let client add GameObejcts to be rendered.
+    // TODO: Update renderer with GameObjects
 }
