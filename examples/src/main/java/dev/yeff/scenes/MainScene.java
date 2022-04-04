@@ -1,7 +1,9 @@
 package dev.yeff.scenes;
 
+import dev.yeff.components.PlayerComponent;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.audio.AudioManager;
+import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.graphics.Renderer;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;
@@ -13,60 +15,32 @@ import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.orbital.util.Log;
 
 public class MainScene extends Scene {
-    private Vector2f pos;
-    private Sprite sprite;
+    private GameObject player;
     private Music music;
-    private boolean spriteFlipped;
 
     private static final float SPRITE_SPEED = 12.0f;
 
     @Override
     public void init(Game game) {
         Log.info(getClass(), "main scene initialized");
-
-        sprite = ResourceManager.getSprite(getClass(), "assets/character_0000.png");
         music = ResourceManager.getMusicStream(getClass(), "audio/bensound-epic.mp3");
 
         music.loop(true);
         AudioManager.playMusic(music);
 
-        sprite.resize(new Vector2f(120, 120));
-        pos = game.getScreenCenter();
+        player = new GameObject();
+        player.addComponent(new PlayerComponent());
+
+        addGameObject(game, player);
     }
 
     @Override
     public void update(Game game, float fps) {
-        if (Input.getKeyboard().isKeyDown(Keys.W)) {
-            pos.y -= SPRITE_SPEED;
-        }
-        if (Input.getKeyboard().isKeyDown(Keys.S)) {
-            pos.y += SPRITE_SPEED;
-        }
-        if (Input.getKeyboard().isKeyDown(Keys.A)) {
-            if (spriteFlipped) {
-                spriteFlipped = false;
-                sprite.flipX();
-            }
 
-            pos.x -= SPRITE_SPEED;
-        }
-        if (Input.getKeyboard().isKeyDown(Keys.D)) {
-            if (!spriteFlipped) {
-                spriteFlipped = true;
-                sprite.flipX();
-            }
-
-            pos.x += SPRITE_SPEED;
-        }
-
-        Renderer.drawTexture(sprite, pos);
-
-        Log.info(MainScene.class, pos);
     }
 
     @Override
     public void dispose(Game game) {
-        ResourceManager.disposeSprite(sprite);
         ResourceManager.disposeMusicStream(music);
         Log.info(getClass(), "disposed main scene");
     }

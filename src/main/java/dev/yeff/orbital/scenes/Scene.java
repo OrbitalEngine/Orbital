@@ -2,6 +2,7 @@ package dev.yeff.orbital.scenes;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,28 +15,30 @@ import java.util.List;
  */
 public abstract class Scene {
     private boolean isRunning = false;
+
+    @Getter
     private List<GameObject> objects;
 
     public Scene() {
         objects = new ArrayList<>();
     }
 
-    public void initInternal() {
+    public void initInternal(Game game) {
         isRunning = true;
 
         if (objects == null)
             objects = new ArrayList<>();
 
         for (GameObject go : objects)
-            go.init();
+            go.init(game);
     }
 
-    public void addGameObject(GameObject gameObject) {
+    public void addGameObject(Game game, GameObject gameObject) {
         if (!isRunning) {
             objects.add(gameObject);
         } else {
             objects.add(gameObject);
-            gameObject.init();
+            gameObject.init(game);
         }
     }
 

@@ -2,6 +2,8 @@ package dev.yeff.orbital.graphics;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.audio.AudioManager;
+import dev.yeff.orbital.ecs.Component;
+import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.AudioClip;
@@ -45,7 +47,7 @@ public class Window {
         InitWindow((int) size.x, (int) size.y, title);
         SetTargetFPS(60);
 
-        game.getCurrentScene().initInternal();
+        game.getCurrentScene().initInternal(game);
         game.getCurrentScene().init(game);
 
         update();
@@ -59,8 +61,12 @@ public class Window {
             BeginDrawing();
 
             Renderer.fillBackground(Colors.WHITE);
-            game.getCurrentScene().update(game, GetFPS());
             AudioManager.updateMusicStreams();
+
+            game.getCurrentScene().update(game, GetFPS());
+
+            for (GameObject obj : game.getCurrentScene().getObjects())
+                obj.update(game);
 
             EndDrawing();
         }

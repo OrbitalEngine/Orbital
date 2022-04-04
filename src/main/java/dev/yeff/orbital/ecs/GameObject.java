@@ -1,9 +1,13 @@
 package dev.yeff.orbital.ecs;
 
+import dev.yeff.orbital.Game;
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameObject {
+    @Getter
     private List<Component> components;
 
     public GameObject() {
@@ -45,15 +49,15 @@ public class GameObject {
         component.parent = this;
     }
 
-    public void init() {
+    public void init(Game game) {
         for (Component c : components) {
-            c.init();
+            c.init(game);
         }
     }
 
-    public void update() {
+    public void update(Game game) {
         for (Component c : components) {
-            c.update();
+            c.update(game);
         }
     }
 }

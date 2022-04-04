@@ -67,7 +67,7 @@ public class Game {
         currentScene.dispose(this);
 
         currentScene = SceneManager.getScene(scene);
-        currentScene.initInternal();
+        currentScene.initInternal(this);
         currentScene.init(this);
         Log.info(Game.class, "Loaded scene " + scene);
     }
