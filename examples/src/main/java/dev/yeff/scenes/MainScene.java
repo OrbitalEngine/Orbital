@@ -4,6 +4,7 @@ import dev.yeff.components.PlayerComponent;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.audio.AudioManager;
 import dev.yeff.orbital.ecs.GameObject;
+import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
 import dev.yeff.orbital.graphics.Renderer;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;
@@ -28,8 +29,9 @@ public class MainScene extends Scene {
         music.loop(true);
         AudioManager.playMusic(music);
 
-        player = new GameObject();
-        player.addComponent(new PlayerComponent());
+        player = new GameObjectBuilder()
+                .addComponent(new PlayerComponent())
+                .build();
 
         addGameObject(game, player);
     }
