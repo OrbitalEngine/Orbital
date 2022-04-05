@@ -5,6 +5,7 @@ import dev.yeff.orbital.Game;
 import dev.yeff.orbital.audio.AudioManager;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
+import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.graphics.Renderer;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;
@@ -30,7 +31,8 @@ public class MainScene extends Scene {
         AudioManager.playMusic(music);
 
         player = new GameObjectBuilder()
-                .addComponent(new PlayerComponent())
+                .withTransform(new TransformComponent(game.getScreenCenter()))
+                .withComponent(new PlayerComponent())
                 .build();
 
         addGameObject(game, player);
@@ -38,9 +40,9 @@ public class MainScene extends Scene {
 
     @Override
     public void update(Game game, float fps) {
-        PlayerComponent playerComponent = player.getComponent(PlayerComponent.class);
-
-        Log.info(getClass(), playerComponent.pos);
+//        PlayerComponent playerComponent = player.getComponent(PlayerComponent.class);
+//
+//        Log.info(getClass(), playerComponent.pos);
     }
 
     @Override

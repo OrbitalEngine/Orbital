@@ -2,6 +2,7 @@ package dev.yeff.components;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.Component;
+import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.graphics.Renderer;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;
@@ -10,7 +11,7 @@ import dev.yeff.orbital.resources.ResourceManager;
 import dev.yeff.orbital.resources.Sprite;
 
 public class PlayerComponent extends Component {
-    public Vector2f pos;
+    public TransformComponent transform;
     public Sprite sprite;
     private boolean spriteFlipped;
 
@@ -18,7 +19,7 @@ public class PlayerComponent extends Component {
 
     @Override
     public void init(Game game) {
-        pos = game.getScreenCenter();
+        transform = parent.getComponent(TransformComponent.class);
         sprite = ResourceManager.getSprite(getClass(), "assets/character_0000.png");
 
         sprite.resize(new Vector2f(120, 120));
@@ -27,10 +28,10 @@ public class PlayerComponent extends Component {
     @Override
     public void update(Game game) {
         if (Input.getKeyboard().isKeyDown(Keys.W)) {
-            pos.y -= SPRITE_SPEED;
+            transform.position.y -= SPRITE_SPEED;
         }
         if (Input.getKeyboard().isKeyDown(Keys.S)) {
-            pos.y += SPRITE_SPEED;
+            transform.position.y += SPRITE_SPEED;
         }
         if (Input.getKeyboard().isKeyDown(Keys.A)) {
             if (spriteFlipped) {
@@ -38,7 +39,7 @@ public class PlayerComponent extends Component {
                 sprite.flipX();
             }
 
-            pos.x -= SPRITE_SPEED;
+            transform.position.x -= SPRITE_SPEED;
         }
         if (Input.getKeyboard().isKeyDown(Keys.D)) {
             if (!spriteFlipped) {
@@ -46,9 +47,9 @@ public class PlayerComponent extends Component {
                 sprite.flipX();
             }
 
-            pos.x += SPRITE_SPEED;
+            transform.position.x += SPRITE_SPEED;
         }
 
-        Renderer.drawTexture(sprite, pos);
+        Renderer.drawTexture(sprite, transform.position);
     }
 }
