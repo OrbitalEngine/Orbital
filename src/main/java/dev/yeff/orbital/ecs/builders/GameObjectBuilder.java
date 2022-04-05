@@ -3,6 +3,7 @@ package dev.yeff.orbital.ecs.builders;
 import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.components.RenderShapeComponent;
+import dev.yeff.orbital.ecs.components.SpriteComponent;
 import dev.yeff.orbital.ecs.components.TransformComponent;
 
 public class GameObjectBuilder {
@@ -21,8 +22,12 @@ public class GameObjectBuilder {
         return withComponent(transform);
     }
 
-    public GameObjectBuilder withShape(RenderShapeComponent shapeComponent) {
-        return withComponent(shapeComponent);
+    public GameObjectBuilder withShape(RenderShapeComponent shape) {
+        return withComponent(shape);
+    }
+
+    public GameObjectBuilder withSprite(SpriteComponent sprite) {
+        return withComponent(sprite);
     }
 
     public GameObject build() {

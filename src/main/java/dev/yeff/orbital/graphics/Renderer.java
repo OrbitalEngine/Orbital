@@ -2,6 +2,7 @@ package dev.yeff.orbital.graphics;
 
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.components.RenderShapeComponent;
+import dev.yeff.orbital.ecs.components.SpriteComponent;
 import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.Sprite;
@@ -44,6 +45,15 @@ public class Renderer {
                     case CIRCLE_OUTLINE -> drawCircleOutline(color, position, scale.x);
                     case RECTANGLE_OUTLINE -> drawRectOutline(position, scale, color);
                 }
+
+            } else {   // as the array is filtered for either rendershape or sprite components in the Window class, if it doesnt have a shape it has a texture
+                Sprite sprite = go.getComponent(SpriteComponent.class).sprite;
+                Vector2f position = go.getComponent(TransformComponent.class).position;
+                Vector2f scale = go.getComponent(TransformComponent.class).scale;
+
+                sprite.resize(scale);
+
+                drawTexture(sprite, position);
             }
         }
     }

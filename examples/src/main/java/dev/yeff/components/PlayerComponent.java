@@ -2,12 +2,10 @@ package dev.yeff.components;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.Component;
+import dev.yeff.orbital.ecs.components.SpriteComponent;
 import dev.yeff.orbital.ecs.components.TransformComponent;
-import dev.yeff.orbital.graphics.Renderer;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;
-import dev.yeff.orbital.math.Vector2f;
-import dev.yeff.orbital.resources.ResourceManager;
 import dev.yeff.orbital.resources.Sprite;
 
 public class PlayerComponent extends Component {
@@ -20,9 +18,7 @@ public class PlayerComponent extends Component {
     @Override
     public void init(Game game) {
         transform = parent.getComponent(TransformComponent.class);
-        sprite = ResourceManager.getSprite(getClass(), "assets/character_0000.png");
-
-        sprite.resize(new Vector2f(120, 120));
+        sprite = parent.getComponent(SpriteComponent.class).sprite;
     }
 
     @Override
