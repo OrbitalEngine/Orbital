@@ -4,12 +4,16 @@ import dev.yeff.orbital.Game;
 import dev.yeff.orbital.audio.AudioManager;
 import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.ecs.GameObject;
+import dev.yeff.orbital.ecs.components.RenderShapeComponent;
+import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.AudioClip;
 import dev.yeff.orbital.util.Log;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static com.raylib.Raylib.*;
@@ -57,6 +61,8 @@ public class Window {
      * Runs the game loop and updates the scene. This function also disposes the scene after game loop ends.
      */
     private void update() {
+        List<GameObject> renderObjects = new ArrayList<>();
+
         while (!WindowShouldClose()) {
             BeginDrawing();
 
@@ -65,8 +71,15 @@ public class Window {
 
             game.getCurrentScene().update(game, GetFPS());
 
-            for (GameObject obj : game.getCurrentScene().getObjects())
+            for (GameObject obj : game.getCurrentScene().getObjects()) {
                 obj.update(game);
+
+                if (obj.hasComponent(TransformComponent.class) && (obj.hasComponent(RenderShapeComponent.class)))
+                    renderObjects.add(obj);
+            }
+
+            Renderer.updateRenderObjects(renderObjects);
+            Renderer.performRenders();
 
             EndDrawing();
         }

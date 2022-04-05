@@ -1,8 +1,14 @@
 package dev.yeff.orbital.graphics;
 
+import dev.yeff.orbital.ecs.GameObject;
+import dev.yeff.orbital.ecs.components.RenderShapeComponent;
+import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.resources.Font;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.raylib.Jaylib.RAYWHITE;
 import static com.raylib.Raylib.*;
@@ -14,10 +20,33 @@ import static com.raylib.Raylib.*;
  * @version 0.0.1
  */
 public class Renderer {
+    private static List<GameObject> renderObjects = new ArrayList<>();
+
     // Disable constructor
     private Renderer() { }
 
-    // TODO: Make renderer store all GameObjects to render and render automatically
+
+    public static void updateRenderObjects(List<GameObject> renderObjects) {
+        Renderer.renderObjects = renderObjects;
+    }
+
+    public static void performRenders() {
+        for (GameObject go : renderObjects) {
+            if (go.hasComponent(RenderShapeComponent.class)) {
+                Shapes shape = go.getComponent(RenderShapeComponent.class).shape;
+                Colors color = go.getComponent(RenderShapeComponent.class).color;
+                Vector2f scale = go.getComponent(TransformComponent.class).scale;
+                Vector2f position = go.getComponent(TransformComponent.class).position;
+
+                switch (shape) {
+                    case CIRCLE -> drawCircle(color, position, scale.x);
+                    case RECTANGLE -> drawRect(color, position, scale);
+                    case CIRCLE_OUTLINE -> drawCircleOutline(color, position, scale.x);
+                    case RECTANGLE_OUTLINE -> drawRectOutline(position, scale, color);
+                }
+            }
+        }
+    }
 
     /**
      * Draws a {@code Sprite} to the screen at a given position.

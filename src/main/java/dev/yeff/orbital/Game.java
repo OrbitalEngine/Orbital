@@ -82,6 +82,4 @@ public class Game {
     }
 
 
-    // TODO: Add function to let client add GameObejcts to be rendered.
-    // TODO: Update renderer with GameObjects
 }

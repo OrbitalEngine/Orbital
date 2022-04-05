@@ -49,7 +49,5 @@ public class PlayerComponent extends Component {
 
             transform.position.x += SPRITE_SPEED;
         }
-
-        Renderer.drawTexture(sprite, transform.position);
     }
 }

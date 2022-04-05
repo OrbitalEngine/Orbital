@@ -5,8 +5,11 @@ import dev.yeff.orbital.Game;
 import dev.yeff.orbital.audio.AudioManager;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
+import dev.yeff.orbital.ecs.components.RenderShapeComponent;
 import dev.yeff.orbital.ecs.components.TransformComponent;
+import dev.yeff.orbital.graphics.Colors;
 import dev.yeff.orbital.graphics.Renderer;
+import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.math.Vector2f;
@@ -15,6 +18,8 @@ import dev.yeff.orbital.resources.ResourceManager;
 import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.orbital.util.Log;
+
+import java.awt.*;
 
 public class MainScene extends Scene {
     private GameObject player;
@@ -31,7 +36,8 @@ public class MainScene extends Scene {
         AudioManager.playMusic(music);
 
         player = new GameObjectBuilder()
-                .withTransform(new TransformComponent(game.getScreenCenter()))
+                .withTransform(new TransformComponent(game.getScreenCenter(), 20.0f))
+                .withShape(new RenderShapeComponent(Shapes.CIRCLE, Colors.RED))
                 .withComponent(new PlayerComponent())
                 .build();
 

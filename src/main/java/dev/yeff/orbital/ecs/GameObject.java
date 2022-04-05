@@ -42,6 +42,15 @@ public class GameObject {
         }
     }
 
+    public <T extends Component> boolean hasComponent(Class<T> component) {
+        for (Component c : components) {
+            if (component.isAssignableFrom(c.getClass()))
+                return true;
+        }
+
+        return false;
+    }
+
     public void addComponent(Component component) {
         components.add(component);
 
