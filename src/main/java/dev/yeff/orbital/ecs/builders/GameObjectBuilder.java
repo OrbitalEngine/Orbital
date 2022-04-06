@@ -23,11 +23,17 @@ public class GameObjectBuilder {
     }
 
     public GameObjectBuilder withShape(RenderShapeComponent shape) {
-        return withComponent(shape);
+        if (!object.hasComponent(SpriteComponent.class))
+            return withComponent(shape);
+        else
+            throw new IllegalStateException("Cannot add shape component to object with sprite component");
     }
 
     public GameObjectBuilder withSprite(SpriteComponent sprite) {
-        return withComponent(sprite);
+        if (!object.hasComponent(RenderShapeComponent.class))
+            return withComponent(sprite);
+        else
+            throw new IllegalStateException("Cannot add sprite component to object with shape component");
     }
 
     public GameObject build() {
