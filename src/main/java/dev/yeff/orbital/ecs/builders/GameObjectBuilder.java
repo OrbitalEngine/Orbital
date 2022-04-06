@@ -5,6 +5,7 @@ import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.components.RenderShapeComponent;
 import dev.yeff.orbital.ecs.components.SpriteComponent;
 import dev.yeff.orbital.ecs.components.TransformComponent;
+import dev.yeff.orbital.math.Vector2f;
 
 public class GameObjectBuilder {
     private GameObject object;

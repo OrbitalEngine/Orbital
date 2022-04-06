@@ -6,6 +6,7 @@ import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.components.RenderShapeComponent;
 import dev.yeff.orbital.ecs.components.SpriteComponent;
+import dev.yeff.orbital.ecs.components.TextComponent;
 import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.math.Vector2f;
@@ -76,7 +77,8 @@ public class Window {
                 obj.update(game);
 
                 if (obj.hasComponent(TransformComponent.class) && (obj.hasComponent(RenderShapeComponent.class)
-                                                                || obj.hasComponent(SpriteComponent.class)))
+                                                                || obj.hasComponent(SpriteComponent.class)
+                                                                || obj.hasComponent(TextComponent.class)))
                     renderObjects.add(obj);
             }
 
