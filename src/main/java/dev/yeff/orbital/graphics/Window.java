@@ -4,10 +4,7 @@ import dev.yeff.orbital.Game;
 import dev.yeff.orbital.audio.AudioManager;
 import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.ecs.GameObject;
-import dev.yeff.orbital.ecs.components.RenderShapeComponent;
-import dev.yeff.orbital.ecs.components.SpriteComponent;
-import dev.yeff.orbital.ecs.components.TextComponent;
-import dev.yeff.orbital.ecs.components.TransformComponent;
+import dev.yeff.orbital.ecs.components.*;
 import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.AudioClip;
@@ -82,7 +79,8 @@ public class Window {
 
                 if (obj.hasComponent(TransformComponent.class) && (obj.hasComponent(RenderShapeComponent.class)
                                                                 || obj.hasComponent(SpriteComponent.class)
-                                                                || obj.hasComponent(TextComponent.class)))
+                                                                || obj.hasComponent(TextComponent.class))
+                                                                || obj.hasComponent(LineComponent.class))
                     renderObjects.add(obj);
             }
 

@@ -1,10 +1,7 @@
 package dev.yeff.orbital.graphics;
 
 import dev.yeff.orbital.ecs.GameObject;
-import dev.yeff.orbital.ecs.components.RenderShapeComponent;
-import dev.yeff.orbital.ecs.components.SpriteComponent;
-import dev.yeff.orbital.ecs.components.TextComponent;
-import dev.yeff.orbital.ecs.components.TransformComponent;
+import dev.yeff.orbital.ecs.components.*;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.resources.Font;
@@ -57,6 +54,13 @@ public class Renderer {
                     drawString(text, fontSize, position, font);
                 else
                     drawString(text, fontSize, position);
+            } else if (go.hasComponent(LineComponent.class)) {
+                float thickness = go.getComponent(LineComponent.class).thickness;
+                Colors color = go.getComponent(LineComponent.class).color;
+                Vector2f start = go.getComponent(LineComponent.class).start;
+                Vector2f end = go.getComponent(LineComponent.class).end;
+
+                drawLine(start, end, color, thickness);
             } else {
                 Sprite sprite = go.getComponent(SpriteComponent.class).sprite;
                 Vector2f position = go.getComponent(TransformComponent.class).position;

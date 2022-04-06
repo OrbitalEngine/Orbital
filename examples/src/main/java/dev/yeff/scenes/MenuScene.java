@@ -3,6 +3,7 @@ package dev.yeff.scenes;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
+import dev.yeff.orbital.ecs.components.LineComponent;
 import dev.yeff.orbital.ecs.components.TextComponent;
 import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.graphics.Renderer;
@@ -17,6 +18,7 @@ import dev.yeff.orbital.util.Log;
 public class MenuScene extends Scene {
     private Font font;
     private GameObject greeting;
+    private GameObject testLine;
 
     @Override
     public void init(Game game) {
@@ -27,7 +29,13 @@ public class MenuScene extends Scene {
                 .withComponent(new TextComponent(60.0f, "This is a Orbital demo, \npress Spacebar to go to the actual 'game'.", null))
                 .build();
 
+        testLine = new GameObjectBuilder()
+                .withTransform(new TransformComponent(new Vector2f(0, 0), new Vector2f(0, 0)))
+                .withComponent(new LineComponent(2.0f, new Vector2f(18, 42), new Vector2f(game.getSize().x - 18, 42)))
+                .build();
+
         addGameObject(game, greeting);
+        addGameObject(game, testLine);
 
         Log.info(getClass(), "Loaded menu scene");
     }
