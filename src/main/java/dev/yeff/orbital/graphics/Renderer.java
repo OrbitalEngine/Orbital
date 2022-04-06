@@ -53,9 +53,10 @@ public class Renderer {
                 Font font = go.getComponent(TextComponent.class).font;
                 Vector2f position = go.getComponent(TransformComponent.class).position;
 
-                drawString(text, fontSize, position, font);
-                
-
+                if (font != null)
+                    drawString(text, fontSize, position, font);
+                else
+                    drawString(text, fontSize, position);
             } else {
                 Sprite sprite = go.getComponent(SpriteComponent.class).sprite;
                 Vector2f position = go.getComponent(TransformComponent.class).position;

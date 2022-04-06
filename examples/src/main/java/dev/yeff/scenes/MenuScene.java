@@ -24,7 +24,7 @@ public class MenuScene extends Scene {
 
         greeting = new GameObjectBuilder()
                 .withTransform(new TransformComponent(new Vector2f(game.getSize().x / 4, game.getSize().y / 3), new Vector2f(0, 0)))
-                .withComponent(new TextComponent(60.0f, "This is a Orbital demo, \npress Spacebar to go to the actual 'game'.", font))
+                .withComponent(new TextComponent(60.0f, "This is a Orbital demo, \npress Spacebar to go to the actual 'game'.", null))
                 .build();
 
         addGameObject(game, greeting);

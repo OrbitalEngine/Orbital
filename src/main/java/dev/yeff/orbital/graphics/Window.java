@@ -73,6 +73,10 @@ public class Window {
 
             game.getCurrentScene().update(game, GetFPS());
 
+            // clear out the objects every frame so that when the scenes switch we don't keep rendering objects from the last scene
+            // TODO: Figure out a better way to do this so we dont have to keep adding and removing objects that might have not needed to be destroyed
+            renderObjects.clear();
+
             for (GameObject obj : game.getCurrentScene().getObjects()) {
                 obj.update(game);
 
