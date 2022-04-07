@@ -4,6 +4,11 @@ import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.math.Vector2f;
 
+/**
+ * Stores data about object position and scale.
+ *
+ * @author YeffyCodeGit
+ */
 public class TransformComponent extends Component {
     public Vector2f position;
     public Vector2f scale;

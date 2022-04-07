@@ -5,6 +5,12 @@ import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.graphics.Colors;
 import dev.yeff.orbital.math.Vector2f;
 
+/**
+ * Component storing data to render a line.
+ *
+ * @author YeffyCodeGit
+ * @version 0.0.1
+ */
 public class LineComponent extends Component {
     public float thickness;
     public Vector2f start;

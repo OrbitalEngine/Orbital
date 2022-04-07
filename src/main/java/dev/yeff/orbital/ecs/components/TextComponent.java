@@ -4,6 +4,11 @@ import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.resources.Font;
 
+/**
+ * Stores data to render a string of text, with an optional font.
+ *
+ * @author YeffyCodeGit
+ */
 public class TextComponent extends Component {
     public float fontSize;
     public String text;
