@@ -7,7 +7,6 @@ import java.util.Map;
  * Keeps track of all the scenes registered in the {@code Game} constructor.
  *
  * @author YeffyCodeGit
- * @version 0.0.1
  */
 public class SceneManager {
     // Disable constructor

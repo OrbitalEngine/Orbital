@@ -10,7 +10,6 @@ import static com.raylib.Jaylib.*;
  * Enum wrapping over raylib colors, to be used by the renderer.
  *
  * @author YeffyCodeGit
- * @version 0.0.1
  */
 public enum Colors {
     BLACK(Jaylib.BLACK),

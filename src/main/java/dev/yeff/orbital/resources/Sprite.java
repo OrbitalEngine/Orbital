@@ -12,7 +12,6 @@ import static com.raylib.Raylib.*;
  * Wrapper class over Raylib's {@code Texture} to simplify loading, unloading, and manipulating the image.
  *
  * @author YeffyCodeGit
- * @version 0.0.1
  */
 public class Sprite implements Disposable {
     @Getter

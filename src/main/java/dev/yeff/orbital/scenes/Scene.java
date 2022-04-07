@@ -11,7 +11,6 @@ import java.util.List;
  * Abstract class defining a scene.
  *
  * @author YeffyCodeGit
- * @version 0.0.1
  */
 public abstract class Scene {
     private boolean isRunning = false;

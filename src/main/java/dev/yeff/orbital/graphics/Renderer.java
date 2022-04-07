@@ -16,7 +16,6 @@ import static com.raylib.Raylib.*;
  * Class providing functionality to render different shapes, text and {@code Sprite}'s.
  *
  * @author YeffyCodeGit
- * @version 0.0.1
  */
 public class Renderer {
     private static List<GameObject> renderObjects = new ArrayList<>();

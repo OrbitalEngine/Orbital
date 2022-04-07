@@ -6,7 +6,6 @@ import dev.yeff.orbital.Game;
  * Represents a component that can be added to a game object.
  *
  * @author YeffyCodeGit
- * @version 0.0.1
  */
 public abstract class Component {
     public GameObject parent = null;

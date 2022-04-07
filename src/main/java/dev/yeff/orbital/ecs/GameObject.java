@@ -10,7 +10,6 @@ import java.util.List;
  * Stores and uses components to manage object functionality. Used to simplify application code.
  *
  * @author YeffyCodeGit
- * @version 0.0.1
  */
 public class GameObject {
     @Getter

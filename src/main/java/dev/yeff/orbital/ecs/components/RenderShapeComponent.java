@@ -9,7 +9,6 @@ import dev.yeff.orbital.graphics.Shapes;
  * Component storing data to render a primitive shape.
  *
  * @author YeffyCodeGit
- * @version 0.0.1
  */
 public class RenderShapeComponent extends Component {
     public Shapes shape;

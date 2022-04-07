@@ -21,7 +21,6 @@ import static com.raylib.Raylib.*;
  * Class which manages the window, game loop, and updates scenes.
  *
  * @author YeffyCodeGit
- * @version 0.0.1
  */
 public class Window {
     private Vector2f size;

@@ -8,7 +8,6 @@ import dev.yeff.orbital.ecs.components.*;
  * Builder class which provides functions to build a {@code GameObject}.
  *
  * @author YeffyCodeGit
- * @version 0.0.1
  */
 public class GameObjectBuilder {
     private GameObject object;

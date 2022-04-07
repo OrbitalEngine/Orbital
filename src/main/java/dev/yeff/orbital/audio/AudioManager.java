@@ -15,7 +15,6 @@ import static com.raylib.Raylib.*;
  * Manages everything related to audio, like playing and pausing audio, controlling volume and more.
  *
  * @author YeffyCodeGit
- * @version 0.0.1
  */
 public class AudioManager {
     @Getter

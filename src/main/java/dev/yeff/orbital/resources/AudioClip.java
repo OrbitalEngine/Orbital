@@ -10,7 +10,6 @@ import static com.raylib.Raylib.*;
  * Represents any audio clip, to be used by the audio manager.
  *
  * @author YeffyCodeGit
- * @version 0.0.1
  */
 public class AudioClip implements Disposable {
     private Raylib.Sound sound;

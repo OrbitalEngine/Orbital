@@ -6,7 +6,6 @@ import com.raylib.Raylib;
  * Represents a vector with x and y floating-point components.
  *
  * @author YeffyCodeGit
- * @version 0.0.1
  */
 public class Vector2f {
     public float x;
