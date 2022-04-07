@@ -25,10 +25,18 @@ public class Renderer {
     private Renderer() { }
 
 
+    /**
+     * Updates the renderer about all the objects that need to be rendered.
+     *
+     * @param renderObjects The new list of objects to be rendered.
+     */
     public static void updateRenderObjects(List<GameObject> renderObjects) {
         Renderer.renderObjects = renderObjects;
     }
 
+    /**
+     * Renders all the objects that need to be rendered.
+     */
     public static void performRenders() {
         for (GameObject go : renderObjects) {
             if (go.hasComponent(RenderShapeComponent.class)) {
