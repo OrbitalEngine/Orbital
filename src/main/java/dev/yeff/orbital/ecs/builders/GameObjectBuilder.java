@@ -3,9 +3,6 @@ package dev.yeff.orbital.ecs.builders;
 import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.components.*;
-import dev.yeff.orbital.math.Vector2f;
-
-import javax.sound.sampled.Line;
 
 public class GameObjectBuilder {
     private GameObject object;
