@@ -38,9 +38,9 @@ public class TransformComponent extends Component {
         this.scale = new Vector2f(scale);
     }
 
-
     public TransformComponent() {
         this.position = new Vector2f();
+        this.scale = new Vector2f();
     }
 
     @Override
