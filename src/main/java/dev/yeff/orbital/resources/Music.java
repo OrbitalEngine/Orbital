@@ -10,7 +10,6 @@ import static com.raylib.Raylib.*;
  * Represents a large streamed audio file, to be used by the audio manager. This class should be used for longer audio files.
  *
  * @author YeffyCodeGit
- * @version 0.0.1
  */
 public class Music implements Disposable {
     private Raylib.Music rawMusic;

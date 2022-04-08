@@ -67,6 +67,7 @@ public class Game {
         currentScene.dispose(this);
 
         currentScene = SceneManager.getScene(scene);
+        currentScene.initInternal(this);
         currentScene.init(this);
         Log.info(Game.class, "Loaded scene " + scene);
     }
@@ -79,4 +80,6 @@ public class Game {
     public Vector2f getScreenCenter() {
         return new Vector2f(size.x / 2, size.y / 2);
     }
+
+
 }

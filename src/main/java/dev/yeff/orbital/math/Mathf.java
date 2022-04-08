@@ -7,7 +7,6 @@ import static com.raylib.Raylib.SetRandomSeed;
  * Provides mathematical functions to work with vectors and more.
  *
  * @author YeffyCodeGit
- * @version 0.0.1
  */
 public class Mathf {
     // Disable constructor

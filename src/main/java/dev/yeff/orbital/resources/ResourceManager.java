@@ -12,7 +12,6 @@ import java.util.Map;
  * Stores all types of resources during runtime, and lets users add and dispose resources.
  *
  * @author YeffyCodeGit
- * @version 0.0.1
  */
 @SuppressWarnings("ConstantConditions")
 public class ResourceManager {

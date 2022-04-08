@@ -8,7 +8,6 @@ import static com.raylib.Raylib.*;
  * Wraps over raylib's key integer to allow for simpler use.
  *
  * @author YeffyCodeGit
- * @version 0.0.1
  */
 public enum Keys {
     // Keyboard keys

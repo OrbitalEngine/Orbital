@@ -2,12 +2,17 @@ package dev.yeff.orbital.graphics;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.audio.AudioManager;
+import dev.yeff.orbital.ecs.Component;
+import dev.yeff.orbital.ecs.GameObject;
+import dev.yeff.orbital.ecs.components.*;
 import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.AudioClip;
 import dev.yeff.orbital.util.Log;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static com.raylib.Raylib.*;
@@ -16,7 +21,6 @@ import static com.raylib.Raylib.*;
  * Class which manages the window, game loop, and updates scenes.
  *
  * @author YeffyCodeGit
- * @version 0.0.1
  */
 public class Window {
     private Vector2f size;
@@ -45,6 +49,7 @@ public class Window {
         InitWindow((int) size.x, (int) size.y, title);
         SetTargetFPS(60);
 
+        game.getCurrentScene().initInternal(game);
         game.getCurrentScene().init(game);
 
         update();
@@ -54,12 +59,32 @@ public class Window {
      * Runs the game loop and updates the scene. This function also disposes the scene after game loop ends.
      */
     private void update() {
+        List<GameObject> renderObjects = new ArrayList<>();
+
         while (!WindowShouldClose()) {
             BeginDrawing();
 
             Renderer.fillBackground(Colors.WHITE);
-            game.getCurrentScene().update(game, GetFPS());
             AudioManager.updateMusicStreams();
+
+            game.getCurrentScene().update(game, GetFPS());
+
+            // clear out the objects every frame so that when the scenes switch we don't keep rendering objects from the last scene
+            // TODO: Figure out a better way to do this so we dont have to keep adding and removing objects that might have not needed to be destroyed
+            renderObjects.clear();
+
+            for (GameObject obj : game.getCurrentScene().getObjects()) {
+                obj.update(game);
+
+                if (obj.hasComponent(TransformComponent.class) && (obj.hasComponent(RenderShapeComponent.class)
+                                                                || obj.hasComponent(SpriteComponent.class)
+                                                                || obj.hasComponent(TextComponent.class))
+                                                                || obj.hasComponent(LineComponent.class))
+                    renderObjects.add(obj);
+            }
+
+            Renderer.updateRenderObjects(renderObjects);
+            Renderer.performRenders();
 
             EndDrawing();
         }
