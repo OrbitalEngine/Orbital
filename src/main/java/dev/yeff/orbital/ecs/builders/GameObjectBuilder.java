@@ -44,9 +44,7 @@ public class GameObjectBuilder {
      * @return The builder instance.
      */
     public GameObjectBuilder withShape(RenderShapeComponent shape) {
-        if (!object.hasComponent(SpriteComponent.class)
-                && !object.hasComponent(LineComponent.class)
-                && !object.hasComponent(TextComponent.class))
+        if (!object.hasComponent(DrawableComponent.class))
             return withComponent(shape);
         else
             throw new IllegalStateException("Cannot add shape component to object with other render component");
@@ -59,9 +57,7 @@ public class GameObjectBuilder {
      * @return The builder instance.
      */
     public GameObjectBuilder withSprite(SpriteComponent sprite) {
-        if (!object.hasComponent(RenderShapeComponent.class)
-                && !object.hasComponent(LineComponent.class)
-                && !object.hasComponent(TextComponent.class))
+        if (!object.hasComponent(DrawableComponent.class))
             return withComponent(sprite);
         else
             throw new IllegalStateException("Cannot add sprite component to object with other render component");
@@ -74,9 +70,7 @@ public class GameObjectBuilder {
      * @return The builder instance.
      */
     public GameObjectBuilder withLine(LineComponent line) {
-        if (!object.hasComponent(RenderShapeComponent.class)
-                && !object.hasComponent(SpriteComponent.class)
-                && !object.hasComponent(TextComponent.class))
+        if (!object.hasComponent(DrawableComponent.class))
             return withComponent(line);
         else
             throw new IllegalStateException("Cannot add line component to object with other render component");
@@ -89,9 +83,7 @@ public class GameObjectBuilder {
      * @return The builder instance.
      */
     public GameObjectBuilder withText(TextComponent text) {
-        if (!object.hasComponent(RenderShapeComponent.class)
-                && !object.hasComponent(SpriteComponent.class)
-                && !object.hasComponent(LineComponent.class))
+        if (!object.hasComponent(DrawableComponent.class))
             return withComponent(text);
         else
             throw new IllegalStateException("Cannot add line component to object with other render component");

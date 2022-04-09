@@ -1,7 +1,6 @@
 package dev.yeff.orbital.ecs.components;
 
 import dev.yeff.orbital.Game;
-import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.resources.Sprite;
 
 /**
@@ -9,7 +8,7 @@ import dev.yeff.orbital.resources.Sprite;
  *
  * @author YeffyCodeGit
  */
-public class SpriteComponent extends Component {
+public class SpriteComponent extends DrawableComponent {
     public Sprite sprite;
 
     public SpriteComponent(Sprite sprite) {

@@ -1,7 +1,6 @@
 package dev.yeff.orbital.ecs.components;
 
 import dev.yeff.orbital.Game;
-import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.graphics.Colors;
 import dev.yeff.orbital.math.Vector2f;
 
@@ -10,7 +9,7 @@ import dev.yeff.orbital.math.Vector2f;
  *
  * @author YeffyCodeGit
  */
-public class LineComponent extends Component {
+public class LineComponent extends DrawableComponent {
     public float thickness;
     public Vector2f start;
     public Vector2f end;

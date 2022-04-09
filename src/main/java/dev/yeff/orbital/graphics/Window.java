@@ -2,18 +2,14 @@ package dev.yeff.orbital.graphics;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.audio.AudioManager;
-import dev.yeff.orbital.ecs.Component;
+import dev.yeff.orbital.ecs.components.DrawableComponent;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.components.*;
-import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.math.Vector2f;
-import dev.yeff.orbital.resources.AudioClip;
 import dev.yeff.orbital.util.Log;
-import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static com.raylib.Raylib.*;
 
@@ -76,10 +72,7 @@ public class Window {
             for (GameObject obj : game.getCurrentScene().getObjects()) {
                 obj.update(game);
 
-                if (obj.hasComponent(TransformComponent.class) && (obj.hasComponent(RenderShapeComponent.class)
-                                                                || obj.hasComponent(SpriteComponent.class)
-                                                                || obj.hasComponent(TextComponent.class))
-                                                                || obj.hasComponent(LineComponent.class))
+                if (obj.hasComponent(TransformComponent.class) && obj.hasComponent(DrawableComponent.class))
                     renderObjects.add(obj);
             }
 

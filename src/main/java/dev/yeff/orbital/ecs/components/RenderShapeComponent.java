@@ -1,7 +1,6 @@
 package dev.yeff.orbital.ecs.components;
 
 import dev.yeff.orbital.Game;
-import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.graphics.Colors;
 import dev.yeff.orbital.graphics.Shapes;
 
@@ -10,7 +9,7 @@ import dev.yeff.orbital.graphics.Shapes;
  *
  * @author YeffyCodeGit
  */
-public class RenderShapeComponent extends Component {
+public class RenderShapeComponent extends DrawableComponent {
     public Shapes shape;
     public Colors color;
 

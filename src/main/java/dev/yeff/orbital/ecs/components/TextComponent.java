@@ -1,7 +1,6 @@
 package dev.yeff.orbital.ecs.components;
 
 import dev.yeff.orbital.Game;
-import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.resources.Font;
 
 /**
@@ -9,7 +8,7 @@ import dev.yeff.orbital.resources.Font;
  *
  * @author YeffyCodeGit
  */
-public class TextComponent extends Component {
+public class TextComponent extends DrawableComponent {
     public float fontSize;
     public String text;
     public Font font;
