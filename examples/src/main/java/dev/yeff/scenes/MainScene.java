@@ -40,8 +40,8 @@ public class MainScene extends Scene {
 
 
         player = new GameObjectBuilder()
-                .withTransform(new TransformComponent(game.getScreenCenter(), 120.0f))
-                .withSprite(new SpriteComponent(sprite))
+                .withTransform(game.getScreenCenter(), new Vector2f(120.0f, 120.0f))
+                .withSprite(sprite)
                 .withComponent(new PlayerComponent())
                 .build();
 

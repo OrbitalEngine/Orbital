@@ -25,13 +25,13 @@ public class MenuScene extends Scene {
         font = ResourceManager.getFont(getClass(), "fonts/Roboto-Regular.ttf");
 
         greeting = new GameObjectBuilder()
-                .withTransform(new TransformComponent(new Vector2f(game.getSize().x / 4, game.getSize().y / 3), new Vector2f(0, 0)))
-                .withText(new TextComponent(60.0f, "This is a Orbital demo, \npress Spacebar to go to the actual 'game'.", null))
+                .withTransform(new Vector2f(game.getSize().x / 4, game.getSize().y / 3), new Vector2f(0, 0))
+                .withText("This is a Orbital demo, \npress Spacebar to go to the actual 'game'.", null, 60.0f)
                 .build();
 
         testLine = new GameObjectBuilder()
-                .withTransform(new TransformComponent(new Vector2f(0, 0), new Vector2f(0, 0)))
-                .withComponent(new LineComponent(2.0f, new Vector2f(18, 42), new Vector2f(game.getSize().x - 18, 42)))
+                .withTransform(new Vector2f(0, 0), new Vector2f(0, 0))
+                .withLine(new Vector2f(18, 42), new Vector2f(game.getSize().x - 18, 42), 2.0f)
                 .build();
 
         addGameObject(game, greeting);
