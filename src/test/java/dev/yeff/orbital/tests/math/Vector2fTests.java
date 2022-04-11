@@ -13,8 +13,9 @@ public class Vector2fTests implements WithAssertions {
     public void testCreateVector_withDefaultValues() {
         Vector2f vector2f = new Vector2f();
 
-        assertThat(vector2f.x).isEqualTo(0.0f);
-        assertThat(vector2f.y).isEqualTo(0.0f);
+        assertThat(vector2f)
+                .extracting("x", "y")
+                .contains(0.0f, 0.0f);
     }
 
     @DisplayName("creating a vector with custom values")
@@ -22,8 +23,9 @@ public class Vector2fTests implements WithAssertions {
     public void testCreateVector_withCustomValues() {
         Vector2f vector2f = new Vector2f(5.0f, 7.0f);
 
-        assertThat(vector2f.x).isEqualTo(5.0f);
-        assertThat(vector2f.y).isEqualTo(7.0f);
+        assertThat(vector2f)
+                .extracting("x", "y")
+                .contains(5.0f, 7.0f);
     }
 
     @DisplayName("creating a vector with another vector")
