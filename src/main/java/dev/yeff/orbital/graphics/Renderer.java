@@ -45,12 +45,11 @@ public class Renderer {
                 Vector2f position = go.getComponent(TransformComponent.class).position;
 
                 switch (shape) {
-                    case CIRCLE -> drawCircle(color, position, scale.x);
-                    case RECTANGLE -> drawRect(color, position, scale);
-                    case CIRCLE_OUTLINE -> drawCircleOutline(color, position, scale.x);
-                    case RECTANGLE_OUTLINE -> drawRectOutline(position, scale, color);
+                    case CIRCLE: drawCircle(color, position, scale.x);
+                    case RECTANGLE: drawRect(color, position, scale);
+                    case CIRCLE_OUTLINE: drawCircleOutline(color, position, scale.x);
+                    case RECTANGLE_OUTLINE: drawRectOutline(position, scale, color);
                 }
-
             } else if (go.hasComponent(TextComponent.class)) {
                 float fontSize = go.getComponent(TextComponent.class).fontSize;
                 String text = go.getComponent(TextComponent.class).text;
