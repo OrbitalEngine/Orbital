@@ -1,5 +1,6 @@
 package dev.yeff.orbital.graphics;
 
+import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.components.*;
 import dev.yeff.orbital.math.Vector2f;
@@ -36,45 +37,16 @@ public class Renderer {
     /**
      * Renders all the objects that need to be rendered.
      */
-    public static void performRenders() {
+    public static void performRenders(Game game) {
         for (GameObject go : renderObjects) {
             if (go.hasComponent(RenderShapeComponent.class)) {
-                Shapes shape = go.getComponent(RenderShapeComponent.class).shape;
-                Colors color = go.getComponent(RenderShapeComponent.class).color;
-                Vector2f scale = go.getComponent(TransformComponent.class).scale;
-                Vector2f position = go.getComponent(TransformComponent.class).position;
-
-                switch (shape) {
-                    case CIRCLE: drawCircle(color, position, scale.x);
-                    case RECTANGLE: drawRect(color, position, scale);
-                    case CIRCLE_OUTLINE: drawCircleOutline(color, position, scale.x);
-                    case RECTANGLE_OUTLINE: drawRectOutline(position, scale, color);
-                }
+                go.getComponent(RenderShapeComponent.class).update(game);
             } else if (go.hasComponent(TextComponent.class)) {
-                float fontSize = go.getComponent(TextComponent.class).fontSize;
-                String text = go.getComponent(TextComponent.class).text;
-                Font font = go.getComponent(TextComponent.class).font;
-                Vector2f position = go.getComponent(TransformComponent.class).position;
-
-                if (font != null)
-                    drawString(text, fontSize, position, font);
-                else
-                    drawString(text, fontSize, position);
+                go.getComponent(TextComponent.class).update(game);
             } else if (go.hasComponent(LineComponent.class)) {
-                float thickness = go.getComponent(LineComponent.class).thickness;
-                Colors color = go.getComponent(LineComponent.class).color;
-                Vector2f start = go.getComponent(LineComponent.class).start;
-                Vector2f end = go.getComponent(LineComponent.class).end;
-
-                drawLine(start, end, color, thickness);
+                go.getComponent(LineComponent.class).update(game);
             } else {
-                Sprite sprite = go.getComponent(SpriteComponent.class).sprite;
-                Vector2f position = go.getComponent(TransformComponent.class).position;
-                Vector2f scale = go.getComponent(TransformComponent.class).scale;
-
-                sprite.resize(scale);
-
-                drawTexture(sprite, position);
+                go.getComponent(SpriteComponent.class).update(game);
             }
         }
     }
@@ -85,7 +57,7 @@ public class Renderer {
      * @param sprite The sprite to draw.
      * @param pos The position to draw it at.
      */
-    private static void drawTexture(Sprite sprite, Vector2f pos) {
+    public static void drawTexture(Sprite sprite, Vector2f pos) {
         DrawTexture(sprite.getRawTex(), (int) pos.x, (int) pos.y, RAYWHITE);
     }
 
@@ -96,7 +68,7 @@ public class Renderer {
      * @param pos The position to draw the circle at.
      * @param radius The radius of the circle.
      */
-    private static void drawCircle(Colors color, Vector2f pos, float radius) {
+    public static void drawCircle(Colors color, Vector2f pos, float radius) {
         DrawCircle((int) pos.x, (int) pos.y, radius, color.getColor());
     }
 
@@ -107,7 +79,7 @@ public class Renderer {
      * @param pos The position to draw the circle outline at.
      * @param radius The radius of the circle.
      */
-    private static void drawCircleOutline(Colors color, Vector2f pos, float radius) {
+    public static void drawCircleOutline(Colors color, Vector2f pos, float radius) {
         DrawCircleLines((int) pos.x, (int) pos.y, radius, color.getColor());
     }
 
@@ -140,7 +112,7 @@ public class Renderer {
      * @param size The width and height of the rectangle.
      * @param color The color of the outline.
      */
-    private static void drawRectOutline(Vector2f pos, Vector2f size, Colors color) {
+    public static void drawRectOutline(Vector2f pos, Vector2f size, Colors color) {
         DrawRectangleLines((int) pos.x, (int) pos.y, (int) size.x, (int) size.y, color.getColor());
     }
 
@@ -151,7 +123,7 @@ public class Renderer {
      * @param size The size of the rectangle.
      * @param color The color of the outline.
      */
-    private static void drawRectOutline(Vector2f pos, float size, Colors color) {
+    public static void drawRectOutline(Vector2f pos, float size, Colors color) {
         DrawRectangleLines((int) pos.x, (int) pos.y, (int) size, (int) size, color.getColor());
     }
 
@@ -162,7 +134,7 @@ public class Renderer {
      * @param end The ending point of the line.
      * @param color The color of the line.
      */
-    private static void drawLine(Vector2f start, Vector2f end, Colors color) {
+    public static void drawLine(Vector2f start, Vector2f end, Colors color) {
         DrawLine((int) start.x, (int) start.y, (int) end.x, (int) end.y, color.getColor());
     }
 
@@ -174,7 +146,7 @@ public class Renderer {
      * @param color The color of the line.
      * @param thickness The thickness of the line.
      */
-    private static void drawLine(Vector2f start, Vector2f end, Colors color, float thickness) {
+    public static void drawLine(Vector2f start, Vector2f end, Colors color, float thickness) {
         DrawLineEx(start.asRaylibVector(), end.asRaylibVector(), thickness, color.getColor());
     }
 
@@ -185,7 +157,7 @@ public class Renderer {
      * @param fontSize The font size of the text.
      * @param pos The position to draw the text at.
      */
-    private static void drawString(String text, float fontSize, Vector2f pos) {
+    public static void drawString(String text, float fontSize, Vector2f pos) {
         DrawText(text, (int) pos.x, (int) pos.y, (int) fontSize, Colors.BLACK.getColor());
     }
 
@@ -197,7 +169,7 @@ public class Renderer {
      * @param pos The position to draw the text at.
      * @param font The font to draw the text with.
      */
-    private static void drawString(String text, float fontSize, Vector2f pos, Font font) {
+    public static void drawString(String text, float fontSize, Vector2f pos, Font font) {
         DrawTextEx(font.asRaylibFont(), text, pos.asRaylibVector(), fontSize, 2, Colors.BLACK.getColor());
     }
 

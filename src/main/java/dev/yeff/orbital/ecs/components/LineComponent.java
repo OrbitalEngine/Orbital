@@ -4,6 +4,8 @@ import dev.yeff.orbital.Game;
 import dev.yeff.orbital.graphics.Colors;
 import dev.yeff.orbital.math.Vector2f;
 
+import static dev.yeff.orbital.graphics.Renderer.drawLine;
+
 /**
  * Component storing data to render a line.
  *
@@ -37,6 +39,6 @@ public class LineComponent extends DrawableComponent {
 
     @Override
     public void update(Game game) {
-
+        drawLine(start, end, color, thickness);
     }
 }

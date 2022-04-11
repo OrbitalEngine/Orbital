@@ -77,7 +77,7 @@ public class Window {
             }
 
             Renderer.updateRenderObjects(renderObjects);
-            Renderer.performRenders();
+            Renderer.performRenders(game);
 
             EndDrawing();
         }
