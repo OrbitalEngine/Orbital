@@ -28,10 +28,11 @@ public class RenderShapeComponent extends DrawableComponent {
         Vector2f position = parent.getComponent(TransformComponent.class).position;
 
         switch (shape) {
-            case CIRCLE: drawCircle(color, position, scale.x);
-            case RECTANGLE: drawRect(color, position, scale);
-            case CIRCLE_OUTLINE: drawCircleOutline(color, position, scale.x);
-            case RECTANGLE_OUTLINE: drawRectOutline(position, scale, color);
+            case CIRCLE: drawCircle(color, position, scale.x); break;
+            case RECTANGLE: drawRect(color, position, scale); break;
+            case CIRCLE_OUTLINE: drawCircleOutline(color, position, scale.x); break;
+            case RECTANGLE_OUTLINE: drawRectOutline(position, scale, color); break;
+            default: throw new IllegalStateException("unsupported render shape");
         }
     }
 

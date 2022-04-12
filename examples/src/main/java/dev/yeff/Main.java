@@ -5,6 +5,7 @@ import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.scenes.MainScene;
 import dev.yeff.scenes.MenuScene;
+import dev.yeff.scenes.ThirdScene;
 
 import java.util.Map;
 
@@ -12,6 +13,7 @@ public class Main {
     public static void main(String[] args) {
         Map<String, Scene> scenes = Map.of(
                 "Main", new MainScene(),
+                "Collision", new ThirdScene(),
                 "Menu", new MenuScene()
         );
 
