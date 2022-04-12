@@ -34,8 +34,9 @@ public class Vector2fTests implements WithAssertions {
         Vector2f vec2f = new Vector2f(5.0f, 7.0f);
         Vector2f vector2f = new Vector2f(vec2f);
 
-        assertThat(vector2f.x).isEqualTo(5.0f);
-        assertThat(vector2f.y).isEqualTo(7.0f);
+        assertThat(vector2f)
+                .extracting("x", "y")
+                .contains(5.0f, 7.0f);
     }
 
     @DisplayName("adding two vectors together")
@@ -46,8 +47,9 @@ public class Vector2fTests implements WithAssertions {
 
         firstVector.add(otherVector);
 
-        assertThat(firstVector.x).isEqualTo(10.0f);
-        assertThat(firstVector.y).isEqualTo(10.0f);
+        assertThat(firstVector)
+                .extracting("x", "y")
+                .contains(10.0f, 10.0f);
     }
 
     @DisplayName("subtract two vectors from each other")
@@ -58,8 +60,9 @@ public class Vector2fTests implements WithAssertions {
 
         firstVector.subtract(otherVector);
 
-        assertThat(firstVector.x).isEqualTo(0.0f);
-        assertThat(firstVector.y).isEqualTo(0.0f);
+        assertThat(firstVector)
+                .extracting("x", "y")
+                .contains(0.0f, 0.0f);
     }
 
     @DisplayName("multiplying two vectors together")
@@ -70,8 +73,9 @@ public class Vector2fTests implements WithAssertions {
 
         firstVector.multiply(otherVector);
 
-        assertThat(firstVector.x).isEqualTo(25.0f);
-        assertThat(firstVector.y).isEqualTo(25.0f);
+        assertThat(firstVector)
+                .extracting("x", "y")
+                .contains(25.0f, 25.0f);
     }
 
     @DisplayName("dividing two vectors from each other")
@@ -82,8 +86,9 @@ public class Vector2fTests implements WithAssertions {
 
         firstVector.divide(otherVector);
 
-        assertThat(firstVector.x).isEqualTo(1.0f);
-        assertThat(firstVector.y).isEqualTo(1.0f);
+        assertThat(firstVector)
+                .extracting("x", "y")
+                .contains(1.0f, 1.0f);
     }
 
     @DisplayName("generating random vectors with int min and max")
@@ -93,8 +98,9 @@ public class Vector2fTests implements WithAssertions {
 
         Vector2f randomVector = Mathf.generateRandomVec(1, 10);
 
-        assertThat(randomVector.x).isEqualTo(2.0f);
-        assertThat(randomVector.y).isEqualTo(10.0f);
+        assertThat(randomVector)
+                .extracting("x", "y")
+                .contains(2.0f, 10.0f);
     }
 
     @DisplayName("generating random vectors with vector min and max")
@@ -104,8 +110,9 @@ public class Vector2fTests implements WithAssertions {
 
         Vector2f randomVector = Mathf.generateRandomVec(new Vector2f(5, 5), new Vector2f(10, 10));
 
-        assertThat(randomVector.x).isEqualTo(10.0f);
-        assertThat(randomVector.y).isEqualTo(8.0f);
+        assertThat(randomVector)
+                .extracting("x", "y")
+                .contains(10.0f, 8.0f);
     }
 
     @DisplayName("normalizing a vector")
@@ -114,8 +121,9 @@ public class Vector2fTests implements WithAssertions {
         Vector2f vector2f = new Vector2f(50, 0);
         Vector2f normalized = Mathf.normalize(vector2f);
 
-        assertThat(normalized.x).isEqualTo(1.0f);
-        assertThat(normalized.y).isEqualTo(0.0f);
+        assertThat(normalized)
+                .extracting("x", "y")
+                .contains(1.0f, 0.0f);
     }
 
     @DisplayName("dot product of a vector")
