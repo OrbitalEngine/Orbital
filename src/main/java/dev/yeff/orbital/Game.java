@@ -33,15 +33,11 @@ public class Game {
     @Getter
     private Scene currentScene;
 
-    @Getter
-    private Camera2D cam;
-
     private Window window;
 
     public Game(Vector2f size, String title, Map<String, Scene> scenes) {
         this.size = size;
         this.title = title;
-        this.cam = new Camera2D();
 
         scenes.forEach(SceneManager::addScene);
         this.window = new Window(this);
