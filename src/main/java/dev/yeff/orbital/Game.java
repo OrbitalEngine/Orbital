@@ -67,6 +67,10 @@ public class Game {
         currentScene.dispose(this);
 
         currentScene = SceneManager.getScene(scene);
+
+        if (currentScene == null)
+            throw new IllegalStateException(String.format("Scene with name \" %s \" does not exist", scene));
+
         currentScene.initInternal(this);
         currentScene.init(this);
         Log.info(Game.class, "Loaded scene " + scene);

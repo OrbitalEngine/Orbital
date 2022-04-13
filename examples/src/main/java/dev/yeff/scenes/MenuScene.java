@@ -44,8 +44,6 @@ public class MenuScene extends Scene {
     public void update(Game game, float fps) {
         if (Input.getKeyboard().isKeyDown(Keys.NUM_1))
             game.loadScene("Main");
-        if (Input.getKeyboard().isKeyDown(Keys.NUM_2))
-            game.loadScene("Collision");
     }
 
     @Override

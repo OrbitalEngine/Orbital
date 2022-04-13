@@ -31,6 +31,6 @@ public class SceneManager {
      * @return The scene.
      */
     public static Scene getScene(String sceneName) {
-        return scenes.get(sceneName);
+        return scenes.getOrDefault(sceneName, null);
     }
 }
