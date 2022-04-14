@@ -33,6 +33,22 @@ public class GameObjectBuilder {
     }
 
     /**
+     * Adds multiple {@code Component}'s to the object to be built in one function call.
+     *
+     * @param components All the components to add.
+     * @return The builder instance.
+     */
+    public GameObjectBuilder withComponents(Component... components) {
+        GameObjectBuilder builder = this;
+
+        for (Component c : components)
+            builder = withComponent(c);
+
+        return builder;
+    }
+
+
+    /**
      * Adds a {@code TransformComponent} to the object to be built.
      *
      * @param transform The transform component to add.
@@ -41,6 +57,7 @@ public class GameObjectBuilder {
     public GameObjectBuilder withTransform(TransformComponent transform) {
         return withComponent(transform);
     }
+
 
     /**
      * Adds a {@code TransformComponent} to the object to be built.
