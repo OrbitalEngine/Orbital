@@ -31,9 +31,6 @@ public abstract class Scene {
     public void initInternal(Game game) {
         isRunning = true;
 
-        if (objects == null)
-            objects = new ArrayList<>();
-
         for (GameObject go : objects)
             go.init(game);
     }
