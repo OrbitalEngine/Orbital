@@ -22,7 +22,7 @@ public class Mouse {
     /**
      * Gets the position of the mouse between frames.
      *
-     * @return The delta position of the mouse.
+     * @return The position of the mouse between frames.
      */
     public Vector2f getMouseDelta() { return new Vector2f(GetMouseDelta().x(), GetMouseDelta().y()); }
 
