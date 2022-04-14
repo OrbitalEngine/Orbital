@@ -4,6 +4,7 @@ import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
 import lombok.Getter;
 
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,11 @@ public abstract class Scene {
         objects = new ArrayList<>();
     }
 
+    /**
+     * Initializes scene {@code GameObject}'s.
+     *
+     * @param game The instance of the game.
+     */
     public void initInternal(Game game) {
         isRunning = true;
 
@@ -32,6 +38,12 @@ public abstract class Scene {
             go.init(game);
     }
 
+    /**
+     * Adds a new {@code GameObject} to the scene.
+     *
+     * @param game The instance of the game.
+     * @param gameObject The game object to add.
+     */
     public void addGameObject(Game game, GameObject gameObject) {
         if (!isRunning) {
             objects.add(gameObject);

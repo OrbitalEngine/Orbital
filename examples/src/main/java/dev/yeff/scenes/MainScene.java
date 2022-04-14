@@ -21,6 +21,7 @@ import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.orbital.util.Log;
 
 import java.awt.*;
+import java.net.URISyntaxException;
 
 public class MainScene extends Scene {
     private GameObject player;
