@@ -1,6 +1,7 @@
 package dev.yeff.orbital.io;
 
 import dev.yeff.orbital.util.Callback;
+import org.bytedeco.javacpp.BytePointer;
 
 import static com.raylib.Raylib.*;
 
@@ -36,5 +37,23 @@ public class Keyboard {
         if (GetKeyPressed() == key.getKeycode()) {
             callback.invoke(key.getKeycode());
         }
+    }
+
+    /**
+     * Gets the contents copied in the system clipboard.
+     *
+     * @return The contents copied in the system clipboard.
+     */
+    public String getClipboardContents() {
+        return GetClipboardText().getString();
+    }
+
+    /**
+     * Copies a string into the system clipboard.
+     *
+     * @param contents The content to copy.
+     */
+    public void setClipboardContents(String contents) {
+        SetClipboardText(new BytePointer(contents));
     }
 }

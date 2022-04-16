@@ -8,6 +8,7 @@ import dev.yeff.orbital.ecs.components.TextComponent;
 import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.graphics.Renderer;
 import dev.yeff.orbital.io.Input;
+import dev.yeff.orbital.io.Keyboard;
 import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.ResourceManager;
@@ -38,12 +39,17 @@ public class MenuScene extends Scene {
         addGameObject(game, testLine);
 
         Log.info(getClass(), "Loaded menu scene");
+
+        Log.info(getClass(), Input.getKeyboard().getClipboardContents());
     }
 
     @Override
     public void update(Game game, float fps) {
         if (Input.getKeyboard().isKeyDown(Keys.NUM_1))
             game.loadScene("Main");
+
+        if (Input.getKeyboard().isKeyDown(Keys.C))
+            Input.getKeyboard().setClipboardContents("[THIS WAS COPIED FROM THE ENGINE]");
     }
 
     @Override
