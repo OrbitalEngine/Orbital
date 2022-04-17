@@ -39,8 +39,6 @@ public class MenuScene extends Scene {
         addGameObject(game, testLine);
 
         Log.info(getClass(), "Loaded menu scene");
-
-        Log.info(getClass(), Input.getKeyboard().getClipboardContents());
     }
 
     @Override
