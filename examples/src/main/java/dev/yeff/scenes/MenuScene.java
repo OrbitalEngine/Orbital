@@ -47,7 +47,8 @@ public class MenuScene extends Scene {
     public void update(Game game, float fps) {
         if (Input.getKeyboard().isKeyDown(Keys.NUM_1))
             game.loadScene("Main");
-
+        if (Input.getKeyboard().isKeyDown(Keys.NUM_2))
+            game.loadScene("Collision");
         if (Input.getKeyboard().isKeyDown(Keys.C))
             Input.getKeyboard().setClipboardContents("[THIS WAS COPIED FROM THE ENGINE]");
     }
