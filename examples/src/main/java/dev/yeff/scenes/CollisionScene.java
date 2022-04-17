@@ -20,7 +20,7 @@ public class CollisionScene extends Scene {
     public void init(Game game) {
         obj1 = new GameObjectBuilder()
                 .withTransform(game.getScreenCenter(), new Vector2f(200.0f, 200.0f))
-                .withShape(Shapes.CIRCLE, Colors.LIME_GREEN)
+                .withShape(Shapes.RECTANGLE, Colors.LIME_GREEN)
                 .build();
 
         obj2 = new GameObjectBuilder()
@@ -36,7 +36,7 @@ public class CollisionScene extends Scene {
     public void update(Game game, float fps) {
         obj2.getComponent(TransformComponent.class).position = Input.getMouse().getMousePos();
 
-        if (Collider.circleWithCircle(obj1, obj2))
+        if (Collider.circleWithRect(obj2, obj1))
             obj1.getComponent(RenderShapeComponent.class).color = Colors.ORANGE;
         else
             obj1.getComponent(RenderShapeComponent.class).color = Colors.LIME_GREEN;

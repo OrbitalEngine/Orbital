@@ -4,10 +4,8 @@ import com.raylib.Jaylib;
 import com.raylib.Raylib;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.components.TransformComponent;
-import dev.yeff.orbital.math.Vector2f;
 
-import static com.raylib.Raylib.CheckCollisionCircles;
-import static com.raylib.Raylib.CheckCollisionRecs;
+import static com.raylib.Raylib.*;
 
 public class Collider {
     public static boolean rectWithRect(GameObject obj1, GameObject obj2) {
@@ -36,5 +34,19 @@ public class Collider {
         float radius2 = obj2.getComponent(TransformComponent.class).scale.x;
 
         return CheckCollisionCircles(center1, radius1, center2, radius2);
+    }
+
+    public static boolean circleWithRect(GameObject circle, GameObject rectangle) {
+        Raylib.Vector2 center = circle.getComponent(TransformComponent.class).position.asRaylibVector();
+        float radius = circle.getComponent(TransformComponent.class).scale.x;
+
+        Jaylib.Rectangle rect = new Jaylib.Rectangle(
+                rectangle.getComponent(TransformComponent.class).position.x,
+                rectangle.getComponent(TransformComponent.class).position.y,
+                rectangle.getComponent(TransformComponent.class).scale.x,
+                rectangle.getComponent(TransformComponent.class).scale.y
+        );
+
+        return CheckCollisionCircleRec(center, radius, rect);
     }
 }
