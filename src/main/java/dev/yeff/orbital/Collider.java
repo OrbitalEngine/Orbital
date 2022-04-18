@@ -3,18 +3,23 @@ package dev.yeff.orbital;
 import com.raylib.Jaylib;
 import com.raylib.Raylib;
 import dev.yeff.orbital.ecs.GameObject;
+import dev.yeff.orbital.ecs.components.RenderShapeComponent;
 import dev.yeff.orbital.ecs.components.TransformComponent;
+import dev.yeff.orbital.graphics.Shapes;
 
 import static com.raylib.Raylib.*;
 
 public class Collider {
     private static Jaylib.Rectangle getRect(GameObject obj) {
-        return new Jaylib.Rectangle(
-                obj.getComponent(TransformComponent.class).position.x,
-                obj.getComponent(TransformComponent.class).position.y,
-                obj.getComponent(TransformComponent.class).scale.x,
-                obj.getComponent(TransformComponent.class).scale.y
-        );
+        if (obj.hasComponent(TransformComponent.class))
+            return new Jaylib.Rectangle(
+                    obj.getComponent(TransformComponent.class).position.x,
+                    obj.getComponent(TransformComponent.class).position.y,
+                    obj.getComponent(TransformComponent.class).scale.x,
+                    obj.getComponent(TransformComponent.class).scale.y
+            );
+        else
+            throw new IllegalStateException("transform component required to get rectangle.");
     }
 
     public static boolean rectWithRect(GameObject obj1, GameObject obj2) {

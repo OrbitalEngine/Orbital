@@ -36,7 +36,7 @@ public class CollisionScene extends Scene {
     public void update(Game game, float fps) {
         obj2.getComponent(TransformComponent.class).position = Input.getMouse().getMousePos();
 
-        if (Collider.circleWithRect(obj2, obj1))
+        if (Collider.rectWithRect(obj2, obj1))
             obj1.getComponent(RenderShapeComponent.class).color = Colors.ORANGE;
         else
             obj1.getComponent(RenderShapeComponent.class).color = Colors.LIME_GREEN;
