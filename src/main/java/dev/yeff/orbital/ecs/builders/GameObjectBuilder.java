@@ -3,6 +3,7 @@ package dev.yeff.orbital.ecs.builders;
 import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.components.*;
+import dev.yeff.orbital.ecs.components.render.*;
 import dev.yeff.orbital.graphics.Colors;
 import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.math.Vector2f;

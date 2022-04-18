@@ -3,9 +3,7 @@ package dev.yeff.orbital;
 import com.raylib.Jaylib;
 import com.raylib.Raylib;
 import dev.yeff.orbital.ecs.GameObject;
-import dev.yeff.orbital.ecs.components.RenderShapeComponent;
 import dev.yeff.orbital.ecs.components.TransformComponent;
-import dev.yeff.orbital.graphics.Shapes;
 
 import static com.raylib.Raylib.*;
 

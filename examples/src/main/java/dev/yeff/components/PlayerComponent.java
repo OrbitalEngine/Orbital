@@ -2,7 +2,7 @@ package dev.yeff.components;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.Component;
-import dev.yeff.orbital.ecs.components.SpriteComponent;
+import dev.yeff.orbital.ecs.components.render.SpriteComponent;
 import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;

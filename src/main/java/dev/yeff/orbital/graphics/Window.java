@@ -2,7 +2,7 @@ package dev.yeff.orbital.graphics;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.audio.AudioManager;
-import dev.yeff.orbital.ecs.components.DrawableComponent;
+import dev.yeff.orbital.ecs.components.render.DrawableComponent;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.components.*;
 import dev.yeff.orbital.math.Vector2f;

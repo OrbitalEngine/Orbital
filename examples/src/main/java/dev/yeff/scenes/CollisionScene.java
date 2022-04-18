@@ -4,7 +4,7 @@ import dev.yeff.orbital.Collider;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
-import dev.yeff.orbital.ecs.components.RenderShapeComponent;
+import dev.yeff.orbital.ecs.components.render.RenderShapeComponent;
 import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.graphics.Colors;
 import dev.yeff.orbital.graphics.Shapes;
@@ -36,7 +36,7 @@ public class CollisionScene extends Scene {
     public void update(Game game, float fps) {
         obj2.getComponent(TransformComponent.class).position = Input.getMouse().getMousePos();
 
-        if (Collider.rectWithRect(obj2, obj1))
+        if (Collider.circleWithRect(obj2, obj1))
             obj1.getComponent(RenderShapeComponent.class).color = Colors.ORANGE;
         else
             obj1.getComponent(RenderShapeComponent.class).color = Colors.LIME_GREEN;

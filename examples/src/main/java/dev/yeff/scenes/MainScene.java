@@ -5,23 +5,12 @@ import dev.yeff.orbital.Game;
 import dev.yeff.orbital.audio.AudioManager;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
-import dev.yeff.orbital.ecs.components.RenderShapeComponent;
-import dev.yeff.orbital.ecs.components.SpriteComponent;
-import dev.yeff.orbital.ecs.components.TransformComponent;
-import dev.yeff.orbital.graphics.Colors;
-import dev.yeff.orbital.graphics.Renderer;
-import dev.yeff.orbital.graphics.Shapes;
-import dev.yeff.orbital.io.Input;
-import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.Music;
 import dev.yeff.orbital.resources.ResourceManager;
 import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.orbital.util.Log;
-
-import java.awt.*;
-import java.net.URISyntaxException;
 
 public class MainScene extends Scene {
     private GameObject player;
