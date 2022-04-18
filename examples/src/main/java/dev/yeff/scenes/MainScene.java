@@ -29,7 +29,8 @@ public class MainScene extends Scene {
         AudioManager.playMusic(music);
 
 
-        player = new GameObjectBuilder()
+        player = new GameObjectBuilder(this)
+                .withId("Player")
                 .withTransform(game.getScreenCenter(), new Vector2f(120.0f, 120.0f))
                 .withSprite(sprite)
                 .withComponent(new PlayerComponent())

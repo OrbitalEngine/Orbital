@@ -11,16 +11,26 @@ import dev.yeff.orbital.graphics.Colors;
 import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.ResourceManager;
+import dev.yeff.orbital.scenes.Scene;
+import dev.yeff.orbital.tests.mock.MockScene;
 import org.assertj.core.api.WithAssertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("test game objects creation and adding components to game objects")
 public class GameObjectTests implements WithAssertions {
+    private static Scene mockScene;
+
+    @BeforeAll
+    public static void setup() {
+        mockScene = new MockScene();
+    }
+
     @DisplayName("create game object with no components using builder")
     @Test
     public void testCreateGameObject_usingBuilder() {
-        GameObject object = new GameObjectBuilder()
+        GameObject object = new GameObjectBuilder(mockScene)
                 .build();
 
         assertThat(object).isNotNull();
@@ -30,7 +40,7 @@ public class GameObjectTests implements WithAssertions {
     @DisplayName("create game object with transform component using builder")
     @Test
     public void testCreateGameObject_withTransform_usingBuilder() {
-        GameObject object = new GameObjectBuilder()
+        GameObject object = new GameObjectBuilder(mockScene)
                 .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(0.0f, 0.0f))
                 .build();
 
@@ -48,7 +58,7 @@ public class GameObjectTests implements WithAssertions {
     @DisplayName("create game object with render shape component using builder")
     @Test
     public void testCreateGameObject_withShape_usingBuilder() {
-        GameObject object = new GameObjectBuilder()
+        GameObject object = new GameObjectBuilder(mockScene)
                 .withShape(Shapes.CIRCLE, Colors.RED)
                 .build();
 
@@ -61,7 +71,7 @@ public class GameObjectTests implements WithAssertions {
     @DisplayName("create game object with text component using builder")
     @Test
     public void testCreateGameObject_withText_usingBuilder() {
-        GameObject object = new GameObjectBuilder()
+        GameObject object = new GameObjectBuilder(mockScene)
                 .withText("Hello World", 0.0f)
                 .build();
 
@@ -74,7 +84,7 @@ public class GameObjectTests implements WithAssertions {
     @DisplayName("create game object with line component using builder")
     @Test
     public void testCreateGameObject_withLine_usingBuilder() {
-        GameObject object = new GameObjectBuilder()
+        GameObject object = new GameObjectBuilder(mockScene)
                 .withLine(new Vector2f(0.0f, 0.0f), new Vector2f(0.0f, 0.0f), 0.0f, Colors.RED)
                 .build();
 
@@ -96,7 +106,7 @@ public class GameObjectTests implements WithAssertions {
     @DisplayName("create game object with sprite component using builder")
     @Test
     public void testCreateGameObject_withSprite_usingBuilder() {
-        GameObject object = new GameObjectBuilder()
+        GameObject object = new GameObjectBuilder(mockScene)
                 .withSprite(ResourceManager.getSprite(getClass(), "character_0000.png"))
                 .build();
 

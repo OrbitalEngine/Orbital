@@ -18,12 +18,14 @@ public class CollisionScene extends Scene {
 
     @Override
     public void init(Game game) {
-        obj1 = new GameObjectBuilder()
+        obj1 = new GameObjectBuilder(this)
+                .withId("Object 1")
                 .withTransform(game.getScreenCenter(), new Vector2f(200.0f, 200.0f))
                 .withShape(Shapes.RECTANGLE, Colors.LIME_GREEN)
                 .build();
 
-        obj2 = new GameObjectBuilder()
+        obj2 = new GameObjectBuilder(this)
+                .withId("Object 2")
                 .withTransform(Input.getMouse().getMousePos(), new Vector2f(12.0f, 12.0f))
                 .withShape(Shapes.CIRCLE, Colors.RED)
                 .build();

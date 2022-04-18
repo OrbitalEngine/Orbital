@@ -9,6 +9,10 @@ import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.Font;
 import dev.yeff.orbital.resources.Sprite;
+import dev.yeff.orbital.scenes.Scene;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Builder class which provides functions to build a {@code GameObject}.
@@ -17,9 +21,34 @@ import dev.yeff.orbital.resources.Sprite;
  */
 public class GameObjectBuilder {
     private GameObject object;
+    private Scene scene;
+    private String id;
+    private List<Component> components;
 
-    public GameObjectBuilder() {
-        object = new GameObject();
+    public GameObjectBuilder(Scene scene) {
+        this.scene = scene;
+        components = new ArrayList<>();
+    }
+
+    public GameObjectBuilder(String id) {
+        this.id = id;
+        components = new ArrayList<>();
+    }
+
+    public GameObjectBuilder(Scene scene, String id) {
+        this.scene = scene;
+        this.id = id;
+        components = new ArrayList<>();
+    }
+
+    public GameObjectBuilder withScene(Scene scene) {
+        this.scene = scene;
+        return this;
+    }
+
+    public GameObjectBuilder withId(String id) {
+        this.id = id;
+        return this;
     }
 
     /**
@@ -29,7 +58,7 @@ public class GameObjectBuilder {
      * @return The builder instance.
      */
     public GameObjectBuilder withComponent(Component component) {
-        object.addComponent(component);
+        components.add(component);
         return this;
     }
 
@@ -78,10 +107,12 @@ public class GameObjectBuilder {
      * @return The builder instance.
      */
     public GameObjectBuilder withShape(RenderShapeComponent shape) {
-        if (!object.hasComponent(DrawableComponent.class))
-            return withComponent(shape);
-        else
-            throw new IllegalStateException("Cannot add shape component to object with other render component");
+        for (Component c : components) {
+            if (c.getClass().isAssignableFrom(DrawableComponent.class))
+                throw new IllegalStateException("Cannot add shape component to object with other render component");
+        }
+
+        return withComponent(shape);
     }
 
     /**
@@ -92,10 +123,12 @@ public class GameObjectBuilder {
      * @return The builder instance.
      */
     public GameObjectBuilder withShape(Shapes shape, Colors color) {
-        if (!object.hasComponent(DrawableComponent.class))
-            return withComponent(new RenderShapeComponent(shape, color));
-        else
-            throw new IllegalStateException("Cannot add shape component to object with other render component");
+        for (Component c : components) {
+            if (c.getClass().isAssignableFrom(DrawableComponent.class))
+                throw new IllegalStateException("Cannot add shape component to object with other render component");
+        }
+
+        return withComponent(new RenderShapeComponent(shape, color));
     }
 
     /**
@@ -105,10 +138,12 @@ public class GameObjectBuilder {
      * @return The builder instance.
      */
     public GameObjectBuilder withSprite(SpriteComponent sprite) {
-        if (!object.hasComponent(DrawableComponent.class))
-            return withComponent(sprite);
-        else
-            throw new IllegalStateException("Cannot add sprite component to object with other render component");
+        for (Component c : components) {
+            if (c.getClass().isAssignableFrom(DrawableComponent.class))
+                throw new IllegalStateException("Cannot add sprite component to object with other render component");
+        }
+
+        return withComponent(sprite);
     }
 
     /**
@@ -118,10 +153,12 @@ public class GameObjectBuilder {
      * @return The builder instance.
      */
     public GameObjectBuilder withSprite(Sprite sprite) {
-        if (!object.hasComponent(DrawableComponent.class))
-            return withComponent(new SpriteComponent(sprite));
-        else
-            throw new IllegalStateException("Cannot add sprite component to object with other render component");
+        for (Component c : components) {
+            if (c.getClass().isAssignableFrom(DrawableComponent.class))
+                throw new IllegalStateException("Cannot add sprite component to object with other render component");
+        }
+
+        return withComponent(new SpriteComponent(sprite));
     }
 
     /**
@@ -131,10 +168,12 @@ public class GameObjectBuilder {
      * @return The builder instance.
      */
     public GameObjectBuilder withLine(LineComponent line) {
-        if (!object.hasComponent(DrawableComponent.class))
-            return withComponent(line);
-        else
-            throw new IllegalStateException("Cannot add line component to object with other render component");
+        for (Component c : components) {
+            if (c.getClass().isAssignableFrom(DrawableComponent.class))
+                throw new IllegalStateException("Cannot add line component to object with other render component");
+        }
+
+        return withComponent(line);
     }
 
     /**
@@ -147,10 +186,12 @@ public class GameObjectBuilder {
      * @return The builder instance.
      */
     public GameObjectBuilder withLine(Vector2f start, Vector2f end, float thickness, Colors color) {
-        if (!object.hasComponent(DrawableComponent.class))
-            return withComponent(new LineComponent(thickness, start, end, color));
-        else
-            throw new IllegalStateException("Cannot add line component to object with other render component");
+        for (Component c : components) {
+            if (c.getClass().isAssignableFrom(DrawableComponent.class))
+                throw new IllegalStateException("Cannot add line component to object with other render component");
+        }
+
+        return withComponent(new LineComponent(thickness, start, end, color));
     }
 
     /**
@@ -162,10 +203,12 @@ public class GameObjectBuilder {
      * @return The builder instance.
      */
     public GameObjectBuilder withLine(Vector2f start, Vector2f end, float thickness) {
-        if (!object.hasComponent(DrawableComponent.class))
-            return withComponent(new LineComponent(thickness, start, end));
-        else
-            throw new IllegalStateException("Cannot add line component to object with other render component");
+        for (Component c : components) {
+            if (c.getClass().isAssignableFrom(DrawableComponent.class))
+                throw new IllegalStateException("Cannot add line component to object with other render component");
+        }
+
+        return withComponent(new LineComponent(thickness, start, end));
     }
 
     /**
@@ -175,10 +218,12 @@ public class GameObjectBuilder {
      * @return The builder instance.
      */
     public GameObjectBuilder withText(TextComponent text) {
-        if (!object.hasComponent(DrawableComponent.class))
-            return withComponent(text);
-        else
-            throw new IllegalStateException("Cannot add line component to object with other render component");
+        for (Component c : components) {
+            if (c.getClass().isAssignableFrom(DrawableComponent.class))
+                throw new IllegalStateException("Cannot add line component to object with other render component");
+        }
+
+        return withComponent(text);
     }
 
     /**
@@ -190,10 +235,12 @@ public class GameObjectBuilder {
      * @return The builder instance.
      */
     public GameObjectBuilder withText(String text, Font font, float fontSize) {
-        if (!object.hasComponent(DrawableComponent.class))
-            return withComponent(new TextComponent(fontSize, text, font));
-        else
-            throw new IllegalStateException("Cannot add line component to object with other render component");
+        for (Component c : components) {
+            if (c.getClass().isAssignableFrom(DrawableComponent.class))
+                throw new IllegalStateException("Cannot add line component to object with other render component");
+        }
+
+        return withComponent(new TextComponent(fontSize, text, font));
     }
 
     /**
@@ -204,10 +251,12 @@ public class GameObjectBuilder {
      * @return The builder instance.
      */
     public GameObjectBuilder withText(String text, float fontSize) {
-        if (!object.hasComponent(DrawableComponent.class))
-            return withComponent(new TextComponent(fontSize, text, null));
-        else
-            throw new IllegalStateException("Cannot add line component to object with other render component");
+        for (Component c : components) {
+            if (c.getClass().isAssignableFrom(DrawableComponent.class))
+                throw new IllegalStateException("Cannot add line component to object with other render component");
+        }
+
+        return withComponent(new TextComponent(fontSize, text, null));
     }
 
 
@@ -217,6 +266,11 @@ public class GameObjectBuilder {
      * @return The created GameObject
      */
     public GameObject build() {
+        GameObject object = new GameObject(scene, id);
+
+        for (Component c : components)
+            object.addComponent(c);
+
         return object;
     }
 }
