@@ -1,9 +1,10 @@
-package dev.yeff.orbital.ecs.components.collision;
+package dev.yeff.components;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.Component;
 
-public class RectangleCollider extends Component {
+public class MouseObjectCollisionComponent extends Component {
+
     @Override
     public void init(Game game) {
 
