@@ -32,6 +32,7 @@ public class CollisionScene extends Scene {
                 .withId("Object 2")
                 .withTransform(Input.getMouse().getMousePos(), new Vector2f(12.0f, 12.0f))
                 .withComponent(new ColliderComponent())
+                .withComponents(new MouseObjectCollisionComponent(obj1))
                 .withShape(Shapes.CIRCLE, Colors.RED)
                 .build();
 
@@ -42,12 +43,6 @@ public class CollisionScene extends Scene {
     @Override
     public void update(Game game, float fps) {
         obj2.getComponent(TransformComponent.class).position = Input.getMouse().getMousePos();
-
-        if (Collider.circleWithCircle(obj1, obj2)) {
-            obj1.getComponent(RenderShapeComponent.class).shape = Shapes.CIRCLE_OUTLINE;
-        } else {
-            obj1.getComponent(RenderShapeComponent.class).shape = Shapes.CIRCLE;
-        }
     }
 
     @Override

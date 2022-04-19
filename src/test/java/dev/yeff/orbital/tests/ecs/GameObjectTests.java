@@ -40,7 +40,7 @@ public class GameObjectTests implements WithAssertions {
     @DisplayName("create game object with transform component using builder")
     @Test
     public void testCreateGameObject_withTransform_usingBuilder() {
-        GameObject object = new GameObjectBuilder(mockScene)
+        GameObject object = new GameObjectBuilder(mockScene, "Test Object")
                 .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(0.0f, 0.0f))
                 .build();
 
@@ -58,7 +58,7 @@ public class GameObjectTests implements WithAssertions {
     @DisplayName("create game object with render shape component using builder")
     @Test
     public void testCreateGameObject_withShape_usingBuilder() {
-        GameObject object = new GameObjectBuilder(mockScene)
+        GameObject object = new GameObjectBuilder(mockScene, "Test Object")
                 .withShape(Shapes.CIRCLE, Colors.RED)
                 .build();
 
@@ -71,7 +71,7 @@ public class GameObjectTests implements WithAssertions {
     @DisplayName("create game object with text component using builder")
     @Test
     public void testCreateGameObject_withText_usingBuilder() {
-        GameObject object = new GameObjectBuilder(mockScene)
+        GameObject object = new GameObjectBuilder(mockScene, "Test Object")
                 .withText("Hello World", 0.0f)
                 .build();
 
@@ -84,7 +84,7 @@ public class GameObjectTests implements WithAssertions {
     @DisplayName("create game object with line component using builder")
     @Test
     public void testCreateGameObject_withLine_usingBuilder() {
-        GameObject object = new GameObjectBuilder(mockScene)
+        GameObject object = new GameObjectBuilder(mockScene, "Test Object")
                 .withLine(new Vector2f(0.0f, 0.0f), new Vector2f(0.0f, 0.0f), 0.0f, Colors.RED)
                 .build();
 
@@ -106,7 +106,7 @@ public class GameObjectTests implements WithAssertions {
     @DisplayName("create game object with sprite component using builder")
     @Test
     public void testCreateGameObject_withSprite_usingBuilder() {
-        GameObject object = new GameObjectBuilder(mockScene)
+        GameObject object = new GameObjectBuilder(mockScene, "Test Object")
                 .withSprite(ResourceManager.getSprite(getClass(), "character_0000.png"))
                 .build();
 
