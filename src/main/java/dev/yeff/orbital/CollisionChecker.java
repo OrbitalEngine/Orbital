@@ -8,7 +8,7 @@ import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
 
 import static com.raylib.Raylib.*;
 
-public class Collider {
+public class CollisionChecker {
     private static Jaylib.Rectangle getRect(GameObject obj) {
         if (obj.hasComponent(TransformComponent.class))
             return new Jaylib.Rectangle(

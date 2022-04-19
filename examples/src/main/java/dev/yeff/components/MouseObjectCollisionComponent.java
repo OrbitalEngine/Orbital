@@ -1,6 +1,6 @@
 package dev.yeff.components;
 
-import dev.yeff.orbital.Collider;
+import dev.yeff.orbital.CollisionChecker;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.ecs.GameObject;
@@ -21,7 +21,7 @@ public class MouseObjectCollisionComponent extends Component {
 
     @Override
     public void update(Game game) {
-        if (Collider.circleWithCircle(obj, parent)) {
+        if (CollisionChecker.circleWithCircle(obj, parent)) {
             obj.getComponent(RenderShapeComponent.class).shape = Shapes.CIRCLE_OUTLINE;
         } else {
             obj.getComponent(RenderShapeComponent.class).shape = Shapes.CIRCLE;

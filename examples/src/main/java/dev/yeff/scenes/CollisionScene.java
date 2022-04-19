@@ -1,14 +1,11 @@
 package dev.yeff.scenes;
 
 import dev.yeff.components.MouseObjectCollisionComponent;
-import dev.yeff.orbital.Collider;
 import dev.yeff.orbital.Game;
-import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
 import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
-import dev.yeff.orbital.ecs.components.render.RenderShapeComponent;
 import dev.yeff.orbital.graphics.Colors;
 import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.io.Input;
