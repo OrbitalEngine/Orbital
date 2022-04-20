@@ -1,4 +1,4 @@
-package dev.yeff.orbital;
+package dev.yeff.orbital.physics.collision;
 
 import com.raylib.Jaylib;
 import com.raylib.Raylib;

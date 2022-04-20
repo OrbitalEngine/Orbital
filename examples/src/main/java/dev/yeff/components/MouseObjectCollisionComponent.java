@@ -1,6 +1,6 @@
 package dev.yeff.components;
 
-import dev.yeff.orbital.CollisionChecker;
+import dev.yeff.orbital.physics.collision.CollisionChecker;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.ecs.GameObject;
