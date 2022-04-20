@@ -29,13 +29,13 @@ public class CollisionCheckerTests implements WithAssertions {
         GameObject object1 = new GameObjectBuilder(mockScene, "Test Object 1")
                 .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(50.0f, 50.f))
                 .withShape(Shapes.RECTANGLE, Colors.RED)
-                .withComponents(new ColliderComponent())
+                .withComponents(new ColliderComponent(Shapes.RECTANGLE, new Vector2f(50.0f, 50.f)))
                 .build();
 
         GameObject object2 = new GameObjectBuilder(mockScene, "Test Object 2")
                 .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(20.0f, 20.f))
                 .withShape(Shapes.RECTANGLE, Colors.RED)
-                .withComponents(new ColliderComponent())
+                .withComponents(new ColliderComponent(Shapes.RECTANGLE, new Vector2f(20.0f, 20.0f)))
                 .build();
 
         assertThat(CollisionChecker.rectWithRect(object1, object2)).isTrue();
@@ -47,13 +47,13 @@ public class CollisionCheckerTests implements WithAssertions {
         GameObject object1 = new GameObjectBuilder(mockScene, "Test Object 1")
                 .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(50.0f, 50.f))
                 .withShape(Shapes.CIRCLE, Colors.RED)
-                .withComponents(new ColliderComponent())
+                .withComponents(new ColliderComponent(Shapes.CIRCLE, new Vector2f(50.0f, 50.0f)))
                 .build();
 
         GameObject object2 = new GameObjectBuilder(mockScene, "Test Object 2")
                 .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(20.0f, 20.f))
                 .withShape(Shapes.CIRCLE, Colors.RED)
-                .withComponents(new ColliderComponent())
+                .withComponents(new ColliderComponent(Shapes.CIRCLE, new Vector2f(20.0f, 20.0f)))
                 .build();
 
         assertThat(CollisionChecker.circleWithCircle(object1, object2)).isTrue();
@@ -65,13 +65,13 @@ public class CollisionCheckerTests implements WithAssertions {
         GameObject circle = new GameObjectBuilder(mockScene, "Test Object 1")
                 .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(50.0f, 50.f))
                 .withShape(Shapes.CIRCLE, Colors.RED)
-                .withComponents(new ColliderComponent())
+                .withComponents(new ColliderComponent(Shapes.CIRCLE, new Vector2f(50.0f, 50.0f)))
                 .build();
 
         GameObject rect = new GameObjectBuilder(mockScene, "Test Object 2")
                 .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(20.0f, 20.f))
                 .withShape(Shapes.RECTANGLE, Colors.RED)
-                .withComponents(new ColliderComponent())
+                .withComponents(new ColliderComponent(Shapes.RECTANGLE, new Vector2f(20.0f, 20.0f)))
                 .build();
 
         assertThat(CollisionChecker.rectWithRect(circle, rect)).isTrue();

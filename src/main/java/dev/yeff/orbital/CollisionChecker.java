@@ -10,12 +10,12 @@ import static com.raylib.Raylib.*;
 
 public class CollisionChecker {
     private static Jaylib.Rectangle getRect(GameObject obj) {
-        if (obj.hasComponent(TransformComponent.class))
+        if (obj.hasComponent(TransformComponent.class) && obj.hasComponent(ColliderComponent.class))
             return new Jaylib.Rectangle(
                     obj.getComponent(TransformComponent.class).position.x,
                     obj.getComponent(TransformComponent.class).position.y,
-                    obj.getComponent(TransformComponent.class).scale.x,
-                    obj.getComponent(TransformComponent.class).scale.y
+                    obj.getComponent(ColliderComponent.class).colliderScale.x,
+                    obj.getComponent(ColliderComponent.class).colliderScale.y
             );
         else
             throw new IllegalStateException("Transform component required to get rectangle.");
@@ -37,8 +37,8 @@ public class CollisionChecker {
             Raylib.Vector2 center1 = obj1.getComponent(TransformComponent.class).position.asRaylibVector();
             Raylib.Vector2 center2 = obj2.getComponent(TransformComponent.class).position.asRaylibVector();
 
-            float radius1 = obj1.getComponent(TransformComponent.class).scale.x;
-            float radius2 = obj2.getComponent(TransformComponent.class).scale.x;
+            float radius1 = obj1.getComponent(ColliderComponent.class).colliderScale.x;
+            float radius2 = obj2.getComponent(ColliderComponent.class).colliderScale.x;
 
             return CheckCollisionCircles(center1, radius1, center2, radius2);
         }
@@ -50,7 +50,7 @@ public class CollisionChecker {
         if (circle.hasComponent(ColliderComponent.class) && rectangle.hasComponent(ColliderComponent.class)) {
 
             Raylib.Vector2 center = circle.getComponent(TransformComponent.class).position.asRaylibVector();
-            float radius = circle.getComponent(TransformComponent.class).scale.x;
+            float radius = circle.getComponent(ColliderComponent.class).colliderScale.x;
 
             Jaylib.Rectangle rect = getRect(rectangle);
 
