@@ -5,6 +5,11 @@ import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.math.Vector2f;
 
+/**
+ * Component storing data for collision between objects.
+ *
+ * @author YeffyCodeGit
+ */
 public class ColliderComponent extends Component {
     public Shapes renderShape;
     public Vector2f colliderScale;
