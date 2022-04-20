@@ -8,7 +8,18 @@ import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
 
 import static com.raylib.Raylib.*;
 
+/**
+ * Class implementing functions to check for collision between {@code GameObject}'s.
+ *
+ * @author YeffyCodeGit
+ */
 public class CollisionChecker {
+    /**
+     * Returns a {@code Jaylib.Rectangle} from a {@code GameObject}, to use in the collision functions.
+     *
+     * @param obj The game object to get the rectangle from.
+     * @return The rectangle.
+     */
     private static Jaylib.Rectangle getRect(GameObject obj) {
         if (obj.hasComponent(TransformComponent.class) && obj.hasComponent(ColliderComponent.class))
             return new Jaylib.Rectangle(
@@ -21,6 +32,13 @@ public class CollisionChecker {
             throw new IllegalStateException("Transform component required to get rectangle.");
     }
 
+    /**
+     * Checks if two rectangle shaped {@code GameObject}'s are colliding with each other.
+     *
+     * @param obj1 The first object.
+     * @param obj2 The second object.
+     * @return If the two objects are colliding or not.
+     */
     public static boolean rectWithRect(GameObject obj1, GameObject obj2) {
         if (obj1.hasComponent(ColliderComponent.class) && obj2.hasComponent(ColliderComponent.class)) {
             Jaylib.Rectangle rect1 = getRect(obj1);
@@ -32,6 +50,13 @@ public class CollisionChecker {
         throw new IllegalStateException("Both objects need to have colliders to check collision.");
     }
 
+    /**
+     * Checks if two circle shaped {@code GameObject}'s are colliding with each other.
+     *
+     * @param obj1 The first object.
+     * @param obj2 The second object.
+     * @return If the two objects are colliding or not.
+     */
     public static boolean circleWithCircle(GameObject obj1, GameObject obj2) {
         if (obj1.hasComponent(ColliderComponent.class) && obj2.hasComponent(ColliderComponent.class)) {
             Raylib.Vector2 center1 = obj1.getComponent(TransformComponent.class).position.asRaylibVector();
@@ -46,6 +71,13 @@ public class CollisionChecker {
         throw new IllegalStateException("Both objects need to have colliders to check collision.");
     }
 
+    /**
+     * Checks if a circular and rectangular {@code GameObject} are colliding with each other.
+     *
+     * @param circle The circle object.
+     * @param rectangle The rectangle object.
+     * @return If the two objects are colliding or not.
+     */
     public static boolean circleWithRect(GameObject circle, GameObject rectangle) {
         if (circle.hasComponent(ColliderComponent.class) && rectangle.hasComponent(ColliderComponent.class)) {
 
