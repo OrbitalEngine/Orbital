@@ -22,14 +22,14 @@ public class CollisionScene extends Scene {
         obj1 = new GameObjectBuilder(this)
                 .withId("Object 1")
                 .withTransform(game.getScreenCenter(), new Vector2f(120.0f, 120.0f))
-                .withComponent(new ColliderComponent(Shapes.CIRCLE, new Vector2f(120.0f, 120.0f)))
+                .withCollider(Shapes.CIRCLE, new Vector2f(120.0f, 120.0f))
                 .withSprite(ResourceManager.getSprite(getClass(), "assets/character_0000.png"))
                 .build();
 
         obj2 = new GameObjectBuilder(this)
                 .withId("Object 2")
                 .withTransform(Input.getMouse().getMousePos(), new Vector2f(5.0f, 5.0f))
-                .withComponent(new ColliderComponent(Shapes.CIRCLE, new Vector2f(5.0f, 5.0f)))
+                .withCollider(Shapes.CIRCLE, new Vector2f(5.0f, 5.0f))
                 .withComponents(new MouseObjectCollisionComponent(obj1))
                 .withShape(Shapes.CIRCLE, Colors.RED)
                 .build();

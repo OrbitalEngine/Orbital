@@ -3,6 +3,7 @@ package dev.yeff.orbital.ecs.builders;
 import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.components.*;
+import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
 import dev.yeff.orbital.ecs.components.render.*;
 import dev.yeff.orbital.graphics.Colors;
 import dev.yeff.orbital.graphics.Shapes;
@@ -98,6 +99,14 @@ public class GameObjectBuilder {
      */
     public GameObjectBuilder withTransform(Vector2f position, Vector2f scale) {
         return withComponent(new TransformComponent(position, scale));
+    }
+
+    public GameObjectBuilder withCollider(ColliderComponent collider) {
+        return withComponent(collider);
+    }
+
+    public GameObjectBuilder withCollider(Shapes collisionShape, Vector2f collisionScale) {
+        return withComponent(new ColliderComponent(collisionShape, collisionScale));
     }
 
     /**
