@@ -5,6 +5,7 @@ import com.raylib.Raylib;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
+import dev.yeff.orbital.graphics.Shapes;
 
 import static com.raylib.Raylib.*;
 
@@ -30,6 +31,23 @@ public class CollisionChecker {
             );
         else
             throw new IllegalStateException("Transform component required to get rectangle.");
+    }
+
+    public static boolean isColliding(GameObject obj1, GameObject obj2) {
+        if (obj1.getComponent(ColliderComponent.class).renderShape == Shapes.RECTANGLE || obj1.getComponent(ColliderComponent.class).renderShape == Shapes.RECTANGLE_OUTLINE
+            && obj2.getComponent(ColliderComponent.class).renderShape == Shapes.RECTANGLE || obj1.getComponent(ColliderComponent.class).renderShape == Shapes.RECTANGLE_OUTLINE)
+                return rectWithRect(obj1, obj2);
+        else if (obj1.getComponent(ColliderComponent.class).renderShape == Shapes.CIRCLE || obj1.getComponent(ColliderComponent.class).renderShape == Shapes.CIRCLE_OUTLINE
+                && obj2.getComponent(ColliderComponent.class).renderShape == Shapes.CIRCLE || obj1.getComponent(ColliderComponent.class).renderShape == Shapes.CIRCLE_OUTLINE)
+                    return circleWithCircle(obj1, obj2);
+        else if (obj1.getComponent(ColliderComponent.class).renderShape == Shapes.RECTANGLE || obj1.getComponent(ColliderComponent.class).renderShape == Shapes.RECTANGLE_OUTLINE
+                && obj2.getComponent(ColliderComponent.class).renderShape == Shapes.CIRCLE || obj1.getComponent(ColliderComponent.class).renderShape == Shapes.CIRCLE_OUTLINE)
+                    return circleWithRect(obj2, obj1);
+        else if (obj1.getComponent(ColliderComponent.class).renderShape == Shapes.CIRCLE || obj1.getComponent(ColliderComponent.class).renderShape == Shapes.CIRCLE_OUTLINE
+                && obj2.getComponent(ColliderComponent.class).renderShape == Shapes.RECTANGLE || obj1.getComponent(ColliderComponent.class).renderShape == Shapes.RECTANGLE_OUTLINE)
+            return circleWithRect(obj1, obj2);
+        else
+            throw new IllegalStateException("Unknown collision shapes.");
     }
 
     /**

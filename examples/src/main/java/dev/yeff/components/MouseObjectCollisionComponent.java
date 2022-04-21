@@ -1,11 +1,11 @@
 package dev.yeff.components;
 
+import dev.yeff.orbital.ecs.components.render.RenderShapeComponent;
+import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.physics.collision.CollisionChecker;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.ecs.GameObject;
-import dev.yeff.orbital.ecs.components.render.SpriteComponent;
-import dev.yeff.orbital.resources.ResourceManager;
 
 public class MouseObjectCollisionComponent extends Component {
     private GameObject obj;
@@ -21,10 +21,10 @@ public class MouseObjectCollisionComponent extends Component {
 
     @Override
     public void update(Game game) {
-        if (CollisionChecker.circleWithCircle(obj, parent)) {
-            obj.getComponent(SpriteComponent.class).sprite = ResourceManager.getSprite(getClass(), "assets/character_0006.png");
+        if (CollisionChecker.isColliding(obj, parent)) {
+            obj.getComponent(RenderShapeComponent.class).shape = Shapes.CIRCLE_OUTLINE;
         } else {
-            obj.getComponent(SpriteComponent.class).sprite = ResourceManager.getSprite(getClass(), "assets/character_0000.png");
+            obj.getComponent(RenderShapeComponent.class).shape = Shapes.CIRCLE;
         }
     }
 }
