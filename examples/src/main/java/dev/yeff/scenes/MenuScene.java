@@ -37,8 +37,6 @@ public class MenuScene extends Scene {
             game.loadScene("Main");
         if (Input.getKeyboard().isKeyDown(Keys.NUM_2))
             game.loadScene("Collision");
-        if (Input.getKeyboard().isKeyDown(Keys.C))
-            Input.getKeyboard().setClipboardContents("[THIS WAS COPIED FROM THE ENGINE]");
     }
 
     @Override
