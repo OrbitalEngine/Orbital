@@ -1,6 +1,7 @@
 package dev.yeff.orbital.ecs;
 
 import dev.yeff.orbital.Game;
+import dev.yeff.orbital.scenes.Scene;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -15,8 +16,16 @@ public class GameObject {
     @Getter
     private List<Component> components;
 
-    public GameObject() {
+    @Getter
+    private Scene scene;
+
+    @Getter
+    private String id;
+
+    public GameObject(Scene scene, String id) {
         components = new ArrayList<>();
+        this.scene = scene;
+        this.id = id;
     }
 
     /**

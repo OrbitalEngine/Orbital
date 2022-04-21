@@ -3,12 +3,7 @@ package dev.yeff.scenes;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
-import dev.yeff.orbital.ecs.components.LineComponent;
-import dev.yeff.orbital.ecs.components.TextComponent;
-import dev.yeff.orbital.ecs.components.TransformComponent;
-import dev.yeff.orbital.graphics.Renderer;
 import dev.yeff.orbital.io.Input;
-import dev.yeff.orbital.io.Keyboard;
 import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.ResourceManager;
@@ -25,12 +20,14 @@ public class MenuScene extends Scene {
     public void init(Game game) {
         font = ResourceManager.getFont(getClass(), "fonts/Roboto-Regular.ttf");
 
-        greeting = new GameObjectBuilder()
+        greeting = new GameObjectBuilder(this)
+                .withId("Greeting Text")
                 .withTransform(new Vector2f(game.getSize().x / 4, game.getSize().y / 3), new Vector2f(0, 0))
                 .withText("This is a Orbital demo, \npress Spacebar to go to the actual 'game'.", null, 60.0f)
                 .build();
 
-        testLine = new GameObjectBuilder()
+        testLine = new GameObjectBuilder(this)
+                .withId("Test Line")
                 .withTransform(new Vector2f(0, 0), new Vector2f(0, 0))
                 .withLine(new Vector2f(18, 42), new Vector2f(game.getSize().x - 18, 42), 2.0f)
                 .build();
@@ -39,15 +36,14 @@ public class MenuScene extends Scene {
         addGameObject(game, testLine);
 
         Log.info(getClass(), "Loaded menu scene");
-
-        Log.info(getClass(), Input.getKeyboard().getClipboardContents());
     }
 
     @Override
     public void update(Game game, float fps) {
         if (Input.getKeyboard().isKeyDown(Keys.NUM_1))
             game.loadScene("Main");
-
+        if (Input.getKeyboard().isKeyDown(Keys.NUM_2))
+            game.loadScene("Collision");
         if (Input.getKeyboard().isKeyDown(Keys.C))
             Input.getKeyboard().setClipboardContents("[THIS WAS COPIED FROM THE ENGINE]");
     }

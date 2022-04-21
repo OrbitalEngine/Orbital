@@ -1,4 +1,4 @@
-package dev.yeff.orbital.ecs.components;
+package dev.yeff.orbital.ecs.components.render;
 
 import dev.yeff.orbital.ecs.Component;
 

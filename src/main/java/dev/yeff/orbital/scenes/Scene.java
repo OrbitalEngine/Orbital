@@ -2,11 +2,13 @@ package dev.yeff.orbital.scenes;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
+import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
 import lombok.Getter;
 
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Abstract class defining a scene.
@@ -49,7 +51,6 @@ public abstract class Scene {
             gameObject.init(game);
         }
     }
-
     /**
      * Gets called when the scene is first initialized.
      *

@@ -1,6 +1,7 @@
-package dev.yeff.orbital.ecs.components;
+package dev.yeff.orbital.ecs.components.render;
 
 import dev.yeff.orbital.Game;
+import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.Sprite;
 
