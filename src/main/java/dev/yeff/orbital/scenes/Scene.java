@@ -26,6 +26,20 @@ public abstract class Scene {
     }
 
     /**
+     * Finds and returns a specific {@code GameObject} using the ID.
+     *
+     * @param id The id of the game object.
+     * @return The game object.
+     */
+    public GameObject findObject(String id) {
+        for (GameObject go : objects)
+            if (go.getId() == id)
+                return go;
+
+        throw new IllegalStateException("No game object with id " + "\"" + id + "\"" + "in scene.");
+    }
+
+    /**
      * Initializes scene {@code GameObject}'s.
      *
      * @param game The instance of the game.

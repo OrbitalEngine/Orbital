@@ -5,12 +5,10 @@ import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
 import dev.yeff.orbital.ecs.components.TransformComponent;
-import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
 import dev.yeff.orbital.graphics.Colors;
 import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.math.Vector2f;
-import dev.yeff.orbital.resources.ResourceManager;
 import dev.yeff.orbital.scenes.Scene;
 
 public class CollisionScene extends Scene {
@@ -30,7 +28,7 @@ public class CollisionScene extends Scene {
                 .withId("Object 2")
                 .withTransform(Input.getMouse().getMousePos(), new Vector2f(5.0f, 5.0f))
                 .withCollider(Shapes.CIRCLE, new Vector2f(5.0f, 5.0f))
-                .withComponents(new MouseObjectCollisionComponent(obj1))
+                .withComponents(new MouseObjectCollisionComponent())
                 .withShape(Shapes.RECTANGLE, Colors.GREEN)
                 .build();
 
