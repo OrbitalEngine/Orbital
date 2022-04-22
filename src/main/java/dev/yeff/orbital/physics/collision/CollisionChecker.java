@@ -57,7 +57,7 @@ public class CollisionChecker {
      * @param obj2 The second object.
      * @return If the two objects are colliding or not.
      */
-    public static boolean rectWithRect(GameObject obj1, GameObject obj2) {
+    private static boolean rectWithRect(GameObject obj1, GameObject obj2) {
         if (obj1.hasComponent(ColliderComponent.class) && obj2.hasComponent(ColliderComponent.class)) {
             Jaylib.Rectangle rect1 = getRect(obj1);
             Jaylib.Rectangle rect2 = getRect(obj2);
@@ -75,7 +75,7 @@ public class CollisionChecker {
      * @param obj2 The second object.
      * @return If the two objects are colliding or not.
      */
-    public static boolean circleWithCircle(GameObject obj1, GameObject obj2) {
+    private static boolean circleWithCircle(GameObject obj1, GameObject obj2) {
         if (obj1.hasComponent(ColliderComponent.class) && obj2.hasComponent(ColliderComponent.class)) {
             Raylib.Vector2 center1 = obj1.getComponent(TransformComponent.class).position.asRaylibVector();
             Raylib.Vector2 center2 = obj2.getComponent(TransformComponent.class).position.asRaylibVector();
@@ -96,7 +96,7 @@ public class CollisionChecker {
      * @param rectangle The rectangle object.
      * @return If the two objects are colliding or not.
      */
-    public static boolean circleWithRect(GameObject circle, GameObject rectangle) {
+    private static boolean circleWithRect(GameObject circle, GameObject rectangle) {
         if (circle.hasComponent(ColliderComponent.class) && rectangle.hasComponent(ColliderComponent.class)) {
 
             Raylib.Vector2 center = circle.getComponent(TransformComponent.class).position.asRaylibVector();

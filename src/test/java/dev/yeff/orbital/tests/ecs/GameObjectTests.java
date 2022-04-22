@@ -30,7 +30,7 @@ public class GameObjectTests implements WithAssertions {
     @DisplayName("create game object with no components using builder")
     @Test
     public void testCreateGameObject_usingBuilder() {
-        GameObject object = new GameObjectBuilder(mockScene)
+        GameObject object = new GameObjectBuilder(mockScene, "Test Object")
                 .build();
 
         assertThat(object).isNotNull();

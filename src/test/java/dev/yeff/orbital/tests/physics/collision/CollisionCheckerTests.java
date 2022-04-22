@@ -38,7 +38,7 @@ public class CollisionCheckerTests implements WithAssertions {
                 .withComponents(new ColliderComponent(Shapes.RECTANGLE, new Vector2f(20.0f, 20.0f)))
                 .build();
 
-        assertThat(CollisionChecker.rectWithRect(object1, object2)).isTrue();
+        assertThat(CollisionChecker.isColliding(object1, object2)).isTrue();
     }
 
     @DisplayName("test circle objects colliding")
@@ -56,7 +56,7 @@ public class CollisionCheckerTests implements WithAssertions {
                 .withComponents(new ColliderComponent(Shapes.CIRCLE, new Vector2f(20.0f, 20.0f)))
                 .build();
 
-        assertThat(CollisionChecker.circleWithCircle(object1, object2)).isTrue();
+        assertThat(CollisionChecker.isColliding(object1, object2)).isTrue();
     }
 
     @DisplayName("test circle and rectangle objects colliding")
@@ -74,6 +74,6 @@ public class CollisionCheckerTests implements WithAssertions {
                 .withComponents(new ColliderComponent(Shapes.RECTANGLE, new Vector2f(20.0f, 20.0f)))
                 .build();
 
-        assertThat(CollisionChecker.rectWithRect(circle, rect)).isTrue();
+        assertThat(CollisionChecker.isColliding(circle, rect)).isTrue();
     }
 }
