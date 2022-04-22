@@ -55,11 +55,23 @@ public class GameObjectBuilder {
         collider = Optional.empty();
     }
 
+    /**
+     * Sets the {@code Scene} for the object to be built.
+     *
+     * @param scene The scene to set.
+     * @return The builder instance.
+     */
     public GameObjectBuilder withScene(Scene scene) {
         this.scene = scene;
         return this;
     }
 
+    /**
+     * Sets the id of the object to be built.
+     *
+     * @param id The id of the object.
+     * @return The builder instance.
+     */
     public GameObjectBuilder withId(String id) {
         this.id = id;
         return this;
@@ -130,6 +142,12 @@ public class GameObjectBuilder {
         }
     }
 
+    /**
+     * Adds a {@code ColliderComponent} to the object to be built.
+     *
+     * @param collider The collider component to add.
+     * @return The builder instance.
+     */
     public GameObjectBuilder withCollider(ColliderComponent collider) {
         if (this.collider.isPresent()) {
             throw new IllegalStateException("Object already has a transform component, cannot add another one.");
@@ -140,6 +158,13 @@ public class GameObjectBuilder {
         }
     }
 
+    /**
+     * Adds a {@code ColliderComponent} to the object to be built.
+     *
+     * @param collisionShape The shape of the collider.
+     * @param collisionScale The scale of the collider.
+     * @return The builder instance.
+     */
     public GameObjectBuilder withCollider(Shapes collisionShape, Vector2f collisionScale) {
         if (this.collider.isPresent()) {
             throw new IllegalStateException("Object already has a transform component, cannot add another one.");
