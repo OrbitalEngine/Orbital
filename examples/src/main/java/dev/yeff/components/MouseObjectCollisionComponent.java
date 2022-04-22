@@ -17,6 +17,9 @@ public class MouseObjectCollisionComponent extends Component {
     @Override
     public void init(Game game) {
         this.obj = parent.getScene().findObject("Object 1");
+
+        if (obj == null)
+            throw new IllegalStateException("Did not find Object 1.");
     }
 
     @Override
