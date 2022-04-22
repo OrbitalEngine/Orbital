@@ -34,6 +34,14 @@ public class CollisionChecker {
             throw new IllegalStateException("Transform component required to get rectangle.");
     }
 
+    /**
+     * Checks if two {@code GameObject}'s are colliding with each other.
+     *
+     * @param obj1 The first object.
+     * @param obj2 The second object.
+     * @throws IllegalStateException If there was an error checking the collision.
+     * @return If the two objects are colliding or not.
+     */
     public static boolean isColliding(GameObject obj1, GameObject obj2) {
         if (obj1.getComponent(ColliderComponent.class).renderShape == Shapes.RECTANGLE || obj1.getComponent(ColliderComponent.class).renderShape == Shapes.RECTANGLE_OUTLINE
             && obj2.getComponent(ColliderComponent.class).renderShape == Shapes.RECTANGLE || obj1.getComponent(ColliderComponent.class).renderShape == Shapes.RECTANGLE_OUTLINE)

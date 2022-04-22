@@ -18,6 +18,7 @@ public class SceneManager {
      * Adds a new scene to the scene manager.
      *
      * @param name The name of the scene to add it as.
+     * @throws IllegalStateException If there was an error adding the scene.
      * @param scene The scene class.
      */
     public static void addScene(String name, Scene scene) {
