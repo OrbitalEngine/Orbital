@@ -1,5 +1,7 @@
 package dev.yeff.orbital.io;
 
+import lombok.Getter;
+
 /**
  * Stores all types of input classes.
  *
@@ -9,21 +11,9 @@ public class Input {
     // Disable constructor
     private Input() { }
 
+    @Getter
     private static final Keyboard keyboard = new Keyboard();
+
+    @Getter
     private static final Mouse mouse = new Mouse();
-
-    /**
-     * Gets the stored keyboard instance.
-     *
-     * @return The keyboard instance.
-     */
-    public static Keyboard getKeyboard() { return keyboard; }
-
-
-    /**
-     * Gets the stored mouse instance.
-     *
-     * @return The mouse instance.
-     */
-    public static Mouse getMouse() { return mouse; }
 }
