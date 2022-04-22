@@ -96,6 +96,7 @@ public class GameObjectBuilder {
      * Adds a {@code TransformComponent} to the object to be built.
      *
      * @param transform The transform component to add.
+     * @throws IllegalStateException If there was an error adding the component.
      * @return The builder instance.
      */
     public GameObjectBuilder withTransform(TransformComponent transform) {
@@ -114,6 +115,7 @@ public class GameObjectBuilder {
      *
      * @param position The position of the object.
      * @param scale The scale of the object.
+     * @throws IllegalStateException If there was an error adding the component.
      * @return The builder instance.
      */
     public GameObjectBuilder withTransform(Vector2f position, Vector2f scale) {
@@ -154,6 +156,7 @@ public class GameObjectBuilder {
      * Adds a {@code RenderShapeComponent} to the object to be built.
      *
      * @param shape The shape component to add.
+     * @throws IllegalStateException If there was an error adding the component.
      * @return The builder instance.
      */
     public GameObjectBuilder withShape(RenderShapeComponent shape) {
@@ -170,6 +173,7 @@ public class GameObjectBuilder {
      *
      * @param shape The shape of the object.
      * @param color The color of the shape.
+     * @throws IllegalStateException If there was an error adding the component.
      * @return The builder instance.
      */
     public GameObjectBuilder withShape(Shapes shape, Colors color) {
@@ -188,6 +192,7 @@ public class GameObjectBuilder {
      * Adds a {@code SpriteComponent} to the object to be built.
      *
      * @param sprite The sprite component to add.
+     * @throws IllegalStateException If there was an error adding the component.
      * @return The builder instance.
      */
     public GameObjectBuilder withSprite(SpriteComponent sprite) {
@@ -204,6 +209,7 @@ public class GameObjectBuilder {
      * Adds a {@code SpriteComponent} to the object to be built.
      *
      * @param sprite The sprite of the object.
+     * @throws IllegalStateException If there was an error adding the component.
      * @return The builder instance.
      */
     public GameObjectBuilder withSprite(Sprite sprite) {
@@ -222,6 +228,7 @@ public class GameObjectBuilder {
      * Adds a {@code LineComponent} to the object to be built.
      *
      * @param line The line component to add.
+     * @throws IllegalStateException If there was an error adding the component.
      * @return The builder instance.
      */
     public GameObjectBuilder withLine(LineComponent line) {
@@ -241,6 +248,7 @@ public class GameObjectBuilder {
      * @param end The ending point of the line.
      * @param thickness The thickness of the line.
      * @param color The color of the line.
+     * @throws IllegalStateException If there was an error adding the component.
      * @return The builder instance.
      */
     public GameObjectBuilder withLine(Vector2f start, Vector2f end, float thickness, Colors color) {
@@ -261,6 +269,7 @@ public class GameObjectBuilder {
      * @param start The starting point of the line.
      * @param end The ending point of the line.
      * @param thickness The thickness of the line.
+     * @throws IllegalStateException If there was an error adding the component.
      * @return The builder instance.
      */
     public GameObjectBuilder withLine(Vector2f start, Vector2f end, float thickness) {
@@ -279,6 +288,7 @@ public class GameObjectBuilder {
      * Adds a {@code TextComponent} to the object to be built.
      *
      * @param text The text component to add.
+     * @throws IllegalStateException If there was an error adding the component.
      * @return The builder instance.
      */
     public GameObjectBuilder withText(TextComponent text) {
@@ -297,6 +307,7 @@ public class GameObjectBuilder {
      * @param text The text.
      * @param font The font of the text.
      * @param fontSize The size of the text.
+     * @throws IllegalStateException If there was an error adding the component.
      * @return The builder instance.
      */
     public GameObjectBuilder withText(String text, Font font, float fontSize) {
@@ -316,6 +327,7 @@ public class GameObjectBuilder {
      *
      * @param text The text.
      * @param fontSize The size of the text.
+     * @throws IllegalStateException If there was an error adding the component.
      * @return The builder instance.
      */
     public GameObjectBuilder withText(String text, float fontSize) {

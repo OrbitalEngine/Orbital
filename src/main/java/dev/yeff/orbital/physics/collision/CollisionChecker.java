@@ -19,6 +19,7 @@ public class CollisionChecker {
      * Returns a {@code Jaylib.Rectangle} from a {@code GameObject}, to use in the collision functions.
      *
      * @param obj The game object to get the rectangle from.
+     * @throws IllegalStateException If there was an error creating the rect from the game object.
      * @return The rectangle.
      */
     private static Jaylib.Rectangle getRect(GameObject obj) {
@@ -55,6 +56,7 @@ public class CollisionChecker {
      *
      * @param obj1 The first object.
      * @param obj2 The second object.
+     * @throws IllegalStateException If there was an error checking the collision.
      * @return If the two objects are colliding or not.
      */
     private static boolean rectWithRect(GameObject obj1, GameObject obj2) {
@@ -73,6 +75,7 @@ public class CollisionChecker {
      *
      * @param obj1 The first object.
      * @param obj2 The second object.
+     * @throws IllegalStateException If there was an error checking the collision.
      * @return If the two objects are colliding or not.
      */
     private static boolean circleWithCircle(GameObject obj1, GameObject obj2) {
@@ -94,6 +97,7 @@ public class CollisionChecker {
      *
      * @param circle The circle object.
      * @param rectangle The rectangle object.
+     * @throws IllegalStateException If there was an error checking the collision.
      * @return If the two objects are colliding or not.
      */
     private static boolean circleWithRect(GameObject circle, GameObject rectangle) {

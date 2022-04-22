@@ -31,6 +31,7 @@ public class ResourceManager {
      * Gets a sprite if stored in the resource manager, otherwise adds it to the resource manager and returns it.
      *
      * @param path The path of the sprite.
+     * @throws IllegalStateException If there was an error loading the sprite.
      * @return The sprite resource.
      */
     public static <T> Sprite getSprite(Class<T> klass, String path) {
@@ -91,6 +92,7 @@ public class ResourceManager {
      * Gets a font if stored in the resource manager, otherwise adds it to the resource manager and returns it.
      *
      * @param path The path of the font file.
+     * @throws IllegalStateException If there was an error loading the sprite.
      * @return The font resource.
      */
     public static <T> Font getFont(Class<T> klass, String path) {
@@ -151,6 +153,7 @@ public class ResourceManager {
      * Gets an audio clip if stored in the resource manager, otherwise adds it to the resource manager and returns it.
      *
      * @param path The path of the audio file.
+     * @throws IllegalStateException If there was an error loading the sprite.
      * @return The audio clip.
      */
     public static <T> AudioClip getAudioClip(Class<T> klass, String path) {
@@ -211,6 +214,7 @@ public class ResourceManager {
      * Gets a music resource if stored in the resource manager, otherwise adds it to the resource manager and returns it.
      *
      * @param path The path of the music file.
+     * @throws IllegalStateException If there was an error loading the sprite.
      * @return The music object.
      */
     public static <T> Music getMusicStream(Class<T> klass, String path) {

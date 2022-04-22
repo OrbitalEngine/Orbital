@@ -33,6 +33,7 @@ public class GameObject {
      * Gets a component from the object.
      *
      * @param component The component to get.
+     * @throws IllegalStateException If there was an error casting the component.
      * @return The component, null if the object does not have it.
      */
     public <T extends Component> T getComponent(Class<T> component) {
