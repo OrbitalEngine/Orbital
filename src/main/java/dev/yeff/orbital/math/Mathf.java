@@ -47,6 +47,7 @@ public class Mathf {
      * Returns a vector with the same direction as the specified vector, but with a length of one.
      *
      * @param source The vector to normalize.
+     * @throws IllegalStateException If there is an error normalizing the source value.
      * @return The normalized vector.
      */
     public static Vector2f normalize(Vector2f source) {
