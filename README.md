@@ -95,7 +95,6 @@ You can find us on Discord at https://discord.gg/khDKxYX9RM
 
 ## Backed By
 
-<p align="center">
-    <a href="https://jb.gg/OpenSourceSupport"></a>
+<p align="center"> 
     <img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg" alt="Jetbrains Logo">
 </p>
