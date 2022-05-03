@@ -18,10 +18,10 @@ public class ResourceManager {
     // Disable constructor
     private ResourceManager() { }
 
-    private static final Map<String, Sprite> sprites = new HashMap<>();
-    private static final Map<String, Font> fonts = new HashMap<>();
-    private static final Map<String, AudioClip> audioClips = new HashMap<>();
-    private static final Map<String, Music> musicStreams = new HashMap<>();
+    private static final Map<String, Sprite> SPRITES = new HashMap<>();
+    private static final Map<String, Font> FONTS = new HashMap<>();
+    private static final Map<String, AudioClip> AUDIO_CLIPS = new HashMap<>();
+    private static final Map<String, Music> MUSIC_STREAMS = new HashMap<>();
 
 
     // SPRITES
@@ -44,11 +44,11 @@ public class ResourceManager {
         }
 
         if (file.exists()) {
-            if (!sprites.containsKey(file.getAbsolutePath())) {
-                sprites.put(file.getAbsolutePath(), new Sprite(file.getAbsolutePath()));
+            if (!SPRITES.containsKey(file.getAbsolutePath())) {
+                SPRITES.put(file.getAbsolutePath(), new Sprite(file.getAbsolutePath()));
             }
 
-            return sprites.get(file.getAbsolutePath());
+            return SPRITES.get(file.getAbsolutePath());
         } else {
             throw new IllegalStateException("Sprite does not exist at location '" + file.getAbsolutePath() + "'");
         }
@@ -62,9 +62,9 @@ public class ResourceManager {
     public static void disposeSprite(Sprite sprite) {
         File file = new File(sprite.getPath());
 
-        if (sprites.containsKey(file.getAbsolutePath())) {
+        if (SPRITES.containsKey(file.getAbsolutePath())) {
             //noinspection SuspiciousMethodCalls
-            sprites.remove(sprite);
+            SPRITES.remove(sprite);
 
             sprite.dispose();
         } else {
@@ -81,7 +81,7 @@ public class ResourceManager {
     public static boolean spriteExists(Sprite sprite) {
         File file = new File(sprite.getPath());
 
-        return sprites.containsKey(file.getAbsolutePath());
+        return SPRITES.containsKey(file.getAbsolutePath());
     }
 
 
@@ -105,11 +105,11 @@ public class ResourceManager {
         }
 
         if (file.exists()) {
-            if (!fonts.containsKey(file.getAbsolutePath())) {
-                fonts.put(file.getAbsolutePath(), new Font(file.getAbsolutePath()));
+            if (!FONTS.containsKey(file.getAbsolutePath())) {
+                FONTS.put(file.getAbsolutePath(), new Font(file.getAbsolutePath()));
             }
 
-            return fonts.get(file.getAbsolutePath());
+            return FONTS.get(file.getAbsolutePath());
         } else {
             throw new IllegalStateException("Font does not exist at location '" + file.getAbsolutePath() + "'");
         }
@@ -123,9 +123,9 @@ public class ResourceManager {
     public static void disposeFont(Font font) {
         File file = new File(font.getPath());
 
-        if (fonts.containsKey(file.getAbsolutePath())) {
+        if (FONTS.containsKey(file.getAbsolutePath())) {
             //noinspection SuspiciousMethodCalls
-            fonts.remove(font);
+            FONTS.remove(font);
 
             font.dispose();
         } else {
@@ -142,7 +142,7 @@ public class ResourceManager {
     public static boolean fontExists(Font font) {
         File file = new File(font.getPath());
 
-        return fonts.containsKey(file.getAbsolutePath());
+        return FONTS.containsKey(file.getAbsolutePath());
     }
 
 
@@ -166,11 +166,11 @@ public class ResourceManager {
         }
 
         if (file.exists()) {
-            if (!audioClips.containsKey(file.getAbsolutePath())) {
-                audioClips.put(file.getAbsolutePath(), new AudioClip(file.getAbsolutePath()));
+            if (!AUDIO_CLIPS.containsKey(file.getAbsolutePath())) {
+                AUDIO_CLIPS.put(file.getAbsolutePath(), new AudioClip(file.getAbsolutePath()));
             }
 
-            return audioClips.get(file.getAbsolutePath());
+            return AUDIO_CLIPS.get(file.getAbsolutePath());
         } else {
             throw new IllegalStateException("Audio clip does not exist at location '" + file.getAbsolutePath() + "'");
         }
@@ -184,9 +184,9 @@ public class ResourceManager {
     public static void disposeAudioClip(AudioClip clip) {
         File file = new File(clip.getPath());
 
-        if (audioClips.containsKey(file.getAbsolutePath())) {
+        if (AUDIO_CLIPS.containsKey(file.getAbsolutePath())) {
             //noinspection SuspiciousMethodCalls
-            audioClips.remove(clip);
+            AUDIO_CLIPS.remove(clip);
 
             clip.dispose();
         } else {
@@ -203,7 +203,7 @@ public class ResourceManager {
     public static boolean audioClipExists(AudioClip clip) {
         File file = new File(clip.getPath());
 
-        return audioClips.containsKey(file.getAbsolutePath());
+        return AUDIO_CLIPS.containsKey(file.getAbsolutePath());
     }
 
 
@@ -227,15 +227,15 @@ public class ResourceManager {
         }
 
         if (file.exists()) {
-            if (!musicStreams.containsKey(file.getAbsolutePath())) {
+            if (!MUSIC_STREAMS.containsKey(file.getAbsolutePath())) {
                 Music m = new Music(file.getAbsolutePath());
 
-                musicStreams.put(file.getAbsolutePath(), m);
+                MUSIC_STREAMS.put(file.getAbsolutePath(), m);
                 AudioManager.addMusicStream(m);
             }
 
-            AudioManager.addMusicStream(musicStreams.get(file.getAbsolutePath()));
-            return musicStreams.get(file.getAbsolutePath());
+            AudioManager.addMusicStream(MUSIC_STREAMS.get(file.getAbsolutePath()));
+            return MUSIC_STREAMS.get(file.getAbsolutePath());
         } else {
             throw new IllegalStateException("Music file does not exist at location '" + file.getAbsolutePath() + "'");
         }
@@ -249,9 +249,9 @@ public class ResourceManager {
     public static void disposeMusicStream(Music music) {
         File file = new File(music.getPath());
 
-        if (musicStreams.containsKey(file.getAbsolutePath())) {
+        if (MUSIC_STREAMS.containsKey(file.getAbsolutePath())) {
             //noinspection SuspiciousMethodCalls
-            musicStreams.remove(music);
+            MUSIC_STREAMS.remove(music);
 
             AudioManager.removeMusicStream(music);
             music.dispose();
@@ -269,6 +269,6 @@ public class ResourceManager {
     public static boolean musicStreamExists(Music music) {
         File file = new File(music.getPath());
 
-        return musicStreams.containsKey(file.getAbsolutePath());
+        return MUSIC_STREAMS.containsKey(file.getAbsolutePath());
     }
 }
