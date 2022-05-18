@@ -1,5 +1,7 @@
 package dev.yeff.orbital.graphics;
 
+import com.raylib.Jaylib;
+import com.raylib.Raylib;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.components.render.LineComponent;
@@ -9,6 +11,7 @@ import dev.yeff.orbital.ecs.components.render.TextComponent;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.resources.Font;
+import dev.yeff.orbital.util.RaylibUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +64,7 @@ public class Renderer {
      * @param pos The position to draw it at.
      */
     public static void drawTexture(Sprite sprite, Vector2f pos) {
-        DrawTexture(sprite.getRawTex(), (int) pos.x, (int) pos.y, RAYWHITE);
+        DrawTextureV(sprite.getRawTex(), RaylibUtil.getAsRaylibVec2(pos), RAYWHITE);
     }
 
     /**
@@ -72,7 +75,7 @@ public class Renderer {
      * @param radius The radius of the circle.
      */
     public static void drawCircle(Colors color, Vector2f pos, float radius) {
-        DrawCircle((int) pos.x, (int) pos.y, radius, color.getColor());
+        DrawCircleV(RaylibUtil.getAsRaylibVec2(pos), radius, color.getColor());
     }
 
     /**
@@ -94,7 +97,7 @@ public class Renderer {
      * @param size The width and height of the rectangle.
      */
     public static void drawRect(Colors color, Vector2f pos, Vector2f size) {
-        DrawRectangle((int) pos.x, (int) pos.y, (int) size.x, (int) size.y, color.getColor());
+        DrawRectangleV(RaylibUtil.getAsRaylibVec2(pos), RaylibUtil.getAsRaylibVec2(size), color.getColor());
     }
 
     /**
@@ -105,7 +108,7 @@ public class Renderer {
      * @param size The size of the rectangle.
      */
     public static void drawRect(Colors color, Vector2f pos, float size) {
-        DrawRectangle((int) pos.x, (int) pos.y, (int) size, (int) size, color.getColor());
+        DrawRectangleV(RaylibUtil.getAsRaylibVec2(pos), new Raylib.Vector2().x(size).y(size), color.getColor());
     }
 
     /**
@@ -150,7 +153,7 @@ public class Renderer {
      * @param thickness The thickness of the line.
      */
     public static void drawLine(Vector2f start, Vector2f end, Colors color, float thickness) {
-        DrawLineEx(start.asRaylibVector(), end.asRaylibVector(), thickness, color.getColor());
+        DrawLineEx(RaylibUtil.getAsRaylibVec2(start), RaylibUtil.getAsRaylibVec2(end), thickness, color.getColor());
     }
 
     /**
@@ -173,7 +176,7 @@ public class Renderer {
      * @param font The font to draw the text with.
      */
     public static void drawString(String text, float fontSize, Vector2f pos, Font font) {
-        DrawTextEx(font.asRaylibFont(), text, pos.asRaylibVector(), fontSize, 2, Colors.BLACK.getColor());
+        DrawTextEx(font.asRaylibFont(), text, RaylibUtil.getAsRaylibVec2(pos), fontSize, 2, Colors.BLACK.getColor());
     }
 
     /**

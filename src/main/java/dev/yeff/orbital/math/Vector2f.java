@@ -127,15 +127,6 @@ public class Vector2f {
         y = 0.0f;
     }
 
-    /**
-     * Returns the raylib version of the current instance vector. This function is mainly meant to be used by the engine internally.
-     *
-     * @return The raylib version of this vector.
-     */
-    public Raylib.Vector2 asRaylibVector() {
-        return new Raylib.Vector2().x(x).y(y);
-    }
-
     @Override
     public String toString() {
         return String.format("Vector2f(x = %f, y = %f)", x, y);
