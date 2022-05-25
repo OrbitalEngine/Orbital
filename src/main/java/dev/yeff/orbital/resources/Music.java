@@ -7,7 +7,7 @@ import lombok.Getter;
 import static com.raylib.Raylib.*;
 
 /**
- * Represents a large streamed audio file, to be used by the audio manager. This class should be used for longer audio files.
+ * Represents a large streamed audio file, to be used by the audio manager. This class should be used for longer audio files. For smaller clips, use {@code AudioClip}.
  *
  * @author YeffyCodeGit
  */
