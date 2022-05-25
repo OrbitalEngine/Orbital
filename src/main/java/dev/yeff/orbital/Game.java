@@ -14,6 +14,7 @@ import dev.yeff.orbital.util.Log;
 import lombok.Getter;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 
@@ -60,7 +61,7 @@ public class Game {
      */
     public void loadScene(String scene) {
         // dispose current scene before loading new one
-        currentScene.dispose(this);
+        if (currentScene != null) currentScene.dispose(this);
 
         currentScene = SceneManager.getScene(scene);
 
@@ -80,6 +81,4 @@ public class Game {
     public Vector2f getScreenCenter() {
         return new Vector2f(size.x / 2, size.y / 2);
     }
-
-
 }

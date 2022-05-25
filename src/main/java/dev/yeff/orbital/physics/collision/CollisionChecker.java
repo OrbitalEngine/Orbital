@@ -6,6 +6,7 @@ import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
 import dev.yeff.orbital.graphics.Shapes;
+import dev.yeff.orbital.util.RaylibUtil;
 
 import static com.raylib.Raylib.*;
 
@@ -23,15 +24,19 @@ public class CollisionChecker {
      * @return The rectangle.
      */
     private static Jaylib.Rectangle getRect(GameObject obj) {
-        if (obj.hasComponent(TransformComponent.class) && obj.hasComponent(ColliderComponent.class))
+        if (obj.hasComponent(TransformComponent.class) && obj.hasComponent(ColliderComponent.class)) {
+            TransformComponent transformComponent = obj.getComponent(TransformComponent.class);
+            ColliderComponent colliderComponent = obj.getComponent(ColliderComponent.class);
+
             return new Jaylib.Rectangle(
-                    obj.getComponent(TransformComponent.class).position.x,
-                    obj.getComponent(TransformComponent.class).position.y,
-                    obj.getComponent(ColliderComponent.class).colliderScale.x,
-                    obj.getComponent(ColliderComponent.class).colliderScale.y
+                    transformComponent.position.x,
+                    transformComponent.position.y,
+                    colliderComponent.colliderScale.x,
+                    colliderComponent.colliderScale.y
             );
-        else
+        } else {
             throw new IllegalStateException("Transform component required to get rectangle.");
+        }
     }
 
     /**
@@ -88,8 +93,8 @@ public class CollisionChecker {
      */
     private static boolean circleWithCircle(GameObject obj1, GameObject obj2) {
         if (obj1.hasComponent(ColliderComponent.class) && obj2.hasComponent(ColliderComponent.class)) {
-            Raylib.Vector2 center1 = obj1.getComponent(TransformComponent.class).position.asRaylibVector();
-            Raylib.Vector2 center2 = obj2.getComponent(TransformComponent.class).position.asRaylibVector();
+            Raylib.Vector2 center1 = RaylibUtil.getAsRaylibVec2(obj1.getComponent(TransformComponent.class).position);
+            Raylib.Vector2 center2 = RaylibUtil.getAsRaylibVec2(obj2.getComponent(TransformComponent.class).position);
 
             float radius1 = obj1.getComponent(ColliderComponent.class).colliderScale.x;
             float radius2 = obj2.getComponent(ColliderComponent.class).colliderScale.x;
@@ -111,7 +116,7 @@ public class CollisionChecker {
     private static boolean circleWithRect(GameObject circle, GameObject rectangle) {
         if (circle.hasComponent(ColliderComponent.class) && rectangle.hasComponent(ColliderComponent.class)) {
 
-            Raylib.Vector2 center = circle.getComponent(TransformComponent.class).position.asRaylibVector();
+            Raylib.Vector2 center = RaylibUtil.getAsRaylibVec2(circle.getComponent(TransformComponent.class).position);
             float radius = circle.getComponent(ColliderComponent.class).colliderScale.x;
 
             Jaylib.Rectangle rect = getRect(rectangle);
