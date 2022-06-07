@@ -3,6 +3,7 @@ package dev.yeff.orbital.audio;
 import dev.yeff.orbital.resources.AudioClip;
 import dev.yeff.orbital.resources.Music;
 import dev.yeff.orbital.util.Log;
+import dev.yeff.orbital.util.RaylibUtil;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class AudioManager {
      * @param audio The clip to play.
      */
     public static void playAudioClip(AudioClip audio) {
-        PlaySound(audio.asRaylibSound());
+        PlaySound(RaylibUtil.getAsRaylibSound(audio));
     }
 
     /**
@@ -49,7 +50,7 @@ public class AudioManager {
      */
     public static void pauseAudioClip(AudioClip audio) {
         if (audio.isPlaying())
-            PauseSound(audio.asRaylibSound());
+            PauseSound(RaylibUtil.getAsRaylibSound(audio));
         else
             throw new IllegalStateException("Audio clip is not playing, cannot pause.");
     }
@@ -60,7 +61,7 @@ public class AudioManager {
      * @param audio The audio clip to resume.
      */
     public static void resumeAudioClip(AudioClip audio) {
-        ResumeSound(audio.asRaylibSound());
+        ResumeSound(RaylibUtil.getAsRaylibSound(audio));
     }
 
     /**
@@ -69,7 +70,7 @@ public class AudioManager {
      * @param music The music to play.
      */
     public static void playMusic(Music music) {
-        PlayMusicStream(music.asRaylibMusic());
+        PlayMusicStream(RaylibUtil.getAsRaylibMusic(music));
     }
 
     /**
@@ -79,7 +80,7 @@ public class AudioManager {
      */
     public static void pauseMusic(Music music) {
         if (music.isPlaying())
-            PauseMusicStream(music.asRaylibMusic());
+            PauseMusicStream(RaylibUtil.getAsRaylibMusic(music));
         else
             throw new IllegalStateException("Audio clip is not playing, cannot pause.");
     }
@@ -90,7 +91,7 @@ public class AudioManager {
      * @param music The music to resume.
      */
     public static void resumeMusic(Music music) {
-        ResumeMusicStream(music.asRaylibMusic());
+        ResumeMusicStream(RaylibUtil.getAsRaylibMusic(music));
     }
 
     /**
@@ -99,7 +100,7 @@ public class AudioManager {
      * @param music The music stream to update.
      */
     public static void updateMusic(Music music) {
-        UpdateMusicStream(music.asRaylibMusic());
+        UpdateMusicStream(RaylibUtil.getAsRaylibMusic(music));
     }
 
     /**
