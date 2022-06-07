@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import static com.raylib.Raylib.*;
+import static java.util.stream.IntStream.*;
 
 /**
  * Manages everything related to audio, like playing and pausing audio, controlling volume and more.
@@ -106,7 +107,7 @@ public class AudioManager {
      *
      * @param music The music stream to add.
      */
-    public  static void addMusicStream(Music music) {
+    public static void addMusicStream(Music music) {
         musicStreams.add(music);
     }
 
@@ -117,10 +118,7 @@ public class AudioManager {
      */
     public static void removeMusicStream(Music music) {
         //noinspection StringEquality
-        IntStream.range(0, musicStreams.size())
-                .filter(i -> musicStreams.get(i).getPath() == music.getPath())
-                .findFirst()
-                .ifPresent(musicStreams::remove);
+        musicStreams.removeIf(musicStream -> musicStream.getPath() == music.getPath());
     }
 
     /**

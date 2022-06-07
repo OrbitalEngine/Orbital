@@ -1,6 +1,5 @@
 package dev.yeff.orbital.graphics;
 
-import com.raylib.Jaylib;
 import com.raylib.Raylib;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
