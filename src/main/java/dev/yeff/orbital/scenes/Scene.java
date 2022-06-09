@@ -40,7 +40,7 @@ public abstract class Scene {
     }
 
     /**
-     * Initializes scene {@code GameObject}'s.
+     * Initializes all {@code GameObject}'s added to the scene.
      *
      * @param game The instance of the game.
      */
