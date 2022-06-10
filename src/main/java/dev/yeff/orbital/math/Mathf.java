@@ -104,4 +104,22 @@ public class Mathf {
     public static float inverseLerp(float a, float b, float v) {
         return (v - a) / (b - a);
     }
+
+    /**
+     * Clamps {@code v} between {@code max} and {@code min} values.
+     *
+     * @param v The value to clamp.
+     * @param min The minimum the value can be.
+     * @param max The max the value can be.
+     * @return The clamped value.
+     */
+    public static float clamp(float v, float min, float max) {
+        if (v < min) {
+            return min;
+        } else if (v > max) {
+            return max;
+        } else {
+            return v;
+        }
+    }
 }

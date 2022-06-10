@@ -5,6 +5,7 @@ import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;
+import dev.yeff.orbital.math.Mathf;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.ResourceManager;
 import dev.yeff.orbital.resources.Font;
@@ -29,6 +30,8 @@ public class MenuScene extends Scene {
         addGameObject(game, greeting);
 
         Log.info(getClass(), "Loaded menu scene");
+
+        Log.info(getClass(), Mathf.clamp(12.0f, 5.0f, 10.0f));
     }
 
     @Override
