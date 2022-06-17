@@ -21,6 +21,11 @@ public class Vector2f {
         this.y = y;
     }
 
+    public Vector2f(float value) {
+        this.x = value;
+        this.y = value;
+    }
+
     public Vector2f() {
         this.x = 0;
         this.y = 0;

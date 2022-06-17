@@ -20,21 +20,21 @@ public class TransformComponent extends Component {
 
     public TransformComponent(float x, float y, float scaleX, float scaleY) {
         this.position = new Vector2f(x, y);
-        this.scale = new Vector2f(scaleX, scaleY);
+        this.scale = new Vector2f(scaleX);
     }
 
     public TransformComponent(float position, float scale) {
-        this.position = new Vector2f(position, position);
-        this.scale = new Vector2f(scale, scale);
+        this.position = new Vector2f(position);
+        this.scale = new Vector2f(scale);
     }
 
     public TransformComponent(Vector2f position, float scale) {
         this.position = new Vector2f(position);
-        this.scale = new Vector2f(scale, scale);
+        this.scale = new Vector2f(scale);
     }
 
     public TransformComponent(float position, Vector2f scale) {
-        this.position = new Vector2f(position, position);
+        this.position = new Vector2f(position);
         this.scale = new Vector2f(scale);
     }
 

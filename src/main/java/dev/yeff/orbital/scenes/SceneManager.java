@@ -22,10 +22,7 @@ public class SceneManager {
      * @param scene The scene class.
      */
     public static void addScene(String name, Scene scene) {
-        if (!scenes.containsKey(name))
-            scenes.put(name, scene);
-        else
-            throw new IllegalStateException("this scene has already been added to the scene manager!");
+        scenes.putIfAbsent(name, scene);
     }
 
     /**

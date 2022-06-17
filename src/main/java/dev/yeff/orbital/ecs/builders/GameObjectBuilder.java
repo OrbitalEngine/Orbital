@@ -359,7 +359,7 @@ public class GameObjectBuilder {
         if (renderComponent.isPresent()) {
             throw new IllegalStateException("Render component has already been added, cannot add another one.");
         } else {
-            TextComponent textComponent = new TextComponent(fontSize, text, null);
+            TextComponent textComponent = new TextComponent(fontSize, text);
 
             this.renderComponent = Optional.of(textComponent);
 

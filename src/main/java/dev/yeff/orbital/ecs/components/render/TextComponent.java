@@ -23,6 +23,12 @@ public class TextComponent extends DrawableComponent {
         this.fontSize = fontSize;
     }
 
+    public TextComponent(float fontSize, String text) {
+        this.text = text;
+        this.font = null;
+        this.fontSize = fontSize;
+    }
+
     @Override
     public void init(Game game) {
 
