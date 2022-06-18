@@ -23,24 +23,4 @@ public class RaylibUtil {
     public static Raylib.Vector2 getAsRaylibVec2(Vector2f vec) {
         return new Raylib.Vector2().x(vec.x).y(vec.y);
     }
-
-    /**
-     * Turns an Orbital {@code AudioClip} into a Raylib {@code Raylib.Sound}.
-     *
-     * @param sound The orbital audio clip.
-     * @return The Raylib sound.
-     */
-    public static Raylib.Sound getAsRaylibSound(AudioClip sound) {
-        return LoadSound(sound.getPath());
-    }
-
-    /**
-     * Turns an Orbital {@code Music} into a Raylib {@code Raylib.Music}.
-     *
-     * @param music The orbital music stream.
-     * @return The Raylib music.
-     */
-    public static Raylib.Music getAsRaylibMusic(Music music) {
-        return LoadMusicStream(music.getPath());
-    }
 }

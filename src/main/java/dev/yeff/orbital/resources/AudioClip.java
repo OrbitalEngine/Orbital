@@ -32,6 +32,15 @@ public class AudioClip implements Disposable {
     }
 
     /**
+     * Returns the raylib version of the audio clip. This function is mainly meant to be used internally by the engine.
+     *
+     * @return The raylib version of the audio clip.
+     */
+    public Raylib.Sound asRaylibSound() {
+        return sound;
+    }
+
+    /**
      * Unloads the audio clip from memory.
      */
     @Override

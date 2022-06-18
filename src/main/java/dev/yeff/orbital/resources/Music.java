@@ -47,6 +47,14 @@ public class Music implements Disposable {
         rawMusic.looping(true);
     }
 
+    /**
+     * Returns the raylib version of the music stream. This function is mainly meant to be used internally by the engine.
+     *
+     * @return The raylib version of the music stream.
+     */
+    public Raylib.Music asRaylibMusic() {
+        return rawMusic;
+    }
 
     /**
      * Unloads the music stream from memory.
