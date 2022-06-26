@@ -25,7 +25,6 @@ dependencies {
     implementation 'uk.co.electronstudio.jaylib:jaylib-natives-macosx-x86_64:4.0.+'
     implementation 'uk.co.electronstudio.jaylib:jaylib-natives-linux-x86_64:4.0.+'
 
-
     implementation(project(":"))
 }
 

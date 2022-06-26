@@ -38,6 +38,8 @@ public class MainScene extends Scene {
                 .build();
 
         addGameObject(game, player);
+
+        Log.info(getClass(), String.format("FPS: %f, Frame Time: %f", game.getFps(), game.getFrameTime()));
     }
 
     @Override

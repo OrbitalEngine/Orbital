@@ -17,6 +17,9 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
+import static com.raylib.Raylib.GetFPS;
+import static com.raylib.Raylib.GetFrameTime;
+
 
 /**
  * The main class that is used to create a game using the Orbital Game Engine.
@@ -80,5 +83,23 @@ public class Game {
      */
     public Vector2f getScreenCenter() {
         return new Vector2f(size.x / 2, size.y / 2);
+    }
+
+    /**
+     * Gets the current frame time of the game.
+     *
+     * @return The frame time.
+     */
+    public float getFrameTime() {
+        return GetFrameTime();
+    }
+
+    /**
+     * Gets the current FPS of the game.
+     *
+     * @return The FPS.
+     */
+    public float getFps() {
+        return GetFPS();
     }
 }
