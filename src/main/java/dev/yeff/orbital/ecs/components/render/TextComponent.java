@@ -2,6 +2,7 @@ package dev.yeff.orbital.ecs.components.render;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.components.TransformComponent;
+import dev.yeff.orbital.graphics.Color;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.Font;
 
@@ -16,19 +17,34 @@ public class TextComponent extends DrawableComponent {
     public float fontSize;
     public String text;
     public Font font;
+    public Color color;
 
-    // TODO: Create text with different colors
+    public TextComponent(float fontSize, String text, Font font, Color color) {
+        this.text = text;
+        this.font = font;
+        this.fontSize = fontSize;
+        this.color = color;
+    }
 
     public TextComponent(float fontSize, String text, Font font) {
         this.text = text;
         this.font = font;
         this.fontSize = fontSize;
+        this.color = new Color(0, 0, 0, 255);
+    }
+
+    public TextComponent(float fontSize, String text, Color color) {
+        this.text = text;
+        this.font = null;
+        this.fontSize = fontSize;
+        this.color = color;
     }
 
     public TextComponent(float fontSize, String text) {
         this.text = text;
         this.font = null;
         this.fontSize = fontSize;
+        this.color = new Color(0, 0, 0, 255);
     }
 
     @Override
