@@ -4,6 +4,8 @@ import com.raylib.Raylib;
 import lombok.Getter;
 import lombok.Setter;
 
+import static com.raylib.Raylib.GetColor;
+
 /**
  * Enum wrapping over raylib colors, to be used by the renderer.
  *
@@ -34,6 +36,15 @@ public class Color {
         this.g = g;
         this.b = b;
         this.a = 255;
+    }
+
+    public Color(byte hex) {
+        Raylib.Color rgbaColor = GetColor(hex);
+
+        this.r = rgbaColor.r();
+        this.g = rgbaColor.g();
+        this.b = rgbaColor.b();
+        this.a = rgbaColor.a();
     }
 
     public Raylib.Color getRaylibColor() {

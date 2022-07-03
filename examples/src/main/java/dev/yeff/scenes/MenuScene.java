@@ -23,19 +23,19 @@ public class MenuScene extends Scene {
     public void init(Game game) {
         font = ResourceManager.getFont(getClass(), "fonts/Roboto-Regular.ttf");
 
-        greeting = new GameObjectBuilder(this)
-                .withId("Greeting Text")
-                .withTransform(new Vector2f(game.getSize().x / 4, game.getSize().y / 3), new Vector2f(0, 0))
-                .withText("This is a Orbital demo, \npress Spacebar to go to the actual 'game'.", null, 60.0f)
-                .build();
-
-//        test = new GameObjectBuilder(this, "Test")
-//                .withTransform(game.getScreenCenter(), new Vector2f(80.0f))
-//                .withShape(Shapes.RECTANGLE, new Color(255, 0, 0, 255))
+//        greeting = new GameObjectBuilder(this)
+//                .withId("Greeting Text")
+//                .withTransform(new Vector2f(game.getSize().x / 4, game.getSize().y / 3), new Vector2f(0, 0))
+//                .withText("This is a Orbital demo, \npress Spacebar to go to the actual 'game'.", null, 60.0f)
 //                .build();
 
-        addGameObject(game, greeting);
-//        addGameObject(game, test);
+        test = new GameObjectBuilder(this, "Test")
+                .withTransform(game.getScreenCenter(), new Vector2f(80.0f))
+                .withLine(game.getScreenCenter(), new Vector2f(game.getScreenCenter().x, game.getScreenCenter().y + 90.0f), 8.0f)
+                .build();
+
+//        addGameObject(game, greeting);
+        addGameObject(game, test);
 
         Log.info(getClass(), "Loaded menu scene");
     }
