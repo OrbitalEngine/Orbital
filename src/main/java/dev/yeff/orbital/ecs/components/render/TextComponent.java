@@ -17,6 +17,8 @@ public class TextComponent extends DrawableComponent {
     public String text;
     public Font font;
 
+    // TODO: Create text with different colors
+
     public TextComponent(float fontSize, String text, Font font) {
         this.text = text;
         this.font = font;

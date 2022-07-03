@@ -5,7 +5,7 @@ import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.components.*;
 import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
 import dev.yeff.orbital.ecs.components.render.*;
-import dev.yeff.orbital.graphics.Colors;
+import dev.yeff.orbital.graphics.Color;
 import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.Font;
@@ -201,7 +201,7 @@ public class GameObjectBuilder {
      * @throws IllegalStateException If there was an error adding the component.
      * @return The builder instance.
      */
-    public GameObjectBuilder withShape(Shapes shape, Colors color) {
+    public GameObjectBuilder withShape(Shapes shape, Color color) {
         if (renderComponent.isPresent()) {
             throw new IllegalStateException("Render component has already been added, cannot add another one.");
         } else {
@@ -276,7 +276,7 @@ public class GameObjectBuilder {
      * @throws IllegalStateException If there was an error adding the component.
      * @return The builder instance.
      */
-    public GameObjectBuilder withLine(Vector2f start, Vector2f end, float thickness, Colors color) {
+    public GameObjectBuilder withLine(Vector2f start, Vector2f end, float thickness, Color color) {
         if (renderComponent.isPresent()) {
             throw new IllegalStateException("Render component has already been added, cannot add another one.");
         } else {

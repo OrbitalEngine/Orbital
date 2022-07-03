@@ -60,7 +60,7 @@ public class Window {
         while (!WindowShouldClose()) {
             BeginDrawing();
 
-            Renderer.fillBackground(Colors.WHITE);
+            Renderer.fillBackground(new Color(255, 255, 255, 255));
             AudioManager.updateMusicStreams();
 
             game.getCurrentScene().update(game, GetFPS());

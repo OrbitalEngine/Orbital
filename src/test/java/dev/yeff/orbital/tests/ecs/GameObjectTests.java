@@ -7,7 +7,7 @@ import dev.yeff.orbital.ecs.components.render.LineComponent;
 import dev.yeff.orbital.ecs.components.render.RenderShapeComponent;
 import dev.yeff.orbital.ecs.components.render.SpriteComponent;
 import dev.yeff.orbital.ecs.components.render.TextComponent;
-import dev.yeff.orbital.graphics.Colors;
+import dev.yeff.orbital.graphics.Color;
 import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.ResourceManager;
@@ -59,13 +59,13 @@ public class GameObjectTests implements WithAssertions {
     @Test
     public void testCreateGameObject_withShape_usingBuilder() {
         GameObject object = new GameObjectBuilder(mockScene, "Test Object")
-                .withShape(Shapes.CIRCLE, Colors.RED)
+                .withShape(Shapes.CIRCLE, new Color(255, 0, 0, 255))
                 .build();
 
         assertThat(object.hasComponent(RenderShapeComponent.class)).isTrue();
         assertThat(object.getComponent(RenderShapeComponent.class))
                 .extracting("shape", "color")
-                .contains(Shapes.CIRCLE, Colors.RED);
+                .contains(Shapes.CIRCLE, new Color(255, 0, 0, 255));
     }
 
     @DisplayName("create game object with text component using builder")
@@ -85,7 +85,7 @@ public class GameObjectTests implements WithAssertions {
     @Test
     public void testCreateGameObject_withLine_usingBuilder() {
         GameObject object = new GameObjectBuilder(mockScene, "Test Object")
-                .withLine(new Vector2f(0.0f, 0.0f), new Vector2f(0.0f, 0.0f), 0.0f, Colors.RED)
+                .withLine(new Vector2f(0.0f, 0.0f), new Vector2f(0.0f, 0.0f), 0.0f, new Color(255, 0, 0, 255))
                 .build();
 
         assertThat(object.hasComponent(LineComponent.class)).isTrue();
@@ -100,7 +100,7 @@ public class GameObjectTests implements WithAssertions {
 
         assertThat(object.getComponent(LineComponent.class))
                 .extracting("color", "thickness")
-                .contains(Colors.RED, 0.0f);
+                .contains(new Color(255, 0, 0, 255), 0.0f);
     }
 
     @DisplayName("create game object with sprite component using builder")

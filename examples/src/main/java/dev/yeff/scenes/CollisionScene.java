@@ -5,7 +5,7 @@ import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
 import dev.yeff.orbital.ecs.components.render.RenderShapeComponent;
-import dev.yeff.orbital.graphics.Colors;
+import dev.yeff.orbital.graphics.Color;
 import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.physics.collision.CollisionChecker;
@@ -32,7 +32,7 @@ public class CollisionScene extends Scene {
 
         obj2 = new GameObjectBuilder(this, "Object 1")
                 .withTransform(game.getScreenCenter(), new Vector2f(80.0f))
-                .withShape(Shapes.RECTANGLE, Colors.GREEN)
+                .withShape(Shapes.RECTANGLE, new Color(0, 255, 0, 255))
                 .withCollider(Shapes.RECTANGLE, new Vector2f(80.0f))
                 .build();
 
@@ -43,9 +43,9 @@ public class CollisionScene extends Scene {
     @Override
     public void update(Game game, float fps) {
         if (CollisionChecker.isColliding(player, obj2)) {
-            obj2.getComponent(RenderShapeComponent.class).color = Colors.RED;
+            obj2.getComponent(RenderShapeComponent.class).color = new Color(255, 0, 0, 255);
         } else {
-            obj2.getComponent(RenderShapeComponent.class).color = Colors.GREEN;
+            obj2.getComponent(RenderShapeComponent.class).color = new Color(0, 255, 0, 255);
         }
     }
 
