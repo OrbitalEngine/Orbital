@@ -31,7 +31,7 @@ public class MenuScene extends Scene {
 
         test = new GameObjectBuilder(this, "Test")
                 .withTransform(game.getScreenCenter(), new Vector2f(80.0f))
-                .withLine(game.getScreenCenter(), new Vector2f(game.getScreenCenter().x, game.getScreenCenter().y + 90.0f), 8.0f)
+                .withShape(Shapes.RECTANGLE, Color.PINK)
                 .build();
 
 //        addGameObject(game, greeting);
