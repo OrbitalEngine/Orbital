@@ -2,12 +2,11 @@ package dev.yeff.orbital.graphics;
 
 import com.raylib.Raylib;
 import lombok.Getter;
-import lombok.Setter;
 
 import static com.raylib.Raylib.GetColor;
 
 /**
- * Enum wrapping over raylib colors, to be used by the renderer.
+ * Represents an RGB color, to be used in an engine.
  *
  * @author YeffyCodeGit
  */
