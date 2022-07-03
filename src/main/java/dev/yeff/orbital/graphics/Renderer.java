@@ -163,7 +163,7 @@ public class Renderer {
      * @param pos The position to draw the text at.
      */
     public static void drawString(String text, float fontSize, Vector2f pos) {
-        DrawText(text, (int) pos.x, (int) pos.y, (int) fontSize, new Color(0, 0, 0, 255).getRaylibColor());
+        DrawText(text, (int) pos.x, (int) pos.y, (int) fontSize, new Color(0, 0, 0).getRaylibColor());
     }
 
     /**
@@ -175,7 +175,7 @@ public class Renderer {
      * @param font The font to draw the text with.
      */
     public static void drawString(String text, float fontSize, Vector2f pos, Font font) {
-        DrawTextEx(font.asRaylibFont(), text, RaylibUtil.getAsRaylibVec2(pos), fontSize, 2, new Color(0, 0, 0, 255).getRaylibColor());
+        DrawTextEx(font.asRaylibFont(), text, RaylibUtil.getAsRaylibVec2(pos), fontSize, 2, new Color(0, 0, 0).getRaylibColor());
     }
 
     /**

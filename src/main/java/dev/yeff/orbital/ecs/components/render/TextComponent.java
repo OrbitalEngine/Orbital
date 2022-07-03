@@ -44,7 +44,7 @@ public class TextComponent extends DrawableComponent {
         this.text = text;
         this.font = null;
         this.fontSize = fontSize;
-        this.color = new Color(0, 0, 0, 255);
+        this.color = new Color(0, 0, 0);
     }
 
     @Override

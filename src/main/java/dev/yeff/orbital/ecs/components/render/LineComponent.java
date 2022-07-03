@@ -28,7 +28,7 @@ public class LineComponent extends DrawableComponent {
         this.thickness = thickness;
         this.start = start;
         this.end = end;
-        this.color = new Color(0, 0, 0, 0);
+        this.color = new Color(0, 0, 0);
     }
 
     @Override

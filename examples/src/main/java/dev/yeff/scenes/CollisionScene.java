@@ -32,7 +32,7 @@ public class CollisionScene extends Scene {
 
         obj2 = new GameObjectBuilder(this, "Object 1")
                 .withTransform(game.getScreenCenter(), new Vector2f(80.0f))
-                .withShape(Shapes.RECTANGLE, new Color(0, 255, 0, 255))
+                .withShape(Shapes.RECTANGLE, new Color(0, 255, 0))
                 .withCollider(Shapes.RECTANGLE, new Vector2f(80.0f))
                 .build();
 
@@ -43,9 +43,9 @@ public class CollisionScene extends Scene {
     @Override
     public void update(Game game, float fps) {
         if (CollisionChecker.isColliding(player, obj2)) {
-            obj2.getComponent(RenderShapeComponent.class).color = new Color(255, 0, 0, 255);
+            obj2.getComponent(RenderShapeComponent.class).color = new Color(255, 0, 0);
         } else {
-            obj2.getComponent(RenderShapeComponent.class).color = new Color(0, 255, 0, 255);
+            obj2.getComponent(RenderShapeComponent.class).color = new Color(0, 255, 0);
         }
     }
 
