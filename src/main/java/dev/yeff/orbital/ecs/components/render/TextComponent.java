@@ -30,7 +30,7 @@ public class TextComponent extends DrawableComponent {
         this.text = text;
         this.font = font;
         this.fontSize = fontSize;
-        this.color = new Color(0, 0, 0, 255);
+        this.color = Color.BLACK;
     }
 
     public TextComponent(float fontSize, String text, Color color) {
@@ -44,7 +44,7 @@ public class TextComponent extends DrawableComponent {
         this.text = text;
         this.font = null;
         this.fontSize = fontSize;
-        this.color = new Color(0, 0, 0);
+        this.color = Color.BLACK;
     }
 
     @Override

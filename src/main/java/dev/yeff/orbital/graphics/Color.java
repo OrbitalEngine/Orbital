@@ -57,6 +57,10 @@ public class Color {
     }
 
     public Raylib.Color getRaylibColor() {
-        return new Raylib.Color().r((byte) r).g((byte) g).b((byte) b).a((byte) a);
+        return new Raylib.Color()
+                .r((byte) r)
+                .g((byte) g)
+                .b((byte) b)
+                .a((byte) a);
     }
 }
