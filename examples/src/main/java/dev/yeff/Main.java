@@ -17,7 +17,7 @@ public class Main {
                 "Menu", new MenuScene()
         );
 
-        Game game = new Game(new Vector2f(975, 900), "Hello", scenes);
+        Game game = new Game(new Vector2f(975, 900), "Hello", scenes, false, 60.0f);
         game.start("Menu");
     }
 }

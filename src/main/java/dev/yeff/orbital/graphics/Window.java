@@ -22,12 +22,20 @@ public class Window {
     private Vector2f size;
     private String title;
     private Game game;
+    private boolean shouldResize;
+    private float fps;
 
 
     public Window(Game game) {
+
+    }
+
+    public Window(Game game, boolean shouldResize, float fps) {
         this.game = game;
         this.size = game.getSize();
         this.title = game.getTitle();
+        this.shouldResize = shouldResize;
+        this.fps = fps;
 
         Log.info(Window.class, "Created window with width " + size.x + ", height " + size.y);
     }
@@ -37,13 +45,15 @@ public class Window {
      */
     public void start() {
         InitAudioDevice();
-        SetConfigFlags(FLAG_WINDOW_RESIZABLE);
+
+        if (shouldResize)
+            SetConfigFlags(FLAG_WINDOW_RESIZABLE);
 
         // Disables the logs from raylib, so I can implement my own logging system
         SetTraceLogLevel(LOG_NONE);
         SetExitKey(KEY_ESCAPE);
         InitWindow((int) size.x, (int) size.y, title);
-        SetTargetFPS(60);
+        SetTargetFPS((int) fps);
 
         game.getCurrentScene().initInternal(game);
         game.getCurrentScene().init(game);

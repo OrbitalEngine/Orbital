@@ -39,12 +39,12 @@ public class Game {
 
     private Window window;
 
-    public Game(Vector2f size, String title, Map<String, Scene> scenes) {
+    public Game(Vector2f size, String title, Map<String, Scene> scenes, boolean shouldResize, float fps) {
         this.size = size;
         this.title = title;
 
         scenes.forEach(SceneManager::addScene);
-        this.window = new Window(this);
+        this.window = new Window(this, shouldResize, fps);
     }
 
     /**
