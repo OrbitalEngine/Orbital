@@ -147,4 +147,15 @@ public class Vector2fTests implements WithAssertions {
 
         assertThat(result).isEqualTo(876.6225f);
     }
+
+    @DisplayName("comparing two vectors together")
+    @Test
+    public void testVectorMath_vectorEquality() {
+        Vector2f first = new Vector2f(50.0f);
+        Vector2f other = new Vector2f(50.0f);
+
+        boolean result = first.equals(other);
+
+        assertThat(result).isTrue();
+    }
 }
