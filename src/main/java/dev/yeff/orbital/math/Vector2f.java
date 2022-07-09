@@ -2,6 +2,8 @@ package dev.yeff.orbital.math;
 
 import com.raylib.Raylib;
 
+import java.util.Objects;
+
 /**
  * Represents a vector with x and y floating-point components.
  *
@@ -141,6 +143,13 @@ public class Vector2f {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+
+        return Objects.hashCode(x) + hash * Objects.hashCode(y);
     }
 
     @Override
