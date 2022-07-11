@@ -3,6 +3,8 @@ package dev.yeff.scenes;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
+import dev.yeff.orbital.graphics.Color;
+import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.math.Mathf;
@@ -15,23 +17,27 @@ import dev.yeff.orbital.util.Log;
 public class MenuScene extends Scene {
     private Font font;
     private GameObject greeting;
-    private GameObject testLine;
+    private GameObject test;
 
     @Override
     public void init(Game game) {
         font = ResourceManager.getFont(getClass(), "fonts/Roboto-Regular.ttf");
 
-        greeting = new GameObjectBuilder(this)
-                .withId("Greeting Text")
-                .withTransform(new Vector2f(game.getSize().x / 4, game.getSize().y / 3), new Vector2f(0, 0))
-                .withText("This is a Orbital demo, \npress Spacebar to go to the actual 'game'.", null, 60.0f)
+//        greeting = new GameObjectBuilder(this)
+//                .withId("Greeting Text")
+//                .withTransform(new Vector2f(game.getSize().x / 4, game.getSize().y / 3), new Vector2f(0, 0))
+//                .withText("This is a Orbital demo, \npress Spacebar to go to the actual 'game'.", null, 60.0f)
+//                .build();
+
+        test = new GameObjectBuilder(this, "Test")
+                .withTransform(game.getScreenCenter(), new Vector2f(80.0f))
+                .withShape(Shapes.RECTANGLE, Color.PINK)
                 .build();
 
-        addGameObject(game, greeting);
+//        addGameObject(game, greeting);
+        addGameObject(game, test);
 
         Log.info(getClass(), "Loaded menu scene");
-
-        Log.info(getClass(), Mathf.clamp(12.0f, 5.0f, 10.0f));
     }
 
     @Override

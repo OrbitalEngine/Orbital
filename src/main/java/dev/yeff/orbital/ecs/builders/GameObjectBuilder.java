@@ -5,7 +5,7 @@ import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.components.*;
 import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
 import dev.yeff.orbital.ecs.components.render.*;
-import dev.yeff.orbital.graphics.Colors;
+import dev.yeff.orbital.graphics.Color;
 import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.Font;
@@ -201,7 +201,7 @@ public class GameObjectBuilder {
      * @throws IllegalStateException If there was an error adding the component.
      * @return The builder instance.
      */
-    public GameObjectBuilder withShape(Shapes shape, Colors color) {
+    public GameObjectBuilder withShape(Shapes shape, Color color) {
         if (renderComponent.isPresent()) {
             throw new IllegalStateException("Render component has already been added, cannot add another one.");
         } else {
@@ -276,7 +276,7 @@ public class GameObjectBuilder {
      * @throws IllegalStateException If there was an error adding the component.
      * @return The builder instance.
      */
-    public GameObjectBuilder withLine(Vector2f start, Vector2f end, float thickness, Colors color) {
+    public GameObjectBuilder withLine(Vector2f start, Vector2f end, float thickness, Color color) {
         if (renderComponent.isPresent()) {
             throw new IllegalStateException("Render component has already been added, cannot add another one.");
         } else {
@@ -351,6 +351,28 @@ public class GameObjectBuilder {
      * Adds a {@code TextComponent} to the object to be built.
      *
      * @param text The text.
+     * @param font The font of the text.
+     * @param fontSize The size of the text.
+     * @param color The color of the text.
+     * @throws IllegalStateException If there was an error adding the component.
+     * @return The builder instance.
+     */
+    public GameObjectBuilder withText(String text, Font font, float fontSize, Color color) {
+        if (renderComponent.isPresent()) {
+            throw new IllegalStateException("Render component has already been added, cannot add another one.");
+        } else {
+            TextComponent textComponent = new TextComponent(fontSize, text, font, color);
+
+            this.renderComponent = Optional.of(textComponent);
+
+            return withComponent(textComponent);
+        }
+    }
+
+    /**
+     * Adds a {@code TextComponent} to the object to be built.
+     *
+     * @param text The text.
      * @param fontSize The size of the text.
      * @throws IllegalStateException If there was an error adding the component.
      * @return The builder instance.
@@ -360,6 +382,27 @@ public class GameObjectBuilder {
             throw new IllegalStateException("Render component has already been added, cannot add another one.");
         } else {
             TextComponent textComponent = new TextComponent(fontSize, text);
+
+            this.renderComponent = Optional.of(textComponent);
+
+            return withComponent(textComponent);
+        }
+    }
+
+    /**
+     * Adds a {@code TextComponent} to the object to be built.
+     *
+     * @param text The text.
+     * @param fontSize The size of the text.
+     * @param color The color of the text.
+     * @throws IllegalStateException If there was an error adding the component.
+     * @return The builder instance.
+     */
+    public GameObjectBuilder withText(String text, float fontSize, Color color) {
+        if (renderComponent.isPresent()) {
+            throw new IllegalStateException("Render component has already been added, cannot add another one.");
+        } else {
+            TextComponent textComponent = new TextComponent(fontSize, text, color);
 
             this.renderComponent = Optional.of(textComponent);
 

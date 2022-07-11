@@ -4,7 +4,7 @@ import dev.yeff.orbital.physics.collision.CollisionChecker;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
 import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
-import dev.yeff.orbital.graphics.Colors;
+import dev.yeff.orbital.graphics.Color;
 import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.scenes.Scene;
@@ -28,13 +28,13 @@ public class CollisionCheckerTests implements WithAssertions {
     public void testCollision_betweenRectangleObjects() {
         GameObject object1 = new GameObjectBuilder(mockScene, "Test Object 1")
                 .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(50.0f, 50.f))
-                .withShape(Shapes.RECTANGLE, Colors.RED)
+                .withShape(Shapes.RECTANGLE, new Color(255, 0, 0, 255))
                 .withComponents(new ColliderComponent(Shapes.RECTANGLE, new Vector2f(50.0f, 50.f)))
                 .build();
 
         GameObject object2 = new GameObjectBuilder(mockScene, "Test Object 2")
                 .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(20.0f, 20.f))
-                .withShape(Shapes.RECTANGLE, Colors.RED)
+                .withShape(Shapes.RECTANGLE, new Color(255, 0, 0, 255))
                 .withComponents(new ColliderComponent(Shapes.RECTANGLE, new Vector2f(20.0f, 20.0f)))
                 .build();
 
@@ -46,13 +46,13 @@ public class CollisionCheckerTests implements WithAssertions {
     public void testCollision_betweenCircleObjects() {
         GameObject object1 = new GameObjectBuilder(mockScene, "Test Object 1")
                 .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(50.0f, 50.f))
-                .withShape(Shapes.CIRCLE, Colors.RED)
+                .withShape(Shapes.CIRCLE, new Color(255, 0, 0, 255))
                 .withComponents(new ColliderComponent(Shapes.CIRCLE, new Vector2f(50.0f, 50.0f)))
                 .build();
 
         GameObject object2 = new GameObjectBuilder(mockScene, "Test Object 2")
                 .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(20.0f, 20.f))
-                .withShape(Shapes.CIRCLE, Colors.RED)
+                .withShape(Shapes.CIRCLE, new Color(255, 0, 0, 255))
                 .withComponents(new ColliderComponent(Shapes.CIRCLE, new Vector2f(20.0f, 20.0f)))
                 .build();
 
@@ -64,13 +64,13 @@ public class CollisionCheckerTests implements WithAssertions {
     public void testCollision_betweenCircle_andRectObjects() {
         GameObject circle = new GameObjectBuilder(mockScene, "Test Object 1")
                 .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(50.0f, 50.f))
-                .withShape(Shapes.CIRCLE, Colors.RED)
+                .withShape(Shapes.CIRCLE, new Color(255, 0, 0, 255))
                 .withComponents(new ColliderComponent(Shapes.CIRCLE, new Vector2f(50.0f, 50.0f)))
                 .build();
 
         GameObject rect = new GameObjectBuilder(mockScene, "Test Object 2")
                 .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(20.0f, 20.f))
-                .withShape(Shapes.RECTANGLE, Colors.RED)
+                .withShape(Shapes.RECTANGLE, new Color(255, 0, 0, 255))
                 .withComponents(new ColliderComponent(Shapes.RECTANGLE, new Vector2f(20.0f, 20.0f)))
                 .build();
 

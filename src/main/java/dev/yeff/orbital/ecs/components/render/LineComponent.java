@@ -1,7 +1,7 @@
 package dev.yeff.orbital.ecs.components.render;
 
 import dev.yeff.orbital.Game;
-import dev.yeff.orbital.graphics.Colors;
+import dev.yeff.orbital.graphics.Color;
 import dev.yeff.orbital.math.Vector2f;
 
 import static dev.yeff.orbital.graphics.Renderer.drawLine;
@@ -15,9 +15,9 @@ public class LineComponent extends DrawableComponent {
     public float thickness;
     public Vector2f start;
     public Vector2f end;
-    public Colors color;
+    public Color color;
 
-    public LineComponent(float thickness, Vector2f start, Vector2f end, Colors color) {
+    public LineComponent(float thickness, Vector2f start, Vector2f end, Color color) {
         this.thickness = thickness;
         this.start = start;
         this.end = end;
@@ -28,7 +28,7 @@ public class LineComponent extends DrawableComponent {
         this.thickness = thickness;
         this.start = start;
         this.end = end;
-        this.color = Colors.BLACK;
+        this.color = Color.BLACK;
     }
 
     @Override

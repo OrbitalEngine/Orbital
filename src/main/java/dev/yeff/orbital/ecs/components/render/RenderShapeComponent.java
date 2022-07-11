@@ -2,7 +2,7 @@ package dev.yeff.orbital.ecs.components.render;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.components.TransformComponent;
-import dev.yeff.orbital.graphics.Colors;
+import dev.yeff.orbital.graphics.Color;
 import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.math.Vector2f;
 
@@ -16,9 +16,9 @@ import static dev.yeff.orbital.graphics.Renderer.*;
  */
 public class RenderShapeComponent extends DrawableComponent {
     public Shapes shape;
-    public Colors color;
+    public Color color;
 
-    public RenderShapeComponent(Shapes shape, Colors color) {
+    public RenderShapeComponent(Shapes shape, Color color) {
         this.shape = shape;
         this.color = color;
     }
