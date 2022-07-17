@@ -15,7 +15,7 @@ import static com.raylib.Raylib.*;
  *
  * @author YeffyCodeGit
  */
-public class CollisionChecker {
+public class Collision {
     /**
      * Returns a {@code Jaylib.Rectangle} from a {@code GameObject}, to use in the collision functions.
      *

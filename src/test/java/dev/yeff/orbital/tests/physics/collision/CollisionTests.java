@@ -1,6 +1,6 @@
 package dev.yeff.orbital.tests.physics.collision;
 
-import dev.yeff.orbital.physics.collision.CollisionChecker;
+import dev.yeff.orbital.physics.collision.Collision;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
 import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
@@ -15,7 +15,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("tests collision between objects")
-public class CollisionCheckerTests implements WithAssertions {
+public class CollisionTests implements WithAssertions {
     private static Scene mockScene;
 
     @BeforeAll
@@ -38,7 +38,7 @@ public class CollisionCheckerTests implements WithAssertions {
                 .withComponents(new ColliderComponent(Shapes.RECTANGLE, new Vector2f(20.0f, 20.0f)))
                 .build();
 
-        assertThat(CollisionChecker.isColliding(object1, object2)).isTrue();
+        assertThat(Collision.isColliding(object1, object2)).isTrue();
     }
 
     @DisplayName("test circle objects colliding")
@@ -56,7 +56,7 @@ public class CollisionCheckerTests implements WithAssertions {
                 .withComponents(new ColliderComponent(Shapes.CIRCLE, new Vector2f(20.0f, 20.0f)))
                 .build();
 
-        assertThat(CollisionChecker.isColliding(object1, object2)).isTrue();
+        assertThat(Collision.isColliding(object1, object2)).isTrue();
     }
 
     @DisplayName("test circle and rectangle objects colliding")
@@ -74,6 +74,6 @@ public class CollisionCheckerTests implements WithAssertions {
                 .withComponents(new ColliderComponent(Shapes.RECTANGLE, new Vector2f(20.0f, 20.0f)))
                 .build();
 
-        assertThat(CollisionChecker.isColliding(circle, rect)).isTrue();
+        assertThat(Collision.isColliding(circle, rect)).isTrue();
     }
 }

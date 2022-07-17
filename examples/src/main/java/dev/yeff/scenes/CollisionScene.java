@@ -8,7 +8,7 @@ import dev.yeff.orbital.ecs.components.render.RenderShapeComponent;
 import dev.yeff.orbital.graphics.Color;
 import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.math.Vector2f;
-import dev.yeff.orbital.physics.collision.CollisionChecker;
+import dev.yeff.orbital.physics.collision.Collision;
 import dev.yeff.orbital.resources.ResourceManager;
 import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.scenes.Scene;
@@ -42,7 +42,7 @@ public class CollisionScene extends Scene {
 
     @Override
     public void update(Game game, float fps) {
-        if (CollisionChecker.isColliding(player, obj2)) {
+        if (Collision.isColliding(player, obj2)) {
             obj2.getComponent(RenderShapeComponent.class).color = new Color(255, 0, 0);
         } else {
             obj2.getComponent(RenderShapeComponent.class).color = new Color(0, 255, 0);

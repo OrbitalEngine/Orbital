@@ -65,6 +65,25 @@ public abstract class Scene {
             gameObject.init(game);
         }
     }
+
+    /**
+     * Removes a {@code GameObject} from the scene.
+     *
+     * @param object The object to remove.
+     */
+    public void removeGameObject(GameObject object) {
+        objects.remove(object);
+    }
+
+    /**
+     * Removes a {@code GameObject} from the scene.
+     *
+     * @param id The ID of the object.
+     */
+    public void removeGameObject(String id) {
+        objects.removeIf(object -> object.getId() == id);
+    }
+
     /**
      * Gets called when the scene is first initialized.
      *

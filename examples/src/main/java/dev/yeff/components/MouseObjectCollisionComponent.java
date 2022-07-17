@@ -2,7 +2,7 @@ package dev.yeff.components;
 
 import dev.yeff.orbital.ecs.components.render.RenderShapeComponent;
 import dev.yeff.orbital.graphics.Shapes;
-import dev.yeff.orbital.physics.collision.CollisionChecker;
+import dev.yeff.orbital.physics.collision.Collision;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.ecs.GameObject;
@@ -24,7 +24,7 @@ public class MouseObjectCollisionComponent extends Component {
 
     @Override
     public void update(Game game) {
-        if (CollisionChecker.isColliding(obj, parent)) {
+        if (Collision.isColliding(obj, parent)) {
             obj.getComponent(RenderShapeComponent.class).shape = Shapes.CIRCLE_OUTLINE;
         } else {
             obj.getComponent(RenderShapeComponent.class).shape = Shapes.CIRCLE;
