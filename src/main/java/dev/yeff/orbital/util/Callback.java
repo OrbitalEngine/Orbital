@@ -2,7 +2,7 @@ package dev.yeff.orbital.util;
 
 
 /**
- * Functional interface to take a callback with a single parameter, of type {@code T}.
+ * Interface to take a callback with a single parameter, of type {@code T}.
  *
  * @author YeffyCodeGit
  */
