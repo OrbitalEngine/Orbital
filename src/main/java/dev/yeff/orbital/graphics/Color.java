@@ -6,7 +6,7 @@ import lombok.Getter;
 import static com.raylib.Raylib.GetColor;
 
 /**
- * Represents an RGB color, to be used in an engine.
+ * Stores RGBA color data, to be used for rendering.
  *
  * @author YeffyCodeGit
  */
