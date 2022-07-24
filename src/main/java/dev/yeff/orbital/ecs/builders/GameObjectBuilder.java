@@ -150,7 +150,7 @@ public class GameObjectBuilder {
      */
     public GameObjectBuilder withCollider(ColliderComponent collider) {
         if (this.collider.isPresent()) {
-            throw new IllegalStateException("Object already has a transform component, cannot add another one.");
+            throw new IllegalStateException("Object already has a collider component, cannot add another one.");
         } else {
             this.collider = Optional.of(collider);
 
@@ -167,13 +167,36 @@ public class GameObjectBuilder {
      */
     public GameObjectBuilder withCollider(Shapes collisionShape, Vector2f collisionScale) {
         if (this.collider.isPresent()) {
-            throw new IllegalStateException("Object already has a transform component, cannot add another one.");
+            throw new IllegalStateException("Object already has a collider component, cannot add another one.");
         } else {
             ColliderComponent collider = new ColliderComponent(collisionShape, collisionScale);
 
             this.collider = Optional.of(collider);
 
             return withComponent(collider);
+        }
+    }
+
+    /**
+     * Adds a {@code ColliderComponent} to the object to be built.
+     *
+     * @param collisionShape The shape of the collider.
+     * @return The builder instance.
+     */
+    public GameObjectBuilder withCollider(Shapes collisionShape) {
+        if (this.collider.isPresent()) {
+            throw new IllegalStateException("Object already has a collider component, cannot add another one.");
+        } else {
+            if (this.transform.isPresent()) {
+                TransformComponent transformComponent = transform.get();
+                ColliderComponent collider = new ColliderComponent(collisionShape, transformComponent.scale);
+
+                this.collider = Optional.of(collider);
+
+                return withComponent(collider);
+            } else {
+                throw new IllegalStateException("Object does not have a transform component, cannot infer scale.");
+            }
         }
     }
 

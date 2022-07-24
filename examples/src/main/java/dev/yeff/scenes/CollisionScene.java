@@ -4,6 +4,7 @@ import dev.yeff.components.PlayerComponent;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
+import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
 import dev.yeff.orbital.ecs.components.render.RenderShapeComponent;
 import dev.yeff.orbital.graphics.Color;
 import dev.yeff.orbital.graphics.Shapes;
@@ -26,18 +27,20 @@ public class CollisionScene extends Scene {
         player = new GameObjectBuilder(this, "Player")
                 .withTransform(game.getScreenCenter(), new Vector2f(60.0f))
                 .withSprite(sprite)
-                .withCollider(Shapes.RECTANGLE, new Vector2f(60.0f))
+                .withCollider(Shapes.RECTANGLE)
                 .withComponent(new PlayerComponent())
                 .build();
 
         obj2 = new GameObjectBuilder(this, "Object 1")
                 .withTransform(game.getScreenCenter(), new Vector2f(80.0f))
                 .withShape(Shapes.RECTANGLE, new Color(0, 255, 0))
-                .withCollider(Shapes.RECTANGLE, new Vector2f(80.0f))
+                .withCollider(Shapes.RECTANGLE)
                 .build();
 
         addGameObject(game, obj2);
         addGameObject(game, player);
+
+        System.out.printf("Collider Scale: %f", obj2.getComponent(ColliderComponent.class).colliderScale.x);
     }
 
     @Override
