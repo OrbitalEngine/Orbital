@@ -59,13 +59,13 @@ public class GameObjectTests implements WithAssertions {
     @Test
     public void testCreateGameObject_withShape_usingBuilder() {
         GameObject object = new GameObjectBuilder(mockScene, "Test Object")
-                .withShape(Shapes.CIRCLE, new Color(255, 0, 0, 255))
+                .withShape(Shapes.CIRCLE, Color.RED)
                 .build();
 
         assertThat(object.hasComponent(RenderShapeComponent.class)).isTrue();
         assertThat(object.getComponent(RenderShapeComponent.class))
                 .extracting("shape", "color")
-                .contains(Shapes.CIRCLE, new Color(255, 0, 0, 255));
+                .contains(Shapes.CIRCLE, Color.RED);
     }
 
     @DisplayName("create game object with text component using builder")
@@ -85,7 +85,7 @@ public class GameObjectTests implements WithAssertions {
     @Test
     public void testCreateGameObject_withLine_usingBuilder() {
         GameObject object = new GameObjectBuilder(mockScene, "Test Object")
-                .withLine(new Vector2f(0.0f, 0.0f), new Vector2f(0.0f, 0.0f), 0.0f, new Color(255, 0, 0, 255))
+                .withLine(new Vector2f(0.0f, 0.0f), new Vector2f(0.0f, 0.0f), 0.0f, Color.RED)
                 .build();
 
         assertThat(object.hasComponent(LineComponent.class)).isTrue();
@@ -100,7 +100,7 @@ public class GameObjectTests implements WithAssertions {
 
         assertThat(object.getComponent(LineComponent.class))
                 .extracting("color", "thickness")
-                .contains(new Color(255, 0, 0, 255), 0.0f);
+                .contains(Color.RED, 0.0f);
     }
 
 
