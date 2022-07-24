@@ -24,11 +24,7 @@ public class Window {
     private Game game;
     private boolean shouldResize;
     private float fps;
-
-
-    public Window(Game game) {
-
-    }
+    
 
     public Window(Game game, boolean shouldResize, float fps) {
         this.game = game;
