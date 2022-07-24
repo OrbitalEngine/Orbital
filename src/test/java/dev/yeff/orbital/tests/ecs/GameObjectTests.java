@@ -103,6 +103,8 @@ public class GameObjectTests implements WithAssertions {
                 .contains(new Color(255, 0, 0, 255), 0.0f);
     }
 
+
+    // TODO: Figure out why this causes a JVM crash
     @DisplayName("create game object with sprite component using builder")
     @Test
     public void testCreateGameObject_withSprite_usingBuilder() {
