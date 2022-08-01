@@ -1,6 +1,7 @@
 package dev.yeff.orbital.graphics;
 
 import com.raylib.Raylib;
+import dev.yeff.orbital.math.Mathf;
 import lombok.Getter;
 
 import static com.raylib.Raylib.GetColor;
@@ -54,6 +55,22 @@ public class Color {
         this.g = rgbaColor.g();
         this.b = rgbaColor.b();
         this.a = rgbaColor.a();
+    }
+
+    /**
+     * Linearly interpolates between two colors and returns the resulting color.
+     *
+     * @param inital The inital color.
+     * @param target The color to lerp to, from the inital color.
+     * @param t The value used to interpolate between the two colors.
+     * @return The lerped color.
+     */
+    public static Color lerp(Color inital, Color target, float t) {
+        return new Color(
+                Mathf.lerp(inital.r, target.r, t),
+                Mathf.lerp(inital.g, target.g, t),
+                Mathf.lerp(inital.b, target.b, t)
+        );
     }
 
     public Raylib.Color getRaylibColor() {
