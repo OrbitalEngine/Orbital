@@ -3,7 +3,9 @@ package dev.yeff.scenes;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
+import dev.yeff.orbital.ecs.components.render.RenderShapeComponent;
 import dev.yeff.orbital.graphics.Color;
+import dev.yeff.orbital.graphics.Gradient;
 import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;
@@ -30,7 +32,7 @@ public class MenuScene extends Scene {
 
         test = new GameObjectBuilder(this, "Test")
                 .withTransform(game.getScreenCenter(), new Vector2f(80.0f))
-                .withShape(Shapes.RECTANGLE, Color.lerp(Color.RED, Color.YELLOW, 0.5f))
+                .withShape(new RenderShapeComponent(Shapes.RECTANGLE, new Gradient(Color.RED, Color.GREEN)))
                 .build();
 
 //        addGameObject(game, greeting);

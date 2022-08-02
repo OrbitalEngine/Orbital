@@ -14,6 +14,9 @@ import dev.yeff.orbital.resources.ResourceManager;
 import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.scenes.Scene;
 
+import javax.swing.text.html.Option;
+import java.util.Optional;
+
 public class CollisionScene extends Scene {
     private GameObject obj2;
     private GameObject player;
@@ -46,9 +49,9 @@ public class CollisionScene extends Scene {
     @Override
     public void update(Game game, float fps) {
         if (Collision.isColliding(player, obj2)) {
-            obj2.getComponent(RenderShapeComponent.class).color = new Color(255, 0, 0);
+            obj2.getComponent(RenderShapeComponent.class).color = Optional.of(new Color(255, 0, 0));
         } else {
-            obj2.getComponent(RenderShapeComponent.class).color = new Color(0, 255, 0);
+            obj2.getComponent(RenderShapeComponent.class).color = Optional.of(new Color(0, 255, 0));
         }
     }
 

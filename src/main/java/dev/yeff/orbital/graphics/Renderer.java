@@ -78,6 +78,23 @@ public class Renderer {
     }
 
     /**
+     * Draws a circle at a given position.
+     *
+     * @param gradient The gradient to draw the circle with.
+     * @param pos THe position to draw the circle at.
+     * @param radius The radius of the circle.
+     */
+    public static void drawCircleGradient(Gradient gradient, Vector2f pos, float radius) {
+        DrawCircleGradient(
+                (int) pos.x, 
+                (int) pos.y, 
+                radius, 
+                gradient.getStartingColor().getRaylibColor(), 
+                gradient.getEndingColor().getRaylibColor()
+        );
+    }
+
+    /**
      * Draws an outline of a circle at a given position.
      *
      * @param color The color of the outline.
@@ -98,6 +115,25 @@ public class Renderer {
     public static void drawRect(Color color, Vector2f pos, Vector2f size) {
         DrawRectangleV(RaylibUtil.getAsRaylibVec2(pos), RaylibUtil.getAsRaylibVec2(size), color.getRaylibColor());
     }
+
+    /**
+     * Draws a rectangle at a given position.
+     *
+     * @param gradient The gradient to draw the circle with.
+     * @param pos The position to draw the rectangle at.
+     * @param size The width and height of the rectangle.
+     */
+    public static void drawRectGradient(Gradient gradient, Vector2f pos, Vector2f size) {
+        DrawRectangleGradientH(
+                (int) pos.x,
+                (int) pos.y,
+                (int) size.x,
+                (int) size.y,
+                gradient.getStartingColor().getRaylibColor(),
+                gradient.getEndingColor().getRaylibColor()
+        );
+    }
+
 
     /**
      * Draws a rectangle at a given position.

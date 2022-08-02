@@ -3,8 +3,12 @@ package dev.yeff.orbital.ecs.components.render;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.graphics.Color;
+import dev.yeff.orbital.graphics.Gradient;
 import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.math.Vector2f;
+
+import javax.swing.text.html.Option;
+import java.util.Optional;
 
 import static dev.yeff.orbital.graphics.Renderer.*;
 
@@ -16,11 +20,19 @@ import static dev.yeff.orbital.graphics.Renderer.*;
  */
 public class RenderShapeComponent extends DrawableComponent {
     public Shapes shape;
-    public Color color;
+    public Optional<Color> color;
+    public Optional<Gradient> gradient;
 
     public RenderShapeComponent(Shapes shape, Color color) {
         this.shape = shape;
-        this.color = color;
+        this.color = Optional.of(color);
+        this.gradient = Optional.empty();
+    }
+
+    public RenderShapeComponent(Shapes shape, Gradient gradient) {
+        this.shape = shape;
+        this.color = Optional.empty();
+        this.gradient = Optional.of(gradient);
     }
 
     @Override
@@ -28,12 +40,16 @@ public class RenderShapeComponent extends DrawableComponent {
         Vector2f scale = parent.getComponent(TransformComponent.class).scale;
         Vector2f position = parent.getComponent(TransformComponent.class).position;
 
-        switch (shape) {
-            case CIRCLE: drawCircle(color, position, scale.x); break;
-            case RECTANGLE: drawRect(color, position, scale); break;
-            case CIRCLE_OUTLINE: drawCircleOutline(color, position, scale.x); break;
-            case RECTANGLE_OUTLINE: drawRectOutline(position, scale, color); break;
-            default: throw new IllegalStateException("unsupported render shape");
+        if (shape == Shapes.CIRCLE) {
+            color.ifPresent(value -> drawCircle(value, position, scale.x));
+            gradient.ifPresent(value -> drawCircleGradient(value, position, scale.x));
+        } else if (shape == Shapes.RECTANGLE) {
+            color.ifPresent(value -> drawRect(value, position, scale));
+            gradient.ifPresent(value -> drawRectGradient(value, position, scale));
+        } else if (shape == Shapes.CIRCLE_OUTLINE) {
+            color.ifPresent(value -> drawCircleOutline(value, position, scale.x));
+        } else if (shape == Shapes.RECTANGLE_OUTLINE) {
+            color.ifPresent(value -> drawRectOutline(position, scale, value));
         }
     }
 
