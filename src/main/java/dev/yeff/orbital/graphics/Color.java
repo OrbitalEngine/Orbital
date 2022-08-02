@@ -69,7 +69,8 @@ public class Color {
         return new Color(
                 Mathf.lerp(inital.r, target.r, t),
                 Mathf.lerp(inital.g, target.g, t),
-                Mathf.lerp(inital.b, target.b, t)
+                Mathf.lerp(inital.b, target.b, t),
+                Mathf.lerp(inital.a, target.a, t)
         );
     }
 
