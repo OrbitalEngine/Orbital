@@ -31,8 +31,8 @@ public class MenuScene extends Scene {
 //                .build();
 
         test = new GameObjectBuilder(this, "Test")
-                .withTransform(game.getScreenCenter(), new Vector2f(80.0f))
-                .withShape(new RenderShapeComponent(Shapes.RECTANGLE, new Gradient(Color.RED, Color.GREEN)))
+                .withTransform(game.getScreenCenter(), new Vector2f(90.0f))
+                .withShape(Shapes.RECTANGLE, new Gradient(Color.RED, Color.YELLOW))
                 .build();
 
 //        addGameObject(game, greeting);

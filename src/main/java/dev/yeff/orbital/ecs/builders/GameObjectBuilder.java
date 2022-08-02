@@ -6,6 +6,7 @@ import dev.yeff.orbital.ecs.components.*;
 import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
 import dev.yeff.orbital.ecs.components.render.*;
 import dev.yeff.orbital.graphics.Color;
+import dev.yeff.orbital.graphics.Gradient;
 import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.Font;
@@ -229,6 +230,26 @@ public class GameObjectBuilder {
             throw new IllegalStateException("Render component has already been added, cannot add another one.");
         } else {
             RenderShapeComponent shapeComponent = new RenderShapeComponent(shape, color);
+
+            this.renderComponent = Optional.of(shapeComponent);
+
+            return withComponent(shapeComponent);
+        }
+    }
+
+    /**
+     * Adds a {@code RenderShapeComponent} to the object to be built.
+     *
+     * @param shape The shape of the object.
+     * @param gradient The color gradient of the shape.
+     * @throws IllegalStateException If there was an error adding the component.
+     * @return The builder instance.
+     */
+    public GameObjectBuilder withShape(Shapes shape, Gradient gradient) {
+        if (renderComponent.isPresent()) {
+            throw new IllegalStateException("Render component has already been added, cannot add another one.");
+        } else {
+            RenderShapeComponent shapeComponent = new RenderShapeComponent(shape, gradient);
 
             this.renderComponent = Optional.of(shapeComponent);
 
