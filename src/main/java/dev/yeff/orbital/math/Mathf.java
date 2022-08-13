@@ -114,12 +114,9 @@ public class Mathf {
      * @return The clamped value.
      */
     public static float clamp(float v, float min, float max) {
-        if (v < min) {
+        if (v < min)
             return min;
-        } else if (v > max) {
-            return max;
-        } else {
-            return v;
-        }
+        else
+            return Math.min(v, max);
     }
 }
