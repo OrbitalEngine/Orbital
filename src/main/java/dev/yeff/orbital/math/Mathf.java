@@ -60,24 +60,24 @@ public class Mathf {
     }
 
     /**
-     * Returns a random vector whose x and y components are based on given minimum and maximum values.
+     * Returns a random vector within a box, defined by {@code min} and {@code max}
      *
-     * @param min The minimum value the x or y components can be.
-     * @param max The maximum value the x or y components can be.
+     * @param min The minimum value the vector components can be.
+     * @param max The maximum value the vector components can be.
      * @return The random vector.
      */
-    public static Vector2f generateRandomVec(int min, int max) {
+    public static Vector2f genRandVecBox(int min, int max) {
         return new Vector2f(GetRandomValue(min, max), GetRandomValue(min, max));
     }
 
     /**
-     * Returns a random vector whose x and y components are based on given minimum and maximum values.
+     * Returns a random vector within a box, defined by {@code min} and {@code max}
      *
-     * @param min The minimum value the result can be.
-     * @param max The maximum value the result can be.
+     * @param min The minimum value the vector components can be.
+     * @param max The maximum value the vector components can be.
      * @return The random vector.
      */
-    public static Vector2f generateRandomVec(Vector2f min, Vector2f max) {
+    public static Vector2f genRandVecBox(Vector2f min, Vector2f max) {
         return new Vector2f(GetRandomValue((int) min.x, (int) max.x), GetRandomValue((int) min.y, (int) max.y));
     }
 
