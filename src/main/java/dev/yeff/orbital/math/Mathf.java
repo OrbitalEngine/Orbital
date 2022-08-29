@@ -53,9 +53,6 @@ public class Mathf {
     public static Vector2f normalize(Vector2f source) {
         float length = source.getMagnitude();
 
-        if (length <= 0)
-            throw new IllegalStateException("Length is less than 0, cannot normalize");
-
         return new Vector2f(source.x / length, source.y / length);
     }
 
