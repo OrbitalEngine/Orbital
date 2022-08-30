@@ -13,16 +13,16 @@ import static com.raylib.Raylib.GetColor;
  */
 public class Color {
     @Getter
-    private float r;
+    private byte r;
 
     @Getter
-    private float g;
+    private byte g;
 
     @Getter
-    private float b;
+    private byte b;
 
     @Getter
-    private float a;
+    private byte a;
 
     // Constants
     public static final Color BLACK = new Color(0, 0, 0);
@@ -34,18 +34,32 @@ public class Color {
     public static final Color PURPLE = new Color(200, 0, 255);
     public static final Color YELLOW = new Color(255, 255, 0);
 
-    public Color(float r, float g, float b, float a) {
+    public Color(byte r, byte g, byte b, byte a) {
         this.r = r;
         this.g = g;
         this.b = b;
         this.a = a;
     }
 
-    public Color(float r, float g, float b) {
+    public Color(byte r, byte g, byte b) {
         this.r = r;
         this.g = g;
         this.b = b;
-        this.a = 255;
+        this.a = (byte) 255;
+    }
+
+    public Color(float r, float g, float b) {
+        this.r = (byte) r;
+        this.g = (byte) g;
+        this.b = (byte) b;
+        this.a = (byte) 255;
+    }
+
+    public Color(float r, float g, float b, float a) {
+        this.r = (byte) r;
+        this.g = (byte) g;
+        this.b = (byte) b;
+        this.a = (byte) a;
     }
 
     public Color(byte hex) {
@@ -81,9 +95,9 @@ public class Color {
      */
     public Raylib.Color getRaylibColor() {
         return new Raylib.Color()
-                .r((byte) r)
-                .g((byte) g)
-                .b((byte) b)
-                .a((byte) a);
+                .r(r)
+                .g(g)
+                .b(b)
+                .a(a);
     }
 }

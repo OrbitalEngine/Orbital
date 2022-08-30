@@ -32,7 +32,7 @@ public class MenuScene extends Scene {
 
         test = new GameObjectBuilder(this, "Test")
                 .withTransform(game.getScreenCenter(), new Vector2f(90.0f))
-                .withShape(Shapes.RECTANGLE, new Gradient(Color.RED, Color.YELLOW))
+                .withShape(Shapes.RECTANGLE, Color.PINK)
                 .build();
 
 //        addGameObject(game, greeting);
