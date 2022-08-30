@@ -32,10 +32,9 @@ public class MenuScene extends Scene {
 
         test = new GameObjectBuilder(this, "Test")
                 .withTransform(game.getScreenCenter(), new Vector2f(90.0f))
-                .withShape(Shapes.RECTANGLE, Color.PINK)
+                .withShape(Shapes.RECTANGLE, new Color(285, 0, 0))
                 .build();
 
-//        addGameObject(game, greeting);
         addGameObject(game, test);
 
         Log.info(getClass(), "Loaded menu scene");

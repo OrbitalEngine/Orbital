@@ -49,17 +49,17 @@ public class Color {
     }
 
     public Color(float r, float g, float b) {
-        this.r = (byte) r;
-        this.g = (byte) g;
-        this.b = (byte) b;
+        this.r = (byte) Mathf.clamp(r, 0, 255);
+        this.g = (byte) Mathf.clamp(g, 0, 255);
+        this.b = (byte) Mathf.clamp(b, 0, 255);
         this.a = (byte) 255;
     }
 
     public Color(float r, float g, float b, float a) {
-        this.r = (byte) r;
-        this.g = (byte) g;
-        this.b = (byte) b;
-        this.a = (byte) a;
+        this.r = (byte) Mathf.clamp(r, 0, 255);;
+        this.g = (byte) Mathf.clamp(g, 0, 255);;
+        this.b = (byte) Mathf.clamp(b, 0, 255);;
+        this.a = (byte) Mathf.clamp(a, 0, 255);;
     }
 
     public Color(byte hex) {
