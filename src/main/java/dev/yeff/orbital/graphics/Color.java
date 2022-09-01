@@ -49,9 +49,9 @@ public class Color {
     }
 
     public Color(float r, float g, float b) {
-        this.r = (byte) Mathf.clamp(r, 0, 255);
-        this.g = (byte) Mathf.clamp(g, 0, 255);
-        this.b = (byte) Mathf.clamp(b, 0, 255);
+        this.r = (byte) (Mathf.clamp(r, 0, 1) * 255.9999);
+        this.g = (byte) (Mathf.clamp(g, 0, 1) * 255.9999);
+        this.b = (byte) (Mathf.clamp(b, 0, 1) * 255.9999);
         this.a = (byte) 255;
     }
 
