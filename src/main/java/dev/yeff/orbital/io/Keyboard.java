@@ -23,9 +23,20 @@ public class Keyboard {
      * Checks if a keyboard key is not being held down.
      *
      * @param key The key to check for.
-     * @return If the is not held down or not.
+     * @return If the key is not held down or not.
      */
     public boolean isKeyUp(Keys key) { return IsKeyUp(key.getKeycode()); }
+
+    /**
+     * Checks if a keyboard key is being pressed once.
+     *
+     * @param key The key to check for.
+     * @return If the key is being pressed.
+     */
+    public boolean isKeyPressed(Keys key) {
+        return IsKeyPressed(key.getKeycode());
+    }
+
 
     /**
      * Invokes a {@code Callback<T>} when a keyboard key is pressed.
