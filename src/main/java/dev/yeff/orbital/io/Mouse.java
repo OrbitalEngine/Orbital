@@ -30,10 +30,30 @@ public class Mouse {
      * Checks if a mouse button is being held down.
      *
      * @param button The button to check for.
-     * @return If the is not held down or not.
+     * @return If the button is not being held down or not.
      */
     public boolean isMouseDown(Keys button) {
         return IsMouseButtonDown(button.getKeycode());
+    }
+
+    /**
+     * Checks if a mouse button is not being held down.
+     *
+     * @param button The button to check for.
+     * @return If the button is not being held down.
+     */
+    public boolean isMouseUp(Keys button) {
+        return IsMouseButtonUp(button.getKeycode());
+    }
+
+    /**
+     * Checks if a mouse button is being pressed once.
+     *
+     * @param button The button to check for.
+     * @return If the button is being pressed.
+     */
+    public boolean isMousePressed(Keys button) {
+        return IsMouseButtonPressed(button.getKeycode());
     }
 
     /**
@@ -43,15 +63,5 @@ public class Mouse {
      */
     public float getScroll() {
         return GetMouseWheelMove() * 4;
-    }
-
-    /**
-     * Checks if a mouse button is not being held down.
-     *
-     * @param button The button to check for.
-     * @return If the is not held down or not.
-     */
-    public boolean isMouseUp(Keys button) {
-        return IsMouseButtonUp(button.getKeycode());
     }
 }
