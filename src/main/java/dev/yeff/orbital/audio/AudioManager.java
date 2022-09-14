@@ -2,15 +2,12 @@ package dev.yeff.orbital.audio;
 
 import dev.yeff.orbital.resources.AudioClip;
 import dev.yeff.orbital.resources.Music;
-import dev.yeff.orbital.util.Log;
 import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 import static com.raylib.Raylib.*;
-import static java.util.stream.IntStream.*;
 
 /**
  * Manages everything related to audio, like playing and pausing audio, controlling volume and more.

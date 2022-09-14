@@ -7,7 +7,6 @@ import dev.yeff.orbital.graphics.Gradient;
 import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.math.Vector2f;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 
 import static dev.yeff.orbital.graphics.Renderer.*;

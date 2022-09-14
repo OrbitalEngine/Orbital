@@ -2,11 +2,6 @@ package dev.yeff.orbital.util;
 
 import com.raylib.Raylib;
 import dev.yeff.orbital.math.Vector2f;
-import dev.yeff.orbital.resources.AudioClip;
-import dev.yeff.orbital.resources.Music;
-
-import static com.raylib.Raylib.LoadMusicStream;
-import static com.raylib.Raylib.LoadSound;
 
 /**
  * Utility functions to use Orbital classes as Raylib classes. Meant to be used internally by the engine, for things like rendering.
