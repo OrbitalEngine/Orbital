@@ -3,10 +3,7 @@ package dev.yeff.orbital.graphics;
 import com.raylib.Raylib;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
-import dev.yeff.orbital.ecs.components.render.LineComponent;
-import dev.yeff.orbital.ecs.components.render.RenderShapeComponent;
-import dev.yeff.orbital.ecs.components.render.SpriteComponent;
-import dev.yeff.orbital.ecs.components.render.TextComponent;
+import dev.yeff.orbital.ecs.components.render.*;
 import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.resources.Font;
@@ -44,15 +41,7 @@ public class Renderer {
      */
     public static void performRenders(Game game) {
         for (GameObject go : renderObjects) {
-            if (go.hasComponent(RenderShapeComponent.class)) {
-                go.getComponent(RenderShapeComponent.class).update(game);
-            } else if (go.hasComponent(TextComponent.class)) {
-                go.getComponent(TextComponent.class).update(game);
-            } else if (go.hasComponent(LineComponent.class)) {
-                go.getComponent(LineComponent.class).update(game);
-            } else {
-                go.getComponent(SpriteComponent.class).update(game);
-            }
+            go.getComponent(DrawableComponent.class).update(game);
         }
     }
 
