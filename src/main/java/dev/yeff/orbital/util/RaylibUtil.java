@@ -18,4 +18,17 @@ public class RaylibUtil {
     public static Raylib.Vector2 getAsRaylibVec2(Vector2f vec) {
         return new Raylib.Vector2().x(vec.x).y(vec.y);
     }
+
+    /**
+     * Gets the Raylib version of the color, to be used internally by the engine.
+     *
+     * @return The raylib version of the color.
+     */
+    public Raylib.Color getRaylibColor() {
+        return new Raylib.Color()
+                .r(r)
+                .g(g)
+                .b(b)
+                .a(a);
+    }
 }
