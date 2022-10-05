@@ -104,7 +104,7 @@ public class GameObjectTests implements WithAssertions {
     }
 
 
-    // TODO: Figure out why this causes a JVM crash
+    // TODO: Rewrite unit test to load a window before running the test.
 //    @DisplayName("create game object with sprite component using builder")
 //    @Test
 //    public void testCreateGameObject_withSprite_usingBuilder() {
