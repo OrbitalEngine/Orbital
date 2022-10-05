@@ -116,4 +116,19 @@ public class Mathf {
         else
             return Math.min(v, max);
     }
+
+    /**
+     * Clamps {@code v} between {@code max} and {@code min} values.
+     *
+     * @param v The value to clamp.
+     * @param min The minimum the value can be.
+     * @param max The max the value can be.
+     * @return The clamped value.
+     */
+    public static int clamp(int v, int min, int max) {
+        if (v < min)
+            return min;
+        else
+            return Math.min(v, max);
+    }
 }

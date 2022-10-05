@@ -115,7 +115,6 @@ public class Collision {
      */
     private static boolean circleWithRect(GameObject circle, GameObject rectangle) {
         if (circle.hasComponent(ColliderComponent.class) && rectangle.hasComponent(ColliderComponent.class)) {
-
             Raylib.Vector2 center = RaylibUtil.getAsRaylibVec2(circle.getComponent(TransformComponent.class).position);
             float radius = circle.getComponent(ColliderComponent.class).colliderScale.x;
 
