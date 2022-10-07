@@ -1,4 +1,5 @@
 package dev.yeff.orbital.util;
+import  dev.yeff.orbital.graphics.Color;
 
 import com.raylib.Raylib;
 import dev.yeff.orbital.math.Vector2f;
@@ -21,14 +22,14 @@ public class RaylibUtil {
 
     /**
      * Gets the Raylib version of the color, to be used internally by the engine.
-     *
+     * 
      * @return The raylib version of the color.
      */
-    public Raylib.Color getRaylibColor() {
+    public static Raylib.Color getRaylibColor(Color color) {
         return new Raylib.Color()
-                .r(r)
-                .g(g)
-                .b(b)
-                .a(a);
+                .r(color.getR())
+                .g(color.getG())
+                .b(color.getB())
+                .a(color.getA());
     }
 }
