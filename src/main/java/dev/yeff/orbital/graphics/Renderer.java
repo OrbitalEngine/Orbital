@@ -63,7 +63,7 @@ public class Renderer {
      * @param radius The radius of the circle.
      */
     public static void drawCircle(Color color, Vector2f pos, float radius) {
-        DrawCircleV(RaylibUtil.getAsRaylibVec2(pos), radius, color.getRaylibColor());
+        DrawCircleV(RaylibUtil.getAsRaylibVec2(pos), radius, RaylibUtil.getRaylibColor(color));
     }
 
     /**
@@ -78,8 +78,8 @@ public class Renderer {
                 (int) pos.x, 
                 (int) pos.y, 
                 radius, 
-                gradient.getStartingColor().getRaylibColor(), 
-                gradient.getEndingColor().getRaylibColor()
+                RaylibUtil.getRaylibColor(gradient.getStartingColor()),
+                RaylibUtil.getRaylibColor(gradient.getEndingColor())
         );
     }
 
@@ -91,7 +91,7 @@ public class Renderer {
      * @param radius The radius of the circle.
      */
     public static void drawCircleOutline(Color color, Vector2f pos, float radius) {
-        DrawCircleLines((int) pos.x, (int) pos.y, radius, color.getRaylibColor());
+        DrawCircleLines((int) pos.x, (int) pos.y, radius, RaylibUtil.getRaylibColor(color));
     }
 
     /**
@@ -102,7 +102,7 @@ public class Renderer {
      * @param size The width and height of the rectangle.
      */
     public static void drawRect(Color color, Vector2f pos, Vector2f size) {
-        DrawRectangleV(RaylibUtil.getAsRaylibVec2(pos), RaylibUtil.getAsRaylibVec2(size), color.getRaylibColor());
+        DrawRectangleV(RaylibUtil.getAsRaylibVec2(pos), RaylibUtil.getAsRaylibVec2(size), RaylibUtil.getRaylibColor(color));
     }
 
     /**
@@ -118,8 +118,8 @@ public class Renderer {
                 (int) pos.y,
                 (int) size.x,
                 (int) size.y,
-                gradient.getStartingColor().getRaylibColor(),
-                gradient.getEndingColor().getRaylibColor()
+                RaylibUtil.getRaylibColor(gradient.getStartingColor()),
+                RaylibUtil.getRaylibColor(gradient.getEndingColor())
         );
     }
 
@@ -132,7 +132,7 @@ public class Renderer {
      * @param size The size of the rectangle.
      */
     public static void drawRect(Color color, Vector2f pos, float size) {
-        DrawRectangleV(RaylibUtil.getAsRaylibVec2(pos), new Raylib.Vector2().x(size).y(size), color.getRaylibColor());
+        DrawRectangleV(RaylibUtil.getAsRaylibVec2(pos), new Raylib.Vector2().x(size).y(size), RaylibUtil.getRaylibColor(color));
     }
 
     /**
@@ -143,7 +143,7 @@ public class Renderer {
      * @param color The color of the outline.
      */
     public static void drawRectOutline(Vector2f pos, Vector2f size, Color color) {
-        DrawRectangleLines((int) pos.x, (int) pos.y, (int) size.x, (int) size.y, color.getRaylibColor());
+        DrawRectangleLines((int) pos.x, (int) pos.y, (int) size.x, (int) size.y, RaylibUtil.getRaylibColor(color));
     }
 
     /**
@@ -154,7 +154,7 @@ public class Renderer {
      * @param color The color of the outline.
      */
     public static void drawRectOutline(Vector2f pos, float size, Color color) {
-        DrawRectangleLines((int) pos.x, (int) pos.y, (int) size, (int) size, color.getRaylibColor());
+        DrawRectangleLines((int) pos.x, (int) pos.y, (int) size, (int) size, RaylibUtil.getRaylibColor(color));
     }
 
     /**
@@ -165,7 +165,7 @@ public class Renderer {
      * @param color The color of the line.
      */
     public static void drawLine(Vector2f start, Vector2f end, Color color) {
-        DrawLine((int) start.x, (int) start.y, (int) end.x, (int) end.y, color.getRaylibColor());
+        DrawLine((int) start.x, (int) start.y, (int) end.x, (int) end.y, RaylibUtil.getRaylibColor(color));
     }
 
     /**
@@ -177,7 +177,7 @@ public class Renderer {
      * @param thickness The thickness of the line.
      */
     public static void drawLine(Vector2f start, Vector2f end, Color color, float thickness) {
-        DrawLineEx(RaylibUtil.getAsRaylibVec2(start), RaylibUtil.getAsRaylibVec2(end), thickness, color.getRaylibColor());
+        DrawLineEx(RaylibUtil.getAsRaylibVec2(start), RaylibUtil.getAsRaylibVec2(end), thickness, RaylibUtil.getRaylibColor(color));
     }
 
     /**
@@ -188,7 +188,7 @@ public class Renderer {
      * @param pos The position to draw the text at.
      */
     public static void drawString(String text, float fontSize, Vector2f pos) {
-        DrawText(text, (int) pos.x, (int) pos.y, (int) fontSize, new Color(0, 0, 0).getRaylibColor());
+        DrawText(text, (int) pos.x, (int) pos.y, (int) fontSize, RaylibUtil.getRaylibColor(new Color(0, 0, 0)));
     }
 
     /**
@@ -200,7 +200,7 @@ public class Renderer {
      * @param font The font to draw the text with.
      */
     public static void drawString(String text, float fontSize, Vector2f pos, Font font) {
-        DrawTextEx(font.asRaylibFont(), text, RaylibUtil.getAsRaylibVec2(pos), fontSize, 2, new Color(0, 0, 0).getRaylibColor());
+        DrawTextEx(font.asRaylibFont(), text, RaylibUtil.getAsRaylibVec2(pos), fontSize, 2, RaylibUtil.getRaylibColor(new Color(0, 0, 0)));
     }
 
     /**
@@ -208,5 +208,5 @@ public class Renderer {
      *
      * @param color The color to fill with.
      */
-    public static void fillBackground(Color color) { ClearBackground(color.getRaylibColor()); }
+    public static void fillBackground(Color color) { ClearBackground(RaylibUtil.getRaylibColor(color)); }
 }
