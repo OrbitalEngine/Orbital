@@ -52,4 +52,24 @@ public class MathTests implements WithAssertions {
             assertThat(invLerpedValues.get(i)).isEqualTo(invLerpedAnswers.get(i));
         }
     }
+
+    @DisplayName("calculate clamped value between two values")
+    @Test
+    public void testMathFunctions_clamp() {
+        List<Float> clampedValues = List.of(
+                Mathf.clamp(10.0f, 5.0f, 6.0f),
+                Mathf.clamp(4.0f, 10.0f, 20.0f),
+                Mathf.clamp(-5.0f, -1.0f, 1.0f)
+        );
+
+        List<Float> clampedAnswers = List.of(
+                6.0f,
+                10.0f,
+                -1.0f
+        );
+
+        for (int i = 0; i < clampedValues.size(); i++) {
+            assertThat(clampedValues.get(i)).isEqualTo(clampedAnswers.get(i));
+        }
+    }
 }
