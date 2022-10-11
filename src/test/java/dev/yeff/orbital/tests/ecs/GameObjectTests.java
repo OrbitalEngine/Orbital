@@ -1,8 +1,9 @@
 package dev.yeff.orbital.tests.ecs;
 
+import com.raylib.Raylib;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
-import dev.yeff.orbital.ecs.components.*;
+import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.ecs.components.render.LineComponent;
 import dev.yeff.orbital.ecs.components.render.RenderShapeComponent;
 import dev.yeff.orbital.ecs.components.render.SpriteComponent;
@@ -103,16 +104,15 @@ public class GameObjectTests implements WithAssertions {
                 .contains(Color.RED, 0.0f);
     }
 
+    @DisplayName("create game object with sprite component using builder")
+    @Test
+    public void testCreateGameObject_withSprite_usingBuilder() {
+        Raylib.InitWindow(100, 100, "Test window");
+        GameObject object = new GameObjectBuilder(mockScene, "Test Object")
+                .withSprite(ResourceManager.getSprite(getClass(), "character_0000.png"))
+                .build();
 
-    // TODO: Rewrite unit test to load a window before running the test.
-//    @DisplayName("create game object with sprite component using builder")
-//    @Test
-//    public void testCreateGameObject_withSprite_usingBuilder() {
-//        GameObject object = new GameObjectBuilder(mockScene, "Test Object")
-//                .withSprite(ResourceManager.getSprite(getClass(), "character_0000.png"))
-//                .build();
-//
-//        assertThat(object.hasComponent(SpriteComponent.class)).isTrue();
-//        assertThat(object.getComponent(SpriteComponent.class).sprite).isNotNull();
-//    }
+        assertThat(object.hasComponent(SpriteComponent.class)).isTrue();
+        assertThat(object.getComponent(SpriteComponent.class).sprite).isNotNull();
+    }
 }
