@@ -18,6 +18,7 @@ import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import java.util.Optional;
 
 @DisplayName("test game objects creation and adding components to game objects")
 public class GameObjectTests implements WithAssertions {
@@ -66,7 +67,7 @@ public class GameObjectTests implements WithAssertions {
         assertThat(object.hasComponent(RenderShapeComponent.class)).isTrue();
         assertThat(object.getComponent(RenderShapeComponent.class))
                 .extracting("shape", "color")
-                .contains(Shapes.CIRCLE, Color.RED);
+                .contains(Shapes.CIRCLE, Optional.of(Color.RED));
     }
 
     @DisplayName("create game object with text component using builder")
