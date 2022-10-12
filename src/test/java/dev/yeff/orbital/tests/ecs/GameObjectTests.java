@@ -108,6 +108,7 @@ public class GameObjectTests implements WithAssertions {
     @DisplayName("create game object with sprite component using builder")
     @Test
     public void testCreateGameObject_withSprite_usingBuilder() {
+        Raylib.InitWindow(100, 100, "Test window");
         GameObject object = new GameObjectBuilder(mockScene, "Test Object")
                 .withSprite(ResourceManager.getSprite(getClass(), "character_0000.png"))
                 .build();
