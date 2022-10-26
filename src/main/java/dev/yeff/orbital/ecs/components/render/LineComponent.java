@@ -2,7 +2,7 @@ package dev.yeff.orbital.ecs.components.render;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.graphics.Color;
-import dev.yeff.orbital.math.Vector2f;
+import org.joml.Vector2f;
 
 import static dev.yeff.orbital.graphics.Renderer.drawLine;
 

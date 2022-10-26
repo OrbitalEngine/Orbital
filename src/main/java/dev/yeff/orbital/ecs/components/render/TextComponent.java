@@ -3,8 +3,8 @@ package dev.yeff.orbital.ecs.components.render;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.graphics.Color;
-import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.Font;
+import org.joml.Vector2f;
 
 import static dev.yeff.orbital.graphics.Renderer.drawString;
 

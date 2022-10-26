@@ -2,7 +2,7 @@ package dev.yeff.orbital.util;
 import  dev.yeff.orbital.graphics.Color;
 
 import com.raylib.Raylib;
-import dev.yeff.orbital.math.Vector2f;
+import org.joml.Vector2f;
 
 /**
  * Utility functions to use Orbital classes as Raylib classes. Meant to be used internally by the engine, for things like rendering.

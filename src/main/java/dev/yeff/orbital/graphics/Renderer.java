@@ -4,10 +4,10 @@ import com.raylib.Raylib;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.components.render.*;
-import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.resources.Font;
 import dev.yeff.orbital.util.RaylibUtil;
+import org.joml.Vector2f;
 
 import java.util.ArrayList;
 import java.util.List;

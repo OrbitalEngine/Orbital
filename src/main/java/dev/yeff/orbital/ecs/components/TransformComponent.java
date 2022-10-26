@@ -2,7 +2,7 @@ package dev.yeff.orbital.ecs.components;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.Component;
-import dev.yeff.orbital.math.Vector2f;
+import org.joml.Vector2f;
 
 /**
  * Stores data about object position and scale.

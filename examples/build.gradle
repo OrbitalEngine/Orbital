@@ -5,6 +5,7 @@ plugins {
 }
 
 group 'dev.yeff'
+project.ext.jomlVersion = "1.10.5"
 
 repositories {
     mavenCentral()
@@ -21,7 +22,7 @@ dependencies {
     implementation 'uk.co.electronstudio.jaylib:jaylib-natives-windows-x86_64:4.0.+'
     implementation 'uk.co.electronstudio.jaylib:jaylib-natives-macosx-x86_64:4.0.+'
     implementation 'uk.co.electronstudio.jaylib:jaylib-natives-linux-x86_64:4.0.+'
-    implementation "org.joml:joml-android:1.9.3-SNAPSHOT"
+    implementation "org.joml:joml:${jomlVersion}"
 
     implementation(project(":"))
 }
