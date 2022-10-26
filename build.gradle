@@ -9,9 +9,8 @@ group 'dev.yeff'
 repositories {
     mavenCentral()
 
-    maven {
-        url "https://dl.cloudsmith.io/public/electron-studio/jaylib/maven/"
-    }
+    maven { url "https://dl.cloudsmith.io/public/electron-studio/jaylib/maven/" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 }
 
 dependencies {
@@ -26,6 +25,7 @@ dependencies {
     implementation 'uk.co.electronstudio.jaylib:jaylib-natives-windows-x86_64:4.0.+'
     implementation 'uk.co.electronstudio.jaylib:jaylib-natives-macosx-x86_64:4.0.+'
     implementation 'uk.co.electronstudio.jaylib:jaylib-natives-linux-x86_64:4.0.+'
+    implementation "org.joml:joml-android:1.9.3-SNAPSHOT"
 
     implementation 'org.slf4j:slf4j-api:2.0.0-alpha5'
     implementation 'org.slf4j:slf4j-simple:2.0.0-alpha5'
