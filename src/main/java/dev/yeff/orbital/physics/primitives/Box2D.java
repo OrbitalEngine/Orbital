@@ -8,10 +8,20 @@ import org.joml.Vector2f;
 public class Box2D {
     private Vector2f center;
     private Vector2f size;
+    private Vector2f halfSize;
     private Rigidbody2D rb = null;
 
     public Box2D(Vector2f center, Vector2f size) {
         this.center = center;
         this.size = size;
+        this.halfSize = new Vector2f(size).div(5.0f);
+    }
+
+    public Vector2f getMin() {
+        return new Vector2f(rb.transformComponent.position).sub(halfSize);
+    }
+
+    public Vector2f getMax() {
+        return new Vector2f(rb.transformComponent.position).add(this.halfSize);
     }
 }

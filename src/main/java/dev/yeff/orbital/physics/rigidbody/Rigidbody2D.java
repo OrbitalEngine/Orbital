@@ -5,7 +5,7 @@ import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.ecs.components.TransformComponent;
 
 public class Rigidbody2D extends Component {
-    private TransformComponent transformComponent;
+    public TransformComponent transformComponent;
 
     @Override
     public void init(Game game) {
