@@ -1,8 +1,8 @@
 package dev.yeff.orbital.graphics;
 
 import com.raylib.Raylib;
-import dev.yeff.orbital.math.Mathf;
 import lombok.Getter;
+import org.joml.Math;
 
 import static com.raylib.Raylib.GetColor;
 
@@ -49,17 +49,17 @@ public class Color {
     }
 
     public Color(float r, float g, float b) {
-        this.r = (byte) (Mathf.clamp(r, 0, 1) * 255.9999);
-        this.g = (byte) (Mathf.clamp(g, 0, 1) * 255.9999);
-        this.b = (byte) (Mathf.clamp(b, 0, 1) * 255.9999);
+        this.r = (byte) (Math.clamp(r, 0, 1) * 255.9999);
+        this.g = (byte) (Math.clamp(g, 0, 1) * 255.9999);
+        this.b = (byte) (Math.clamp(b, 0, 1) * 255.9999);
         this.a = (byte) 255;
     }
 
     public Color(float r, float g, float b, float a) {
-        this.r = (byte) Mathf.clamp(r, 0, 255);;
-        this.g = (byte) Mathf.clamp(g, 0, 255);;
-        this.b = (byte) Mathf.clamp(b, 0, 255);;
-        this.a = (byte) Mathf.clamp(a, 0, 255);;
+        this.r = (byte) Math.clamp(r, 0, 255);;
+        this.g = (byte) Math.clamp(g, 0, 255);;
+        this.b = (byte) Math.clamp(b, 0, 255);;
+        this.a = (byte) Math.clamp(a, 0, 255);;
     }
 
     public Color(byte hex) {
@@ -81,10 +81,10 @@ public class Color {
      */
     public static Color lerp(Color inital, Color target, float t) {
         return new Color(
-                Mathf.lerp(inital.r, target.r, t),
-                Mathf.lerp(inital.g, target.g, t),
-                Mathf.lerp(inital.b, target.b, t),
-                Mathf.lerp(inital.a, target.a, t)
+                Math.lerp(inital.r, target.r, t),
+                Math.lerp(inital.g, target.g, t),
+                Math.lerp(inital.b, target.b, t),
+                Math.lerp(inital.a, target.a, t)
         );
     }
 

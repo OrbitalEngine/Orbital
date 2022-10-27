@@ -5,8 +5,8 @@ import dev.yeff.orbital.audio.AudioManager;
 import dev.yeff.orbital.ecs.components.render.DrawableComponent;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.components.*;
-import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.util.Log;
+import org.joml.Vector2f;
 
 import java.util.ArrayList;
 import java.util.List;

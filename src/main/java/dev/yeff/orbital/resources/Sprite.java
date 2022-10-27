@@ -2,8 +2,8 @@ package dev.yeff.orbital.resources;
 
 import com.raylib.Raylib.Texture;
 import dev.yeff.orbital.interfaces.Disposable;
-import dev.yeff.orbital.math.Vector2f;
 import lombok.Getter;
+import org.joml.Vector2f;
 
 import static com.raylib.Raylib.*;
 

@@ -1,6 +1,7 @@
 package dev.yeff.orbital.io;
 
-import dev.yeff.orbital.math.Vector2f;
+
+import org.joml.Vector2f;
 
 import static com.raylib.Raylib.*;
 

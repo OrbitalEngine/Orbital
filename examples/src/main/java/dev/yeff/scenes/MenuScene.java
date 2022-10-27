@@ -8,10 +8,10 @@ import dev.yeff.orbital.graphics.Color;
 import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;
-import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.resources.Font;
 import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.orbital.util.Log;
+import org.joml.Vector2f;
 
 import java.util.Optional;
 

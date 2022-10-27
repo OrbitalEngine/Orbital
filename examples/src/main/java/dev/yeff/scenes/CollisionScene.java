@@ -8,13 +8,12 @@ import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
 import dev.yeff.orbital.ecs.components.render.RenderShapeComponent;
 import dev.yeff.orbital.graphics.Color;
 import dev.yeff.orbital.graphics.Shapes;
-import dev.yeff.orbital.math.Vector2f;
 import dev.yeff.orbital.physics.collision.Collision;
 import dev.yeff.orbital.resources.ResourceManager;
 import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.scenes.Scene;
+import org.joml.Vector2f;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 
 public class CollisionScene extends Scene {
