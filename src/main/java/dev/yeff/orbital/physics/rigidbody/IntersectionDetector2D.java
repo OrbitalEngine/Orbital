@@ -1,6 +1,7 @@
 package dev.yeff.orbital.physics.rigidbody;
 
 import dev.yeff.orbital.ecs.components.render.LineComponent;
+import dev.yeff.orbital.math.OrbitalMath;
 import dev.yeff.orbital.physics.primitives.Box2D;
 import dev.yeff.orbital.physics.primitives.Circle2D;
 import org.joml.Vector2f;
@@ -18,7 +19,7 @@ public class IntersectionDetector2D {
         float c = line.end.y - (m * line.end.x);
 
         // Check equation
-        return point.y == m * point.x + c;
+        return OrbitalMath.compareEpsilon(point.y, m * point.x + c);
     }
 
     public static boolean pointInCircle(Vector2f point, Circle2D circle) {
