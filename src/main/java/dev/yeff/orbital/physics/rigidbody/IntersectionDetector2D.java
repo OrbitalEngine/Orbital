@@ -19,7 +19,7 @@ public class IntersectionDetector2D {
         float c = line.end.y - (m * line.end.x);
 
         // Check equation
-        return OrbitalMath.compareEpsilon(point.y, m * point.x + c);
+        return point.y == m * point.x + c;
     }
 
     public static boolean pointInCircle(Vector2f point, Circle2D circle) {
