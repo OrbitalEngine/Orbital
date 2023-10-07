@@ -1,10 +1,10 @@
 package dev.yeff.orbital.ecs.components.render;
 
+import static dev.yeff.orbital.graphics.Renderer.drawLine;
+
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.graphics.Color;
 import org.joml.Vector2f;
-
-import static dev.yeff.orbital.graphics.Renderer.drawLine;
 
 /**
  * Component storing data to render a line.
@@ -12,33 +12,30 @@ import static dev.yeff.orbital.graphics.Renderer.drawLine;
  * @author YeffyCodeGit
  */
 public class LineComponent extends DrawableComponent {
-    public float thickness;
-    public Vector2f start;
-    public Vector2f end;
-    public Color color;
+  public float thickness;
+  public Vector2f start;
+  public Vector2f end;
+  public Color color;
 
-    public LineComponent(float thickness, Vector2f start, Vector2f end, Color color) {
-        this.thickness = thickness;
-        this.start = start;
-        this.end = end;
-        this.color = color;
-    }
+  public LineComponent(float thickness, Vector2f start, Vector2f end, Color color) {
+    this.thickness = thickness;
+    this.start = start;
+    this.end = end;
+    this.color = color;
+  }
 
-    public LineComponent(float thickness, Vector2f start, Vector2f end) {
-        this.thickness = thickness;
-        this.start = start;
-        this.end = end;
-        this.color = Color.BLACK;
-    }
+  public LineComponent(float thickness, Vector2f start, Vector2f end) {
+    this.thickness = thickness;
+    this.start = start;
+    this.end = end;
+    this.color = Color.BLACK;
+  }
 
-    @Override
-    public void init(Game game) {
+  @Override
+  public void init(Game game) {}
 
-    }
-
-
-    @Override
-    public void update(Game game) {
-        drawLine(start, end, color, thickness);
-    }
+  @Override
+  public void update(Game game) {
+    drawLine(start, end, color, thickness);
+  }
 }

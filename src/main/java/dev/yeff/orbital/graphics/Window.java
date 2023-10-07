@@ -1,17 +1,16 @@
 package dev.yeff.orbital.graphics;
 
+import static com.raylib.Raylib.*;
+
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.audio.AudioManager;
-import dev.yeff.orbital.ecs.components.render.DrawableComponent;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.components.*;
+import dev.yeff.orbital.ecs.components.render.DrawableComponent;
 import dev.yeff.orbital.util.Log;
-import org.joml.Vector2f;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.raylib.Raylib.*;
+import org.joml.Vector2f;
 
 /**
  * Class which manages the window, game loop, and updates scenes.
@@ -19,79 +18,78 @@ import static com.raylib.Raylib.*;
  * @author YeffyCodeGit
  */
 public class Window {
-    private Vector2f size;
-    private String title;
-    private Game game;
-    private boolean shouldResize;
-    private float fps;
+  private Vector2f size;
+  private String title;
+  private Game game;
+  private boolean shouldResize;
+  private float fps;
 
+  public Window(Game game, boolean shouldResize, float fps) {
+    this.game = game;
+    this.size = game.getSize();
+    this.title = game.getTitle();
+    this.shouldResize = shouldResize;
+    this.fps = fps;
 
-    public Window(Game game, boolean shouldResize, float fps) {
-        this.game = game;
-        this.size = game.getSize();
-        this.title = game.getTitle();
-        this.shouldResize = shouldResize;
-        this.fps = fps;
+    Log.info(Window.class, "Created window with width " + size.x + ", height " + size.y);
+  }
 
-        Log.info(Window.class, "Created window with width " + size.x + ", height " + size.y);
+  /** Starts window, configures it, and initializes the scene. */
+  public void start() {
+    InitAudioDevice();
+
+    if (shouldResize) SetConfigFlags(FLAG_WINDOW_RESIZABLE);
+
+    // Disables the logs from raylib, so I can implement my own logging system
+    SetTraceLogLevel(LOG_NONE);
+    SetExitKey(KEY_ESCAPE);
+    InitWindow((int) size.x, (int) size.y, title);
+    SetTargetFPS((int) fps);
+
+    game.getCurrentScene().initInternal(game);
+    game.getCurrentScene().init(game);
+
+    update();
+  }
+
+  /**
+   * Runs the game loop and updates the scene. This function also disposes the scene after game loop
+   * ends.
+   */
+  private void update() {
+    List<GameObject> renderObjects = new ArrayList<>();
+
+    while (!WindowShouldClose()) {
+      BeginDrawing();
+
+      Renderer.fillBackground(new Color(255, 255, 255, 255));
+      AudioManager.updateMusicStreams();
+
+      game.getCurrentScene().update(game, GetFPS());
+
+      // clear out the objects every frame so that when the scenes switch we don't keep rendering
+      // objects from the last scene
+      // TODO: Figure out a better way to do this so we dont have to keep adding and removing
+      // objects that might have not needed to be destroyed
+      renderObjects.clear();
+
+      for (GameObject obj : game.getCurrentScene().getObjects()) {
+        obj.update(game);
+
+        if (obj.hasComponent(TransformComponent.class) && obj.hasComponent(DrawableComponent.class))
+          renderObjects.add(obj);
+      }
+
+      Renderer.updateRenderObjects(renderObjects);
+      Renderer.performRenders(game);
+
+      EndDrawing();
     }
 
-    /**
-     *  Starts window, configures it, and initializes the scene.
-     */
-    public void start() {
-        InitAudioDevice();
+    game.getCurrentScene().dispose(game);
+    Log.info(Window.class, "Closing window..");
 
-        if (shouldResize)
-            SetConfigFlags(FLAG_WINDOW_RESIZABLE);
-
-        // Disables the logs from raylib, so I can implement my own logging system
-        SetTraceLogLevel(LOG_NONE);
-        SetExitKey(KEY_ESCAPE);
-        InitWindow((int) size.x, (int) size.y, title);
-        SetTargetFPS((int) fps);
-
-        game.getCurrentScene().initInternal(game);
-        game.getCurrentScene().init(game);
-
-        update();
-    }
-
-    /**
-     * Runs the game loop and updates the scene. This function also disposes the scene after game loop ends.
-     */
-    private void update() {
-        List<GameObject> renderObjects = new ArrayList<>();
-
-        while (!WindowShouldClose()) {
-            BeginDrawing();
-
-            Renderer.fillBackground(new Color(255, 255, 255, 255));
-            AudioManager.updateMusicStreams();
-
-            game.getCurrentScene().update(game, GetFPS());
-
-            // clear out the objects every frame so that when the scenes switch we don't keep rendering objects from the last scene
-            // TODO: Figure out a better way to do this so we dont have to keep adding and removing objects that might have not needed to be destroyed
-            renderObjects.clear();
-
-            for (GameObject obj : game.getCurrentScene().getObjects()) {
-                obj.update(game);
-
-                if (obj.hasComponent(TransformComponent.class) && obj.hasComponent(DrawableComponent.class))
-                    renderObjects.add(obj);
-            }
-
-            Renderer.updateRenderObjects(renderObjects);
-            Renderer.performRenders(game);
-
-            EndDrawing();
-        }
-
-        game.getCurrentScene().dispose(game);
-        Log.info(Window.class, "Closing window..");
-
-        CloseWindow();
-        CloseAudioDevice();
-    }
+    CloseWindow();
+    CloseAudioDevice();
+  }
 }

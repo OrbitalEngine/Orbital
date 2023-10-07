@@ -8,12 +8,10 @@ import lombok.Getter;
  * @author YeffyCodeGit
  */
 public class Input {
-    // Disable constructor
-    private Input() { }
+  // Disable constructor
+  private Input() {}
 
-    @Getter
-    private static final Keyboard keyboard = new Keyboard();
+  @Getter private static final Keyboard keyboard = new Keyboard();
 
-    @Getter
-    private static final Mouse mouse = new Mouse();
+  @Getter private static final Mouse mouse = new Mouse();
 }
