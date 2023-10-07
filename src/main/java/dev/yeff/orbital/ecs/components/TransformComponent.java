@@ -10,46 +10,42 @@ import org.joml.Vector2f;
  * @author YeffyCodeGit
  */
 public class TransformComponent extends Component {
-    public Vector2f position;
-    public Vector2f scale;
+  public Vector2f position;
+  public Vector2f scale;
 
-    public TransformComponent(Vector2f position, Vector2f scale) {
-        this.position = position;
-        this.scale = scale;
-    }
+  public TransformComponent(Vector2f position, Vector2f scale) {
+    this.position = position;
+    this.scale = scale;
+  }
 
-    public TransformComponent(float x, float y, float scaleX, float scaleY) {
-        this.position = new Vector2f(x, y);
-        this.scale = new Vector2f(scaleX);
-    }
+  public TransformComponent(float x, float y, float scaleX, float scaleY) {
+    this.position = new Vector2f(x, y);
+    this.scale = new Vector2f(scaleX);
+  }
 
-    public TransformComponent(float position, float scale) {
-        this.position = new Vector2f(position);
-        this.scale = new Vector2f(scale);
-    }
+  public TransformComponent(float position, float scale) {
+    this.position = new Vector2f(position);
+    this.scale = new Vector2f(scale);
+  }
 
-    public TransformComponent(Vector2f position, float scale) {
-        this.position = new Vector2f(position);
-        this.scale = new Vector2f(scale);
-    }
+  public TransformComponent(Vector2f position, float scale) {
+    this.position = new Vector2f(position);
+    this.scale = new Vector2f(scale);
+  }
 
-    public TransformComponent(float position, Vector2f scale) {
-        this.position = new Vector2f(position);
-        this.scale = new Vector2f(scale);
-    }
+  public TransformComponent(float position, Vector2f scale) {
+    this.position = new Vector2f(position);
+    this.scale = new Vector2f(scale);
+  }
 
-    public TransformComponent() {
-        this.position = new Vector2f();
-        this.scale = new Vector2f();
-    }
+  public TransformComponent() {
+    this.position = new Vector2f();
+    this.scale = new Vector2f();
+  }
 
-    @Override
-    public void init(Game game) {
+  @Override
+  public void init(Game game) {}
 
-    }
-
-    @Override
-    public void update(Game game) {
-
-    }
+  @Override
+  public void update(Game game) {}
 }

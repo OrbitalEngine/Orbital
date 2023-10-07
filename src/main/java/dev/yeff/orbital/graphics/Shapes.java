@@ -6,5 +6,8 @@ package dev.yeff.orbital.graphics;
  * @author YeffyCodeGit
  */
 public enum Shapes {
-    RECTANGLE, CIRCLE, RECTANGLE_OUTLINE, CIRCLE_OUTLINE
+  RECTANGLE,
+  CIRCLE,
+  RECTANGLE_OUTLINE,
+  CIRCLE_OUTLINE
 }
