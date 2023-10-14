@@ -4,6 +4,8 @@ import dev.yeff.orbital.Game;
 import dev.yeff.orbital.scenes.Scene;
 import java.util.ArrayList;
 import java.util.List;
+
+import dev.yeff.orbital.util.Log;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,12 +20,21 @@ public abstract class GameObject {
   @Getter private Scene scene;
 
   @Getter
-  @Setter
   private String id;
 
   public GameObject(Scene scene) {
     components = new ArrayList<>();
     this.scene = scene;
+
+    Class<?> klass = getClass();
+
+    if (!klass.isAnnotationPresent(ObjectId.class)) {
+      throw new IllegalStateException("GameObject does not have an ID. Please use the @ObjectId annotation to set one.");
+    } else {
+      ObjectId idObj = klass.getAnnotation(ObjectId.class);
+      this.id = idObj.id();
+      Log.info(getClass(), getId());
+    }
   }
 
   /**
