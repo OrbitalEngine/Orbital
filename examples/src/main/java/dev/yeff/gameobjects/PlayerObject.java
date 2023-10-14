@@ -18,9 +18,9 @@ public class PlayerObject extends GameObject {
     private Sprite sprite;
     private TransformComponent transform;
 
-    public PlayerObject(Scene scene, Vector2f center, Sprite spriteResource) {
-        super(scene);
-        addComponent(new TransformComponent(center, new Vector2f(120.0f, 120.0f)));
+    public PlayerObject(Scene scene, Game game, Sprite spriteResource) {
+        super(scene, game);
+        addComponent(new TransformComponent(game.getScreenCenter(), new Vector2f(120.0f, 120.0f)));
         addComponent(new SpriteComponent(spriteResource));
 
         this.sprite = spriteResource;

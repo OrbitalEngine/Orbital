@@ -19,12 +19,15 @@ public abstract class GameObject {
 
   @Getter private Scene scene;
 
+  @Getter private Game game;
+
   @Getter
   private String id;
 
-  public GameObject(Scene scene) {
+  public GameObject(Scene scene, Game game) {
     components = new ArrayList<>();
     this.scene = scene;
+    this.game = game;
 
     Class<?> klass = getClass();
 
