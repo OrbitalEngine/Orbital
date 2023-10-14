@@ -2,6 +2,7 @@ package dev.yeff.gameobjects;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
+import dev.yeff.orbital.ecs.ObjectId;
 import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.ecs.components.render.SpriteComponent;
 import dev.yeff.orbital.io.Input;
@@ -10,6 +11,7 @@ import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.scenes.Scene;
 import org.joml.Vector2f;
 
+@ObjectId(id = "Player")
 public class PlayerObject extends GameObject {
     private static final float SPRITE_SPEED = 13.0f;
     private boolean spriteFlipped;
@@ -17,8 +19,8 @@ public class PlayerObject extends GameObject {
 
     private TransformComponent transform;
 
-    public PlayerObject(Scene scene, String id, Vector2f center, Sprite spriteResource) {
-        super(scene, id);
+    public PlayerObject(Scene scene, Vector2f center, Sprite spriteResource) {
+        super(scene);
         addComponent(new TransformComponent(center, new Vector2f(120.0f, 120.0f)));
         addComponent(new SpriteComponent(spriteResource));
 

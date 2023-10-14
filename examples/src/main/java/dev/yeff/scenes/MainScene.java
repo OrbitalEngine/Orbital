@@ -28,13 +28,14 @@ public class MainScene extends Scene {
 
         player = new PlayerObject(this, "Player", game.getScreenCenter(), sprite);
 
-        addGameObject(game, player);
+        Log.info(getClass(), player.getId());
 
-        Log.info(getClass(), String.format("FPS: %f, Frame Time: %f", game.getFps(), game.getFrameTime()));
+        addGameObject(game, player);
     }
 
     @Override
     public void update(Game game, float fps) {
+        Log.info(getClass(), String.format("FPS: %f, Frame Time: %f", fps, game.getFrameTime()));
     }
 
     @Override

@@ -5,6 +5,7 @@ import dev.yeff.orbital.scenes.Scene;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Stores and uses components to manage object functionality. Used to simplify application code.
@@ -16,12 +17,13 @@ public abstract class GameObject {
 
   @Getter private Scene scene;
 
-  @Getter private String id;
+  @Getter
+  @Setter
+  private String id;
 
-  public GameObject(Scene scene, String id) {
+  public GameObject(Scene scene) {
     components = new ArrayList<>();
     this.scene = scene;
-    this.id = id;
   }
 
   /**
