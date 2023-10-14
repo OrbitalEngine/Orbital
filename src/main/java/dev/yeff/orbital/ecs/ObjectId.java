@@ -5,6 +5,8 @@ import java.lang.annotation.*;
 
 /**
  * Allows you to set an ID for a {@code GameObject}.
+ *
+ * @author YeffyCodeGit
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
