@@ -16,7 +16,6 @@ public class PlayerObject extends GameObject {
     private static final float SPRITE_SPEED = 13.0f;
     private boolean spriteFlipped;
     private Sprite sprite;
-
     private TransformComponent transform;
 
     public PlayerObject(Scene scene, Vector2f center, Sprite spriteResource) {

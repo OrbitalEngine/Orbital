@@ -1,12 +1,14 @@
 package dev.yeff.orbital.ecs;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
+
+/**
+ * Allows you to set an ID for a {@code GameObject}.
+ */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
+@Documented()
 public @interface ObjectId {
     String id() default "";
 }
