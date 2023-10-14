@@ -475,11 +475,11 @@ public class GameObjectBuilder {
    *
    * @return The created GameObject
    */
-  public GameObject build() {
-    GameObject object = new GameObject(scene, id);
-
-    for (Component c : customComponents) object.addComponent(c);
-
-    return object;
-  }
+//  public GameObject build() {
+//    GameObject object = new GameObject(scene, id);
+//
+//    for (Component c : customComponents) object.addComponent(c);
+//
+//    return object;
+//  }
 }

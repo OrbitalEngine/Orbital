@@ -11,7 +11,7 @@ import lombok.Getter;
  *
  * @author YeffyCodeGit
  */
-public class GameObject {
+public abstract class GameObject {
   @Getter private List<Component> components;
 
   @Getter private Scene scene;
@@ -96,7 +96,7 @@ public class GameObject {
    *
    * @param game The game instance.
    */
-  public void init(Game game) {
+  public void internalInit(Game game) {
     for (Component c : components) {
       c.init(game);
     }
@@ -107,9 +107,12 @@ public class GameObject {
    *
    * @param game The game instance.
    */
-  public void update(Game game) {
+  public void internalUpdate(Game game) {
     for (Component c : components) {
       c.update(game);
     }
   }
+
+  public abstract void init(Game game);
+  public abstract void update(Game game);
 }

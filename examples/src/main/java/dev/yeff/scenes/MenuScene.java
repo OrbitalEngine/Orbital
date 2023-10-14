@@ -22,10 +22,10 @@ public class MenuScene extends Scene {
 
     @Override
     public void init(Game game) {
-        test = new GameObjectBuilder(this, "Test")
-                .withTransform(game.getScreenCenter(), new Vector2f(90.0f))
-                .withShape(Shapes.RECTANGLE, Color.RED)
-                .build();
+//        test = new GameObjectBuilder(this, "Test")
+//                .withTransform(game.getScreenCenter(), new Vector2f(90.0f))
+//                .withShape(Shapes.RECTANGLE, Color.RED)
+//                .build();
 
         addGameObject(game, test);
 

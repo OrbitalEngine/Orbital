@@ -40,7 +40,10 @@ public abstract class Scene {
   public void initInternal(Game game) {
     isRunning = true;
 
-    for (GameObject go : objects) go.init(game);
+    for (GameObject go : objects) {
+      go.internalInit(game);
+      go.init(game);
+    }
   }
 
   /**
@@ -54,7 +57,7 @@ public abstract class Scene {
       objects.add(gameObject);
     } else {
       objects.add(gameObject);
-      gameObject.init(game);
+      gameObject.internalInit(game);
     }
   }
 

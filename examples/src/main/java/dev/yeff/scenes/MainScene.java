@@ -1,17 +1,14 @@
 package dev.yeff.scenes;
 
-import dev.yeff.components.PlayerComponent;
 import dev.yeff.gameobjects.PlayerObject;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.audio.AudioManager;
 import dev.yeff.orbital.ecs.GameObject;
-import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
 import dev.yeff.orbital.resources.Music;
 import dev.yeff.orbital.resources.ResourceManager;
 import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.orbital.util.Log;
-import org.joml.Vector2f;
 
 public class MainScene extends Scene {
     private GameObject player;
