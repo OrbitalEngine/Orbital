@@ -1,6 +1,7 @@
 package dev.yeff.scenes;
 
 import dev.yeff.components.PlayerComponent;
+import dev.yeff.gameobjects.PlayerObject;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.audio.AudioManager;
 import dev.yeff.orbital.ecs.GameObject;
@@ -28,13 +29,7 @@ public class MainScene extends Scene {
         music.loop(true);
         AudioManager.playMusic(music);
 
-
-        player = new GameObjectBuilder(this)
-                .withId("Player")
-                .withTransform(game.getScreenCenter(), new Vector2f(120.0f, 120.0f))
-                .withSprite(sprite)
-                .withComponent(new PlayerComponent())
-                .build();
+        player = new PlayerObject(this, "Player", game.getScreenCenter(), sprite);
 
         addGameObject(game, player);
 
