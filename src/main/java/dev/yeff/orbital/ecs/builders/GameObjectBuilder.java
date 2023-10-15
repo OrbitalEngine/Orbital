@@ -1,7 +1,9 @@
 package dev.yeff.orbital.ecs.builders;
 
+import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.ecs.GameObject;
+import dev.yeff.orbital.ecs.ObjectId;
 import dev.yeff.orbital.ecs.components.*;
 import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
 import dev.yeff.orbital.ecs.components.render.*;
@@ -475,11 +477,18 @@ public class GameObjectBuilder {
    *
    * @return The created GameObject
    */
-//  public GameObject build() {
-//    GameObject object = new GameObject(scene, id);
-//
-//    for (Component c : customComponents) object.addComponent(c);
-//
-//    return object;
-//  }
+  public GameObject build(Game game) {
+    GameObject object = new GameObject(scene, game) {
+      @Override
+      public void init(Game game) {}
+
+      @Override
+      public void update(Game game) {}
+    };
+    object.setId(this.id);
+
+    for (Component c : customComponents) object.addComponent(c);
+
+    return object;
+  }
 }

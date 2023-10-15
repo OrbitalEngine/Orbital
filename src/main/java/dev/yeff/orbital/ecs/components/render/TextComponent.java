@@ -52,7 +52,7 @@ public class TextComponent extends DrawableComponent {
 
   @Override
   public void update(Game game) {
-    Vector2f position = parent.getComponent(TransformComponent.class).position;
+    Vector2f position = parent.getBehaviour(TransformComponent.class).position;
 
     if (font != null) drawString(text, fontSize, position, font);
     else drawString(text, fontSize, position);

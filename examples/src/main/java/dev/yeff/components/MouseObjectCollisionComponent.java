@@ -25,9 +25,9 @@ public class MouseObjectCollisionComponent extends Component {
     @Override
     public void update(Game game) {
         if (Collision.isColliding(obj, parent)) {
-            obj.getComponent(RenderShapeComponent.class).shape = Shapes.CIRCLE_OUTLINE;
+            obj.getBehaviour(RenderShapeComponent.class).shape = Shapes.CIRCLE_OUTLINE;
         } else {
-            obj.getComponent(RenderShapeComponent.class).shape = Shapes.CIRCLE;
+            obj.getBehaviour(RenderShapeComponent.class).shape = Shapes.CIRCLE;
         }
     }
 }

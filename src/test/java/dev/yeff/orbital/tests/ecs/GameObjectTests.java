@@ -47,11 +47,11 @@ public class GameObjectTests implements WithAssertions {
 
     assertThat(object.hasComponent(TransformComponent.class)).isTrue();
 
-    assertThat(object.getComponent(TransformComponent.class).position)
+    assertThat(object.getBehaviour(TransformComponent.class).position)
         .extracting("x", "y")
         .contains(0.0f, 0.0f);
 
-    assertThat(object.getComponent(TransformComponent.class).scale)
+    assertThat(object.getBehaviour(TransformComponent.class).scale)
         .extracting("x", "y")
         .contains(0.0f, 0.0f);
   }
@@ -63,7 +63,7 @@ public class GameObjectTests implements WithAssertions {
         new GameObjectBuilder(mockScene, "Test Object").withShape(Shapes.CIRCLE, Color.RED).build();
 
     assertThat(object.hasComponent(RenderShapeComponent.class)).isTrue();
-    assertThat(object.getComponent(RenderShapeComponent.class))
+    assertThat(object.getBehaviour(RenderShapeComponent.class))
         .extracting("shape", "color")
         .contains(Shapes.CIRCLE, Optional.of(Color.RED));
   }
@@ -75,7 +75,7 @@ public class GameObjectTests implements WithAssertions {
         new GameObjectBuilder(mockScene, "Test Object").withText("Hello World", 0.0f).build();
 
     assertThat(object.hasComponent(TextComponent.class)).isTrue();
-    assertThat(object.getComponent(TextComponent.class))
+    assertThat(object.getBehaviour(TextComponent.class))
         .extracting("fontSize", "text", "font")
         .contains(0.0f, "Hello World", null);
   }
@@ -90,15 +90,15 @@ public class GameObjectTests implements WithAssertions {
 
     assertThat(object.hasComponent(LineComponent.class)).isTrue();
 
-    assertThat(object.getComponent(LineComponent.class).start)
+    assertThat(object.getBehaviour(LineComponent.class).start)
         .extracting("x", "y")
         .contains(0.0f, 0.0f);
 
-    assertThat(object.getComponent(LineComponent.class).end)
+    assertThat(object.getBehaviour(LineComponent.class).end)
         .extracting("x", "y")
         .contains(0.0f, 0.0f);
 
-    assertThat(object.getComponent(LineComponent.class))
+    assertThat(object.getBehaviour(LineComponent.class))
         .extracting("color", "thickness")
         .contains(Color.RED, 0.0f);
   }
@@ -113,6 +113,6 @@ public class GameObjectTests implements WithAssertions {
             .build();
 
     assertThat(object.hasComponent(SpriteComponent.class)).isTrue();
-    assertThat(object.getComponent(SpriteComponent.class).sprite).isNotNull();
+    assertThat(object.getBehaviour(SpriteComponent.class).sprite).isNotNull();
   }
 }

@@ -24,7 +24,7 @@ public class PlayerObject extends GameObject {
         addComponent(new SpriteComponent(spriteResource));
 
         this.sprite = spriteResource;
-        transform = getComponent(TransformComponent.class);
+        transform = getBehaviour(TransformComponent.class);
     }
 
     @Override

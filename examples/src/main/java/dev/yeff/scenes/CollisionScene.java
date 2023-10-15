@@ -38,15 +38,15 @@ public class CollisionScene extends Scene {
         addGameObject(game, obj2);
         addGameObject(game, player);
 
-        System.out.printf("Collider Scale: %f", obj2.getComponent(ColliderComponent.class).colliderScale.x);
+        System.out.printf("Collider Scale: %f", obj2.getBehaviour(ColliderComponent.class).colliderScale.x);
     }
 
     @Override
     public void update(Game game, float fps) {
         if (Collision.isColliding(player, obj2)) {
-            obj2.getComponent(RenderShapeComponent.class).color = Optional.of(new Color(255, 0, 0));
+            obj2.getBehaviour(RenderShapeComponent.class).color = Optional.of(new Color(255, 0, 0));
         } else {
-            obj2.getComponent(RenderShapeComponent.class).color = Optional.of(new Color(0, 255, 0));
+            obj2.getBehaviour(RenderShapeComponent.class).color = Optional.of(new Color(0, 255, 0));
         }
     }
 

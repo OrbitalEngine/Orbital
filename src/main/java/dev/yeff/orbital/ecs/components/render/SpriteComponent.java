@@ -24,8 +24,8 @@ public class SpriteComponent extends DrawableComponent {
 
   @Override
   public void update(Game game) {
-    Vector2f position = parent.getComponent(TransformComponent.class).position;
-    Vector2f scale = parent.getComponent(TransformComponent.class).scale;
+    Vector2f position = parent.getBehaviour(TransformComponent.class).position;
+    Vector2f scale = parent.getBehaviour(TransformComponent.class).scale;
 
     sprite.resize(scale);
 

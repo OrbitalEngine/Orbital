@@ -2,16 +2,13 @@ package dev.yeff.scenes;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
-import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
 import dev.yeff.orbital.ecs.components.render.RenderShapeComponent;
 import dev.yeff.orbital.graphics.Color;
-import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.resources.Font;
 import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.orbital.util.Log;
-import org.joml.Vector2f;
 
 import java.util.Optional;
 
@@ -40,9 +37,9 @@ public class MenuScene extends Scene {
             game.loadScene("Collision");
 
         if (Input.getMouse().isMouseDown(Keys.MOUSE_MIDDLE)) {
-            test.getComponent(RenderShapeComponent.class).color = Optional.of(Color.GREEN);
+            test.getBehaviour(RenderShapeComponent.class).color = Optional.of(Color.GREEN);
         } else {
-            test.getComponent(RenderShapeComponent.class).color = Optional.of(Color.RED);
+            test.getBehaviour(RenderShapeComponent.class).color = Optional.of(Color.RED);
         }
     }
 
