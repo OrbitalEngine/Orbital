@@ -89,9 +89,12 @@ public abstract class Scene {
    *
    * @param id The ID of the object.
    */
-//  public void removeGameObject(String id) {
-//    objects.removeIf(object -> object.getId() == id);
-//  }
+  public void removeGameObject(String id) {
+    objects.stream()
+            .filter(object -> object.hasComponent(TagComponent.class))
+            .filter(object -> object.getComponent(TagComponent.class).tagName == id)
+            .forEach(object -> objects.remove(object));
+  }
 
   /**
    * Gets called when the scene is first initialized.

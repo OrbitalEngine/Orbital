@@ -34,6 +34,7 @@ public class CollisionScene extends Scene {
                 .withTransform(game.getScreenCenter(), new Vector2f(80.0f))
                 .withShape(Shapes.RECTANGLE, new Color(0, 255, 0))
                 .withCollider(Shapes.RECTANGLE)
+                .withComponent(new TagComponent("Object 2"))
                 .build(game);
 
         addGameObject(game, obj2);
@@ -44,11 +45,15 @@ public class CollisionScene extends Scene {
 
     @Override
     public void update(Game game, float fps) {
-        if (Collision.isColliding(player, obj2)) {
+        GameObject objectTwo = findObject("Object 2");
+        if (Collision.isColliding(player, objectTwo)) {
             obj2.getComponent(RenderShapeComponent.class).color = Optional.of(new Color(255, 0, 0));
         } else {
             obj2.getComponent(RenderShapeComponent.class).color = Optional.of(new Color(0, 255, 0));
         }
+
+        if (objectTwo == null)
+            Log.info(getClass(), "object 2 null");
     }
 
     @Override
