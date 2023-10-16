@@ -26,14 +26,14 @@ public class GameObjectBuilder {
   private GameObject object;
   private Scene scene;
   private List<Component> customComponents;
-  private Optional<TransformComponent> transform;
+  private TransformComponent transform;
   private Optional<DrawableComponent> renderComponent;
   private Optional<ColliderComponent> collider;
 
   public GameObjectBuilder(Scene scene) {
     this.scene = scene;
     customComponents = new ArrayList<>();
-    transform = Optional.empty();
+    transform = new TransformComponent();
     renderComponent = Optional.empty();
     collider = Optional.empty();
   }
@@ -91,14 +91,7 @@ public class GameObjectBuilder {
    * @return The builder instance.
    */
   public GameObjectBuilder withTransform(TransformComponent transform) {
-    if (this.transform.isPresent()) {
-      throw new IllegalStateException(
-          "Object already has a transform component, cannot add another one.");
-    } else {
-      this.transform = Optional.of(transform);
-
-      return withComponent(transform);
-    }
+    return withComponent(transform);
   }
 
   /**
@@ -110,16 +103,7 @@ public class GameObjectBuilder {
    * @return The builder instance.
    */
   public GameObjectBuilder withTransform(Vector2f position, Vector2f scale) {
-    if (this.transform.isPresent()) {
-      throw new IllegalStateException(
-          "Object already has a transform component, cannot add another one.");
-    } else {
-      TransformComponent transform = new TransformComponent(position, scale);
-
-      this.transform = Optional.of(transform);
-
-      return withComponent(transform);
-    }
+    return withComponent(new TransformComponent(position, scale));
   }
 
   /**
@@ -170,18 +154,22 @@ public class GameObjectBuilder {
       throw new IllegalStateException(
           "Object already has a collider component, cannot add another one.");
     } else {
-      if (this.transform.isPresent()) {
-        TransformComponent transformComponent = transform.get();
-        ColliderComponent collider =
-            new ColliderComponent(collisionShape, transformComponent.scale);
+//      if (this.transform.isPresent()) {
+//        TransformComponent transformComponent = transform.get();
+//        ColliderComponent collider =
+//            new ColliderComponent(collisionShape, transformComponent.scale);
+//
+//        this.collider = Optional.of(collider);
+//
+//        return withComponent(collider);
+//      } else {
+//        throw new IllegalStateException(
+//            "Object does not have a transform component, cannot infer scale.");
+//      }
 
-        this.collider = Optional.of(collider);
-
-        return withComponent(collider);
-      } else {
-        throw new IllegalStateException(
-            "Object does not have a transform component, cannot infer scale.");
-      }
+      ColliderComponent collider = new ColliderComponent(collisionShape, transform.scale);
+      this.collider = Optional.of(collider);
+      return withComponent(collider);
     }
   }
 
