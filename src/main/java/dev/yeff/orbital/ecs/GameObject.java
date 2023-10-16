@@ -29,18 +29,6 @@ public abstract class GameObject {
     components = new ArrayList<>();
     this.scene = scene;
     this.game = game;
-
-    Class<?> klass = getClass();
-
-    if (!klass.isAnnotationPresent(ObjectId.class) || id == null) {
-//      throw new IllegalStateException("GameObject does not have an ID. Please use the @ObjectId annotation or GameObject.setId() (not recommended) to set one.");
-      this.id = klass.getName();
-      Log.warn(getClass(), "No ID has been set for this object (" + this.id + "), so an ID has automatically set. We recommend setting your own, either using the @ObjectId annotation or the GameObject.setId() function.");
-    } else {
-      ObjectId idObj = klass.getAnnotation(ObjectId.class);
-      this.id = idObj.id();
-      Log.info(getClass(), getId());
-    }
   }
 
   /**

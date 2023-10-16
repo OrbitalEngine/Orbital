@@ -3,7 +3,6 @@ package dev.yeff.orbital.ecs.builders;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.Component;
 import dev.yeff.orbital.ecs.GameObject;
-import dev.yeff.orbital.ecs.ObjectId;
 import dev.yeff.orbital.ecs.components.*;
 import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
 import dev.yeff.orbital.ecs.components.render.*;

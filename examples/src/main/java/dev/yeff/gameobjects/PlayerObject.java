@@ -2,7 +2,6 @@ package dev.yeff.gameobjects;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
-import dev.yeff.orbital.ecs.ObjectId;
 import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
 import dev.yeff.orbital.ecs.components.render.SpriteComponent;
@@ -13,7 +12,6 @@ import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.scenes.Scene;
 import org.joml.Vector2f;
 
-@ObjectId(id = "Player")
 public class PlayerObject extends GameObject {
     private static final float SPRITE_SPEED = 13.0f;
     private boolean spriteFlipped;

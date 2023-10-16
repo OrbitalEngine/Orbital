@@ -5,8 +5,6 @@ import dev.yeff.orbital.ecs.GameObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import dev.yeff.orbital.ecs.ObjectId;
-import dev.yeff.orbital.util.Log;
 import lombok.Getter;
 
 /**
