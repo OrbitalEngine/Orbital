@@ -25,7 +25,6 @@ import org.joml.Vector2f;
 public class GameObjectBuilder {
   private GameObject object;
   private Scene scene;
-  private String id;
   private List<Component> customComponents;
   private Optional<TransformComponent> transform;
   private Optional<DrawableComponent> renderComponent;
@@ -38,24 +37,6 @@ public class GameObjectBuilder {
     renderComponent = Optional.empty();
     collider = Optional.empty();
   }
-
-  public GameObjectBuilder(String id) {
-    this.id = id;
-    customComponents = new ArrayList<>();
-    transform = Optional.empty();
-    renderComponent = Optional.empty();
-    collider = Optional.empty();
-  }
-
-  public GameObjectBuilder(Scene scene, String id) {
-    this.scene = scene;
-    this.id = id;
-    customComponents = new ArrayList<>();
-    transform = Optional.empty();
-    renderComponent = Optional.empty();
-    collider = Optional.empty();
-  }
-
   /**
    * Sets the {@code Scene} for the object to be built.
    *
@@ -74,7 +55,6 @@ public class GameObjectBuilder {
    * @return The builder instance.
    */
   public GameObjectBuilder withId(String id) {
-    this.id = id;
     return this;
   }
 

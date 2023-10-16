@@ -22,7 +22,7 @@ public class MenuScene extends Scene {
 
     @Override
     public void init(Game game) {
-        test = new GameObjectBuilder(this, "Test")
+        test = new GameObjectBuilder(this)
                 .withTransform(game.getScreenCenter(), new Vector2f(90.0f))
                 .withShape(Shapes.RECTANGLE, Color.RED)
                 .build(game);

@@ -23,7 +23,8 @@ public abstract class Scene {
   }
 
   /**
-   * Finds and returns a specific {@code GameObject} using the ID.
+   * Finds and returns a specific {@code GameObject} using the tag stored in the {@code TagComponent}.
+   * @implNote If any GameObject in the scene does not have a {@code TagComponent}, the function will not be able to find that object as it searches using that {@code TagComponent}.
    *
    * @param id The id of the game object.
    * @return The game object, null if not found.
