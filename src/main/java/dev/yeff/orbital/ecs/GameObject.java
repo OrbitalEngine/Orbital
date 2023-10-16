@@ -1,13 +1,14 @@
 package dev.yeff.orbital.ecs;
 
 import dev.yeff.orbital.Game;
+import dev.yeff.orbital.ecs.annotations.Tag;
+import dev.yeff.orbital.ecs.components.TagComponent;
 import dev.yeff.orbital.scenes.Scene;
 import java.util.ArrayList;
 import java.util.List;
 
 import dev.yeff.orbital.util.Log;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Stores and uses components to manage object functionality. Used to simplify application code.
@@ -25,6 +26,13 @@ public abstract class GameObject {
     components = new ArrayList<>();
     this.scene = scene;
     this.game = game;
+
+    Class<?> klass = getClass();
+
+    if (klass.isAnnotationPresent(Tag.class)) {
+      Tag t = klass.getAnnotation(Tag.class);
+      addComponent(new TagComponent(t.tagName()));
+    }
   }
 
   /**

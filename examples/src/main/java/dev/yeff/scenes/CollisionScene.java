@@ -45,15 +45,12 @@ public class CollisionScene extends Scene {
 
     @Override
     public void update(Game game, float fps) {
-        GameObject objectTwo = findObject("Object 2");
-        if (Collision.isColliding(player, objectTwo)) {
+        GameObject foundPlayer = findObject("Player");
+        if (Collision.isColliding(player, obj2)) {
             obj2.getComponent(RenderShapeComponent.class).color = Optional.of(new Color(255, 0, 0));
         } else {
             obj2.getComponent(RenderShapeComponent.class).color = Optional.of(new Color(0, 255, 0));
         }
-
-        if (objectTwo == null)
-            Log.info(getClass(), "object 2 null");
     }
 
     @Override
