@@ -27,13 +27,13 @@ public abstract class Scene {
    * Finds and returns a specific {@code GameObject} using the tag stored in the {@code TagComponent}.
    * @implNote If any GameObject in the scene does not have a {@code TagComponent}, the function will not be able to find that object as it searches using that {@code TagComponent}.
    *
-   * @param id The id of the game object.
+   * @param tag The tag of the game object.
    * @return The game object, null if not found.
    */
-  public GameObject findObject(String id) {
+  public GameObject findObject(String tag) {
     for (GameObject go : objects) {
       if (go.hasComponent(TagComponent.class)) {
-        if (go.getComponent(TagComponent.class).tagName == id) {
+        if (go.getComponent(TagComponent.class).tagName == tag) {
           return go;
         }
       }
@@ -87,12 +87,12 @@ public abstract class Scene {
   /**
    * Removes a {@code GameObject} from the scene.
    *
-   * @param id The ID of the object.
+   * @param tag The tag of the object.
    */
-  public void removeGameObject(String id) {
+  public void removeGameObject(String tag) {
     objects.stream()
             .filter(object -> object.hasComponent(TagComponent.class))
-            .filter(object -> object.getComponent(TagComponent.class).tagName == id)
+            .filter(object -> object.getComponent(TagComponent.class).tagName == tag)
             .forEach(object -> objects.remove(object));
   }
 
