@@ -26,8 +26,8 @@ public class Collision {
    */
   private static Jaylib.Rectangle getRect(GameObject obj) {
     if (obj.hasComponent(TransformComponent.class) && obj.hasComponent(ColliderComponent.class)) {
-      TransformComponent transformComponent = obj.getBehaviour(TransformComponent.class);
-      ColliderComponent colliderComponent = obj.getBehaviour(ColliderComponent.class);
+      TransformComponent transformComponent = obj.getComponent(TransformComponent.class);
+      ColliderComponent colliderComponent = obj.getComponent(ColliderComponent.class);
 
       return new Jaylib.Rectangle(
           transformComponent.position.x,
@@ -48,25 +48,25 @@ public class Collision {
    * @return If the two objects are colliding or not.
    */
   public static boolean isColliding(GameObject obj1, GameObject obj2) {
-    if (obj1.getBehaviour(ColliderComponent.class).renderShape == Shapes.RECTANGLE
-        || obj1.getBehaviour(ColliderComponent.class).renderShape == Shapes.RECTANGLE_OUTLINE
-            && obj2.getBehaviour(ColliderComponent.class).renderShape == Shapes.RECTANGLE
-        || obj1.getBehaviour(ColliderComponent.class).renderShape == Shapes.RECTANGLE_OUTLINE)
+    if (obj1.getComponent(ColliderComponent.class).renderShape == Shapes.RECTANGLE
+        || obj1.getComponent(ColliderComponent.class).renderShape == Shapes.RECTANGLE_OUTLINE
+            && obj2.getComponent(ColliderComponent.class).renderShape == Shapes.RECTANGLE
+        || obj1.getComponent(ColliderComponent.class).renderShape == Shapes.RECTANGLE_OUTLINE)
       return rectWithRect(obj1, obj2);
-    else if (obj1.getBehaviour(ColliderComponent.class).renderShape == Shapes.CIRCLE
-        || obj1.getBehaviour(ColliderComponent.class).renderShape == Shapes.CIRCLE_OUTLINE
-            && obj2.getBehaviour(ColliderComponent.class).renderShape == Shapes.CIRCLE
-        || obj1.getBehaviour(ColliderComponent.class).renderShape == Shapes.CIRCLE_OUTLINE)
+    else if (obj1.getComponent(ColliderComponent.class).renderShape == Shapes.CIRCLE
+        || obj1.getComponent(ColliderComponent.class).renderShape == Shapes.CIRCLE_OUTLINE
+            && obj2.getComponent(ColliderComponent.class).renderShape == Shapes.CIRCLE
+        || obj1.getComponent(ColliderComponent.class).renderShape == Shapes.CIRCLE_OUTLINE)
       return circleWithCircle(obj1, obj2);
-    else if (obj1.getBehaviour(ColliderComponent.class).renderShape == Shapes.RECTANGLE
-        || obj1.getBehaviour(ColliderComponent.class).renderShape == Shapes.RECTANGLE_OUTLINE
-            && obj2.getBehaviour(ColliderComponent.class).renderShape == Shapes.CIRCLE
-        || obj1.getBehaviour(ColliderComponent.class).renderShape == Shapes.CIRCLE_OUTLINE)
+    else if (obj1.getComponent(ColliderComponent.class).renderShape == Shapes.RECTANGLE
+        || obj1.getComponent(ColliderComponent.class).renderShape == Shapes.RECTANGLE_OUTLINE
+            && obj2.getComponent(ColliderComponent.class).renderShape == Shapes.CIRCLE
+        || obj1.getComponent(ColliderComponent.class).renderShape == Shapes.CIRCLE_OUTLINE)
       return circleWithRect(obj2, obj1);
-    else if (obj1.getBehaviour(ColliderComponent.class).renderShape == Shapes.CIRCLE
-        || obj1.getBehaviour(ColliderComponent.class).renderShape == Shapes.CIRCLE_OUTLINE
-            && obj2.getBehaviour(ColliderComponent.class).renderShape == Shapes.RECTANGLE
-        || obj1.getBehaviour(ColliderComponent.class).renderShape == Shapes.RECTANGLE_OUTLINE)
+    else if (obj1.getComponent(ColliderComponent.class).renderShape == Shapes.CIRCLE
+        || obj1.getComponent(ColliderComponent.class).renderShape == Shapes.CIRCLE_OUTLINE
+            && obj2.getComponent(ColliderComponent.class).renderShape == Shapes.RECTANGLE
+        || obj1.getComponent(ColliderComponent.class).renderShape == Shapes.RECTANGLE_OUTLINE)
       return circleWithRect(obj1, obj2);
     else throw new IllegalStateException("Unknown collision shapes.");
   }
@@ -101,12 +101,12 @@ public class Collision {
   private static boolean circleWithCircle(GameObject obj1, GameObject obj2) {
     if (obj1.hasComponent(ColliderComponent.class) && obj2.hasComponent(ColliderComponent.class)) {
       Raylib.Vector2 center1 =
-          RaylibUtil.getAsRaylibVec2(obj1.getBehaviour(TransformComponent.class).position);
+          RaylibUtil.getAsRaylibVec2(obj1.getComponent(TransformComponent.class).position);
       Raylib.Vector2 center2 =
-          RaylibUtil.getAsRaylibVec2(obj2.getBehaviour(TransformComponent.class).position);
+          RaylibUtil.getAsRaylibVec2(obj2.getComponent(TransformComponent.class).position);
 
-      float radius1 = obj1.getBehaviour(ColliderComponent.class).colliderScale.x;
-      float radius2 = obj2.getBehaviour(ColliderComponent.class).colliderScale.x;
+      float radius1 = obj1.getComponent(ColliderComponent.class).colliderScale.x;
+      float radius2 = obj2.getComponent(ColliderComponent.class).colliderScale.x;
 
       return CheckCollisionCircles(center1, radius1, center2, radius2);
     }
@@ -126,8 +126,8 @@ public class Collision {
     if (circle.hasComponent(ColliderComponent.class)
         && rectangle.hasComponent(ColliderComponent.class)) {
       Raylib.Vector2 center =
-          RaylibUtil.getAsRaylibVec2(circle.getBehaviour(TransformComponent.class).position);
-      float radius = circle.getBehaviour(ColliderComponent.class).colliderScale.x;
+          RaylibUtil.getAsRaylibVec2(circle.getComponent(TransformComponent.class).position);
+      float radius = circle.getComponent(ColliderComponent.class).colliderScale.x;
 
       Jaylib.Rectangle rect = getRect(rectangle);
 

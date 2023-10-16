@@ -4,7 +4,9 @@ import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.ObjectId;
 import dev.yeff.orbital.ecs.components.TransformComponent;
+import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
 import dev.yeff.orbital.ecs.components.render.SpriteComponent;
+import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.resources.Sprite;
@@ -22,9 +24,10 @@ public class PlayerObject extends GameObject {
         super(scene, game);
         addComponent(new TransformComponent(game.getScreenCenter(), new Vector2f(120.0f, 120.0f)));
         addComponent(new SpriteComponent(spriteResource));
+        addComponent(new ColliderComponent(Shapes.RECTANGLE, new Vector2f(120.0f, 120.0f)));
 
         this.sprite = spriteResource;
-        transform = getBehaviour(TransformComponent.class);
+        transform = getComponent(TransformComponent.class);
     }
 
     @Override

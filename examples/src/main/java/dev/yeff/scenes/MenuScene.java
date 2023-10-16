@@ -2,13 +2,16 @@ package dev.yeff.scenes;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
+import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
 import dev.yeff.orbital.ecs.components.render.RenderShapeComponent;
 import dev.yeff.orbital.graphics.Color;
+import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;
 import dev.yeff.orbital.resources.Font;
 import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.orbital.util.Log;
+import org.joml.Vector2f;
 
 import java.util.Optional;
 
@@ -19,10 +22,10 @@ public class MenuScene extends Scene {
 
     @Override
     public void init(Game game) {
-//        test = new GameObjectBuilder(this, "Test")
-//                .withTransform(game.getScreenCenter(), new Vector2f(90.0f))
-//                .withShape(Shapes.RECTANGLE, Color.RED)
-//                .build();
+        test = new GameObjectBuilder(this, "Test")
+                .withTransform(game.getScreenCenter(), new Vector2f(90.0f))
+                .withShape(Shapes.RECTANGLE, Color.RED)
+                .build(game);
 
         addGameObject(game, test);
 
@@ -37,9 +40,9 @@ public class MenuScene extends Scene {
             game.loadScene("Collision");
 
         if (Input.getMouse().isMouseDown(Keys.MOUSE_MIDDLE)) {
-            test.getBehaviour(RenderShapeComponent.class).color = Optional.of(Color.GREEN);
+            test.getComponent(RenderShapeComponent.class).color = Optional.of(Color.GREEN);
         } else {
-            test.getBehaviour(RenderShapeComponent.class).color = Optional.of(Color.RED);
+            test.getComponent(RenderShapeComponent.class).color = Optional.of(Color.RED);
         }
     }
 

@@ -26,7 +26,7 @@ public class MainScene extends Scene {
         music.loop(true);
         AudioManager.playMusic(music);
 
-        player = new PlayerObject(this, game, game.getScreenCenter(), sprite);
+        player = new PlayerObject(this, game, sprite);
 
         addGameObject(game, player);
     }

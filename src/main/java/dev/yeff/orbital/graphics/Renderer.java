@@ -37,7 +37,7 @@ public class Renderer {
   /** Renders all the objects that need to be rendered. */
   public static void performRenders(Game game) {
     for (GameObject go : renderObjects) {
-      go.getBehaviour(DrawableComponent.class).update(game);
+      go.getComponent(DrawableComponent.class).update(game);
     }
   }
 

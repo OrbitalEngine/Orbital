@@ -50,7 +50,7 @@ public abstract class GameObject {
    * @throws IllegalStateException If there was an error casting the component.
    * @return The component, null if the object does not have it.
    */
-  public <T extends Component> T getBehaviour(Class<T> component) {
+  public <T extends Component> T getComponent(Class<T> component) {
     for (Component c : components) {
       // if c can be assigned to the component
       if (component.isAssignableFrom(c.getClass())) {

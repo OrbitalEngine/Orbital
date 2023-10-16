@@ -10,10 +10,6 @@ import dev.yeff.orbital.ecs.GameObject;
 public class MouseObjectCollisionComponent extends Component {
     private GameObject obj;
 
-    public MouseObjectCollisionComponent() {
-
-    }
-
     @Override
     public void init(Game game) {
         this.obj = parent.getScene().findObject("Object 1");
@@ -25,9 +21,9 @@ public class MouseObjectCollisionComponent extends Component {
     @Override
     public void update(Game game) {
         if (Collision.isColliding(obj, parent)) {
-            obj.getBehaviour(RenderShapeComponent.class).shape = Shapes.CIRCLE_OUTLINE;
+            obj.getComponent(RenderShapeComponent.class).shape = Shapes.CIRCLE_OUTLINE;
         } else {
-            obj.getBehaviour(RenderShapeComponent.class).shape = Shapes.CIRCLE;
+            obj.getComponent(RenderShapeComponent.class).shape = Shapes.CIRCLE;
         }
     }
 }
