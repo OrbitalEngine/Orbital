@@ -18,6 +18,6 @@ public class Main {
         );
 
         Game game = new Game(new Vector2f(975, 900), "Hello", scenes, false, 60.0f);
-        game.start("Collision");
+        game.start("Main");
     }
 }

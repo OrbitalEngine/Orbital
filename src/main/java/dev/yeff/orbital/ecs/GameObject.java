@@ -21,10 +21,6 @@ public abstract class GameObject {
 
   @Getter private Game game;
 
-  @Getter
-  @Setter
-  private String id;
-
   public GameObject(Scene scene, Game game) {
     components = new ArrayList<>();
     this.scene = scene;

@@ -2,6 +2,7 @@ package dev.yeff.gameobjects;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
+import dev.yeff.orbital.ecs.components.TagComponent;
 import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
 import dev.yeff.orbital.ecs.components.render.SpriteComponent;
@@ -23,6 +24,7 @@ public class PlayerObject extends GameObject {
         addComponent(new TransformComponent(game.getScreenCenter(), new Vector2f(120.0f, 120.0f)));
         addComponent(new SpriteComponent(spriteResource));
         addComponent(new ColliderComponent(Shapes.RECTANGLE, new Vector2f(120.0f, 120.0f)));
+        addComponent(new TagComponent("Player"));
 
         this.sprite = spriteResource;
         transform = getComponent(TransformComponent.class);

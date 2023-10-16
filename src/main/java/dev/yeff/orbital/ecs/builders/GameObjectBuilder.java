@@ -479,12 +479,12 @@ public class GameObjectBuilder {
   public GameObject build(Game game) {
     GameObject object = new GameObject(scene, game) {
       @Override
-      public void init(Game game) {}
+      public void init(Game game) {
+      }
 
       @Override
       public void update(Game game) {}
     };
-    object.setId(this.id);
 
     for (Component c : customComponents) object.addComponent(c);
 

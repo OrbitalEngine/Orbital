@@ -27,11 +27,11 @@ public abstract class Scene {
    * @param id The id of the game object.
    * @return The game object, null if not found.
    */
-  public GameObject findObject(String id) {
-    for (GameObject go : objects) if (go.getId() == id) return go;
-
-    return null;
-  }
+//  public GameObject findObject(String id) {
+//    for (GameObject go : objects) if (go.getId() == id) return go;
+//
+//    return null;
+//  }
 
   /**
    * Initializes all {@code GameObject}'s added to the scene.
@@ -76,9 +76,9 @@ public abstract class Scene {
    *
    * @param id The ID of the object.
    */
-  public void removeGameObject(String id) {
-    objects.removeIf(object -> object.getId() == id);
-  }
+//  public void removeGameObject(String id) {
+//    objects.removeIf(object -> object.getId() == id);
+//  }
 
   /**
    * Gets called when the scene is first initialized.

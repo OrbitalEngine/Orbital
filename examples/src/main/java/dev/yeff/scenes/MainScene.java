@@ -4,6 +4,7 @@ import dev.yeff.gameobjects.PlayerObject;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.audio.AudioManager;
 import dev.yeff.orbital.ecs.GameObject;
+import dev.yeff.orbital.ecs.components.TagComponent;
 import dev.yeff.orbital.resources.Music;
 import dev.yeff.orbital.resources.ResourceManager;
 import dev.yeff.orbital.resources.Sprite;
@@ -28,6 +29,7 @@ public class MainScene extends Scene {
 
         player = new PlayerObject(this, game, sprite);
 
+        Log.info(getClass(), player.getComponent(TagComponent.class).tagName);
         addGameObject(game, player);
     }
 
