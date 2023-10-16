@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dev.yeff.orbital.ecs.components.TagComponent;
+import dev.yeff.orbital.util.Log;
 import lombok.Getter;
 
 /**
@@ -62,6 +63,10 @@ public abstract class Scene {
    * @param gameObject The game object to add.
    */
   public void addGameObject(Game game, GameObject gameObject) {
+    if (!gameObject.hasComponent(TagComponent.class))
+      Log.warn(getClass(), "This object does not have a tag, therefore any functions requiring object id's will not work." +
+              " To add one, add a TagComponent to the object with your desired name.");
+
     if (!isRunning) {
       objects.add(gameObject);
     } else {

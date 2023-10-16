@@ -24,7 +24,6 @@ public class PlayerObject extends GameObject {
         addComponent(new TransformComponent(game.getScreenCenter(), new Vector2f(120.0f, 120.0f)));
         addComponent(new SpriteComponent(spriteResource));
         addComponent(new ColliderComponent(Shapes.RECTANGLE, new Vector2f(120.0f, 120.0f)));
-        addComponent(new TagComponent("Player"));
 
         this.sprite = spriteResource;
         transform = getComponent(TransformComponent.class);
