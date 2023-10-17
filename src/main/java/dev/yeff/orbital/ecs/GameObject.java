@@ -2,13 +2,17 @@ package dev.yeff.orbital.ecs;
 
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.annotations.Tag;
+import dev.yeff.orbital.ecs.annotations.Transform;
+import dev.yeff.orbital.ecs.annotations.Vector;
 import dev.yeff.orbital.ecs.components.TagComponent;
+import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.scenes.Scene;
 import java.util.ArrayList;
 import java.util.List;
 
 import dev.yeff.orbital.util.Log;
 import lombok.Getter;
+import org.joml.Vector2f;
 
 /**
  * Stores and uses components to manage object functionality. Used to simplify application code.
@@ -32,6 +36,16 @@ public abstract class GameObject {
     if (klass.isAnnotationPresent(Tag.class)) {
       Tag t = klass.getAnnotation(Tag.class);
       addComponent(new TagComponent(t.tagName()));
+    }
+
+    if (klass.isAnnotationPresent(Transform.class)) {
+      Vector position = klass.getAnnotation(Transform.class).position();
+      Vector scale = klass.getAnnotation(Transform.class).scale();
+
+      Vector2f posVector = new Vector2f(position.x(), position.y());
+      Vector2f scaleVector = new Vector2f(scale.x(), scale.y());
+
+      addComponent(new TransformComponent(posVector, scaleVector));
     }
   }
 

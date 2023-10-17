@@ -18,8 +18,8 @@ import org.joml.Vector2f;
 
 @Tag(tagName = "Player")
 @Transform(
-        position = @Vector(x = 0.0f, y = 0.0f),
-        scale = @Vector(x = 0.0f, y = 0.0f)
+        position = @Vector(x = 975.0f / 2.0f, y = 900.0f / 2.0f),
+        scale = @Vector(x = 120.0f, y = 120.0f)
 )
 public class PlayerObject extends GameObject {
     private static final float SPRITE_SPEED = 13.0f;
