@@ -1,19 +1,18 @@
 package dev.yeff.orbital.ecs;
 
 import dev.yeff.orbital.Game;
-import dev.yeff.orbital.ecs.annotations.Collision;
-import dev.yeff.orbital.ecs.annotations.Tag;
-import dev.yeff.orbital.ecs.annotations.Transform;
-import dev.yeff.orbital.ecs.annotations.Vector;
+import dev.yeff.orbital.ecs.annotations.*;
 import dev.yeff.orbital.ecs.components.TagComponent;
 import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
+import dev.yeff.orbital.ecs.components.render.SpriteComponent;
 import dev.yeff.orbital.graphics.Shapes;
+import dev.yeff.orbital.resources.ResourceManager;
+import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.scenes.Scene;
 import java.util.ArrayList;
 import java.util.List;
 
-import dev.yeff.orbital.util.Log;
 import lombok.Getter;
 import org.joml.Vector2f;
 
@@ -58,6 +57,11 @@ public abstract class GameObject {
       Vector2f scaleVector = new Vector2f(collisionScale.x(), collisionScale.y());
 
       addComponent(new ColliderComponent(collisionShape, scaleVector));
+    }
+
+    if (klass.isAnnotationPresent(DrawSprite.class)) {
+      Sprite sprite = ResourceManager.getSprite(getClass(), klass.getAnnotation(DrawSprite.class).path());
+      addComponent(new SpriteComponent(sprite));
     }
   }
 
