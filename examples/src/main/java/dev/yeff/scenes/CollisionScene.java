@@ -46,6 +46,9 @@ public class CollisionScene extends Scene {
     @Override
     public void update(Game game, float fps) {
         GameObject foundPlayer = findObject("Player");
+
+        // TODO: found GameObjects do not seem to work
+
         if (Collision.isColliding(player, obj2)) {
             obj2.getComponent(RenderShapeComponent.class).color = Optional.of(new Color(255, 0, 0));
         } else {
