@@ -3,6 +3,8 @@ package dev.yeff.gameobjects;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.annotations.Tag;
+import dev.yeff.orbital.ecs.annotations.Transform;
+import dev.yeff.orbital.ecs.annotations.Vector;
 import dev.yeff.orbital.ecs.components.TagComponent;
 import dev.yeff.orbital.ecs.components.TransformComponent;
 import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
@@ -15,6 +17,10 @@ import dev.yeff.orbital.scenes.Scene;
 import org.joml.Vector2f;
 
 @Tag(tagName = "Player")
+@Transform(
+        position = @Vector(x = 0.0f, y = 0.0f),
+        scale = @Vector(x = 0.0f, y = 0.0f)
+)
 public class PlayerObject extends GameObject {
     private static final float SPRITE_SPEED = 13.0f;
     private boolean spriteFlipped;
