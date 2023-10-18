@@ -26,7 +26,6 @@ public class PlayerObject extends GameObject {
 
     public PlayerObject(Scene scene, Game game, Sprite spriteResource) {
         super(scene, game);
-//        addComponent(new SpriteComponent(spriteResource));
 
         this.sprite = spriteResource;
         transform = getComponent(TransformComponent.class);

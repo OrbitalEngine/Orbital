@@ -36,14 +36,14 @@ public class CollisionTests implements WithAssertions {
   @Test
   public void testCollision_betweenRectangleObjects() {
     GameObject object1 =
-        new GameObjectBuilder(mockScene, "Test Object 1")
+        new GameObjectBuilder(mockScene)
             .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(50.0f, 50.f))
             .withShape(Shapes.RECTANGLE, new Color(255, 0, 0, 255))
             .withComponents(new ColliderComponent(Shapes.RECTANGLE, new Vector2f(50.0f, 50.f)))
             .build(game);
 
     GameObject object2 =
-        new GameObjectBuilder(mockScene, "Test Object 2")
+        new GameObjectBuilder(mockScene)
             .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(20.0f, 20.f))
             .withShape(Shapes.RECTANGLE, new Color(255, 0, 0, 255))
             .withComponents(new ColliderComponent(Shapes.RECTANGLE, new Vector2f(20.0f, 20.0f)))
@@ -56,14 +56,14 @@ public class CollisionTests implements WithAssertions {
   @Test
   public void testCollision_betweenCircleObjects() {
     GameObject object1 =
-        new GameObjectBuilder(mockScene, "Test Object 1")
+        new GameObjectBuilder(mockScene)
             .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(50.0f, 50.f))
             .withShape(Shapes.CIRCLE, new Color(255, 0, 0, 255))
             .withComponents(new ColliderComponent(Shapes.CIRCLE, new Vector2f(50.0f, 50.0f)))
             .build(game);
 
     GameObject object2 =
-        new GameObjectBuilder(mockScene, "Test Object 2")
+        new GameObjectBuilder(mockScene)
             .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(20.0f, 20.f))
             .withShape(Shapes.CIRCLE, new Color(255, 0, 0, 255))
             .withComponents(new ColliderComponent(Shapes.CIRCLE, new Vector2f(20.0f, 20.0f)))
@@ -76,14 +76,14 @@ public class CollisionTests implements WithAssertions {
   @Test
   public void testCollision_betweenCircle_andRectObjects() {
     GameObject circle =
-        new GameObjectBuilder(mockScene, "Test Object 1")
+        new GameObjectBuilder(mockScene)
             .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(50.0f, 50.f))
             .withShape(Shapes.CIRCLE, new Color(255, 0, 0, 255))
             .withComponents(new ColliderComponent(Shapes.CIRCLE, new Vector2f(50.0f, 50.0f)))
             .build(game);
 
     GameObject rect =
-        new GameObjectBuilder(mockScene, "Test Object 2")
+        new GameObjectBuilder(mockScene)
             .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(20.0f, 20.f))
             .withShape(Shapes.RECTANGLE, new Color(255, 0, 0, 255))
             .withComponents(new ColliderComponent(Shapes.RECTANGLE, new Vector2f(20.0f, 20.0f)))

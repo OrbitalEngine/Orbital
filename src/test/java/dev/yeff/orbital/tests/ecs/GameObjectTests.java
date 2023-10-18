@@ -41,7 +41,7 @@ public class GameObjectTests implements WithAssertions {
   @DisplayName("create game object with no components using builder")
   @Test
   public void testCreateGameObject_usingBuilder() {
-    GameObject object = new GameObjectBuilder(mockScene, "Test Object")
+    GameObject object = new GameObjectBuilder(mockScene)
             .build(game);
 
     assertThat(object).isNotNull();
@@ -51,7 +51,7 @@ public class GameObjectTests implements WithAssertions {
   @Test
   public void testCreateGameObject_withTransform_usingBuilder() {
     GameObject object =
-        new GameObjectBuilder(mockScene, "Test Object")
+        new GameObjectBuilder(mockScene)
             .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(0.0f, 0.0f))
             .build(game);
 
@@ -70,7 +70,7 @@ public class GameObjectTests implements WithAssertions {
   @Test
   public void testCreateGameObject_withShape_usingBuilder() {
     GameObject object =
-        new GameObjectBuilder(mockScene, "Test Object").withShape(Shapes.CIRCLE, Color.RED).build(game);
+        new GameObjectBuilder(mockScene).withShape(Shapes.CIRCLE, Color.RED).build(game);
 
     assertThat(object.hasComponent(RenderShapeComponent.class)).isTrue();
     assertThat(object.getComponent(RenderShapeComponent.class))
@@ -82,7 +82,7 @@ public class GameObjectTests implements WithAssertions {
   @Test
   public void testCreateGameObject_withText_usingBuilder() {
     GameObject object =
-        new GameObjectBuilder(mockScene, "Test Object").withText("Hello World", 0.0f).build(game);
+        new GameObjectBuilder(mockScene).withText("Hello World", 0.0f).build(game);
 
     assertThat(object.hasComponent(TextComponent.class)).isTrue();
     assertThat(object.getComponent(TextComponent.class))
@@ -94,7 +94,7 @@ public class GameObjectTests implements WithAssertions {
   @Test
   public void testCreateGameObject_withLine_usingBuilder() {
     GameObject object =
-        new GameObjectBuilder(mockScene, "Test Object")
+        new GameObjectBuilder(mockScene)
             .withLine(new Vector2f(0.0f, 0.0f), new Vector2f(0.0f, 0.0f), 0.0f, Color.RED)
             .build(game);
 
@@ -118,7 +118,7 @@ public class GameObjectTests implements WithAssertions {
   public void testCreateGameObject_withSprite_usingBuilder() {
     Raylib.InitWindow(100, 100, "Test window");
     GameObject object =
-        new GameObjectBuilder(mockScene, "Test Object")
+        new GameObjectBuilder(mockScene)
             .withSprite(ResourceManager.getSprite(getClass(), "character_0000.png"))
             .build(game);
 
