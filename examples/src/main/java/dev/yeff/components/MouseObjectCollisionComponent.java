@@ -10,10 +10,6 @@ import dev.yeff.orbital.ecs.GameObject;
 public class MouseObjectCollisionComponent extends Component {
     private GameObject obj;
 
-    public MouseObjectCollisionComponent() {
-
-    }
-
     @Override
     public void init(Game game) {
         this.obj = parent.getScene().findObject("Object 1");

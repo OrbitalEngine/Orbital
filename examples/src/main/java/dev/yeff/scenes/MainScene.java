@@ -1,16 +1,15 @@
 package dev.yeff.scenes;
 
-import dev.yeff.components.PlayerComponent;
+import dev.yeff.gameobjects.PlayerObject;
 import dev.yeff.orbital.Game;
 import dev.yeff.orbital.audio.AudioManager;
 import dev.yeff.orbital.ecs.GameObject;
-import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
+import dev.yeff.orbital.ecs.components.TagComponent;
 import dev.yeff.orbital.resources.Music;
 import dev.yeff.orbital.resources.ResourceManager;
 import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.orbital.util.Log;
-import org.joml.Vector2f;
 
 public class MainScene extends Scene {
     private GameObject player;
@@ -28,21 +27,15 @@ public class MainScene extends Scene {
         music.loop(true);
         AudioManager.playMusic(music);
 
+        player = new PlayerObject(this, game, sprite);
 
-        player = new GameObjectBuilder(this)
-                .withId("Player")
-                .withTransform(game.getScreenCenter(), new Vector2f(120.0f, 120.0f))
-                .withSprite(sprite)
-                .withComponent(new PlayerComponent())
-                .build();
-
+        Log.info(getClass(), player.getComponent(TagComponent.class).tagName);
         addGameObject(game, player);
-
-        Log.info(getClass(), String.format("FPS: %f, Frame Time: %f", game.getFps(), game.getFrameTime()));
     }
 
     @Override
     public void update(Game game, float fps) {
+        Log.info(getClass(), String.format("FPS: %f, Frame Time: %f", fps, game.getFrameTime()));
     }
 
     @Override

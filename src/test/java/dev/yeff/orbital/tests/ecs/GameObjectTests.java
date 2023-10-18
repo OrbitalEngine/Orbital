@@ -1,6 +1,7 @@
 package dev.yeff.orbital.tests.ecs;
 
 import com.raylib.Raylib;
+import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.builders.GameObjectBuilder;
 import dev.yeff.orbital.ecs.components.TransformComponent;
@@ -13,6 +14,8 @@ import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.resources.ResourceManager;
 import dev.yeff.orbital.scenes.Scene;
 import dev.yeff.orbital.tests.mock.MockScene;
+
+import java.util.Map;
 import java.util.Optional;
 import org.assertj.core.api.WithAssertions;
 import org.joml.Vector2f;
@@ -23,16 +26,23 @@ import org.junit.jupiter.api.Test;
 @DisplayName("test game objects creation and adding components to game objects")
 public class GameObjectTests implements WithAssertions {
   private static Scene mockScene;
+  private static Game game;
 
   @BeforeAll
   public static void setup() {
     mockScene = new MockScene();
+    Map<String, Scene> scenes = Map.of(
+            "Mock", mockScene
+    );
+
+    game = new Game(new Vector2f(0, 0), "[GAME_OBJECT_TEST_RUNNER]", scenes, false, 60.0f);
   }
 
   @DisplayName("create game object with no components using builder")
   @Test
   public void testCreateGameObject_usingBuilder() {
-    GameObject object = new GameObjectBuilder(mockScene, "Test Object").build();
+    GameObject object = new GameObjectBuilder(mockScene)
+            .build(game);
 
     assertThat(object).isNotNull();
   }
@@ -41,9 +51,9 @@ public class GameObjectTests implements WithAssertions {
   @Test
   public void testCreateGameObject_withTransform_usingBuilder() {
     GameObject object =
-        new GameObjectBuilder(mockScene, "Test Object")
+        new GameObjectBuilder(mockScene)
             .withTransform(new Vector2f(0.0f, 0.0f), new Vector2f(0.0f, 0.0f))
-            .build();
+            .build(game);
 
     assertThat(object.hasComponent(TransformComponent.class)).isTrue();
 
@@ -60,7 +70,7 @@ public class GameObjectTests implements WithAssertions {
   @Test
   public void testCreateGameObject_withShape_usingBuilder() {
     GameObject object =
-        new GameObjectBuilder(mockScene, "Test Object").withShape(Shapes.CIRCLE, Color.RED).build();
+        new GameObjectBuilder(mockScene).withShape(Shapes.CIRCLE, Color.RED).build(game);
 
     assertThat(object.hasComponent(RenderShapeComponent.class)).isTrue();
     assertThat(object.getComponent(RenderShapeComponent.class))
@@ -72,7 +82,7 @@ public class GameObjectTests implements WithAssertions {
   @Test
   public void testCreateGameObject_withText_usingBuilder() {
     GameObject object =
-        new GameObjectBuilder(mockScene, "Test Object").withText("Hello World", 0.0f).build();
+        new GameObjectBuilder(mockScene).withText("Hello World", 0.0f).build(game);
 
     assertThat(object.hasComponent(TextComponent.class)).isTrue();
     assertThat(object.getComponent(TextComponent.class))
@@ -84,9 +94,9 @@ public class GameObjectTests implements WithAssertions {
   @Test
   public void testCreateGameObject_withLine_usingBuilder() {
     GameObject object =
-        new GameObjectBuilder(mockScene, "Test Object")
+        new GameObjectBuilder(mockScene)
             .withLine(new Vector2f(0.0f, 0.0f), new Vector2f(0.0f, 0.0f), 0.0f, Color.RED)
-            .build();
+            .build(game);
 
     assertThat(object.hasComponent(LineComponent.class)).isTrue();
 
@@ -108,9 +118,9 @@ public class GameObjectTests implements WithAssertions {
   public void testCreateGameObject_withSprite_usingBuilder() {
     Raylib.InitWindow(100, 100, "Test window");
     GameObject object =
-        new GameObjectBuilder(mockScene, "Test Object")
+        new GameObjectBuilder(mockScene)
             .withSprite(ResourceManager.getSprite(getClass(), "character_0000.png"))
-            .build();
+            .build(game);
 
     assertThat(object.hasComponent(SpriteComponent.class)).isTrue();
     assertThat(object.getComponent(SpriteComponent.class).sprite).isNotNull();

@@ -1,27 +1,68 @@
 package dev.yeff.orbital.ecs;
 
 import dev.yeff.orbital.Game;
+import dev.yeff.orbital.ecs.annotations.*;
+import dev.yeff.orbital.ecs.components.TagComponent;
+import dev.yeff.orbital.ecs.components.TransformComponent;
+import dev.yeff.orbital.ecs.components.collision.ColliderComponent;
+import dev.yeff.orbital.ecs.components.render.SpriteComponent;
+import dev.yeff.orbital.graphics.Shapes;
+import dev.yeff.orbital.resources.ResourceManager;
+import dev.yeff.orbital.resources.Sprite;
 import dev.yeff.orbital.scenes.Scene;
 import java.util.ArrayList;
 import java.util.List;
+
 import lombok.Getter;
+import org.joml.Vector2f;
 
 /**
  * Stores and uses components to manage object functionality. Used to simplify application code.
  *
  * @author YeffyCodeGit
  */
-public class GameObject {
+public abstract class GameObject {
   @Getter private List<Component> components;
 
   @Getter private Scene scene;
 
-  @Getter private String id;
+  @Getter private Game game;
 
-  public GameObject(Scene scene, String id) {
+  public GameObject(Scene scene, Game game) {
     components = new ArrayList<>();
     this.scene = scene;
-    this.id = id;
+    this.game = game;
+
+    Class<?> klass = getClass();
+
+    if (klass.isAnnotationPresent(Tag.class)) {
+      Tag t = klass.getAnnotation(Tag.class);
+      addComponent(new TagComponent(t.tagName()));
+    }
+
+    if (klass.isAnnotationPresent(Transform.class)) {
+      Vector position = klass.getAnnotation(Transform.class).position();
+      Vector scale = klass.getAnnotation(Transform.class).scale();
+
+      Vector2f posVector = new Vector2f(position.x(), position.y());
+      Vector2f scaleVector = new Vector2f(scale.x(), scale.y());
+
+      addComponent(new TransformComponent(posVector, scaleVector));
+    }
+
+    if (klass.isAnnotationPresent(Collision.class)) {
+      Shapes collisionShape = klass.getAnnotation(Collision.class).shape();
+      Vector collisionScale = klass.getAnnotation(Collision.class).colliderScale();
+
+      Vector2f scaleVector = new Vector2f(collisionScale.x(), collisionScale.y());
+
+      addComponent(new ColliderComponent(collisionShape, scaleVector));
+    }
+
+    if (klass.isAnnotationPresent(DrawSprite.class)) {
+      Sprite sprite = ResourceManager.getSprite(getClass(), klass.getAnnotation(DrawSprite.class).path());
+      addComponent(new SpriteComponent(sprite));
+    }
   }
 
   /**
@@ -96,7 +137,7 @@ public class GameObject {
    *
    * @param game The game instance.
    */
-  public void init(Game game) {
+  public void internalInit(Game game) {
     for (Component c : components) {
       c.init(game);
     }
@@ -107,9 +148,12 @@ public class GameObject {
    *
    * @param game The game instance.
    */
-  public void update(Game game) {
+  public void internalUpdate(Game game) {
     for (Component c : components) {
       c.update(game);
     }
   }
+
+  public abstract void init(Game game);
+  public abstract void update(Game game);
 }

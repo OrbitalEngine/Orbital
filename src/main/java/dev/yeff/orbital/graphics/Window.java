@@ -74,6 +74,7 @@ public class Window {
       renderObjects.clear();
 
       for (GameObject obj : game.getCurrentScene().getObjects()) {
+        obj.internalUpdate(game);
         obj.update(game);
 
         if (obj.hasComponent(TransformComponent.class) && obj.hasComponent(DrawableComponent.class))
