@@ -4,7 +4,6 @@ import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.annotations.*;
 import dev.yeff.orbital.ecs.components.TransformComponent;
-import dev.yeff.orbital.ecs.components.render.SpriteComponent;
 import dev.yeff.orbital.graphics.Shapes;
 import dev.yeff.orbital.io.Input;
 import dev.yeff.orbital.io.Keys;

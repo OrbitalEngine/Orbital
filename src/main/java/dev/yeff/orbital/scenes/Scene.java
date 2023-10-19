@@ -4,6 +4,7 @@ import dev.yeff.orbital.Game;
 import dev.yeff.orbital.ecs.GameObject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import dev.yeff.orbital.ecs.components.TagComponent;
 import dev.yeff.orbital.util.Log;
@@ -33,7 +34,7 @@ public abstract class Scene {
   public GameObject findObject(String tag) {
     for (GameObject go : objects) {
       if (go.hasComponent(TagComponent.class)) {
-        if (go.getComponent(TagComponent.class).tagName == tag) {
+        if (Objects.equals(go.getComponent(TagComponent.class).tagName, tag)) {
           return go;
         }
       }
