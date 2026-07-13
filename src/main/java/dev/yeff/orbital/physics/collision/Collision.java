@@ -2,7 +2,8 @@ package dev.yeff.orbital.physics.collision;
 
 import static com.raylib.Raylib.*;
 
-import com.raylib.Jaylib;
+import static com.raylib.Helpers.newRectangle;
+
 import com.raylib.Raylib;
 import dev.yeff.orbital.ecs.GameObject;
 import dev.yeff.orbital.ecs.components.TransformComponent;
@@ -24,16 +25,16 @@ public class Collision {
    * @throws IllegalStateException If there was an error creating the rect from the game object.
    * @return The rectangle.
    */
-  private static Jaylib.Rectangle getRect(GameObject obj) {
+  private static Raylib.Rectangle getRect(GameObject obj) {
     if (obj.hasComponent(TransformComponent.class) && obj.hasComponent(ColliderComponent.class)) {
       TransformComponent transformComponent = obj.getComponent(TransformComponent.class);
       ColliderComponent colliderComponent = obj.getComponent(ColliderComponent.class);
 
-      return new Jaylib.Rectangle(
-          transformComponent.position.x,
-          transformComponent.position.y,
-          colliderComponent.colliderScale.x,
-          colliderComponent.colliderScale.y);
+      return newRectangle(
+              transformComponent.position.x,
+              transformComponent.position.y,
+              colliderComponent.colliderScale.x,
+              colliderComponent.colliderScale.y);
     } else {
       throw new IllegalStateException("Transform component required to get rectangle.");
     }
@@ -81,8 +82,8 @@ public class Collision {
    */
   private static boolean rectWithRect(GameObject obj1, GameObject obj2) {
     if (obj1.hasComponent(ColliderComponent.class) && obj2.hasComponent(ColliderComponent.class)) {
-      Jaylib.Rectangle rect1 = getRect(obj1);
-      Jaylib.Rectangle rect2 = getRect(obj2);
+      Raylib.Rectangle rect1 = getRect(obj1);
+      Raylib.Rectangle rect2 = getRect(obj2);
 
       return CheckCollisionRecs(rect1, rect2);
     }
@@ -129,7 +130,7 @@ public class Collision {
           RaylibUtil.getAsRaylibVec2(circle.getComponent(TransformComponent.class).position);
       float radius = circle.getComponent(ColliderComponent.class).colliderScale.x;
 
-      Jaylib.Rectangle rect = getRect(rectangle);
+      Raylib.Rectangle rect = getRect(rectangle);
 
       return CheckCollisionCircleRec(center, radius, rect);
     }

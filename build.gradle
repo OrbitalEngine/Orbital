@@ -23,10 +23,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
     testCompileOnly 'org.projectlombok:lombok:1.18.22'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
-    implementation 'uk.co.electronstudio.jaylib:jaylib:4.0.+'
-    implementation 'uk.co.electronstudio.jaylib:jaylib-natives-windows-x86_64:4.0.+'
-    implementation 'uk.co.electronstudio.jaylib:jaylib-natives-macosx-x86_64:4.0.+'
-    implementation 'uk.co.electronstudio.jaylib:jaylib-natives-linux-x86_64:4.0.+'
+    implementation 'uk.co.electronstudio.jaylib:jaylib:5.5.+'
     implementation "org.joml:joml:${jomlVersion}"
 
     implementation 'org.slf4j:slf4j-api:2.0.0-alpha5'

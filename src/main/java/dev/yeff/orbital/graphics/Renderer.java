@@ -1,6 +1,6 @@
 package dev.yeff.orbital.graphics;
 
-import static com.raylib.Jaylib.RAYWHITE;
+import static com.raylib.Colors.RAYWHITE;
 import static com.raylib.Raylib.*;
 
 import com.raylib.Raylib;
